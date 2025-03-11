@@ -1,0 +1,61 @@
+﻿<basePopup:BasePopup   x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.DefUnt"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                       xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                       mc:Ignorable="d"
+                       d:DesignHeight="200"
+                       d:DesignWidth="500">
+
+    <Grid FlowDirection="RightToLeft"
+          Style="{StaticResource PopupGrid}"
+          Margin="10"
+          Height="120">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Text="نام واحد سنجش" />
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="10,5"
+                 MaxLength="200"
+                 Text="{Binding NamUntMsrt, Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Text="موضوع سنجش" />
+
+        <telerik:RadComboBox 
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  ItemsSource="{Binding TblSbjMsrt}"
+                  DisplayMemberPath="FldNamSbjMsrt"
+                  SelectedValuePath="FldCodSbjMsrt"
+                  SelectedItem="{Binding SelectedItem}"></telerik:RadComboBox>
+
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+            <TextBlock Style="{StaticResource TextBlockForPopupMessagesStyle}"
+                       Text="نام واحد سنجش جدید را ثبت نمایید"></TextBlock>
+        </StackPanel>
+    </Grid>
+
+</basePopup:BasePopup>

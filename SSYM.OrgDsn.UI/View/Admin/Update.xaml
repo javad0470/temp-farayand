@@ -1,0 +1,80 @@
+﻿<Window x:Class="SSYM.OrgDsn.UI.View.Admin.Update"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        FlowDirection="RightToLeft"
+        Title="بروز رسانی" Height="500" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock  Text="نسخه های موجود" />
+            <DataGrid Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      Name="grdersions">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="شماره نسخه"
+                                        FontFamily="Arial"
+                                        Binding="{Binding FldNomVrsn}"
+                                        Width="Auto" />
+
+                    <DataGridTextColumn Header="تاریخ"
+                                        Binding="{Binding FldDteRlse}"
+                                        Width="*" />
+
+                    <DataGridTextColumn Header="شرح تغییرات"
+                                        Binding="{Binding FldDscChg}"
+                                        Width="*" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0">
+                <Button Content="بررسی آخرین نسخه"
+                        Click="btnCheckUpdate_Click"
+                        Margin="10" />
+
+                <TextBlock Name="tblkAvailableVersion"
+                           Text=""
+                           Margin="10" />
+            </StackPanel>
+
+            <RadioButton Content="دریافت نسخه جدید از وب"
+                         IsEnabled="False"
+                         Name="rdbGetFromServer"
+                         Margin="10,5"
+                         Grid.Row="1" />
+            <RadioButton Name="rdbGetFromLocal"
+                         Content="جایگذاری نسخه جدید بر روی سرور"
+                         IsEnabled="False"
+                         Margin="10,5"
+                         Grid.Row="2" />
+
+            <Button Content="دریافت نسخه به روز"
+                    Name="btnStartUpdate"
+                    Click="btnStartUpdate_Click"
+                    Width="200"
+                    Margin="10"
+                    Grid.Row="3" />
+        </Grid>
+
+    </Grid>
+</Window>

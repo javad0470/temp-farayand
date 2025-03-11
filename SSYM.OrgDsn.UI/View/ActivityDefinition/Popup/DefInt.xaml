@@ -1,0 +1,148 @@
+﻿<basePopup:BasePopup x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.DefInt"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+                     mc:Ignorable="d"
+                     d:DesignHeight="200"
+                     d:DesignWidth="500">
+
+    <UserControl.Resources>
+        <!--<Style TargetType="TextBox">
+            <Setter Property="MinWidth"
+                    Value="80"></Setter>
+        </Style>-->
+    </UserControl.Resources>
+
+    <Grid Style="{StaticResource PopupGrid}"
+          FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Text="نام ورودی"
+                   Grid.Row="0"
+                   Grid.Column="0"></TextBlock>
+
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="10,5"
+                 Text="{Binding TblObj.FldNamObj, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+                                    ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True  }"></TextBox>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0"
+                   Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Text="مجری مبدأ"></TextBlock>
+
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="10,5"
+                 IsReadOnly="True"
+                 Text="{Binding PerformerName, Mode=OneWay}"
+                 IsEnabled="{Binding IsSelectSourceEnabel, Mode=OneWay}"></TextBox>
+
+        <Button x:Name="btnSlcSrc"
+                Style="{StaticResource CommonBtnStyle}"
+                Margin="10,5"
+                Grid.Row="1"
+                Grid.Column="2"
+                ToolTip="انتخاب مبدا"
+                IsEnabled="{Binding IsSelectSourceEnabel, Mode=OneWay}"
+                Command="{Binding SlcSrcAndDstCommand}">
+
+            <custom:BackgroundedImage Source="{StaticResource hand_EW}"></custom:BackgroundedImage>
+
+        </Button>
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0"
+                   Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Text="فعالیت مبدأ"></TextBlock>
+
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="10,5"
+                 IsReadOnly="True"
+                 Text="{Binding PreviousActivity.FldNamAct, Mode=OneWay}"
+                 IsEnabled="{Binding IsSelectSourceEnabel, Mode=OneWay}"></TextBox>
+
+        <Button Style="{StaticResource CommonBtnStyle}"
+                Name="btnSlcAct"
+                Margin="10,5"
+                Grid.Row="2"
+                Grid.Column="2"
+                ToolTip="انتخاب مبدا"
+                IsEnabled="{Binding IsSelectActEnable, Mode=OneWay}"
+                Command="{Binding ActOfNodCommand}">
+
+            <custom:BackgroundedImage Source="{StaticResource hand_EW}" />
+
+        </Button>
+
+        <StackPanel Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}">
+
+            <TextBlock Style="{StaticResource TextBlockForPopupMessagesStyle}"
+                       Text="نام ورودی جدید و مبدأ آن را ثبت نمایید"></TextBlock>
+
+        </StackPanel>
+
+        <!--<Popup Placement="Center"
+               VerticalOffset="0"
+               HorizontalOffset="25"
+               PlacementTarget="{Binding ElementName=btnSlcSrc}"
+               IsOpen="{Binding IsSlcSrcAndDstOpen, Mode=TwoWay}"
+               StaysOpen="True"
+               PopupAnimation="Fade"
+               AllowsTransparency="True">
+            <popup:BasePopup>
+                <popup:BasePopup.PopupContent>
+                    <popup:SlcSrcAndDst DataContext="{Binding SlcSrcAndDst}"></popup:SlcSrcAndDst>
+                </popup:BasePopup.PopupContent>
+            </popup:BasePopup>
+
+        </Popup>
+
+        <Popup Placement="Center"
+               VerticalOffset="0"
+               HorizontalOffset="25"
+               PlacementTarget="{Binding ElementName=btnSlcAct}"
+               IsOpen="{Binding ShowSlcAct, Mode=TwoWay}"
+               StaysOpen="True"
+               PopupAnimation="Fade"
+               AllowsTransparency="True">
+            <popup:BasePopup>
+                <popup:BasePopup.PopupContent>
+                    <popup:SlcActsOfNod DataContext="{Binding SlcActOfNodVM}" />
+                </popup:BasePopup.PopupContent>
+            </popup:BasePopup>
+
+        </Popup>-->
+
+
+
+    </Grid>
+
+</basePopup:BasePopup>

@@ -1,0 +1,1167 @@
+<!-- ******************************************************************* -->
+<!-- This file is part of yFiles WPF 2.4. -->
+<!--                                                                     -->
+<!-- yWorks proprietary/confidential. Use is subject to license terms.   -->
+<!-- Redistribution of this file or of an unauthorized byte-code version -->
+<!-- of this file is strictly forbidden.                                 -->
+<!-- Copyright (c) 2003-2013 by yWorks GmbH, Vor dem Kreuzberg 28,       -->
+<!-- 72070 Tuebingen, Germany. All rights reserved.                      -->
+<!-- ******************************************************************* -->
+<!-- -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Model="clr-namespace:SSYM.OrgDsn.Model.BPMNDgm.Model;assembly=SSYM.OrgDsn.Model"
+                    xmlns:TypShp="clr-namespace:SSYM.OrgDsn.Model.Enum;assembly=SSYM.OrgDsn.Model">
+    <!--xmlns:Model="http://www.yworks.com/yfilesWPF/2.2/demos/BusinessProcessDiagram"-->
+    <!-- Activity Overlays -->
+
+    <Style x:Key="ActivityStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border BorderThickness="2"
+                            BorderBrush="{DynamicResource ActBorderBrush}"
+                            CornerRadius="5"
+                            Background="{DynamicResource ActBackgroundBrush}"
+                            Padding="2,2,2,3">
+                        <Border.Effect>
+                            <DropShadowEffect />
+                        </Border.Effect>
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+
+                            </Grid.RowDefinitions>
+
+                            <ContentPresenter Grid.Row="1"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Bottom" />
+
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CallActivityStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border BorderThickness="5"
+                            BorderBrush="{DynamicResource CallActivityBorderBrush}"
+                            CornerRadius="5"
+                            Background="{DynamicResource CallActivityBackgroundBrush}"
+                            Padding="2,2,2,3">
+                        <Border.Effect>
+                            <DropShadowEffect />
+                        </Border.Effect>
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+
+                            </Grid.RowDefinitions>
+
+                            <ContentPresenter Grid.Row="1"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Bottom" />
+
+                        </Grid>
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <GeometryGroup x:Key="ActivityOverlayMultipleInstances">
+        <LineGeometry StartPoint="3,2"
+                      EndPoint="3, 8" />
+        <LineGeometry StartPoint="5,2"
+                      EndPoint="5, 8" />
+        <LineGeometry StartPoint="7,2"
+                      EndPoint="7, 8" />
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="ActivityOverlayLoop"
+                   FillRule="Nonzero">
+        <PathGeometry>
+            <PathFigure IsClosed="False"
+                        StartPoint="1.7, 6">
+                <ArcSegment Point="3.5, 7.25"
+                            Size="3.25, 3.25"
+                            SweepDirection="Clockwise"
+                            IsLargeArc="True" />
+            </PathFigure>
+        </PathGeometry>
+        <PathGeometry>
+            <PathFigure IsClosed="False"
+                        StartPoint="0, 5.5">
+                <LineSegment Point="1.5, 6"
+                             IsSmoothJoin="True" />
+                <LineSegment Point="2.5, 4.5"
+                             IsSmoothJoin="True" />
+            </PathFigure>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <PathGeometry x:Key="ActivityOverlayAdHoc">
+        <PathFigure IsClosed="False"
+                    StartPoint="1, 6">
+            <BezierSegment Point1="4, -2"
+                           Point2="5, 10"
+                           Point3="9, 2" />
+        </PathFigure>
+    </PathGeometry>
+
+    <GeometryGroup x:Key="ActivityOverlaySubprocess">
+        <RectangleGeometry Rect="0,0, 10,10" />
+        <LineGeometry StartPoint="2,5"
+                      EndPoint="8, 5" />
+        <LineGeometry StartPoint="5,2"
+                      EndPoint="5, 8" />
+    </GeometryGroup>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A1}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A2}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A3}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A4}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A5}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A6}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A7}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A8}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.A9}">
+        <ContentControl Style="{StaticResource ActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA1}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA2}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA3}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA4}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA5}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.CA6}">
+        <ContentControl Style="{StaticResource CallActivityStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <!-- Gateway Overlays -->
+    <Style x:Key="GatewayStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Path StrokeThickness="3"
+                              Fill="{DynamicResource GateWayBackgroundBrush}"
+                              Stroke="{DynamicResource GateWayBorderBrush}">
+                            <Path.Effect>
+                                <DropShadowEffect />
+                            </Path.Effect>
+                            <Path.Data>
+                                <RectangleGeometry Rect="8, 8, 35, 35">
+                                    <RectangleGeometry.Transform>
+                                        <RotateTransform Angle="45"
+                                                         CenterX="25"
+                                                         CenterY="25" />
+                                    </RectangleGeometry.Transform>
+                                </RectangleGeometry>
+                            </Path.Data>
+                        </Path>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <GeometryGroup x:Key="GatewayDataBasedExclusiveOverlay">
+        <LineGeometry StartPoint="20,10"
+                      EndPoint="30,42" />
+        <LineGeometry StartPoint="30,10"
+                      EndPoint="20,42" />
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="GatewayParallelOverlay">
+        <LineGeometry StartPoint="10,26"
+                      EndPoint="40,26" />
+        <LineGeometry StartPoint="25,12"
+                      EndPoint="25,42" />
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="GatewayComplexOverlay">
+        <LineGeometry StartPoint="10,26"
+                      EndPoint="40,26" />
+        <LineGeometry StartPoint="25,12"
+                      EndPoint="25,42" />
+        <GeometryGroup>
+            <GeometryGroup.Transform>
+                <RotateTransform Angle="45"
+                                 CenterX="25"
+                                 CenterY="25" />
+            </GeometryGroup.Transform>
+            <LineGeometry StartPoint="11,26"
+                          EndPoint="40,26" />
+            <LineGeometry StartPoint="26,11"
+                          EndPoint="26,40" />
+        </GeometryGroup>
+    </GeometryGroup>
+
+    <EllipseGeometry x:Key="GatewayInclusiveOverlay"
+                     Center="25,25"
+                     RadiusX="12"
+                     RadiusY="12" />
+
+    <GeometryGroup x:Key="GatewayEventBasedExclusiveOverlay">
+        <EllipseGeometry Center="25,25"
+                         RadiusX="12"
+                         RadiusY="12" />
+        <EllipseGeometry Center="25,25"
+                         RadiusX="10"
+                         RadiusY="10" />
+        <PathGeometry>
+            <PathFigure IsClosed="True"
+                        StartPoint="25, 17.5">
+                <LineSegment Point="32, 23" />
+                <LineSegment Point="29, 32" />
+                <LineSegment Point="21, 32" />
+                <LineSegment Point="18, 23" />
+            </PathFigure>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="GatewayStartEventBasedExclusiveOverlay">
+        <EllipseGeometry Center="25,25"
+                         RadiusX="12"
+                         RadiusY="12" />
+        <EllipseGeometry Center="25,25"
+                         RadiusX="10"
+                         RadiusY="10" />
+        <PathGeometry>
+            <PathFigure IsClosed="True"
+                        StartPoint="25, 17.5">
+                <LineSegment Point="32, 23" />
+                <LineSegment Point="29, 32" />
+                <LineSegment Point="21, 32" />
+                <LineSegment Point="18, 23" />
+            </PathFigure>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="IntermediateParallelEventBasedGateway">
+        <EllipseGeometry Center="25,25"
+                         RadiusX="12"
+                         RadiusY="12" />
+        <EllipseGeometry Center="25,25"
+                         RadiusX="10"
+                         RadiusY="10" />
+        <LineGeometry StartPoint="15,26"
+                      EndPoint="35,26" />
+        <LineGeometry StartPoint="25,12"
+                      EndPoint="25,35" />
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="StartParallelEventBasedGateway">
+
+        <EllipseGeometry Center="25,25"
+                         RadiusX="12"
+                         RadiusY="12" />
+        <LineGeometry StartPoint="15,26"
+                      EndPoint="35,26" />
+        <LineGeometry StartPoint="25,12"
+                      EndPoint="25,35" />
+    </GeometryGroup>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G1}">
+        <ContentControl Style="{StaticResource GatewayStyle}"></ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G2}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource GatewayInclusiveOverlay}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G3}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource GatewayParallelOverlay}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G4}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource GatewayComplexOverlay}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G5}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource GatewayEventBasedExclusiveOverlay}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G6}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource GatewayStartEventBasedExclusiveOverlay}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G7}">
+        <ContentControl Style="{StaticResource GatewayStyle}">
+            <Path Data="{StaticResource IntermediateParallelEventBasedGateway}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.G8}">
+        <ContentControl Style="{StaticResource GatewayStyle}"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        BorderBrush="Black"
+                        BorderThickness="2">
+            <!--<Grid Background="Red" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                
+            </Grid>-->
+            <!--<Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ContentControl}, Converter={StaticResource SizeConverter}, ConverterParameter=-30}"
+                      Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ContentControl}, Converter={StaticResource SizeConverter}, ConverterParameter=-30}"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Background="Red">
+                    <Grid Name="backgroundGrid"
+                          Background="Green"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center">
+                        <Path Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Stretch="Fill"
+                              Fill="{DynamicResource GateWayContentBrush}"
+                              Visibility="Visible" />
+                    </Grid>
+                    <Path HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Stretch="Fill"
+                          Data="F1M1039.59,974.868L1018.83,974.868 1018.83,951.909 995.873,951.901 995.88,931.148 1018.83,931.155 1018.83,908.202 1039.59,908.202 1039.59,931.16 1062.55,931.168 1062.54,951.921 1039.59,951.914 1039.59,974.868z M1021.5,972.202L1036.92,972.202 1036.92,949.247 1059.87,949.254 1059.88,933.835 1036.92,933.827 1036.92,910.868 1021.5,910.868 1021.5,933.822 998.545,933.815 998.541,949.234 1021.5,949.242 1021.5,972.202z"
+                          Fill="{DynamicResource GateWayContentBrush}"
+                          Margin="10">
+                    </Path>
+                </Grid>-->
+
+            <Path Data="{StaticResource StartParallelEventBasedGateway}"
+                  Stroke="{DynamicResource GateWayContentBrush}"
+                  StrokeThickness="3" />
+        </ContentControl>
+    </DataTemplate>
+
+    <!-- Event Overlays -->
+    <GeometryGroup x:Key="EventMultipleOverlay">
+        <PathGeometry>
+            <PathFigure IsClosed="True"
+                        StartPoint="15, 7.5">
+                <LineSegment Point="22, 13" />
+                <LineSegment Point="19, 22" />
+                <LineSegment Point="11, 22" />
+                <LineSegment Point="8, 13" />
+            </PathFigure>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <!--<TextBlock  x:Key="MessageEvent"
+                Text="M"
+                FontSize="20" />-->
+
+    <Border  x:Key="MessageEvent"
+             BorderThickness="2"
+             BorderBrush="Black"
+             Width="15"
+             Background="white"
+             Height="10">
+        <Border.RenderTransform>
+
+            <TranslateTransform X="8"
+                                Y="10"></TranslateTransform>
+
+        </Border.RenderTransform>
+
+        <Grid>
+            <Line X1="0"
+                  Y1="0"
+                  X2="6"
+                  Y2="5"
+                  StrokeThickness="2"
+                  Stroke="Black"></Line>
+
+            <Line X1="5"
+                  Y1="5"
+                  X2="11"
+                  Y2="0"
+                  StrokeThickness="2"
+                  Stroke="Black"></Line>
+
+        </Grid>
+
+    </Border>
+
+    <Border  x:Key="BlackMessageEvent"
+             BorderThickness="2"
+             BorderBrush="White"
+             Width="15"
+             Background="Black"
+             Height="10">
+        <Border.RenderTransform>
+
+            <TranslateTransform X="8"
+                                Y="10"></TranslateTransform>
+
+        </Border.RenderTransform>
+
+        <Grid>
+            <Line X1="0"
+                  Y1="0"
+                  X2="6"
+                  Y2="5"
+                  StrokeThickness="2"
+                  Stroke="White"></Line>
+
+            <Line X1="5"
+                  Y1="5"
+                  X2="11"
+                  Y2="0"
+                  StrokeThickness="2"
+                  Stroke="White"></Line>
+
+        </Grid>
+
+    </Border>
+
+    <PathGeometry x:Key="ErrorEvent">
+        <PathFigure StartPoint="7,23"
+                    IsClosed="True">
+            <LineSegment Point="12, 9"
+                         IsSmoothJoin="True" />
+            <LineSegment Point="18, 16"
+                         IsSmoothJoin="True" />
+            <LineSegment Point="24, 9"
+                         IsSmoothJoin="True" />
+            <LineSegment Point="20, 21"
+                         IsSmoothJoin="True" />
+            <LineSegment Point="14, 15"
+                         IsSmoothJoin="True" />
+        </PathFigure>
+    </PathGeometry>
+
+    <PathGeometry x:Key="SignalEvent">
+
+        <PathFigure StartPoint="8,19"
+                    IsClosed="True">
+
+            <LineSegment Point="22,19"></LineSegment>
+
+            <LineSegment Point="15,10"></LineSegment>
+
+        </PathFigure>
+
+    </PathGeometry>
+
+    <EllipseGeometry x:Key="EventTerminate"
+                     Center="15,15"
+                     RadiusX="8"
+                     RadiusY="8" />
+
+    <GeometryGroup x:Key="TopLevelStartTimerEvent">
+        <EllipseGeometry Center="15,15"
+                         RadiusX="8"
+                         RadiusY="8" />
+        <GeometryGroup>
+            <!-- 90� and 270� -->
+            <LineGeometry StartPoint="15, 7"
+                          EndPoint="15, 10" />
+            <LineGeometry StartPoint="15, 23"
+                          EndPoint="15, 20" />
+            <!-- 180� and 360� -->
+            <LineGeometry StartPoint="7, 15"
+                          EndPoint="10, 15" />
+            <LineGeometry StartPoint="23, 15"
+                          EndPoint="20, 15" />
+        </GeometryGroup>
+        <!-- 30� and 210� -->
+        <GeometryGroup>
+            <GeometryGroup.Transform>
+                <RotateTransform Angle="-30"
+                                 CenterX="15"
+                                 CenterY="15" />
+            </GeometryGroup.Transform>
+            <LineGeometry StartPoint="7, 15"
+                          EndPoint="10, 15" />
+            <LineGeometry StartPoint="23, 15"
+                          EndPoint="20, 15" />
+        </GeometryGroup>
+        <!-- 60� and 240� -->
+        <GeometryGroup>
+            <GeometryGroup.Transform>
+                <RotateTransform Angle="-60"
+                                 CenterX="15"
+                                 CenterY="15" />
+            </GeometryGroup.Transform>
+            <LineGeometry StartPoint="7, 15"
+                          EndPoint="10, 15" />
+            <LineGeometry StartPoint="23, 15"
+                          EndPoint="20, 15" />
+        </GeometryGroup>
+        <!-- 150� and 330� -->
+        <GeometryGroup>
+            <GeometryGroup.Transform>
+                <RotateTransform Angle="30"
+                                 CenterX="15"
+                                 CenterY="15" />
+            </GeometryGroup.Transform>
+            <LineGeometry StartPoint="7, 15"
+                          EndPoint="10, 15" />
+            <LineGeometry StartPoint="23, 15"
+                          EndPoint="20, 15" />
+        </GeometryGroup>
+        <!-- 120� and 300� -->
+        <GeometryGroup>
+            <GeometryGroup.Transform>
+                <RotateTransform Angle="60"
+                                 CenterX="15"
+                                 CenterY="15" />
+            </GeometryGroup.Transform>
+            <LineGeometry StartPoint="7, 15"
+                          EndPoint="10, 15" />
+            <LineGeometry StartPoint="23, 15"
+                          EndPoint="20, 15" />
+        </GeometryGroup>
+        <!-- clock handles -->
+        <PathGeometry>
+            <PathFigure StartPoint="17, 7">
+                <LineSegment Point="15, 15"
+                             IsSmoothJoin="True" />
+                <LineSegment Point="19, 15"
+                             IsSmoothJoin="True" />
+            </PathFigure>
+        </PathGeometry>
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="CancelEvent">
+
+        <LineGeometry StartPoint="10,10"
+                      EndPoint="20,20"></LineGeometry>
+
+        <LineGeometry StartPoint="10,20"
+                      EndPoint="20,10"></LineGeometry>
+
+    </GeometryGroup>
+
+    <GeometryGroup x:Key="ConditionalEvent">
+
+        <LineGeometry StartPoint="7,8"
+                      EndPoint="7,24" />
+
+        <LineGeometry StartPoint="23,8"
+                      EndPoint="23,24" />
+
+        <LineGeometry StartPoint="7,8"
+                      EndPoint="23,8" />
+
+        <LineGeometry StartPoint="7,24"
+                      EndPoint="23,24" />
+
+        <LineGeometry StartPoint="9,12"
+                      EndPoint="21,12" />
+
+        <LineGeometry StartPoint="9,15"
+                      EndPoint="21,15" />
+
+        <LineGeometry StartPoint="9,18"
+                      EndPoint="21,18" />
+
+        <LineGeometry StartPoint="9,21"
+                      EndPoint="21,21" />
+    </GeometryGroup>
+
+    <Style x:Key="StartEventStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Stroke="{DynamicResource EventBorderBrush}"
+                                 Fill="{DynamicResource EventBackgroundBrush}"
+                                 StrokeThickness="2">
+
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DashedStartEventStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Stroke="{DynamicResource EventBorderBrush}"
+                                 Fill="{DynamicResource EventBackgroundBrush}"
+                                 StrokeThickness="2">
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IntermediateEventStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Stroke="{DynamicResource EventBorderBrush}"
+                                 Fill="{DynamicResource EventBackgroundBrush}"
+                                 StrokeThickness="2">
+                        </Ellipse>
+                        <Ellipse Width="24"
+                                 Height="24"
+                                 Stroke="Orange"
+                                 StrokeThickness="2">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="3"
+                                                    Y="3" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DashedIntermediateEventStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 StrokeDashArray="2"
+                                 Stroke="{DynamicResource EventBorderBrush}"
+                                 Fill="{DynamicResource EventBackgroundBrush}"
+                                 StrokeThickness="2">
+                        </Ellipse>
+                        <Ellipse Width="24"
+                                 Height="24"
+                                 Stroke="Orange"
+                                 StrokeDashArray="2"
+                                 StrokeThickness="2">
+                            <Ellipse.RenderTransform>
+                                <TranslateTransform X="3"
+                                                    Y="3" />
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EndEventStyle"
+           TargetType="ContentControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Canvas>
+                        <Ellipse Width="30"
+                                 Height="30"
+                                 Stroke="{DynamicResource EventBorderBrush}"
+                                 Fill="{DynamicResource EventBackgroundBrush}"
+                                 StrokeThickness="4">
+                        </Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E1}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E2}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E3}">
+        <ContentControl Style="{StaticResource DashedStartEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E4}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E5}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E6}">
+        <ContentControl Style="{StaticResource DashedIntermediateEventStyle}">
+            <Path Data="{StaticResource TopLevelStartTimerEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E7}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E8}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E9}">
+        <ContentControl Style="{StaticResource DashedStartEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E10}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E11}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E12}">
+        <ContentControl Style="{StaticResource DashedIntermediateEventStyle}">
+            <Path Data="{StaticResource ConditionalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E13}">
+        <ContentControl Style="{StaticResource StartEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E14}">
+        <ContentControl Style="{StaticResource StartEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E15}">
+        <ContentControl Style="{StaticResource DashedStartEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E16}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E17}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E18}">
+        <ContentControl Style="{StaticResource DashedIntermediateEventStyle}"
+                        Content="{StaticResource MessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E19}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}"
+                        Content="{StaticResource BlackMessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E20}">
+        <ContentControl Style="{StaticResource EndEventStyle}"
+                        Content="{StaticResource BlackMessageEvent}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E21}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource ErrorEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E22}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource ErrorEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E23}">
+        <ContentControl Style="{StaticResource EndEventStyle}">
+            <Path Data="{StaticResource ErrorEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E24}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource CancelEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E25}">
+        <ContentControl Style="{StaticResource EndEventStyle}">
+            <Path Data="{StaticResource CancelEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E26}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E27}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E28}">
+        <ContentControl Style="{StaticResource DashedStartEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E29}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E30}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E31}">
+        <ContentControl Style="{StaticResource DashedIntermediateEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E32}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  Fill="{DynamicResource EventContentBackgroundBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E33}">
+        <ContentControl Style="{StaticResource EndEventStyle}">
+            <Path Data="{StaticResource SignalEvent}"
+                  Stroke="{DynamicResource EventContentBrush}"
+                  Fill="{DynamicResource EventContentBackgroundBrush}"
+                  StrokeThickness="2" />
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E34}">
+        <ContentControl Style="{StaticResource StartEventStyle}">
+
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E35}">
+        <ContentControl Style="{StaticResource IntermediateEventStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.E36}">
+        <ContentControl Style="{StaticResource EndEventStyle}">
+        </ContentControl>
+    </DataTemplate>
+
+    <!-- Artifact styles -->
+    <!--<DataTemplate x:Key="{x:Static Model:ArtifactType.TextAnnotation}">
+        <Grid>
+            <Rectangle Fill="White">
+                <Rectangle.Effect>
+                    <DropShadowEffect />
+                </Rectangle.Effect>
+            </Rectangle>
+            <Path Stroke="Black"
+                  StrokeThickness="2"
+                  Stretch="Fill"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Left"
+                  Width="10">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="10,0">
+                            <LineSegment Point="0,0"
+                                         IsSmoothJoin="True" />
+                            <LineSegment Point="0,30"
+                                         IsSmoothJoin="True" />
+                            <LineSegment Point="10,30"
+                                         IsSmoothJoin="True" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static Model:ArtifactType.DataObject}">
+        <Path Stroke="Black"
+              StrokeThickness="2"
+              Fill="White"
+              Stretch="Fill">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
+            <Path.Data>
+                <PathGeometry FillRule="Nonzero">
+                    <PathFigure StartPoint="0,0"
+                                IsClosed="True">
+                        <LineSegment Point="0,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,0"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,0"
+                                     IsSmoothJoin="True" />
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </DataTemplate>-->
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.DO1}">
+        <Path Stroke="{DynamicResource ObjBorderBrush}"
+              StrokeThickness="2"
+              Fill="{DynamicResource ObjBackgroundBrush}"
+              Stretch="Fill">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
+            <Path.Data>
+                <PathGeometry FillRule="Nonzero">
+                    <PathFigure StartPoint="0,0"
+                                IsClosed="True">
+                        <LineSegment Point="0,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,0"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,15"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="25,0"
+                                     IsSmoothJoin="True" />
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </DataTemplate>
+
+    <DataTemplate x:Key="{x:Static TypShp:TypShp.DO2}">
+        <Path Stroke="{DynamicResource ObjBorderBrush}"
+              StrokeThickness="2"
+              Fill="{DynamicResource ObjBackgroundBrush}"
+              Stretch="Fill">
+            <Path.Effect>
+                <DropShadowEffect />
+            </Path.Effect>
+            <Path.Data>
+                <PathGeometry FillRule="Nonzero">
+                    <PathFigure StartPoint="0,0"
+                                IsClosed="False">
+                        <LineSegment Point="0,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,60"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,0"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="0,0"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="20,30"
+                                     IsSmoothJoin="True" />
+                        <LineSegment Point="40,0"
+                                     IsSmoothJoin="True" />
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </DataTemplate>
+
+</ResourceDictionary>

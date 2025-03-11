@@ -1,0 +1,2867 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Main;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:model="clr-namespace:SSYM.OrgDsn.Model;assembly=SSYM.OrgDsn.Model"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:mainuc="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Main.ActDgrm"
+             xmlns:view="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Main"
+             xmlns:p="http://markupprogramming.codeplex.com/markup/programming"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:customCtrls="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             Name="ucActDgrm"
+             d:DesignHeight="600"
+             d:DesignWidth="1007">
+
+    <UserControl.Resources>
+        <Storyboard x:Key="EvtSrtItemControlBorder"
+                    TargetProperty="BorderThickness">
+            <ThicknessAnimation To="3"
+                                Duration="0:0:0.25">
+
+            </ThicknessAnimation>
+        </Storyboard>
+        <Storyboard x:Key="EvtSrtItemControlColor"
+                    TargetProperty="BorderBrush.Color">
+            <ColorAnimation To="Orange"
+                            Duration="0:0:0.25">
+            </ColorAnimation>
+        </Storyboard>
+        <Storyboard x:Key="EvtSrtItemControlBorderR"
+                    TargetProperty="BorderThickness">
+            <ThicknessAnimation Duration="0:0:0.25">
+            </ThicknessAnimation>
+        </Storyboard>
+        <Storyboard x:Key="EvtSrtItemControlColorR"
+                    Storyboard.TargetName="grpEvtSrt"
+                    Storyboard.TargetProperty="BorderBrush.Color">
+            <ColorAnimation Duration="0:0:0.25">
+            </ColorAnimation>
+        </Storyboard>
+
+
+
+
+        <Storyboard x:Key="DragEnterBlink"
+                    TargetProperty="Stroke.Color">
+            <ColorAnimation To="Green"
+                            Duration="0:0:0.25">
+            </ColorAnimation>
+
+        </Storyboard>
+
+
+        <Storyboard x:Key="DragEnterBlinkR"
+                    TargetProperty="Stroke.Color">
+            <ColorAnimation Duration="0:0:0.25">
+            </ColorAnimation>
+
+        </Storyboard>
+
+
+        <Storyboard x:Key="DragEnterStoryboard"
+                    TargetProperty="BorderBrush.Color">
+            <ColorAnimation To="{DynamicResource appClr2_c}"
+                            Duration="0:0:0.25">
+
+            </ColorAnimation>
+        </Storyboard>
+
+        <Storyboard x:Key="LoadActEvtRstSrtStoryBoard">
+
+            <ThicknessAnimation Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                Storyboard.TargetName="border"
+                                Duration="0:0:1"
+                                From="200,0,0,0"
+                                To="0,0,0,0">
+
+                <ThicknessAnimation.EasingFunction>
+
+                    <ExponentialEase Exponent="12"
+                                     EasingMode="EaseOut"></ExponentialEase>
+
+                </ThicknessAnimation.EasingFunction>
+
+            </ThicknessAnimation>
+
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Border x:Name="border">
+
+        <Grid x:Name="LayoutRoot"
+              DragEnter="border_DragEnter"
+              DragLeave="LayoutRoot_Drop"
+              Drop="LayoutRoot_Drop"
+              AllowDrop="True"
+              MouseMove="LayoutRoot_MouseMove"
+              telerik:DragDropManager.AllowCapturedDrag="False"
+              Style="{StaticResource grid01}">
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <Grid x:Name="grdMainAct"
+                  IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}"
+                  Style="{StaticResource grid01}"
+                  Grid.Column="2"
+                  MaxHeight="250"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  Margin="0">
+
+                <Grid.Resources>
+
+                    <Storyboard x:Key="showSignStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="grdSignContainer">
+                        <DoubleAnimation From="0"
+                                         To="1"
+                                         Duration="0:0:0.25" />
+                    </Storyboard>
+
+                    <Storyboard x:Key="hideSignStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="grdSignContainer">
+                        <DoubleAnimation From="1"
+                                         To="0"
+                                         BeginTime="0:0:0.5"
+                                         Duration="0:0:0.25" />
+                    </Storyboard>
+
+                    <Storyboard x:Key="showChangeTypePaneStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="brdSelectType">
+                        <DoubleAnimation From="0"
+                                         To="1"
+                                         Duration="0:0:0.25" />
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsOpen"
+                                                        Storyboard.TargetName="ppSelectType">
+                            <DiscreteBooleanKeyFrame Value="True"
+                                                     KeyTime="0:0:0" />
+                        </BooleanAnimationUsingKeyFrames>
+                    </Storyboard>
+
+                    <Storyboard x:Key="hideChangeTypePaneStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="brdSelectType">
+                        <DoubleAnimation From="1"
+                                         To="0"
+                                         Duration="0:0:0.25" />
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsOpen"
+                                                        Storyboard.TargetName="ppSelectType">
+                            <DiscreteBooleanKeyFrame Value="False"
+                                                     KeyTime="0:0:0" />
+                        </BooleanAnimationUsingKeyFrames>
+
+                    </Storyboard>
+
+                    <Storyboard x:Key="showChangeHasSubActPaneStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="brdSelectSubActType">
+                        <DoubleAnimation From="0"
+                                         To="1"
+                                         Duration="0:0:0.25" />
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsOpen"
+                                                        Storyboard.TargetName="ppSelectSubActType">
+                            <DiscreteBooleanKeyFrame Value="True"
+                                                     KeyTime="0:0:0" />
+                        </BooleanAnimationUsingKeyFrames>
+
+                    </Storyboard>
+
+                    <Storyboard x:Key="hideChangeHasSubActPaneStoryboard"
+                                Storyboard.TargetProperty="Opacity"
+                                Storyboard.TargetName="brdSelectSubActType">
+                        <DoubleAnimation From="1"
+                                         To="0"
+                                         Duration="0:0:0.25" />
+                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsOpen"
+                                                        Storyboard.TargetName="ppSelectSubActType">
+                            <DiscreteBooleanKeyFrame Value="False"
+                                                     KeyTime="0:0:0" />
+                        </BooleanAnimationUsingKeyFrames>
+
+                    </Storyboard>
+
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="UIElement.MouseEnter"
+                                  SourceName="grdMainAct">
+                        <BeginStoryboard Storyboard="{StaticResource showSignStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="UIElement.MouseLeave"
+                                  SourceName="grdMainAct">
+                        <BeginStoryboard Storyboard="{StaticResource hideSignStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnChangeActType">
+                        <BeginStoryboard Storyboard="{StaticResource showChangeTypePaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnChangeHasAct">
+                        <BeginStoryboard Storyboard="{StaticResource showChangeHasSubActPaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnSelectTypehumanCustom">
+                        <BeginStoryboard Storyboard="{StaticResource hideChangeTypePaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnSelectTypehumanSoft">
+                        <BeginStoryboard Storyboard="{StaticResource hideChangeTypePaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnSelectTypeextraOrg">
+                        <BeginStoryboard Storyboard="{StaticResource hideChangeTypePaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnHasSubAct">
+                        <BeginStoryboard Storyboard="{StaticResource hideChangeHasSubActPaneStoryboard}" />
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ButtonBase.Click"
+                                  SourceName="btnHasNotSubAct">
+                        <BeginStoryboard Storyboard="{StaticResource hideChangeHasSubActPaneStoryboard}" />
+                    </EventTrigger>
+
+
+
+                </Grid.Triggers>
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click"
+                                    SourceName="btnAddEvtSrt">
+                        <i:EventTrigger.Actions>
+
+                            <ei:ChangePropertyAction TargetName="ppAddEvtSrtType"
+                                                     PropertyName="IsOpen"
+                                                     Value="True" />
+                        </i:EventTrigger.Actions>
+                    </i:EventTrigger>
+
+                    <i:EventTrigger EventName="Click"
+                                    SourceName="btnAddEvtRst">
+                        <ei:ChangePropertyAction TargetName="ppAddEvtRstType"
+                                                 PropertyName="IsOpen"
+                                                 Value="True" />
+
+                        <!-- این قسمت به کد بیهاند منتقل شد -->
+                        <!--<ei:ChangePropertyAction TargetName="SlctEvtRstTypeObj"
+                                                 PropertyName="ShouldCancelVisible"
+                                                 Value="{Binding DataContext.ShouldCancelEvtRstVisible, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ActDgrm}}}"></ei:ChangePropertyAction>
+
+                        <ei:ChangePropertyAction TargetName="SlctEvtRstTypeObj"
+                                                 PropertyName="ShouldAnyCdnVisible"
+                                                 Value="{Binding DataContext.ShouldAnyCdnEvtRstVisible, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ActDgrm}}}"></ei:ChangePropertyAction>-->
+
+                    </i:EventTrigger>
+
+                </i:Interaction.Triggers>
+
+                <Grid VerticalAlignment="Center"
+                      Visibility="{Binding Activity , Converter={StaticResource ObjectToVisibilityConverter}}"
+                      Style="{StaticResource grid01}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="grdSignContainer"
+                          Style="{StaticResource grid01}"
+                          Opacity="0"
+                          Visibility="Collapsed"
+                          HorizontalAlignment="Center"
+                          Width="280"
+                          Height="180"
+                          Grid.Row="2">
+                        <!-- در صورت نیاز Visibility تصحیح شود -->
+                        <Button x:Name="btnChangeActType"
+                                ToolTip="تغییر نوع فعالیت"
+                                Style="{StaticResource ImagebtnStyle}"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Width="32"
+                                Height="32">
+                            <Image Source="{StaticResource upArrowImage}" />
+
+                        </Button>
+
+                        <Button x:Name="btnAddEvtRst"
+                                Click="btnAddEvtRst_Click_1"
+                                ToolTip="افزودن رخداد نتیجه"
+                                Style="{StaticResource ImagebtnStyle}"
+                                HorizontalAlignment="Left"
+                                Visibility="Collapsed"
+                                VerticalAlignment="Center"
+                                Width="32"
+                                Height="32">
+                            <Image Source="{StaticResource plusSignImage}" />
+
+                        </Button>
+
+                        <Button x:Name="btnAddEvtSrt"
+                                ToolTip="افزودن رخداد آغازگر"
+                                Style="{StaticResource ImagebtnStyle}"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Width="32"
+                                Height="32">
+                            <Image Source="{StaticResource plusSignImage}" />
+
+                        </Button>
+
+                        <Button x:Name="btnChangeHasAct"
+                                ToolTip="فعالیت زیرمجموعه"
+                                Style="{StaticResource ImagebtnStyle}"
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Width="32"
+                                Height="32">
+                            <Image Source="{StaticResource downArrowImage}" />
+
+                        </Button>
+
+                    </Grid>
+
+                    <Border x:Name="brdAct"
+                            DragEnter="ShowDragEnterStoryboard"
+                            Cursor="Hand"
+                            CornerRadius="7"
+                            Drop="brdAct_Drop_1"
+                            AllowDrop="True"
+                            Focusable="True"
+                            Width="220"
+                            Height="100"
+                            BorderThickness="0"
+                            BorderBrush="Transparent"
+                            Grid.Row="2">
+                        <!--Background="{DynamicResource appClr1}"-->
+
+                        <Border.Resources>
+
+                            <Style TargetType="Border">
+
+                                <Style.Triggers>
+
+                                    <DataTrigger Binding="{Binding Activity.FldActUspf}"
+                                                 Value="True">
+
+                                        <Setter Property="Background"
+                                                Value="Red" />
+
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+
+                            </Style>
+
+                        </Border.Resources>
+
+                        <!--ToolTip="فعالیت"-->
+                        <Grid Name="grdAct"
+                              IsEnabled="{Binding Acs_DelAct}"
+                              ToolTip="{Binding Activity.FldCodAct, Mode=OneWay}"
+                              AllowDrop="True"
+                              Background="Transparent">
+                            <!--نوع فعالیت-->
+                            <Image HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Width="25"
+                                   Height="25"
+                                   Margin="3"
+                                   Stretch="Fill">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding Activity.FldTypAct}"
+                                                    Value="1">
+                                        <ei:DataTrigger.Actions>
+                                            <ei:ChangePropertyAction PropertyName="Source"
+                                                                     Value="{StaticResource actCustom}" />
+                                            <ei:ChangePropertyAction PropertyName="ToolTip"
+                                                                     Value="انسانی-دستی" />
+                                        </ei:DataTrigger.Actions>
+                                    </ei:DataTrigger>
+
+                                    <ei:DataTrigger Binding="{Binding Activity.FldTypAct}"
+                                                    Value="2">
+                                        <ei:DataTrigger.Actions>
+                                            <ei:ChangePropertyAction PropertyName="Source"
+                                                                     Value="{StaticResource actSoft}" />
+                                            <ei:ChangePropertyAction PropertyName="ToolTip"
+                                                                     Value="نرم افزاری" />
+                                        </ei:DataTrigger.Actions>
+                                    </ei:DataTrigger>
+
+                                    <ei:DataTrigger Binding="{Binding Activity.FldTypAct}"
+                                                    Value="3">
+                                        <ei:DataTrigger.Actions>
+                                            <ei:ChangePropertyAction PropertyName="Source"
+                                                                     Value="{StaticResource actOutsideOrg}" />
+                                            <ei:ChangePropertyAction PropertyName="ToolTip"
+                                                                     Value="سرویس خارج از سازمان" />
+
+                                        </ei:DataTrigger.Actions>
+                                    </ei:DataTrigger>
+
+                                </i:Interaction.Triggers>
+                            </Image>
+
+                            <Image Width="16"
+                                   VerticalAlignment="Bottom"
+                                   HorizontalAlignment="Center"
+                                   Stretch="Fill"
+                                   Height="16">
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding Activity.FldActSubHav}"
+                                                    Value="2">
+                                        <ei:DataTrigger.Actions>
+                                            <ei:ChangePropertyAction PropertyName="Source"
+                                                                     Value="{x:Null}" />
+                                            <ei:ChangePropertyAction PropertyName="ToolTip"
+                                                                     Value="فعالیت زیرمجموعه ندارد" />
+                                        </ei:DataTrigger.Actions>
+                                    </ei:DataTrigger>
+
+                                    <ei:DataTrigger Binding="{Binding Activity.FldActSubHav}"
+                                                    Value="1">
+                                        <ei:DataTrigger.Actions>
+                                            <ei:ChangePropertyAction PropertyName="Source"
+                                                                     Value="{StaticResource actHasSubAct}" />
+                                            <ei:ChangePropertyAction PropertyName="ToolTip"
+                                                                     Value="فعالیت زیرمجموعه دارد" />
+                                        </ei:DataTrigger.Actions>
+                                    </ei:DataTrigger>
+
+                                </i:Interaction.Triggers>
+
+                            </Image>
+
+                            <TextBlock Focusable="True"
+                                       TextWrapping="Wrap"
+                                       FlowDirection="RightToLeft"
+                                       Foreground="White"
+                                       AllowDrop="True"
+                                       MaxWidth="180"
+                                       Style="{StaticResource TitrTextBlockStyle}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Validation.ErrorTemplate="{StaticResource errorTemplateSilverlightStyle}"
+                                       Text="{Binding Activity.FldNamAct, Mode=TwoWay, 
+                                        UpdateSourceTrigger=PropertyChanged, 
+                                        ValidatesOnDataErrors=True, 
+                                        NotifyOnSourceUpdated=True, 
+                                        NotifyOnValidationError=True, 
+                                        NotifyOnTargetUpdated=True, 
+                                        ValidatesOnExceptions=True}">
+                            </TextBlock>
+
+                            <TextBox Text="{Binding Activity.FldCodAct}"
+                                     Visibility="Collapsed">
+
+                                <i:Interaction.Triggers>
+
+                                    <i:EventTrigger EventName="TextChanged">
+
+                                        <ei:ControlStoryboardAction>
+
+                                            <ei:ControlStoryboardAction.Storyboard>
+
+                                                <Storyboard>
+
+                                                    <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                                   Storyboard.Target="{Binding ElementName=LayoutRoot}">
+                                                        <EasingDoubleKeyFrame KeyTime="0"
+                                                                              Value="0" />
+                                                        <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                                              Value="1" />
+                                                    </DoubleAnimationUsingKeyFrames>
+
+                                                </Storyboard>
+
+                                            </ei:ControlStoryboardAction.Storyboard>
+
+                                        </ei:ControlStoryboardAction>
+
+                                    </i:EventTrigger>
+
+                                </i:Interaction.Triggers>
+
+                            </TextBox>
+
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <ContextMenu.Items>
+                                        <MenuItem Header="حذف (Del)"
+                                                  Click="ActDelete"></MenuItem>
+                                    </ContextMenu.Items>
+                                </ContextMenu>
+
+                            </Grid.ContextMenu>
+                        </Grid>
+                        <i:Interaction.Triggers>
+
+                            <ei:KeyTrigger FiredOn="KeyDown"
+                                           SourceName="brdAct"
+                                           Key="Delete">
+                                <ei:CallMethodAction TargetObject="{Binding}"
+                                                     MethodName="DeleteAct" />
+                            </ei:KeyTrigger>
+
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:EventTrigger.Actions>
+                                    <i:InvokeCommandAction Command="{Binding Path=DataContext.ChangeSelectedObjCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:ActDgrm}}"
+                                                           CommandParameter="{Binding Activity}"></i:InvokeCommandAction>
+                                </i:EventTrigger.Actions>
+                            </i:EventTrigger>
+
+
+                        </i:Interaction.Triggers>
+
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Activity.IsSelected}"
+                                                 Value="True">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource appClr2}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding Activity.IsSelected}"
+                                                 Value="False">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource appClr1}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+
+                        <Border.Triggers>
+
+                            <EventTrigger RoutedEvent="DragLeave">
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="brdAct"
+                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                        <ColorAnimation To="Green"
+                                                        Duration="0:0:0.25">
+
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="brdAct"
+                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                        <ColorAnimation To="Green"
+                                                        Duration="0:0:0.25">
+
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+
+                            </EventTrigger>
+
+                            <EventTrigger RoutedEvent="Drop">
+                                <BeginStoryboard>
+                                    <Storyboard Storyboard.TargetName="brdAct"
+                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                        <ColorAnimation To="Green"
+                                                        Duration="0:0:0.25">
+
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Border.Triggers>
+                    </Border>
+
+                    <Popup   x:Name="ppAddEvtSrtType"
+                             StaysOpen="False"
+                             Placement="Right"
+                             VerticalOffset="100"
+                             HorizontalOffset="-20">
+
+                        <i:Interaction.Triggers>
+
+                            <ei:DataTrigger Binding="{Binding Path=IsOpen, RelativeSource={RelativeSource AncestorType=Popup}}"
+                                            Value="True">
+
+                                <ei:DataTrigger.Actions>
+
+                                    <ei:ControlStoryboardAction>
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                                                               Storyboard.TargetName="ppAddEvtSrtType">
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                                                          Value="470" />
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </ei:DataTrigger.Actions>
+
+                            </ei:DataTrigger>
+
+                        </i:Interaction.Triggers>
+
+                        <mainuc:SlctEvtSrtType Background="White"
+                                               Width="70">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedTypeChanged">
+                                    <i:EventTrigger.Actions>
+                                        <i:InvokeCommandAction Command="{Binding DataContext.AddEvtSrtCommand, ElementName=LayoutRoot}"
+                                                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type mainuc:SlctEvtSrtType}}}" />
+                                        <ei:CallMethodAction MethodName="ScrollEvtSrts"
+                                                             TargetObject="{Binding ElementName=ucActDgrm}" />
+
+                                    </i:EventTrigger.Actions>
+                                </i:EventTrigger>
+
+                            </i:Interaction.Triggers>
+                        </mainuc:SlctEvtSrtType>
+                    </Popup>
+
+                    <Popup   Name="ppAddEvtRstType"
+                             StaysOpen="False"
+                             Placement="Left"
+                             VerticalOffset="100"
+                             HorizontalOffset="20">
+
+                        <i:Interaction.Triggers>
+
+                            <ei:DataTrigger Binding="{Binding Path=IsOpen, RelativeSource={RelativeSource AncestorType=Popup}}"
+                                            Value="True">
+
+                                <ei:DataTrigger.Actions>
+
+                                    <ei:ControlStoryboardAction>
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                                                               Storyboard.TargetName="ppAddEvtRstType">
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="0" />
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                                                          Value="290" />
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </ei:DataTrigger.Actions>
+
+                            </ei:DataTrigger>
+
+                        </i:Interaction.Triggers>
+
+                        <mainuc:SlctEvtRstType x:Name="SlctEvtRstTypeObj"
+                                               Background="White"
+                                               Width="70"
+                                               Height="290">
+
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedTypeChanged">
+                                    <i:EventTrigger.Actions>
+                                        <i:InvokeCommandAction Command="{Binding DataContext.AddEvtRstCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl, AncestorLevel=2}}"
+                                                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type mainuc:SlctEvtRstType}}}" />
+                                        <ei:CallMethodAction MethodName="ScrollEvtRsts"
+                                                             TargetObject="{Binding ElementName=ucActDgrm}" />
+
+                                    </i:EventTrigger.Actions>
+
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+
+                        </mainuc:SlctEvtRstType>
+
+                    </Popup>
+
+                    <Popup   x:Name="ppSelectType"
+                             AllowsTransparency="True"
+                             StaysOpen="False"
+                             Placement="Relative"
+                             PlacementTarget="{Binding ElementName=brdAct}"
+                             VerticalOffset="-130"
+                             HorizontalOffset="15"
+                             Grid.RowSpan="3">
+                        <Border x:Name="brdSelectType"
+                                Opacity="0"
+                                BorderThickness="2"
+                                BorderBrush="White"
+                                Background="White"
+                                Height="100"
+                                Width="200"
+                                Grid.Row="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="انتخاب نوع فعالیت"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource fontClr}" />
+
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Row="1"
+                                            HorizontalAlignment="Center">
+                                    <Button x:Name="btnSelectTypehumanCustom"
+                                            ToolTip="انسانی-دستی"
+                                            Style="{StaticResource ImagebtnStyle}"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Margin="10"
+                                            Width="48"
+                                            Height="48"
+                                            Command="{Binding ChangeActTypeCommand}"
+                                            CommandParameter="1">
+                                        <customCtrls:BackgroundedImage Source="{StaticResource humanCustomImage}"
+                                                                       Background="{DynamicResource appClr1}" />
+
+                                    </Button>
+                                    <Button x:Name="btnSelectTypehumanSoft"
+                                            ToolTip="انساتی-نرم افزاری"
+                                            Style="{StaticResource ImagebtnStyle}"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Margin="10"
+                                            Width="48"
+                                            Height="48"
+                                            Command="{Binding ChangeActTypeCommand}"
+                                            CommandParameter="2">
+
+                                        <customCtrls:BackgroundedImage Source="{StaticResource humanSoftImage}"
+                                                                       Background="{DynamicResource appClr1}" />
+
+                                    </Button>
+                                    <Button x:Name="btnSelectTypeextraOrg"
+                                            ToolTip="سرویس خارج از سازمان"
+                                            Style="{StaticResource ImagebtnStyle}"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Margin="10"
+                                            Width="48"
+                                            Height="48"
+                                            Command="{Binding ChangeActTypeCommand}"
+                                            CommandParameter="3">
+
+                                        <customCtrls:BackgroundedImage Source="{StaticResource extraOrgImage}"
+                                                                       Background="{DynamicResource appClr1}" />
+
+                                    </Button>
+
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+
+                    </Popup>
+
+                    <Popup   x:Name="ppSelectSubActType"
+                             StaysOpen="False"
+                             Placement="Relative"
+                             AllowsTransparency="True"
+                             PlacementTarget="{Binding ElementName=brdAct}"
+                             VerticalOffset="105"
+                             HorizontalOffset="30">
+                        <Border x:Name="brdSelectSubActType"
+                                Opacity="0"
+                                BorderThickness="2"
+                                BorderBrush="White"
+                                Background="White"
+                                Height="100"
+                                Width="150"
+                                Grid.Row="3">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="انتخاب وضعیت زیر‏‏‏‏مجموعه"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource fontClr}" />
+
+                                <StackPanel Orientation="Vertical"
+                                            Grid.Row="1">
+                                    <RadioButton Content="دارد"
+                                                 Foreground="{DynamicResource appClr1}"
+                                                 FontFamily="{DynamicResource mainFontFamily}"
+                                                 Command="{Binding ChangeHasSubActTypeCommand}"
+                                                 CommandParameter="1" />
+                                    <RadioButton Content="ندارد"
+                                                 Foreground="{DynamicResource appClr1}"
+                                                 FontFamily="{DynamicResource mainFontFamily}"
+                                                 Command="{Binding ChangeHasSubActTypeCommand}"
+                                                 CommandParameter="2" />
+                                    <Button x:Name="btnHasSubAct"
+                                            ToolTip="فعالیت زیرمجموعه دارد"
+                                            Style="{StaticResource ImagebtnStyle}"
+                                            Command="{Binding ChangeHasSubActTypeCommand}"
+                                            CommandParameter="1"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Margin="10"
+                                            Width="48"
+                                            Height="48">
+                                        <Image Source="{StaticResource hasSubActImage}" />
+
+                                    </Button>
+                                    <Button x:Name="btnHasNotSubAct"
+                                            ToolTip="فعالیت زیرمجموعه ندارد"
+                                            Style="{StaticResource ImagebtnStyle}"
+                                            Command="{Binding ChangeHasSubActTypeCommand}"
+                                            CommandParameter="2"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Center"
+                                            Margin="10"
+                                            Width="48"
+                                            Height="48">
+                                        <Image Source="{StaticResource hasNotSubActImage}" />
+
+                                    </Button>
+
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+
+                    </Popup>
+
+                </Grid>
+
+            </Grid>
+
+            <Rectangle IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}"
+                       StrokeDashArray="3 2"
+                       RadiusX="5"
+                       RadiusY="5"
+                       DragEnter="ShowDragEnterStoryboard"
+                       Visibility="{Binding Activity , Converter={StaticResource ObjectToVisibilityConverter}}"
+                       DragLeave="LayoutRoot_Drop"
+                       AllowDrop="True"
+                       Drop="brdEvtSrtDropPlaceholder_Drop_1"
+                       Name="brdEvtSrtDropPlaceholder"
+                       Grid.Column="4"
+                       Margin="0,0,70,0"
+                       StrokeThickness="3"
+                       Stroke="Transparent"
+                       Fill="Transparent"
+                       Width="{Binding ElementName=scrlEvtsrt, Path=ActualWidth, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                       Height="{Binding ActualHeight, ElementName=scrlEvtsrt, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                       MinHeight="200">
+                <!--          <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="DragLeave">
+                        <BeginStoryboard Storyboard="{StaticResource DragEnterBlink}">
+                        </BeginStoryboard>
+                        <BeginStoryboard Storyboard="{StaticResource DragEnterBlinkOpacity}">
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtSrtDropPlaceholder"
+                                        Storyboard.TargetProperty="Fill.Color">
+                                <ColorAnimation Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="DragEnter">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtSrtDropPlaceholder"
+                                        Storyboard.TargetProperty="Stroke.Color">
+                                <ColorAnimation To="Green"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                        <BeginStoryboard Storyboard="{StaticResource DragEnterBlinkOpacityR}">
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="Drop">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdAct"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Green"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                </Rectangle.Triggers>
+-->
+            </Rectangle>
+            <!--     <Border Name="brdEvtSrtDropPlaceholder"
+                    IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}"
+                    Style="{StaticResource Border02}"
+                    HorizontalAlignment="Left"
+                    DragEnter="ShowDragEnterStoryboard"
+                    AllowDrop="True"
+                    Drop="brdEvtSrtDropPlaceholder_Drop_1"
+                    Grid.Column="4"
+                    BorderBrush="Transparent"
+                    Background="Transparent"
+                    BorderThickness="3"
+                    Width="{Binding ElementName=scrlEvtsrt, Path=ActualWidth, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                    Height="{Binding ActualHeight, ElementName=scrlEvtsrt, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                    MinHeight="200">
+
+                <Border.Triggers>
+
+                    <EventTrigger RoutedEvent="DragLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtSrtDropPlaceholder"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Transparent"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtSrtDropPlaceholder"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Transparent"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="Drop">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdAct"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Green"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                </Border.Triggers>
+
+            </Border>
+-->
+            <ScrollViewer x:Name="scrlEvtsrt"
+                          Background="Transparent"
+                          Margin="30,5,100,5"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          Grid.Column="4"
+                          VerticalAlignment="Center"
+                          MaxHeight="500">
+
+                <Grid IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}">
+
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,10"
+                               Width="100"
+                               Text="شما به مشاهده بخش آغازگر فعالیت دسترسی ندارید"
+                               TextWrapping="Wrap"
+                               Visibility="{Binding Acs_ViewPrtSrtAct, Converter={StaticResource NotBooleanToVisibilityConverter}}"
+                               Foreground="Red"></TextBlock>
+
+                    <ItemsControl x:Name="itmCtrlEvtsrt"
+                                  Background="{DynamicResource appBG}"
+                                  Visibility="{Binding Acs_ViewPrtSrtAct, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  ItemsSource="{Binding TblEvtSrtsCV}"
+                                  Margin="0,5,0,5">
+
+                        <ItemsControl.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+
+
+                                                    <Border x:Name="grpEvtSrt"
+                                                            BorderThickness="0,0,0,3"
+                                                            AllowDrop="True"
+                                                            DragEnter="grpEvtSrt_DragEnter"
+                                                            DragLeave="grpEvtSrt_DragLeave"
+                                                            Drop="GroupBox_Drop_1"
+                                                            Background="{DynamicResource appBG}">
+                                                        <Border.BorderBrush>
+                                                            <LinearGradientBrush EndPoint="1,0.5"
+                                                                                 StartPoint="0,0.5">
+                                                                <GradientStop Color="#00008000"
+                                                                              Offset="0.03" />
+                                                                <GradientStop Color="Green"
+                                                                              Offset="0.3" />
+                                                                <GradientStop Color="Green"
+                                                                              Offset="0.7" />
+                                                                <GradientStop Color="#00008000"
+                                                                              Offset="0.97" />
+                                                            </LinearGradientBrush>
+                                                        </Border.BorderBrush>
+
+                                                        <ItemsPresenter></ItemsPresenter>
+
+                                                        <!--     
+                                                        <i:Interaction.Triggers>
+
+                                                            <i:EventTrigger EventName="DragEnter">
+                                                                
+                                                                <ei:ChangePropertyAction PropertyName="BorderThickness"
+                                                                                         TargetObject="{Binding ElementName=grpEvtSrt}"
+                                                                                         Value="3"></ei:ChangePropertyAction>
+
+                                                            </i:EventTrigger>
+
+                                                            <i:EventTrigger EventName="DragLeave">
+                                                                
+                                                                <ei:ChangePropertyAction PropertyName="BorderThickness"
+                                                                                         TargetObject="{Binding ElementName=grpEvtSrt}"
+                                                                                         Value="0,0,0,2"></ei:ChangePropertyAction>
+
+                                                            </i:EventTrigger>
+
+                                                        </i:Interaction.Triggers>
+
+                                                        <Border.Triggers>
+                                                            <EventTrigger RoutedEvent="DragEnter">
+
+                                                                <BeginStoryboard>
+                                                                    <Storyboard Storyboard.TargetName="grpEvtSrt"
+                                                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                                                        <ColorAnimation To="Orange"
+                                                                                        Duration="0:0:0.25">
+
+                                                                        </ColorAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+
+                                                            <EventTrigger RoutedEvent="DragLeave">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard Storyboard.TargetName="grpEvtSrt"
+                                                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                                                        <ColorAnimation To="Green"
+                                                                                        Duration="0:0:0.25">
+
+                                                                        </ColorAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+
+                                                            <EventTrigger RoutedEvent="MouseLeave">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard Storyboard.TargetName="grpEvtSrt"
+                                                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                                                        <ColorAnimation To="Green"
+                                                                                        Duration="0:0:0.25">
+
+                                                                        </ColorAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+
+                                                            </EventTrigger>
+
+                                                            <EventTrigger RoutedEvent="Drop">
+                                                                <BeginStoryboard>
+                                                                    <Storyboard Storyboard.TargetName="grpEvtSrt"
+                                                                                Storyboard.TargetProperty="BorderBrush.Color">
+                                                                        <ColorAnimation To="Green"
+                                                                                        Duration="0:0:0.25">
+
+                                                                        </ColorAnimation>
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </EventTrigger>
+
+                                                         <EventTrigger RoutedEvent="MouseEnter">
+                                                            <BeginStoryboard>
+                                                                <Storyboard Storyboard.TargetName="txtOpacitySW"
+                                                                            Storyboard.TargetProperty="Opacity">
+                                                                    <DoubleAnimation From="0"
+                                                                                     To="1"
+                                                                                     Duration="0:0:0.25">
+
+                                                                    </DoubleAnimation>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger> 
+
+                                                        </Border.Triggers>-->
+                                                    </Border>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ItemsControl.GroupStyle>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid HorizontalAlignment="Center"
+                                      AllowDrop="True">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Arrow Grid-->
+                                    <Grid Grid.ColumnSpan="3">
+                                        <ItemsControl VerticalAlignment="Center"
+                                                      Name="imtSrcWayAwrs"
+                                                      AlternationCount="1000"
+                                                      ItemsSource="{Binding WayAwrs}"
+                                                      Grid.Column="0"
+                                                      HorizontalAlignment="Center">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Grid  HorizontalAlignment="Center" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ed:LineArrow Grid.Column="1"
+                                                                  Fill="{DynamicResource appClr2}"
+                                                                  Width="70"
+                                                                  Stroke="{DynamicResource appClr2}"
+                                                                  BendAmount="0"
+                                                                  EndArrow="NoArrow"
+                                                                  RenderTransformOrigin="0,0"
+                                                                  StrokeThickness="4"
+                                                                  StartArrow="Arrow">
+                                                        <ed:LineArrow.Height>
+                                                            <MultiBinding Converter="{StaticResource ArrowHeightConverter}">
+                                                                <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                         RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                <Binding Path="ItemsSource.Count"
+                                                                         RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                            </MultiBinding>
+                                                        </ed:LineArrow.Height>
+
+                                                        <ed:LineArrow.LayoutTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1">
+                                                                    <ScaleTransform.ScaleY>
+                                                                        <MultiBinding  Converter="{StaticResource ScaleYArrowHeightConverter}">
+                                                                            <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                                     RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                            <Binding Path="ItemsSource.Count"
+                                                                                     RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                        </MultiBinding>
+                                                                    </ScaleTransform.ScaleY>
+
+                                                                </ScaleTransform>
+                                                                <SkewTransform />
+                                                                <RotateTransform />
+                                                                <TranslateTransform />
+                                                            </TransformGroup>
+                                                        </ed:LineArrow.LayoutTransform>
+                                                        <ed:LineArrow.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1"
+                                                                                ScaleY="1">
+                                                                </ScaleTransform>
+                                                                <SkewTransform AngleY="0"
+                                                                               AngleX="0" />
+                                                                <RotateTransform Angle="0" />
+                                                                <TranslateTransform>
+                                                                    <TranslateTransform.Y>
+                                                                        <MultiBinding  Converter="{StaticResource TranslateYArrowConverter}">
+                                                                            <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                                     RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                            <Binding Path="ItemsSource.Count"
+                                                                                     RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                        </MultiBinding>
+                                                                    </TranslateTransform.Y>
+                                                                </TranslateTransform>
+                                                            </TransformGroup>
+                                                        </ed:LineArrow.RenderTransform>
+                                                    </ed:LineArrow>
+
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+
+                                    <!--Evt Srt-->
+                                    <mainuc:UIEntity x:Name="uIEntity"
+                                                     Tag="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                     Width="80"
+                                                     Height="80"
+                                                     DeleteCommand="{Binding DataContext.DeleteObjCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                     CommandParameter="{Binding}"
+                                                     ToolTip="{Binding NameSrt}"
+                                                     Grid.Column="2"
+                                                     Focusable="True">
+                                        <mainuc:UIEntity.Style>
+                                            <Style>
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="1">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource Time}" />
+
+                                                    </DataTrigger>
+
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="2">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource Special}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="3">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource Understand}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="4">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource GeneralAfter}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="5">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource SpecialAfter}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="6">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource ErrorDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="7">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource CancelDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtSrt}"
+                                                                 Value="8">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource SpecialDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsAddWayAwrEnabled}"
+                                                                 Value="True">
+                                                        <Setter Property="mainuc:UIEntity.LeftImage"
+                                                                Value="{StaticResource Add}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsAddWayAwrEnabled}"
+                                                                 Value="False">
+                                                        <Setter Property="mainuc:UIEntity.LeftImage"
+                                                                Value="{x:Null}" />
+
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+                                            </Style>
+                                        </mainuc:UIEntity.Style>
+                                        <mainuc:UIEntity.CommandBindings>
+                                            <CommandBinding Command="ApplicationCommands.Delete"
+                                                            Executed="CommandBinding_Executed_1">
+
+                                            </CommandBinding>
+                                        </mainuc:UIEntity.CommandBindings>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="LeftClicked">
+                                                <ei:ChangePropertyAction TargetName="ppShowSlcEvtSrtAwrType"
+                                                                         PropertyName="IsOpen"
+                                                                         Value="True"></ei:ChangePropertyAction>
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="BottomClicked">
+                                                <ei:ChangePropertyAction TargetName="ppShowSlcEvtSrtType"
+                                                                         PropertyName="IsOpen"
+                                                                         Value="True"></ei:ChangePropertyAction>
+
+                                                <ei:ChangePropertyAction TargetName="changetEvtSrtType"
+                                                                         PropertyName="WayAwrCount"
+                                                                         Value="{Binding ElementName=itmCtrlWayAwrs, Path=DataContext.WayAwrs.Count, Mode=OneWay}"></ei:ChangePropertyAction>
+
+                                            </i:EventTrigger>
+                                            <i:EventTrigger EventName="GotFocus">
+                                                <i:InvokeCommandAction Command="{Binding Path=DataContext.ChangeSelectedObjCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:ActDgrm}}"
+                                                                       CommandParameter="{Binding}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                            <ei:DataTrigger Binding="{Binding IsSelected}"
+                                                            Value="False">
+                                                <!--<ei:ChangePropertyAction PropertyName="Background">
+                                                    <ei:ChangePropertyAction.Value>
+                                                        <SolidColorBrush Color="Transparent" />
+                                                    </ei:ChangePropertyAction.Value>
+                                                </ei:ChangePropertyAction>-->
+                                            </ei:DataTrigger>
+
+                                        </i:Interaction.Triggers>
+                                    </mainuc:UIEntity>
+
+                                    <Popup   Name="ppShowSlcEvtSrtAwrType"
+                                             StaysOpen="False"
+                                             Placement="Relative"
+                                             PlacementTarget="{Binding ElementName=uIEntity}"
+                                             VerticalOffset="30"
+                                             HorizontalOffset="0">
+
+                                        <i:Interaction.Triggers>
+
+                                            <ei:DataTrigger Binding="{Binding Path=IsOpen, RelativeSource={RelativeSource AncestorType=Popup}}"
+                                                            Value="True">
+
+                                                <ei:DataTrigger.Actions>
+
+                                                    <ei:ControlStoryboardAction>
+
+                                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                                            <Storyboard>
+
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                                                                               Storyboard.TargetName="ppShowSlcEvtSrtAwrType">
+                                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                                          Value="0" />
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                                                                          Value="150" />
+                                                                </DoubleAnimationUsingKeyFrames>
+
+                                                            </Storyboard>
+
+                                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                                    </ei:ControlStoryboardAction>
+
+                                                </ei:DataTrigger.Actions>
+
+                                            </ei:DataTrigger>
+
+                                        </i:Interaction.Triggers>
+
+                                        <mainuc:SlcEvtSrtAwrType Width="48">
+
+                                            <i:Interaction.Triggers>
+
+                                                <i:EventTrigger EventName="OnSelected">
+
+                                                    <i:InvokeCommandAction Command="{Binding DataContext.AddEvtSrtSlcAwrTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=2}}"
+                                                                           CommandParameter="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType=Popup}}">
+                                                    </i:InvokeCommandAction>
+
+                                                    <ei:ChangePropertyAction TargetName="ppShowSlcEvtSrtAwrType"
+                                                                             PropertyName="IsOpen"
+                                                                             Value="False"></ei:ChangePropertyAction>
+
+                                                </i:EventTrigger>
+
+                                            </i:Interaction.Triggers>
+
+                                        </mainuc:SlcEvtSrtAwrType>
+
+                                    </Popup>
+
+                                    <Popup   Name="ppShowSlcEvtSrtType"
+                                             StaysOpen="False"
+                                             Placement="Relative"
+                                             PlacementTarget="{Binding ElementName=uIEntity}"
+                                             VerticalOffset="85"
+                                             HorizontalOffset="15">
+                                        <mainuc:SlctEvtSrtType Name="changetEvtSrtType"
+                                                               IsInChangeMode="True"
+                                                               CurrentEvtSrtType="{Binding ElementName=uIEntity,Path=DataContext.FldTypEvtSrt}"
+                                                               Grid.Column="1"
+                                                               Background="White"
+                                                               Width="100"
+                                                               Height="100">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedTypeChanged">
+
+                                                    <i:InvokeCommandAction Command="{Binding DataContext.ChangeEvtSrtCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl, AncestorLevel=2}}"
+                                                                           CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type mainuc:SlctEvtSrtType}}}" />
+
+                                                </i:EventTrigger>
+                                                <!--<i:EventTrigger EventName="SourceUpdated">
+                                                                        <i:EventTrigger.Actions>
+                                                                            <ei:ChangePropertyAction PropertyName="WayAwrCount"
+                                                                                                     Value="{Binding ElementName=itmCtrlWayAwrs, Path=DataContext.WayAwrs.Count, Mode=OneWay}" />
+                                                                        </i:EventTrigger.Actions>
+                                                                    </i:EventTrigger>-->
+
+                                                <!--<ei:DataTrigger Binding="{Binding FldCodAct}"
+                                                                                Value="1">
+                                                                    <ei:DataTrigger.Actions>
+                                                                        <ei:ChangePropertyAction PropertyName="IsInChangeMode"
+                                                                                                 Value="False" />
+                                                                    </ei:DataTrigger.Actions>
+                                                                </ei:DataTrigger>-->
+                                            </i:Interaction.Triggers>
+                                        </mainuc:SlctEvtSrtType>
+
+                                    </Popup>
+
+                                    <ItemsControl VerticalAlignment="Center"
+                                                  Name="itmCtrlWayAwrs"
+                                                  Margin="-20,0,0,0"
+                                                  ItemsSource="{Binding WayAwrs}"
+                                                  Grid.Column="0"
+                                                  HorizontalAlignment="Center">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel  HorizontalAlignment="Center" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid HorizontalAlignment="Center">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <mainuc:UIEntity Grid.Column="1"
+                                                                     Width="80"
+                                                                     Height="80"
+                                                                     DeleteCommand="{Binding DataContext.DeleteObjCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                                     CommandParameter="{Binding}">
+                                                        <mainuc:UIEntity.Style>
+                                                            <Style>
+                                                                <Style.Triggers>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblWayAwr_News"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="True"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Signal}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Signal}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblWayAwr_News">
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Signal}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtSrtWayAwrTypeNameConverter}, ConverterParameter=TblWayAwr_News}"></TextBlock>
+
+                                                                                    <StackPanel Grid.Row="1"
+                                                                                                Orientation="Horizontal">
+
+                                                                                        <TextBlock Text="عنوان خبر:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Text="{Binding ObjRst.Name}"></TextBlock>
+
+                                                                                    </StackPanel>
+
+                                                                                    <TextBlock Text="دریافت شده از:"
+                                                                                               Grid.Row="2"></TextBlock>
+
+                                                                                    <Grid Grid.Row="3">
+
+                                                                                        <Grid.RowDefinitions>
+
+                                                                                            <RowDefinition></RowDefinition>
+                                                                                            <RowDefinition></RowDefinition>
+
+                                                                                        </Grid.RowDefinitions>
+
+                                                                                        <Grid.ColumnDefinitions>
+
+                                                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                                        </Grid.ColumnDefinitions>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان مجری:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamNod}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان فعالیت:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamAct}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                    </Grid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+                                                                    </DataTrigger>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblWayAwr_Oral"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="False"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Phone}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Phone}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblWayAwr_Oral">
+
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Phone}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtSrtWayAwrTypeNameConverter}, ConverterParameter=TblWayAwr_Oral}"></TextBlock>
+
+                                                                                    <TextBlock Text="دریافت شده از:"
+                                                                                               Grid.Row="1"></TextBlock>
+
+                                                                                    <Grid Grid.Row="2">
+
+                                                                                        <Grid.RowDefinitions>
+
+                                                                                            <RowDefinition></RowDefinition>
+                                                                                            <RowDefinition></RowDefinition>
+
+                                                                                        </Grid.RowDefinitions>
+
+                                                                                        <Grid.ColumnDefinitions>
+
+                                                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                                        </Grid.ColumnDefinitions>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان مجری:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamNod}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان فعالیت:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamAct}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                    </Grid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+                                                                    </DataTrigger>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblWayAwr_RecvInt"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="False"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Document}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Document}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblWayAwr_RecvInt">
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Document}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtSrtWayAwrTypeNameConverter}, ConverterParameter=TblWayAwr_RecvInt}"></TextBlock>
+
+                                                                                    <StackPanel Grid.Row="1"
+                                                                                                Orientation="Horizontal">
+
+                                                                                        <TextBlock Text="عنوان ورودی:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Text="{Binding ObjRst.Name}"></TextBlock>
+
+                                                                                    </StackPanel>
+
+                                                                                    <TextBlock Text="دریافت شده از:"
+                                                                                               Grid.Row="2"></TextBlock>
+
+                                                                                    <Grid Grid.Row="3">
+
+                                                                                        <Grid.RowDefinitions>
+
+                                                                                            <RowDefinition></RowDefinition>
+                                                                                            <RowDefinition></RowDefinition>
+
+                                                                                        </Grid.RowDefinitions>
+
+                                                                                        <Grid.ColumnDefinitions>
+
+                                                                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                                                            <ColumnDefinition></ColumnDefinition>
+
+                                                                                        </Grid.ColumnDefinitions>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان مجری:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="0"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamNod}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="0"
+                                                                                                   Text="عنوان فعالیت:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Grid.Row="1"
+                                                                                                   Grid.Column="1"
+                                                                                                   Text="{Binding ActSrc.FldNamAct}"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                    </Grid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+                                                                    </DataTrigger>
+
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </mainuc:UIEntity.Style>
+                                                        <mainuc:UIEntity.CommandBindings>
+                                                            <CommandBinding Command="ApplicationCommands.Delete"
+                                                                            Executed="CommandBinding_Executed_1">
+
+                                                            </CommandBinding>
+                                                        </mainuc:UIEntity.CommandBindings>
+
+                                                    </mainuc:UIEntity>
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="GotFocus">
+                                                            <i:EventTrigger.Actions>
+                                                                <i:InvokeCommandAction Command="{Binding Path=DataContext.ChangeSelectedObjCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:ActDgrm}}"
+                                                                                       CommandParameter="{Binding}"></i:InvokeCommandAction>
+                                                            </i:EventTrigger.Actions>
+                                                        </i:EventTrigger>
+
+                                                        <!--<ei:DataTrigger Binding="{Binding IsSelected}"
+                                                                    Value="True">
+                                                        <ei:ChangePropertyAction PropertyName="Background">
+                                                            <ei:ChangePropertyAction.Value>
+                                                                <SolidColorBrush Color="Orange" />
+                                                            </ei:ChangePropertyAction.Value>
+                                                        </ei:ChangePropertyAction>
+                                                    </ei:DataTrigger>-->
+
+                                                        <ei:DataTrigger Binding="{Binding IsSelected}"
+                                                                        Value="False">
+                                                            <!--<ei:ChangePropertyAction PropertyName="Background">
+                                                                <ei:ChangePropertyAction.Value>
+                                                                    <SolidColorBrush Color="Transparent" />
+                                                                </ei:ChangePropertyAction.Value>
+                                                            </ei:ChangePropertyAction>-->
+                                                        </ei:DataTrigger>
+
+                                                    </i:Interaction.Triggers>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <Border Height="5"
+                            VerticalAlignment="Bottom"
+                            Background="{DynamicResource appBG}">
+
+                    </Border>
+
+                </Grid>
+
+            </ScrollViewer>
+            <Rectangle IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}"
+                       StrokeDashArray="3 2"
+                       RadiusX="5"
+                       Visibility="{Binding Activity , Converter={StaticResource ObjectToVisibilityConverter}}"
+                       RadiusY="5"
+                       DragEnter="ShowDragEnterStoryboard"
+                       DragLeave="LayoutRoot_Drop"
+                       AllowDrop="True"
+                       Drop="brdEvtRstDropPlaceholder_Drop_1"
+                       Name="brdEvtRstDropPlaceholder"
+                       Grid.Column="0"
+                       Margin="70,0,0,0"
+                       StrokeThickness="3"
+                       Stroke="Transparent"
+                       Fill="Transparent"
+                       Width="{Binding ElementName=scrlEvtrst, Path=ActualWidth, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                       Height="{Binding ActualHeight, ElementName=scrlEvtrst, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                       MinHeight="200" />
+
+            <!--       <Border Name="brdEvtRstDropPlaceholder"
+                    IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}"
+                    Style="{StaticResource Border02}"
+                    DragEnter="ShowDragEnterStoryboard"
+                    AllowDrop="True"
+                    Drop="brdEvtRstDropPlaceholder_Drop_1"
+                    Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Width="{Binding ElementName=scrlEvtrst, Path=ActualWidth, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                    Height="{Binding ActualHeight, ElementName=scrlEvtrst, Converter={StaticResource SizeConverter}, ConverterParameter=+50}"
+                    MinHeight="200">
+
+                <Border.Triggers>
+                    <EventTrigger RoutedEvent="DragLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtRstDropPlaceholder"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Transparent"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdEvtRstDropPlaceholder"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Transparent"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="Drop">
+                        <BeginStoryboard>
+                            <Storyboard Storyboard.TargetName="brdAct"
+                                        Storyboard.TargetProperty="BorderBrush.Color">
+                                <ColorAnimation To="Green"
+                                                Duration="0:0:0.25">
+
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Border.Triggers>
+
+            </Border>
+-->
+            <ScrollViewer x:Name="scrlEvtrst"
+                          Background="Transparent"
+                          VerticalAlignment="Center"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          MaxHeight="500"
+                          Margin="100,5,30,5"
+                          Grid.Column="0">
+
+                <Grid IsEnabled="{Binding Activity.FldActUspf, Converter={StaticResource NotConverter}}">
+
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Text="شما به مشاهده بخش نتیجه فعالیت دسترسی ندارید"
+                               Width="100"
+                               TextWrapping="Wrap"
+                               Visibility="{Binding Acs_ViewPrtRstAct, Converter={StaticResource NotBooleanToVisibilityConverter}}"
+                               Foreground="Red"></TextBlock>
+
+                    <ItemsControl ItemsSource="{Binding TblEvtRstsCV}"
+                                  Background="{DynamicResource appBG}"
+                                  BorderThickness="0"
+                                  Margin="0,5,0,5"
+                                  Visibility="{Binding Acs_ViewPrtRstAct, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Name="itmEvtRst"
+                                            Background="Transparent"
+                                            AllowDrop="True"
+                                            telerik:DragDropManager.AllowCapturedDrag="False"
+                                            Drop="itmEvtRst_Drop_1"
+                                            HorizontalAlignment="Center" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid AllowDrop="True"
+                                      HorizontalAlignment="Center">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Arrow Grid-->
+                                    <Grid Grid.ColumnSpan="3">
+
+                                        <ItemsControl VerticalAlignment="Center"
+                                                      Name="imtCtrlEvtRstWayAwrs"
+                                                      AlternationCount="1000"
+                                                      ItemsSource="{Binding ObjRsts}"
+                                                      Grid.Column="0"
+                                                      HorizontalAlignment="Center">
+
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Grid  HorizontalAlignment="Center" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+
+                                            <ItemsControl.ItemTemplate>
+
+                                                <DataTemplate>
+
+                                                    <ed:LineArrow Grid.Column="1"
+                                                                  Fill="{DynamicResource appClr2}"
+                                                                  Width="70"
+                                                                  Stroke="{DynamicResource appClr2}"
+                                                                  BendAmount="0"
+                                                                  EndArrow="NoArrow"
+                                                                  RenderTransformOrigin="0,0"
+                                                                  StrokeThickness="4"
+                                                                  SnapsToDevicePixels="True"
+                                                                  StartArrow="Arrow">
+
+                                                        <ed:LineArrow.Height>
+                                                            <MultiBinding Converter="{StaticResource ArrowHeightConverter}">
+                                                                <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                         RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                <Binding Path="ItemsSource.Count"
+                                                                         RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                            </MultiBinding>
+                                                        </ed:LineArrow.Height>
+
+                                                        <ed:LineArrow.LayoutTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1">
+                                                                    <ScaleTransform.ScaleY>
+                                                                        <MultiBinding  Converter="{StaticResource ScaleYArrowHeightConverter}">
+                                                                            <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                                     RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                            <Binding Path="ItemsSource.Count"
+                                                                                     RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                        </MultiBinding>
+                                                                    </ScaleTransform.ScaleY>
+
+                                                                </ScaleTransform>
+                                                                <SkewTransform />
+                                                                <RotateTransform />
+                                                                <TranslateTransform />
+                                                            </TransformGroup>
+                                                        </ed:LineArrow.LayoutTransform>
+
+                                                        <ed:LineArrow.RenderTransform>
+                                                            <TransformGroup>
+                                                                <ScaleTransform ScaleX="1"
+                                                                                ScaleY="1">
+                                                                </ScaleTransform>
+                                                                <SkewTransform AngleY="0"
+                                                                               AngleX="0" />
+                                                                <RotateTransform Angle="0" />
+                                                                <TranslateTransform>
+                                                                    <TranslateTransform.Y>
+                                                                        <MultiBinding  Converter="{StaticResource TranslateYArrowConverter}">
+                                                                            <Binding Path="(ItemsControl.AlternationIndex)"
+                                                                                     RelativeSource="{RelativeSource Mode=TemplatedParent}" />
+                                                                            <Binding Path="ItemsSource.Count"
+                                                                                     RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ItemsControl}" />
+                                                                        </MultiBinding>
+                                                                    </TranslateTransform.Y>
+                                                                </TranslateTransform>
+                                                            </TransformGroup>
+                                                        </ed:LineArrow.RenderTransform>
+
+                                                    </ed:LineArrow>
+
+                                                </DataTemplate>
+
+                                            </ItemsControl.ItemTemplate>
+
+                                        </ItemsControl>
+
+                                    </Grid>
+
+                                    <!--Evt Rst-->
+                                    <mainuc:UIEntity x:Name="uiEntityEvtRst"
+                                                     AllowDrop="True"
+                                                     Width="80"
+                                                     Height="80"
+                                                     DeleteCommand="{Binding DataContext.DeleteObjCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                     CommandParameter="{Binding}"
+                                                     ToolTip="{Binding NameRst}"
+                                                     LeftImage="{StaticResource Add}"
+                                                     Grid.Column="2"
+                                                     Focusable="True">
+
+                                        <mainuc:UIEntity.Style>
+
+                                            <Style>
+
+                                                <Style.Triggers>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="1">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource GeneralAfter}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="2">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource SpecialAfter}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="3">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource SpecialDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="4">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource ErrorDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="5">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource CancelDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="6">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource SpecialDuring}" />
+
+                                                    </DataTrigger>
+
+                                                    <!--<DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                                 Value="7">
+                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                Value="{StaticResource newAwrEvtRst}" />
+
+                                                    </DataTrigger>-->
+
+                                                </Style.Triggers>
+
+                                            </Style>
+
+                                        </mainuc:UIEntity.Style>
+
+                                        <mainuc:UIEntity.CommandBindings>
+                                            <CommandBinding Command="ApplicationCommands.Delete"
+                                                            Executed="CommandBinding_Executed_1">
+
+                                            </CommandBinding>
+                                        </mainuc:UIEntity.CommandBindings>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="LeftClicked">
+                                                <ei:ChangePropertyAction TargetName="ppShowSlcEvtRstAwrType"
+                                                                         PropertyName="IsOpen"
+                                                                         Value="True"></ei:ChangePropertyAction>
+
+                                            </i:EventTrigger>
+                                            <!--<i:EventTrigger EventName="BottomClicked">
+                                                <i:EventTrigger.Actions>
+                                                    <ei:ChangePropertyAction TargetName="ppShowSlcEvtRstType"
+                                                                             PropertyName="IsOpen"
+                                                                             Value="True"></ei:ChangePropertyAction>
+
+                                                    <ei:ChangePropertyAction TargetName="changetEvtRstType"
+                                                                             PropertyName="ShouldCancelVisible"
+                                                                             Value="{Binding DataContext.ShouldCancelEvtRstVisible, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ActDgrm}}}"></ei:ChangePropertyAction>
+
+                                                    <ei:ChangePropertyAction TargetName="changetEvtRstType"
+                                                                             PropertyName="ShouldAnyCdnVisible"
+                                                                             Value="{Binding DataContext.ShouldAnyCdnEvtRstVisible, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type view:ActDgrm}}}"></ei:ChangePropertyAction>
+
+                                                </i:EventTrigger.Actions>
+
+                                            </i:EventTrigger>-->
+                                            <i:EventTrigger EventName="GotFocus">
+                                                <i:InvokeCommandAction Command="{Binding Path=DataContext.ChangeSelectedObjCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:ActDgrm}}"
+                                                                       CommandParameter="{Binding}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+
+                                            <!--<ei:DataTrigger Binding="{Binding IsSelected}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="Background">
+                                                <ei:ChangePropertyAction.Value>
+                                                    <SolidColorBrush Color="Orange" />
+                                                </ei:ChangePropertyAction.Value>
+                                            </ei:ChangePropertyAction>
+                                        </ei:DataTrigger>-->
+
+                                            <ei:DataTrigger Binding="{Binding IsSelected}"
+                                                            Value="False">
+                                                <!--<ei:ChangePropertyAction PropertyName="Background">
+                                                    <ei:ChangePropertyAction.Value>
+                                                        <SolidColorBrush Color="Transparent" />
+                                                    </ei:ChangePropertyAction.Value>
+                                                </ei:ChangePropertyAction>-->
+                                            </ei:DataTrigger>
+
+                                        </i:Interaction.Triggers>
+
+                                    </mainuc:UIEntity>
+
+                                    <Popup   x:Name="ppShowSlcEvtRstAwrType"
+                                             StaysOpen="False"
+                                             Placement="Relative"
+                                             PlacementTarget="{Binding ElementName=uiEntityEvtRst}"
+                                             VerticalOffset="30"
+                                             HorizontalOffset="0">
+
+                                        <i:Interaction.Triggers>
+
+                                            <ei:DataTrigger Binding="{Binding Path=IsOpen, RelativeSource={RelativeSource AncestorType=Popup}}"
+                                                            Value="True">
+
+                                                <ei:DataTrigger.Actions>
+
+                                                    <ei:ControlStoryboardAction>
+
+                                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                                            <Storyboard>
+
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                                                                               Storyboard.TargetName="ppShowSlcEvtRstAwrType">
+                                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                                          Value="0" />
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                                                                          Value="150" />
+                                                                </DoubleAnimationUsingKeyFrames>
+
+                                                            </Storyboard>
+
+                                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                                    </ei:ControlStoryboardAction>
+
+                                                </ei:DataTrigger.Actions>
+
+                                            </ei:DataTrigger>
+
+                                        </i:Interaction.Triggers>
+
+                                        <mainuc:SlcEvtRstAwrType Width="48">
+
+                                            <i:Interaction.Triggers>
+
+                                                <i:EventTrigger EventName="OnSelected">
+
+                                                    <i:EventTrigger.Actions>
+                                                        <i:InvokeCommandAction Command="{Binding DataContext.AddEvtRstSlcAwrTypeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl, AncestorLevel=2}}"
+                                                                               CommandParameter="{Binding  RelativeSource={RelativeSource FindAncestor, AncestorType=Popup}}">
+                                                        </i:InvokeCommandAction>
+                                                        <ei:ChangePropertyAction TargetName="ppShowSlcEvtRstAwrType"
+                                                                                 PropertyName="IsOpen"
+                                                                                 Value="False"></ei:ChangePropertyAction>
+
+                                                    </i:EventTrigger.Actions>
+
+                                                </i:EventTrigger>
+
+                                            </i:Interaction.Triggers>
+
+                                        </mainuc:SlcEvtRstAwrType>
+
+                                    </Popup>
+
+                                    <Popup   Name="ppShowSlcEvtRstType"
+                                             StaysOpen="False"
+                                             Placement="Left"
+                                             VerticalOffset="30"
+                                             HorizontalOffset="0">
+
+                                        <i:Interaction.Triggers>
+
+                                            <ei:DataTrigger Binding="{Binding Path=IsOpen, RelativeSource={RelativeSource AncestorType=Popup}}"
+                                                            Value="True">
+
+                                                <ei:DataTrigger.Actions>
+
+                                                    <ei:ControlStoryboardAction>
+
+                                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                                            <Storyboard>
+
+                                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                                                                               Storyboard.TargetName="ppShowSlcEvtRstType">
+                                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                                          Value="0" />
+                                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                                                                          Value="250" />
+                                                                </DoubleAnimationUsingKeyFrames>
+
+                                                            </Storyboard>
+
+                                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                                    </ei:ControlStoryboardAction>
+
+                                                </ei:DataTrigger.Actions>
+
+                                            </ei:DataTrigger>
+
+                                        </i:Interaction.Triggers>
+
+                                        <mainuc:SlctEvtRstType Name="changetEvtRstType"
+                                                               IsInChangeMode="True"
+                                                               CurrentEvtRstType="{Binding ElementName=uiEntityEvtRst,Path=DataContext.FldTypEvtRst}"
+                                                               Grid.Column="1"
+                                                               Background="White"
+                                                               MaxHeight="100"
+                                                               MaxWidth="100">
+
+                                            <i:Interaction.Triggers>
+
+                                                <i:EventTrigger EventName="SelectedTypeChanged">
+
+                                                    <i:InvokeCommandAction Command="{Binding DataContext.ChangeEvtRstCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl, AncestorLevel=2}}"
+                                                                           CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type mainuc:SlctEvtRstType}}}" />
+
+                                                </i:EventTrigger>
+
+                                            </i:Interaction.Triggers>
+
+                                        </mainuc:SlctEvtRstType>
+
+                                    </Popup>
+
+                                    <ItemsControl VerticalAlignment="Center"
+                                                  AllowDrop="True"
+                                                  Margin="-20,0,0,0"
+                                                  Name="itmCtrlWayAwrs"
+                                                  ItemsSource="{Binding ObjRsts}"
+                                                  Grid.Column="0"
+                                                  HorizontalAlignment="Center">
+
+                                        <ItemsControl.ItemsPanel>
+
+                                            <ItemsPanelTemplate>
+
+                                                <StackPanel  HorizontalAlignment="Center" />
+
+                                            </ItemsPanelTemplate>
+
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.ItemTemplate>
+
+                                            <DataTemplate>
+
+                                                <Grid HorizontalAlignment="Center">
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <mainuc:UIEntity Grid.Column="1"
+                                                                     x:Name="ssss"
+                                                                     AllowDrop="True"
+                                                                     Width="80"
+                                                                     Height="80"
+                                                                     DeleteCommand="{Binding DataContext.DeleteObjCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}}"
+                                                                     CommandParameter="{Binding}">
+
+                                                        <mainuc:UIEntity.CommandBindings>
+                                                            <CommandBinding Command="ApplicationCommands.Delete"
+                                                                            Executed="CommandBinding_Executed_1">
+
+                                                            </CommandBinding>
+                                                        </mainuc:UIEntity.CommandBindings>
+
+                                                        <mainuc:UIEntity.Style>
+
+                                                            <Style>
+
+                                                                <Style.Triggers>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblNew"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="False"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Signal}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Signal}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblNew">
+
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Signal}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtRstWayAwrTypeNameConverter}, ConverterParameter=TblNew}"></TextBlock>
+
+                                                                                    <StackPanel Grid.Row="1"
+                                                                                                Orientation="Horizontal">
+
+                                                                                        <TextBlock Text="عنوان خبر:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Text="{Binding Name}"></TextBlock>
+
+                                                                                    </StackPanel>
+
+                                                                                    <TextBlock Text="ارسال شده به:"
+                                                                                               Grid.Row="2"></TextBlock>
+
+                                                                                    <DataGrid Grid.Row="3"
+                                                                                              ItemsSource="{Binding ActTarget}">
+
+                                                                                        <DataGrid.Columns>
+
+                                                                                            <DataGridTextColumn Header="عنوان مجری"
+                                                                                                                Binding="{Binding FldNamNod}"></DataGridTextColumn>
+
+                                                                                            <DataGridTextColumn Header="عنوان فعالیت"
+                                                                                                                Binding="{Binding FldNamAct}"></DataGridTextColumn>
+
+                                                                                        </DataGrid.Columns>
+
+                                                                                    </DataGrid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+                                                                    </DataTrigger>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblSbjOral"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="False"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Phone}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Phone}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblSbjOral">
+
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Phone}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtRstWayAwrTypeNameConverter}, ConverterParameter=TblSbjOral}"></TextBlock>
+
+                                                                                    <TextBlock Text="ارسال شده به:"
+                                                                                               Grid.Row="1"></TextBlock>
+
+                                                                                    <DataGrid Grid.Row="2"
+                                                                                              ItemsSource="{Binding ActTarget}">
+
+                                                                                        <DataGrid.Columns>
+
+                                                                                            <DataGridTextColumn Header="عنوان مجری"
+                                                                                                                Binding="{Binding FldNamNod}"></DataGridTextColumn>
+
+                                                                                            <DataGridTextColumn Header="عنوان فعالیت"
+                                                                                                                Binding="{Binding FldNamAct}"></DataGridTextColumn>
+
+                                                                                        </DataGrid.Columns>
+
+                                                                                    </DataGrid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+                                                                    </DataTrigger>
+
+                                                                    <MultiDataTrigger>
+
+                                                                        <MultiDataTrigger.Conditions>
+
+                                                                            <Condition Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                       Value="TblObj"></Condition>
+                                                                            <Condition Binding="{Binding IsSelected}"
+                                                                                       Value="False"></Condition>
+
+                                                                        </MultiDataTrigger.Conditions>
+
+                                                                        <MultiDataTrigger.EnterActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Document}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.EnterActions>
+
+                                                                        <MultiDataTrigger.ExitActions>
+
+                                                                            <BeginStoryboard>
+
+                                                                                <Storyboard>
+
+                                                                                    <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                                                                                                   Storyboard.TargetProperty="(mainuc:UIEntity.BorderBrush)">
+                                                                                        <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                                                                                                Value="{StaticResource Document}">
+                                                                                        </DiscreteObjectKeyFrame>
+                                                                                    </ObjectAnimationUsingKeyFrames>
+
+                                                                                </Storyboard>
+
+                                                                            </BeginStoryboard>
+
+                                                                        </MultiDataTrigger.ExitActions>
+
+                                                                    </MultiDataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding Converter={StaticResource ObjectTypeToStringConverter}}"
+                                                                                 Value="TblObj">
+
+                                                                        <Setter Property="mainuc:UIEntity.BorderBrush"
+                                                                                Value="{StaticResource Document}" />
+
+                                                                        <Setter Property="mainuc:UIEntity.ToolTip">
+
+                                                                            <Setter.Value>
+
+                                                                                <Grid FlowDirection="RightToLeft">
+
+                                                                                    <Grid.RowDefinitions>
+
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition Height="Auto"></RowDefinition>
+                                                                                        <RowDefinition></RowDefinition>
+
+                                                                                    </Grid.RowDefinitions>
+
+                                                                                    <TextBlock Grid.Row="0"
+                                                                                               Text="{Binding Converter={StaticResource EvtRstWayAwrTypeNameConverter}, ConverterParameter=TblObj}"></TextBlock>
+
+                                                                                    <StackPanel Grid.Row="1"
+                                                                                                Orientation="Horizontal">
+
+                                                                                        <TextBlock Text="عنوان خروجی:"
+                                                                                                   Margin="0,0,5,0"></TextBlock>
+
+                                                                                        <TextBlock Text="{Binding Name}"></TextBlock>
+
+                                                                                    </StackPanel>
+
+                                                                                    <TextBlock Text="ارسال شده به:"
+                                                                                               Grid.Row="2"></TextBlock>
+
+                                                                                    <DataGrid Grid.Row="3"
+                                                                                              ItemsSource="{Binding ActTarget}">
+
+                                                                                        <DataGrid.Columns>
+
+                                                                                            <DataGridTextColumn Header="عنوان مجری"
+                                                                                                                Binding="{Binding FldNamNod}"></DataGridTextColumn>
+
+                                                                                            <DataGridTextColumn Header="عنوان فعالیت"
+                                                                                                                Binding="{Binding FldNamAct}"></DataGridTextColumn>
+
+                                                                                        </DataGrid.Columns>
+
+                                                                                    </DataGrid>
+
+                                                                                </Grid>
+
+                                                                            </Setter.Value>
+
+                                                                        </Setter>
+
+
+                                                                    </DataTrigger>
+
+                                                                </Style.Triggers>
+
+                                                            </Style>
+
+                                                        </mainuc:UIEntity.Style>
+
+                                                        <i:Interaction.Triggers>
+
+                                                            <i:EventTrigger EventName="GotFocus">
+                                                                <i:InvokeCommandAction Command="{Binding Path=DataContext.ChangeSelectedObjCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=view:ActDgrm}}"
+                                                                                       CommandParameter="{Binding}"></i:InvokeCommandAction>
+                                                            </i:EventTrigger>
+
+                                                            <!--<ei:DataTrigger Binding="{Binding IsSelected}"
+                                                                        Value="True">
+                                                        
+                                                            <ei:ChangePropertyAction PropertyName="Background">
+                                                                <ei:ChangePropertyAction.Value>
+                                                                    <SolidColorBrush Color="Orange" />
+                                                                </ei:ChangePropertyAction.Value>
+                                                            </ei:ChangePropertyAction>
+                                                        </ei:DataTrigger>-->
+
+                                                            <ei:DataTrigger Binding="{Binding IsSelected}"
+                                                                            Value="False">
+                                                                <ei:ChangePropertyAction PropertyName="Foreground">
+                                                                    <ei:ChangePropertyAction.Value>
+                                                                        <SolidColorBrush Color="Transparent" />
+                                                                    </ei:ChangePropertyAction.Value>
+                                                                </ei:ChangePropertyAction>
+                                                            </ei:DataTrigger>
+
+                                                        </i:Interaction.Triggers>
+
+                                                    </mainuc:UIEntity>
+
+                                                </Grid>
+
+                                            </DataTemplate>
+
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+    </Border>
+
+</UserControl>

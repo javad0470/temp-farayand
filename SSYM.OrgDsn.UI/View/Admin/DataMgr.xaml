@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Admin.DataMgr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        FlowDirection="RightToLeft"
+        MinHeight="450"
+        MaxHeight="450"
+        MinWidth="525"
+        MaxWidth="525"
+        Height="450"
+        Width="525">
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>-->
+
+        <TextBlock Text="فهرست پشتیبان گیری ها"
+                   Grid.Row="0" />
+
+        <DataGrid Name="dtgrd1"
+                  MaxHeight="300"
+                  Grid.Row="1">
+
+            <i:Interaction.Behaviors>
+                <ext:ScrollIntoViewBehavior />
+                <ext:SetSelectedAfterAddNewItemBehavior />
+            </i:Interaction.Behaviors>
+
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="تاریخ پشتیبان گیری"
+                                    Binding="{Binding FldDate}" />
+
+                <DataGridTextColumn Header="محل پشتیبان گیری"
+                                    Binding="{Binding FldAdrs}" />
+
+                <DataGridTextColumn Header="تاریخ آخرین بازیابی"
+                                    Binding="{Binding FldBakRlt}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2">
+
+            <ComboBox Name="cmbAction"
+                      SelectionChanged="cmbAction_Selected_1">
+                <ComboBox.Items>
+                    <ComboBoxItem Content="پشتیبان گیری" />
+                    <ComboBoxItem Content="بازیابی نسخه پشتیبان" />
+                </ComboBox.Items>
+            </ComboBox>
+
+            <TextBlock Name="tbk1"
+                       Grid.Row="3"
+                       Text="" />
+        </StackPanel>
+
+        <StackPanel Name="stkDest"
+                    Visibility="Collapsed"
+                    Grid.Row="4"
+                    FlowDirection="LeftToRight"
+                    Orientation="Horizontal">
+            <TextBox Name="txtDest"
+                     Width="300" />
+            <Button Content="..."
+                    Click="selectFolder_Click" />
+        </StackPanel>
+
+        <Button Name="btnStart"
+                Visibility="Collapsed"
+                Grid.Row="5"
+                Click="btnStart_Click"
+                Content="پشتیبان گیری" />
+
+    </Grid>
+</UserControl>

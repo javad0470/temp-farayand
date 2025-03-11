@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Process.Popup.FndPrs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:enum="clr-namespace:SSYM.OrgDsn.ViewModel.Process.Popup;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             FlowDirection="RightToLeft"
+             Name="ucFndPrs"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <Grid Width="300"
+          Height="400" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <ListBox ItemsSource="{Binding SearchItemsCV}"
+                 MaxHeight="363"
+                 Grid.Row="1">
+            <ItemsControl.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Border Name="grpCdn"
+                                                Margin="5"
+                                                CornerRadius="4"
+                                                Background="#FFD6D6D6"
+                                                BorderBrush="#FF565656"
+                                                BorderThickness="1"
+                                                AllowDrop="True">
+                                            <Grid>
+                                                <ItemsPresenter />
+                                                <Button Style="{StaticResource ImagebtnStyle}"
+                                                        Command="{Binding DataContext.AddCdnToGrp,  ElementName=ucFndPrs}"
+                                                        CommandParameter="{Binding}"
+                                                        Margin="1,0,0,11"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Bottom">
+
+                                                    <Image Width="22"
+                                                           Height="22"
+                                                           Stretch="Fill"
+                                                           ToolTip="افزودن شرط به این گروه"
+                                                           Source="{StaticResource addItm3Image}"></Image>
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ItemsControl.GroupStyle>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition  Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Button Style="{StaticResource ImagebtnStyle}"
+                                HorizontalAlignment="Left"
+                                Grid.Row="1"
+                                Command="{Binding DataContext.DeleteCdn, ElementName=ucFndPrs}"
+                                CommandParameter="{Binding}">
+                            <Image Width="16"
+                                   Height="16"
+                                   Stretch="Fill"
+                                   ToolTip="حذف شرط"
+                                   Source="{StaticResource closeImage}"></Image>
+                        </Button>
+
+                        <telerik:RadComboBox ItemsSource="{Binding DataContext.ComboItems, ElementName=ucFndPrs}"
+                                  DisplayMemberPath="Value"
+                                  Width="100"
+                                  Grid.Column="1"
+                                  SelectedItem="{Binding SelectedCdn, Mode=TwoWay}" />
+
+                        <TextBlock Style="{StaticResource CommonTextBlockStyle}"
+                                   Margin="10,0"
+                                   Grid.Column="2"
+                                   Text="شامل" />
+
+                        <telerik:RadComboBox Name="cmbSearchEvtSrt"
+                                  Visibility="{Binding EvtSrtVisibility}"
+                                  SelectedItem="{Binding SearchString}"
+                                  DisplayMemberPath="Value"
+                                  Grid.Column="3"
+                                  ItemsSource="{Binding DataContext.EvtSrtTypes, ElementName=ucFndPrs}"
+                                  Width="100">
+
+                        </telerik:RadComboBox>
+
+                        <telerik:RadComboBox Name="cmbSearchEvtRst"
+                                  Visibility="{Binding EvtRstVisibility}"
+                                  SelectedItem="{Binding SearchString}"
+                                  DisplayMemberPath="Value"
+                                  Grid.Column="3"
+                                  ItemsSource="{Binding DataContext.EvtRstTypes, ElementName=ucFndPrs}"
+                                  Width="100">
+
+                        </telerik:RadComboBox>
+
+                        <TextBox Name="txtSrchObj"
+                                 Visibility="{Binding OtherVisibility}"
+                                 Width="100"
+                                 Grid.Column="3"
+                                 Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>
+
+        <Button Style="{StaticResource ImagebtnStyle}"
+                HorizontalAlignment="Left"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                Command="{Binding AddNewGrp}">
+            <custom:BackgroundedImage Width="32"
+                                      Height="32"
+                                      Stretch="Fill"
+                                      ToolTip="افزودن گروه جدید"
+                                      Source="{StaticResource addItm2Image}"></custom:BackgroundedImage>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{92E62AC0-7C62-4CE4-B8A3-EEC53F3C9905}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSYM.OrgDsn.Model</RootNamespace>
+    <AssemblyName>SSYM.OrgDsn.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>srcSig.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MindFusion.Diagramming.Wpf">
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\MindFusion\MindFusion.Diagramming.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="yWorks.yFilesWPF.Adapter, Version=2.4.0.0, Culture=neutral, PublicKeyToken=73817f81eb49e104, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Adapter.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Algorithms, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Viewer, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Viewer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Access\Acs.cs" />
+    <Compile Include="Base\BaseValidation.cs" />
+    <Compile Include="Base\INamedItm.cs" />
+    <Compile Include="Base\IEvt.cs" />
+    <Compile Include="Base\IAllEty.cs" />
+    <Compile Include="Base\IEtyNod.cs" />
+    <Compile Include="Base\INotifyDataErrorInfo.cs" />
+    <Compile Include="Base\IsleAct.cs" />
+    <Compile Include="Base\ITreeSearchable.cs" />
+    <Compile Include="Base\IWayIfrm.cs" />
+    <Compile Include="Base\IWayAwrIfrm.cs" />
+    <Compile Include="Base\IObjRst.cs" />
+    <Compile Include="Base\IOrgChart.cs" />
+    <Compile Include="Base\IWayAwr.cs" />
+    <Compile Include="BPMNDgm\Model\Element.cs" />
+    <Compile Include="BPMNDgm\Styles\ActivityNodeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\AlternatingStripeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\ArtifactNodeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\BPDMNodeStyleBase.cs" />
+    <Compile Include="BPMNDgm\Styles\DefaultFlowSourceArrowStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\EventNodeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\GatewayNodeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\IStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\RelationEdgeStyle.cs" />
+    <Compile Include="BPMNDgm\Styles\StripeDescriptor.cs" />
+    <Compile Include="BPMNShapes\ShpActivity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpEvt.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpGateway.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpMsg.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpNodOsdOrg.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BPMNShapes\ShpObj.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CustomCollections\RelatedActivities.cs" />
+    <Compile Include="Enum\ActivityTypes.cs" />
+    <Compile Include="Enum\AllTypEty.cs" />
+    <Compile Include="Enum\Comparers.cs" />
+    <Compile Include="Enum\EnumUtil.cs" />
+    <Compile Include="Enum\TypItmFix.cs" />
+    <Compile Include="Enum\HasSubActs.cs" />
+    <Compile Include="Enum\DmnAcs.cs" />
+    <Compile Include="Enum\PsnActType.cs" />
+    <Compile Include="Enum\TypWayIfrm.cs" />
+    <Compile Include="Enum\StsIdpdWayIfrm.cs" />
+    <Compile Include="Enum\TypDson.cs" />
+    <Compile Include="Enum\TypeStsDson.cs" />
+    <Compile Include="Enum\SttPrs.cs" />
+    <Compile Include="Enum\ItmFixSfw.cs" />
+    <Compile Include="Enum\TypChgInnPrs.cs" />
+    <Compile Include="Enum\TypFlt.cs" />
+    <Compile Include="Enum\TypLog.cs" />
+    <Compile Include="Enum\TypRlnEtyMjrWthEtyMom.cs" />
+    <Compile Include="Enum\TypShp.cs" />
+    <Compile Include="Enum\TypTbl.cs" />
+    <Compile Include="Enum\TypVot.cs" />
+    <Compile Include="Enum\DirectionForDelete.cs" />
+    <Compile Include="Enum\HasOrDoesntHave.cs" />
+    <Compile Include="Enum\Time.cs" />
+    <Compile Include="Enum\TypeOfObjRst.cs" />
+    <Compile Include="Enum\TypeOfSgmtTim.cs" />
+    <Compile Include="Enum\PosPst.cs" />
+    <Compile Include="Enum\FldTypEty.cs" />
+    <Compile Include="Enum\EvtRstType.cs" />
+    <Compile Include="Enum\ActivitySoftwareTypes.cs" />
+    <Compile Include="Enum\EvtSrtType.cs" />
+    <Compile Include="Enum\ManualOrSoftware.cs" />
+    <Compile Include="Enum\ObjectTypes.cs" />
+    <Compile Include="Enum\TypPrsg.cs" />
+    <Compile Include="Enum\TypWayAwr.cs" />
+    <Compile Include="Enum\TypWayAwrIfrm.cs" />
+    <Compile Include="Enum\WayPrsg.cs" />
+    <Compile Include="Extention\ExtentionMethods.cs" />
+    <Compile Include="Infra\DataErrorInfoSupport.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="ObfuscationSettings.cs" />
+    <Compile Include="Partial\BPMNDBEntities.cs" />
+    <Compile Include="Partial\TblBakAndRsr.cs" />
+    <Compile Include="Partial\TblInsOnnClnt.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Partial\TblLvlAcs.cs" />
+    <Compile Include="Partial\TblSbjMsrt.cs" />
+    <Compile Include="Partial\TblTypEror.cs" />
+    <Compile Include="Partial\TblLog.cs" />
+    <Compile Include="Partial\TblAgntNod.cs" />
+    <Compile Include="Partial\TblIdx.cs" />
+    <Compile Include="Partial\TblCvsn.cs" />
+    <Compile Include="Partial\TblItmAc.cs" />
+    <Compile Include="Partial\TblWayIfrm_News.cs" />
+    <Compile Include="Partial\TblWayIfrm_Oral.cs" />
+    <Compile Include="Partial\PublicMethods.cs" />
+    <Compile Include="Partial\TblNod.cs" />
+    <Compile Include="Partial\TblPr.cs" />
+    <Compile Include="Partial\TblRol.cs" />
+    <Compile Include="Partial\TblPsn.cs" />
+    <Compile Include="Partial\TblPlyrRol.cs" />
+    <Compile Include="Partial\TblOrg.cs" />
+    <Compile Include="Partial\TblSbjOral.cs" />
+    <Compile Include="Partial\TblWayAwr_RecvInt.cs" />
+    <Compile Include="Partial\TblWayAwr_Oral.cs" />
+    <Compile Include="Partial\TblWayAwr_News.cs" />
+    <Compile Include="Partial\TblPosPstOrg.cs" />
+    <Compile Include="Partial\TblEror.cs" />
+    <Compile Include="Partial\TblUntMsrt.cs" />
+    <Compile Include="Partial\TblNew.cs" />
+    <Compile Include="Partial\TblObj.cs" />
+    <Compile Include="Partial\SprAllRelatedActivities_Result.cs" />
+    <Compile Include="Partial\TblAct.cs" />
+    <Compile Include="Partial\TblAct_Sfw.cs" />
+    <Compile Include="Partial\TblEvtRst.cs" />
+    <Compile Include="Partial\TblSfw.cs" />
+    <Compile Include="Partial\TblUsr.cs" />
+    <Compile Include="Partial\TblEvtSrt.cs" />
+    <Compile Include="Partial\TblSgmtTim.cs" />
+    <Compile Include="DbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Partial\TblWayIfrm_SndOut.cs" />
+    <Compile Include="Partial\VwAllNew.cs" />
+    <Compile Include="Partial\VwAllOutput.cs" />
+    <Compile Include="Partial\VwAllUsedOut.cs" />
+    <Compile Include="Partial\VwAllUsedOutWithSourceName.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicMethods.cs" />
+    <Compile Include="Resources\ValidationResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbModel.edmx.diagram">
+      <DependentUpon>DbModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BPMNDBEntities.datasource" />
+    <None Include="srcSig.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Resources\ValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSYM.OrgDsn.Common\SSYM.OrgDsn.Common.csproj">
+      <Project>{588a2a20-6aae-4c6b-a5cc-f20268135b46}</Project>
+      <Name>SSYM.OrgDsn.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

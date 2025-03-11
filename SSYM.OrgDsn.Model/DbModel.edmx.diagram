@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b46fd0e045343dcaf04307e74dca3d1" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="BPMNDBModel.TblAct" Width="1.5" PointX="3" PointY="19.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblAct_Sfw" Width="1.5" PointX="5.25" PointY="16.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblActPr" Width="1.5" PointX="5.25" PointY="26.625" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblAdmin" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblCdn" Width="1.5" PointX="6" PointY="6" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblCvsn" Width="1.5" PointX="3" PointY="29.625" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblCvsnDtl" Width="1.5" PointX="5.25" PointY="29.875" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblEror" Width="1.5" PointX="6" PointY="11.875" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblEvt_GainAwrNew" Width="1.5" PointX="12.5" PointY="16.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblEvtRst" Width="1.5" PointX="8.25" PointY="19.25" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblEvtSrt" Width="1.5" PointX="5.25" PointY="19.25" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblEvtSrt_InnSgmtTim" Width="1.5" PointX="7.5" PointY="16" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblFldTbl" Width="1.5" PointX="8.75" PointY="4.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblGrp" Width="1.5" PointX="5.75" PointY="1.5" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblIdx" Width="1.5" PointX="3.75" PointY="4.5" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblItmFixSfw" Width="1.5" PointX="8.75" PointY="7.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblLvlAc" Width="1.5" PointX="0.75" PointY="28.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblMbrGrp" Width="1.5" PointX="8" PointY="1.25" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblMsg" Width="1.5" PointX="8.75" PointY="10.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblNamPrpsPr" Width="1.5" PointX="5.25" PointY="33.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblNew" Width="1.5" PointX="10.5" PointY="19.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblNod" Width="1.5" PointX="0.75" PointY="22.625" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblObj" Width="1.5" PointX="10.5" PointY="22.625" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblOrg" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblOwrPrpsPr" Width="1.5" PointX="8.25" PointY="31" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblPlyrRol" Width="1.5" PointX="8" PointY="24.5" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblPosPstOrg" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblPr" Width="1.5" PointX="3" PointY="39.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblRol" Width="1.5" PointX="5.75" PointY="36.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSbjMsrt" Width="1.5" PointX="1.5" PointY="4.75" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSbjOral" Width="1.5" PointX="10.5" PointY="26.5" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSfw" Width="1.5" PointX="3" PointY="15.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSgmtTim" Width="1.5" PointX="9.75" PointY="16.25" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblTypEror" Width="1.5" PointX="3.75" PointY="12" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblUntMsrt" Width="1.5" PointX="3.75" PointY="7.625" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblUsr" Width="1.5" PointX="8" PointY="34.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblVotNamPrpsPr" Width="1.5" PointX="7.5" PointY="27.875" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblVotOwrPrp" Width="1.5" PointX="10.5" PointY="30" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayAwr_News" Width="1.5" PointX="15" PointY="19.75" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayAwr_Oral" Width="1.5" PointX="18" PointY="22.875" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayAwr_RecvInt" Width="1.5" PointX="15" PointY="23.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayIfrm_News" Width="1.5" PointX="12.75" PointY="19" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayIfrm_Oral" Width="1.5" PointX="12.75" PointY="26.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblWayIfrm_SndOut" Width="1.5" PointX="12.75" PointY="22.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllIfrmOral" Width="1.5" PointX="10.75" PointY="1.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllNew" Width="1.5" PointX="10.75" PointY="6.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllOutput" Width="1.5" PointX="10.75" PointY="11.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedIfrmOral" Width="1.5" PointX="12.75" PointY="1.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedIfrmOralWithSourceName" Width="1.5" PointX="12.75" PointY="7.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedNew" Width="1.5" PointX="14.75" PointY="1.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedNewsWithSourceName" Width="1.5" PointX="14.75" PointY="8.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedOut" Width="1.5" PointX="16.75" PointY="1.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwAllUsedOutWithSourceName" Width="1.5" PointX="17.75" PointY="10.125" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAct_Sfw_TblAct1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAct_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblActPrc_TblAct" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEvt_TblAct1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEvtSrt_TblAct" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAct_Sfw_TblSfw" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblActPrc_TblPrc" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblCdn_TblIdx" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblCdn_TblUntMsrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblCvsn_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblCvsn_TblNod1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblCvsnDtl_TblCvsn" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEror_TblTypEror" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEvt_GainAwrNew_TblEvtRst" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEvt_GainAwrNew_TblEvtSrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblNews_TblEvtRst" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblObj_TblEvt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblSbjOral_TblEvtRst" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblEvtSrt_InnSgmtTim_TblEvtSrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_News_TblEvtSrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_Oral_TblEvtSrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_RecvInt_TblEvtSrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblSgmtTim_TblEvtSrt_InnSgmtTim" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblMbrGrp_TblGrp" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblIdx_TblOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblIdx_TblSbjMsrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblNamPrpsPrc_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblNamPrpsPrc_TblPrc" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblVotNamPrpsPrc_TblNamPrpsPrc" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayIfrm_News_TblNews" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblOwrPrpsPrs_TblNod1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblOwrPrpsPrs_TblNod2" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPlyrRol_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPrc_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblVotNamPrpsPrs_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblVotOwrPrps_TblNod" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayIfrm_SndOut_TblObj" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblOrg_TblOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPosPstOrg_TblOrg1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblRol_TblOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblSfw_TblOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblUsr_TblOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblOwrPrpsPrc_TblPrc" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblVotOwrPrps_TblOwrPrpsPrs1" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPlyrRol_TblRol" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPosPstOrg_TblPosPstOrg" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblUntMsrt_TblSbjMsrt" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayIfrm_Oral_TblSbjOral" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_News_TblWayIfrm_News" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_Oral_TblWayIfrm_Oral" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblWayAwr_RecvInt_TblWayIfrm_SndOut" />
+        <AssociationConnector Association="BPMNDBModel.TblEvtRst_AftrAct_Cdn" />
+        <AssociationConnector Association="BPMNDBModel.TblEvtRst_InnTimImp_Cdn" />
+        <AssociationConnector Association="BPMNDBModel.TblEvtRst_InnTimImpAct_Eror" />
+        <AssociationConnector Association="BPMNDBModel.TblEvtSrt_AftrCdn" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblAgntNod" Width="1.5" PointX="3" PointY="24.125" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAgntNod_TblLvlAcs" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAgntNod_TblNod" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblItmAc" Width="1.5" PointX="1.5" PointY="33.5" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblItmAcs_TblItmAcs" />
+        <AssociationConnector Association="BPMNDBModel.TblLvlAcs_ItmAcs" />
+        <EntityTypeShape EntityType="BPMNDBModel.VwPosPstRolOfPsn" Width="1.5" PointX="19.75" PointY="5.125" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSbjActPsn" Width="1.5" PointX="1.5" PointY="43.5" />
+        <EntityTypeShape EntityType="BPMNDBModel.Nod_View" Width="1.5" PointX="1.3466074789625626" PointY="11.916338032072568" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblInsOnnClnt" Width="1.5" PointX="7.1808857224792639" PointY="29.82561828094796" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblSttgPbc" Width="1.5" PointX="2.1061228113743118" PointY="1.5443779088297756" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblVrsnSfw" Width="1.5" PointX="1.548360318666492" PointY="11.540053194174568" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblHelpDynm" Width="1.5" PointX="2.008533223536114" PointY="21.985619748935857" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblInsOnnSrv" Width="1.5" PointX="14.875" PointY="28.375" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblBakAndRsr" Width="1.5" PointX="3.5993548387658567" PointY="0.021297439942740574" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblBakAndRsr_TblBakAndRsr" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblPsn" Width="1.5" PointX="3.75" PointY="43.25" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblAgntNod_TblPsn" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblPsn_TblSbjActPsn" />
+        <AssociationConnector Association="BPMNDBModel.FK_TblUsr_TblPsn" />
+        <EntityTypeShape EntityType="BPMNDBModel.TblLog" Width="1.5" PointX="19.375" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

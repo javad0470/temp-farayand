@@ -1,0 +1,646 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefPsnInsideOrg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:actDefUC="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:popup2="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.Popup"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:com="clr-namespace:SSYM.OrgDsn.UI.View.Common"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             x:Name="UsrCtl">
+    <!--<UserControl.DataContext>
+        <vm:DefPsnInsideOrgViewModel></vm:DefPsnInsideOrgViewModel>
+    </UserControl.DataContext>-->
+    <UserControl.Resources>
+        <Style x:Key="TabItemBackGroundedImageStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}"
+                             Value="True">
+                    <Setter Property="custom:BackgroundedImage.Background"
+                            Value="{DynamicResource appClr1}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}"
+                             Value="False">
+                    <Setter Property="custom:BackgroundedImage.Background"
+                            Value="Silver" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="TabItemTextBlockStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}"
+                             Value="True">
+                    <Setter Property="TextBlock.FontStretch"
+                            Value="Medium" />
+                    <Setter Property="TextBlock.FontStyle"
+                            Value="Normal" />
+                    <Setter Property="TextBlock.FontWeight"
+                            Value="Normal" />
+                    <Setter Property="TextBlock.Foreground"
+                            Value="{DynamicResource appClr1}" />
+                    <Setter Property="TextBlock.FontFamily"
+                            Value="{DynamicResource mainFontFamily}"></Setter>
+                    <Setter Property="TextBlock.FontSize"
+                            Value="16"></Setter>
+
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=IsSelected}"
+                             Value="False">
+                    <Setter Property="TextBlock.FontStretch"
+                            Value="Medium" />
+                    <Setter Property="TextBlock.FontStyle"
+                            Value="Normal" />
+                    <Setter Property="TextBlock.FontWeight"
+                            Value="Normal" />
+                    <Setter Property="TextBlock.Foreground"
+                            Value="Silver" />
+                    <Setter Property="TextBlock.FontFamily"
+                            Value="{DynamicResource mainFontFamily}"></Setter>
+                    <Setter Property="TextBlock.FontSize"
+                            Value="16"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid Grid.Column="0"
+          MaxHeight="{Binding ElementName=UsrCtl, Path=ActualHeight}"
+          Style="{StaticResource MainWindowsContentGridStyle}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"
+                              MinWidth="400" />
+
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <custom:DelayedBindingTextBox Text="{Binding SearchFilter, Mode=TwoWay}"
+                                          Grid.Row="0"
+                                          Margin="5" />
+
+            <Grid Grid.Row="1"
+                  VerticalAlignment="Top"
+                  Margin="5">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{Binding AddNewPsnCommand}"
+                            ToolTip="جدید"
+                            Margin="5,0"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource emptyBtnStyle}">
+                        <custom:BackgroundedImage Source="{StaticResource Add}" />
+                    </Button>
+
+                    <Button Command="{Binding DeletePsnCommand}"
+                            CommandParameter="{Binding ElementName=grdPsns, Path=SelectedItem}"
+                            ToolTip="حذف"
+                            Margin="5,0"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource emptyBtnStyle}">
+                        <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+                    </Button>
+
+                    <Button Command="{Binding EditPersonCommand}"
+                            ToolTip="ویرایش"
+                            Margin="5,0"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource emptyBtnStyle}">
+                        <custom:BackgroundedImage Source="{StaticResource edit_EG}" />
+                    </Button>
+
+
+                </StackPanel>
+
+                <DataGrid x:Name="grdPsns"
+                          VerticalAlignment="Top"
+                          Grid.Row="1"
+                          Grid.Column="0"
+                          CanUserAddRows="False"
+                          IsEnabled="{Binding GridEnabled}"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding TblPsnsCV, IsAsync=True}"
+                          SelectedItem="{Binding SelectedPsn, Mode=TwoWay}">
+
+                    <i:Interaction.Behaviors>
+                        <ext:ScrollIntoViewBehavior />
+                        <ext:SetSelectedAfterAddNewItemBehavior />
+                    </i:Interaction.Behaviors>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="نام"
+                                            Binding="{Binding FldNam1stPsn}">
+                        </DataGridTextColumn>
+
+                        <DataGridTextColumn Header="نام خانوادگی"
+                                            Width="*"
+                                            Binding="{Binding FldNam2ndPsn}">
+                        </DataGridTextColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+
+        </Grid>
+
+        <GridSplitter Grid.Column="1"
+                      Grid.Row="0"
+                      Grid.RowSpan="2"
+                      Width="5"></GridSplitter>
+
+        <Grid Grid.Row="1"
+              Grid.Column="2"
+              Margin="5,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+                <RowDefinition  Height="*" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer>
+                <Grid MinHeight="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <actDefUC:PsnInfo Grid.Row="0"
+                                      DataContext="{Binding SelectedPerson}" />
+
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,5"
+                                HorizontalAlignment="Right"
+                                Grid.Row="1">
+
+                        <StackPanel.Resources>
+
+                            <Style TargetType="{x:Type Button}">
+
+                                <Setter Property="Margin"
+                                        Value="5,0"></Setter>
+
+                                <Setter Property="Width"
+                                        Value="50"></Setter>
+
+                            </Style>
+
+                        </StackPanel.Resources>
+
+
+                        <Button Command="{Binding RejectChangesCommand}"
+                                Margin="5,0"
+                                Width="32"
+                                Height="32"
+                                Style="{StaticResource emptyBtnStyle}">
+                            <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+                        </Button>
+
+                        <Button Command="{Binding OKAddEditPsnCommand}"
+                                Name="btnAccept"
+                                Margin="5,0"
+                                Width="32"
+                                Height="32"
+                                Style="{StaticResource emptyBtnStyle}">
+                            <custom:BackgroundedImage Source="{StaticResource oK_EG}" />
+                        </Button>
+
+
+                    </StackPanel>
+
+
+                </Grid>
+
+            </ScrollViewer>
+
+            <!--<Rectangle Height="2"
+                       Grid.Row="1"
+                       HorizontalAlignment="Stretch"
+                       Fill="{DynamicResource appClr1}" />-->
+
+            <GridSplitter Grid.Row="1"
+                          ResizeBehavior="PreviousAndCurrent"
+                          HorizontalAlignment="Stretch"
+                          Height="5" />
+
+      <!--`      <ScrollViewer Grid.Row="2"
+                          Name="scrlAgnts"
+                          VerticalScrollBarVisibility="Auto"
+                          VerticalAlignment="Stretch">-->
+                <GroupBox Header="نمایندگی ها"
+                          Grid.Row="2"
+                          MaxHeight="{Binding ActualHeigth, ElementName=scrlAgnts}"
+                          IsEnabled="{Binding  GridEnabled}">
+
+                    <Grid>
+
+                        <com:NoPermission HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+
+                        <TabControl Style="{StaticResource MetroTabControl}"
+                                    Background="{DynamicResource appBG}"
+                                    Visibility="{Binding Acs_ViewAgnt, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            
+
+                            <TabItem 
+                                     IsSelected="{Binding OrgSelected, Mode=TwoWay}">
+                                <TabItem.Header>
+                                    <StackPanel  Orientation="Horizontal">
+                                        <custom:BackgroundedImage Source="{StaticResource org}"
+                                                                  Width="30"
+                                                                  Height="30"
+                                                                  Margin="5 0 5 0"
+                                                                  Style="{StaticResource TabItemBackGroundedImageStyle}">
+                                           
+                                        </custom:BackgroundedImage>
+
+                                        <TextBlock Text="سازمان ها"
+                                              VerticalAlignment="Center" Style="{StaticResource TabItemTextBlockStyle}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </TabItem.Header>
+                                <TabItem.Background>
+                                    <ImageBrush ImageSource="{StaticResource delete_EG}"></ImageBrush>
+                                </TabItem.Background>
+                             
+                                <Grid>
+                                    <com:NoPermission />
+
+                                    <Grid Visibility="{Binding Acs_ViewAgntOrg, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                          Background="{DynamicResource appBG}">
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+
+                                            <RowDefinition></RowDefinition>
+
+                                        </Grid.RowDefinitions>
+
+                                        <Button Style="{StaticResource CommonBtnStyle}"
+                                                Margin="0,5"
+                                                HorizontalAlignment="Left"
+                                                ToolTip="انتخاب"
+                                                Grid.Row="0"
+                                                Command="{Binding OpenSlcNodCommand}"
+                                                CommandParameter="org">
+
+                                            <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                                        </Button>
+
+
+                                        <Button Style="{StaticResource CommonBtnStyle}"
+                                                Margin="35,5"
+                                                HorizontalAlignment="Left"
+                                                ToolTip="حذف"
+                                                Command="{Binding DelAgntAndUsrCommand}">
+                                            <!--IsEnabled="{Binding DataContext.Acs_DelAgntOrg, RelativeSource={RelativeSource AncestorType=UserControl}}">-->
+
+
+                                            <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+
+                                        </Button>
+
+
+                                        <DataGrid x:Name="grdAgntOrg"
+                                                  Grid.Row="1"
+                                                  CanUserAddRows="False"
+                                                  VerticalScrollBarVisibility="Auto"
+                                                  IsReadOnly="False"
+                                                  SelectedItem="{Binding SelectedOrg, Mode=TwoWay}"
+                                                  ItemsSource="{Binding AgntOrgs}">
+
+                                            <i:Interaction.Behaviors>
+                                                <ext:ScrollIntoViewBehavior />
+                                                <ext:SetSelectedAfterAddNewItemBehavior />
+                                            </i:Interaction.Behaviors>
+
+                                            <DataGrid.Columns>
+
+                                                <DataGridTemplateColumn Width="40">
+
+                                                    <DataGridTemplateColumn.CellTemplate>
+
+                                                        <DataTemplate>
+
+
+
+                                                        </DataTemplate>
+
+                                                    </DataGridTemplateColumn.CellTemplate>
+
+                                                </DataGridTemplateColumn>
+
+                                                <DataGridTextColumn Header="عنوان سازمان"
+                                                                    Width="*"
+                                                                    IsReadOnly="True"
+                                                                    Binding="{Binding FldNamOrg}"></DataGridTextColumn>
+
+                                                <DataGridTemplateColumn>
+
+                                                    <DataGridTemplateColumn.CellTemplate>
+
+                                                        <DataTemplate>
+
+                                                            <!--<telerik:RadComboBox DisplayMemberPath="FldNam"
+                                        ItemsSource="{Binding DataContext.LvlAcs, ElementName=UsrCtl}"
+                                        SelectedItem="{Binding AgntNodEqualToUsr.TblLvlAc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Style="{StaticResource MetroComboBox}"></telerik:RadComboBox>-->
+
+                                                            <telerik:RadComboBox DisplayMemberPath="FldNam"
+                                                                                 IsEnabled="{Binding DataContext.Acs_EditAgntOrg, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                 ItemsSource="{Binding DataContext.LvlAcs, ElementName=UsrCtl}"
+                                                                                 SelectedValuePath="FldCod"
+                                                                                 SelectedValue="{Binding Agnt.FldCodLvlAcs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                 Style="{StaticResource MetroComboBox}"></telerik:RadComboBox>
+
+                                                        </DataTemplate>
+
+                                                    </DataGridTemplateColumn.CellTemplate>
+
+                                                </DataGridTemplateColumn>
+
+                                            </DataGrid.Columns>
+
+                                        </DataGrid>
+
+                                    </Grid>
+
+                                </Grid>
+                                
+                            </TabItem>
+
+                            <TabItem
+                                     IsSelected="{Binding PosSelected, Mode=TwoWay}" >
+                                <TabItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        
+                                        <custom:BackgroundedImage Source="{StaticResource Pos}"
+                                                                  Width="30"
+                                                                  Height="30"
+                                                                  Margin="5 0 5 0"
+                                                                  Style="{StaticResource TabItemBackGroundedImageStyle}"></custom:BackgroundedImage>
+                                       <TextBlock Text="جایگاه و سمت ها"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource TabItemTextBlockStyle}">
+                                            
+                                            
+                                        </TextBlock> 
+                                        
+                                    </StackPanel>
+                                </TabItem.Header>
+                                
+                                    <Grid>
+                                        <com:NoPermission />
+
+                                        <Grid Visibility="{Binding Acs_ViewAgntPosPstOrg, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                              Background="{DynamicResource appBG}">
+
+                                            <Grid.RowDefinitions>
+
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+
+                                            </Grid.RowDefinitions>
+
+
+                                            <Button Style="{StaticResource CommonBtnStyle}"
+                                                    HorizontalAlignment="Left"
+                                                    Margin="35,5"
+                                                    ToolTip="حذف"
+                                                    Command="{Binding DelAgntCommand}"
+                                                    CommandParameter="{Binding Path=SelectedItem, ElementName=grdAgntPoPstRol}">
+
+                                                <custom:BackgroundedImage Source="{StaticResource delete_EG}"></custom:BackgroundedImage>
+
+                                            </Button>
+
+                                            <Button Style="{StaticResource CommonBtnStyle}"
+                                                    Margin="0,5"
+                                                    HorizontalAlignment="Left"
+                                                    ToolTip="انتخاب"
+                                                    Grid.Row="0"
+                                                    Command="{Binding OpenSlcNodCommand}"
+                                                    CommandParameter="posPst">
+
+                                                <custom:BackgroundedImage Source="{StaticResource Add}"></custom:BackgroundedImage>
+
+                                            </Button>
+
+                                            <DataGrid x:Name="grdAgntPoPstRol"
+                                                      Grid.Row="1"
+                                                      IsReadOnly="False"
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      CanUserAddRows="False"
+                                                      EnableRowVirtualization="False"
+                                                      SelectedItem="{Binding SelectedPosPstOrg,Mode=TwoWay}"
+                                                      ItemsSource="{Binding AgntNodOfPsnCntOfTypPosPst}">
+
+                                                <i:Interaction.Behaviors>
+                                                    <ext:ScrollIntoViewBehavior />
+                                                    <ext:SetSelectedAfterAddNewItemBehavior />
+                                                </i:Interaction.Behaviors>
+
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="عنوان جایگاه یا سمت/ نقش سازمانی"
+                                                                        IsReadOnly="True"
+                                                                        Binding="{Binding TblNod.FldNamNod}"></DataGridTextColumn>
+
+                                                    <DataGridTemplateColumn>
+
+                                                        <DataGridTemplateColumn.CellTemplate>
+
+                                                            <DataTemplate>
+
+                                                                <telerik:RadComboBox DisplayMemberPath="FldNam"
+                                                                                     IsEnabled="{Binding DataContext.Acs_EditAgntPosPst, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                     ItemsSource="{Binding DataContext.LvlAcs, ElementName=UsrCtl}"
+                                                                                     SelectedItem="{Binding TblLvlAc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                     Style="{StaticResource MetroComboBox}"></telerik:RadComboBox>
+
+                                                            </DataTemplate>
+
+                                                        </DataGridTemplateColumn.CellTemplate>
+
+                                                    </DataGridTemplateColumn>
+
+                                                    <DataGridTemplateColumn>
+
+                                                        <DataGridTemplateColumn.CellTemplate>
+
+                                                            <DataTemplate>
+
+                                                                <telerik:RadComboBox DisplayMemberPath="FldNamItm"
+                                                                                     IsEnabled="{Binding DataContext.Acs_EditAgntPosPst, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                     SelectedValue="{Binding FldDmnAgnt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                     ItemsSource="{Binding DataContext.DmnAcs, ElementName=UsrCtl}"
+                                                                                     SelectedValuePath="FldCodItm"
+                                                                                     Style="{StaticResource MetroComboBox}">
+
+                                                                </telerik:RadComboBox>
+
+                                                            </DataTemplate>
+
+                                                        </DataGridTemplateColumn.CellTemplate>
+
+                                                    </DataGridTemplateColumn>
+
+                                                </DataGrid.Columns>
+
+                                            </DataGrid>
+                                        </Grid>
+
+                                    </Grid>
+
+                            
+                            </TabItem>
+
+                            <TabItem 
+                                      IsSelected="{Binding RolSelected, Mode=TwoWay}">
+                               <TabItem.Header>
+                                    <StackPanel Orientation="Horizontal">
+                                        <custom:BackgroundedImage Source="{StaticResource orgRol}"
+                                                                  Width="30"
+                                                                  Height="30"
+                                                                  Margin="5 0 5 0"
+                                                                  Style="{StaticResource TabItemBackGroundedImageStyle}"></custom:BackgroundedImage>
+                                        <TextBlock Text="نقش ها"
+                                                   VerticalAlignment="Center"
+                                                   Style="{StaticResource TabItemTextBlockStyle}"></TextBlock>
+
+                                    </StackPanel>
+                                </TabItem.Header>
+                                
+                                    <Grid>
+                                        <com:NoPermission />
+
+                                        <Grid Visibility="{Binding Acs_ViewAgntRol, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                              Background="{DynamicResource appBG}">
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+
+                                                <RowDefinition></RowDefinition>
+
+                                            </Grid.RowDefinitions>
+
+                                            <Button Style="{StaticResource CommonBtnStyle}"
+                                                    Margin="0,5"
+                                                    HorizontalAlignment="Left"
+                                                    ToolTip="انتخاب"
+                                                    Grid.Row="0"
+                                                    Command="{Binding OpenSlcNodCommand}"
+                                                    CommandParameter="rol">
+
+                                                <custom:BackgroundedImage Source="{StaticResource Add}"></custom:BackgroundedImage>
+
+                                            </Button>
+                                            <Button Style="{StaticResource CommonBtnStyle}"
+                                                    Margin="35,5"
+                                                    HorizontalAlignment="Left"
+                                                    ToolTip="حذف"
+                                                    Command="{Binding DelAgntCommand}"
+                                                    CommandParameter="{Binding Path=SelectedItem, ElementName=dgrdAgntRol}">
+
+                                                <custom:BackgroundedImage Source="{StaticResource delete_EG}"></custom:BackgroundedImage>
+
+                                            </Button>
+
+
+
+                                            <DataGrid Grid.Row="1"
+                                                      Name="dgrdAgntRol"
+                                                      IsReadOnly="False"
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      CanUserAddRows="False"
+                                                      SelectedItem="{Binding SelectedRol,Mode=TwoWay}"
+                                                      ItemsSource="{Binding AgntNodOfPsnCntOfTypRol}">
+
+                                                <i:Interaction.Behaviors>
+                                                    <ext:ScrollIntoViewBehavior />
+                                                    <ext:SetSelectedAfterAddNewItemBehavior />
+                                                </i:Interaction.Behaviors>
+
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="عنوان جایگاه یا سمت/ نقش سازمانی"
+                                                                        IsReadOnly="True"
+                                                                        Binding="{Binding TblNod.FldNamNod}"></DataGridTextColumn>
+
+                                                    <DataGridTemplateColumn>
+
+                                                        <DataGridTemplateColumn.CellTemplate>
+
+                                                            <DataTemplate>
+
+
+                                                                <telerik:RadComboBox DisplayMemberPath="FldNam"
+                                                                                     IsEnabled="{Binding DataContext.Acs_EditAgntRol, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                     ItemsSource="{Binding DataContext.LvlAcs, ElementName=UsrCtl}"
+                                                                                     SelectedItem="{Binding TblLvlAc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                     Style="{StaticResource MetroComboBox}"></telerik:RadComboBox>
+
+                                                            </DataTemplate>
+
+                                                        </DataGridTemplateColumn.CellTemplate>
+
+                                                    </DataGridTemplateColumn>
+
+                                                </DataGrid.Columns>
+
+                                            </DataGrid>
+
+                                        </Grid>
+
+                                    </Grid>
+                                
+                            </TabItem>
+
+                        </TabControl>
+
+                    </Grid>
+
+                </GroupBox>
+
+       <!--     </ScrollViewer>-->
+
+        </Grid>
+
+        <!--<i:Interaction.Triggers>
+            <ei:DataTrigger Binding="{Binding ShowItmAsnToPsnVM}"
+                            Value="True">
+                <ei:DataTrigger.Actions>
+                    <ei:CallMethodAction TargetObject="{Binding RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                         MethodName="ShowWindow" />
+                </ei:DataTrigger.Actions>
+            </ei:DataTrigger>
+        </i:Interaction.Triggers>-->
+
+    </Grid>
+
+</UserControl>

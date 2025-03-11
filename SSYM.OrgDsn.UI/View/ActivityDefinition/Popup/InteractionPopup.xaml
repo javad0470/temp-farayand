@@ -1,0 +1,116 @@
+﻿<base:BaseInteractionDialog x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.InteractionPopup"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:base="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                            mc:Ignorable="d"
+                            FlowDirection="RightToLeft"
+                            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                            xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions">
+    
+    <Grid Background="#A9CECECE">
+
+        <Border Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                MaxWidth="400"
+                MinHeight="150"
+                MinWidth="250">
+            <Grid Height="245"
+                  Width="393">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                
+                <Rectangle Stroke="Black"
+                           StrokeThickness="1"
+                           Margin="0"
+                           Grid.RowSpan="3">
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="0"
+                                          BlurRadius="20"
+                                          RenderingBias="Quality"
+                                          Direction="0" />
+                    </Rectangle.Effect>
+                </Rectangle>
+
+                <Rectangle Fill="#FFA7C1DC"
+                           Margin="1,1,1,0" />
+
+                <TextBlock Text="{Binding Entity.Title}"></TextBlock>
+
+                <Grid Grid.Row="1">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <TextBlock HorizontalAlignment="Center"
+                                   TextWrapping="WrapWithOverflow"
+                                   VerticalAlignment="Center"
+                                   MaxHeight="200"
+                                   Text="{Binding Entity.Content}"></TextBlock>
+                    </ScrollViewer>
+                </Grid>
+
+                <StackPanel Grid.Row="3"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <telerik:RadButton Width="75"                             
+                            Height="23"
+                            HorizontalAlignment="Right"
+                            Margin="11,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:CallMethodAction TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=base:BaseInteractionDialog, AncestorLevel=1}}"
+                                                     MethodName="Cancel" />
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Entity.MessageBoxType}"
+                                            Value="4">
+                                <ei:ChangePropertyAction PropertyName="Content"
+                                                         Value="{Binding Entity.CancelText}"></ei:ChangePropertyAction>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Entity.MessageBoxType}"
+                                            Value="5">
+                                <ei:ChangePropertyAction PropertyName="Content"
+                                                         Value="{Binding Entity.NoText}"></ei:ChangePropertyAction>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Entity.MessageBoxType}"
+                                            Value="4" Comparison="LessThan">
+                                <ei:ChangePropertyAction PropertyName="Visibility"
+                                                         Value="Collapsed"></ei:ChangePropertyAction>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadButton>
+
+                    <telerik:RadButton Content="تأیید"
+                            Width="75"
+                            Height="23"
+                            HorizontalAlignment="Right"
+                            Margin="11,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:CallMethodAction TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=base:BaseInteractionDialog, AncestorLevel=1}}"
+                                                     MethodName="Ok" />
+                            </i:EventTrigger>
+                            <ei:DataTrigger Binding="{Binding Entity.MessageBoxType}"
+                                            Value="4">
+                                <ei:ChangePropertyAction PropertyName="Content"
+                                                         Value="{Binding Entity.OkText}"></ei:ChangePropertyAction>
+                            </ei:DataTrigger>
+                            <ei:DataTrigger Binding="{Binding Entity.MessageBoxType}"
+                                            Value="5">
+                                <ei:ChangePropertyAction PropertyName="Content"
+                                                         Value="{Binding Entity.YesText}"></ei:ChangePropertyAction>
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadButton>
+
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+    
+</base:BaseInteractionDialog>

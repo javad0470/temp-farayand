@@ -1,0 +1,353 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                    xmlns:Custom="http://metro.mahapps.com/winfx/xaml/shared"
+                    xmlns:myCustom="clr-namespace:SSYM.OrgDsn.UI"
+                    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="Button"
+           x:Key="windowBtnStyle">
+        <Setter Property="OverridesDefaultStyle"
+                Value="False" />
+
+        <Setter Property="Cursor"
+                Value="Hand" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center" />
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MetroWindowStyle1"
+           TargetType="{x:Type Controls:MetroWindow}">
+
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />-->
+                    <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />-->
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource BlackColor}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource WhiteColor}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Custom:StylizedBehaviors.Behaviors">
+            <Setter.Value>
+                <Custom:StylizedBehaviorCollection>
+                    <Custom:BorderlessWindowBehavior Border="{x:Null}" />
+                    <Custom:WindowsSettingBehaviour />
+                </Custom:StylizedBehaviorCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Controls:MetroWindow}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <AdornerDecorator>
+                            <Controls:MetroContentControl>
+                                <Grid Background="Transparent"
+                                      IsHitTestVisible="True">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid x:Name="PART_TitleBar"
+                                          Background="{StaticResource MenuTitleBarBackground}"
+                                          Height="{Binding TitlebarHeight, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Visibility>
+                                            <TemplateBinding Property="ShowTitleBar">
+                                                <TemplateBinding.Converter>
+                                                    <BooleanToVisibilityConverter />
+                                                </TemplateBinding.Converter>
+                                            </TemplateBinding>
+                                        </Grid.Visibility>
+                                        <Image Source="{TemplateBinding Icon}">
+                                            <Image.Visibility>
+                                                <TemplateBinding Property="ShowIconOnTitleBar">
+                                                    <TemplateBinding.Converter>
+                                                        <BooleanToVisibilityConverter />
+                                                    </TemplateBinding.Converter>
+                                                </TemplateBinding>
+                                            </Image.Visibility>
+                                        </Image>
+
+                                        <TextBlock x:Name="WindowTitleTextBlock"
+                                                   HorizontalAlignment="Center"
+                                                   Grid.Column="1"
+                                                   Foreground="{DynamicResource appClr1}"
+                                                   FontSize="16"
+                                                   FontFamily="{DynamicResource mainFontFamily}"
+                                                   Text="{TemplateBinding Title}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   VerticalAlignment="Center" />
+
+                                        <Rectangle Width="{Binding ActualWidth, ElementName=WindowTitleTextBlock}"
+                                                   VerticalAlignment="Bottom"
+                                                   Fill="{DynamicResource appClr1}"
+                                                   Height="2"
+                                                   Grid.Column="1" />
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="MouseLeave">
+                                                <ei:ChangePropertyAction PropertyName="Background"
+                                                                         Value="{StaticResource MenuTitleBarBackground}">
+                                                </ei:ChangePropertyAction>
+                                            </i:EventTrigger>
+
+                                            <i:EventTrigger EventName="MouseEnter">
+                                                <ei:ChangePropertyAction PropertyName="Background">
+                                                    <ei:ChangePropertyAction.Value>
+                                                        <SolidColorBrush Color="White" />
+                                                    </ei:ChangePropertyAction.Value>
+                                                </ei:ChangePropertyAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </Grid>
+
+                                    <ContentPresenter x:Name="PART_WindowCommands"
+                                                      HorizontalAlignment="Right"
+                                                      Height="{Binding TitlebarHeight, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                      Grid.RowSpan="2"
+                                                      VerticalAlignment="Top"
+                                                      Panel.ZIndex="1">
+
+
+                                        <ContentPresenter.Content>
+                                            <StackPanel Orientation="Horizontal">
+
+                                                <Button ToolTip="کمینه"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Style="{DynamicResource ImagebtnStyle}"
+                                                        x:Name="PART_Min">
+                                                    <myCustom:BackgroundedImage Source="{StaticResource window_minus_EG}" />
+
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="Click">
+                                                            <ei:ChangePropertyAction PropertyName="WindowState"
+                                                                                     Value="Minimized"
+                                                                                     TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+
+                                                </Button>
+
+                                                <Grid>
+                                                    <Button ToolTip="بیشینه"
+                                                            Width="32"
+                                                            Height="32"
+                                                            x:Name="PART_Max">
+                                                        <myCustom:BackgroundedImage Source="{StaticResource window_Max_WE}"/>
+
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="Click">
+                                                                <ei:ChangePropertyAction PropertyName="WindowState"
+                                                                                         Value="Maximized"
+                                                                                         TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+
+                                                        <Button.Style>
+                                                            <Style TargetType="Button">
+                                                                <Setter Property="OverridesDefaultStyle"
+                                                                        Value="False" />
+
+                                                                <Setter Property="Cursor"
+                                                                        Value="Hand" />
+
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="Button">
+                                                                            <Grid>
+                                                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                                                  VerticalAlignment="Center" />
+
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                                                 Value="Maximized">
+
+                                                                        <Setter Property="Button.Visibility"
+                                                                                Value="Collapsed" />
+                                                                    </DataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                                                 Value="Normal">
+
+                                                                        <Setter Property="Button.Visibility"
+                                                                                Value="Visible" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+
+                                                    <Button ToolTip="برگشت"
+                                                            Width="32"
+                                                            Height="32">
+                                                        <myCustom:BackgroundedImage Source="{StaticResource window_restore_EG}" />
+
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="Click">
+                                                                <ei:ChangePropertyAction PropertyName="WindowState"
+                                                                                         Value="Normal"
+                                                                                         TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+
+                                                        <Button.Style>
+                                                            <Style TargetType="Button">
+
+                                                                <Setter Property="OverridesDefaultStyle"
+                                                                        Value="False" />
+
+                                                                <Setter Property="Cursor"
+                                                                        Value="Hand" />
+
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate TargetType="Button">
+                                                                            <Grid>
+                                                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                                                  VerticalAlignment="Center" />
+
+                                                                            </Grid>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                                                 Value="Normal">
+
+                                                                        <Setter Property="Button.Visibility"
+                                                                                Value="Collapsed" />
+                                                                    </DataTrigger>
+
+                                                                    <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                                                 Value="Maximized">
+
+                                                                        <Setter Property="Button.Visibility"
+                                                                                Value="Visible" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
+
+                                                    </Button>
+
+
+                                                </Grid>
+                                                <Button ToolTip="بستن"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Style="{DynamicResource ImagebtnStyle}"
+                                                        x:Name="PART_Close">
+
+                                                    <myCustom:BackgroundedImage Source="{StaticResource window_close_EG}" />
+
+                                                    <i:Interaction.Triggers>
+                                                        <i:EventTrigger EventName="Click">
+                                                            <ei:CallMethodAction TargetObject="{Binding RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Controls:MetroWindow}}}"
+                                                                                 MethodName="Close" />
+                                                        </i:EventTrigger>
+                                                    </i:Interaction.Triggers>
+
+                                                </Button>
+
+
+
+                                            </StackPanel>
+                                        </ContentPresenter.Content>
+                                    </ContentPresenter>
+
+                                    <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                      Grid.Row="1" />
+                                </Grid>
+                            </Controls:MetroContentControl>
+                        </AdornerDecorator>
+                        <Border x:Name="PART_Border"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch" />
+                        <ResizeGrip x:Name="WindowResizeGrip"
+                                    HorizontalAlignment="Right"
+                                    IsTabStop="False"
+                                    Visibility="Collapsed"
+                                    VerticalAlignment="Bottom" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ResizeMode"
+                                           Value="CanResizeWithGrip" />
+                                <Condition Property="WindowState"
+                                           Value="Normal" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility"
+                                    TargetName="WindowResizeGrip"
+                                    Value="Visible" />
+                        </MultiTrigger>
+                        <Trigger Property="TitleCaps"
+                                 Value="True">
+                            <Setter Property="Text"
+                                    TargetName="WindowTitleTextBlock"
+                                    Value="{Binding Title, Converter={Custom:ToUpperConverter}, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Controls:MetroWindow}"
+           BasedOn="{StaticResource {x:Type Controls:MetroWindow}}"
+           x:Key="mtrWndStl">
+
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+    </Style>
+
+</ResourceDictionary>

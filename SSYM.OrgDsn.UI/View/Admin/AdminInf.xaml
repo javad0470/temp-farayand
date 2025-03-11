@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Admin.AdminInf"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:userCtl="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
+             xmlns:ui="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin"
+                    Value="8" />
+        </Style>
+
+        <!---->
+
+        <Style TargetType="TextBlock" 
+               BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="Foreground"
+                    Value="{DynamicResource appClr1}" />
+        </Style>
+
+    </UserControl.Resources>
+        <Grid MinHeight="200">
+
+
+            <!--<userCtl:PsnInfo Grid.Row="0"
+                              DataContext="{Binding SelectedSelectedPerson}" 
+                             />-->
+        <Grid 
+              Style="{StaticResource MainWindowsContentGridStyle}"
+              IsEnabled="{Binding IsEnabled}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="نام"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldNam1stPsn, Mode=TwoWay, ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,
+                UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="نام خانوادگی"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldNam2ndPsn, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,
+                     UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                <!--, ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True-->
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="شماره شناسنامه"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldNumIdfn, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,
+                 UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1">
+                <TextBlock Text="شماره ملی"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldNumNtl, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,
+                 UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="نام پدر"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldNamFtr, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,
+                 UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1">
+                <TextBlock Text="صادره از"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldIsucFrom, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True}"></TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Grid.Column="1">
+
+                <TextBlock Text="تاریخ تولد"></TextBlock>
+
+                <toolkit:DatePicker SelectedDate="{Binding SelectedPerson.FldDteBrt}" />
+
+                <!--<dp:PDatePicker SelectedDate="{Binding SelectedPerson.FldDteBrt, Mode=TwoWay, Converter={StaticResource NullableDateConverter}            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True}"></dp:PDatePicker>-->
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Name="stkAddress">
+                <TextBlock Text="نشانی"></TextBlock>
+                <TextBox Text="{Binding SelectedPerson.FldAdrsPsn, Mode=TwoWay            ,  ValidatesOnDataErrors=True, 
+                                    NotifyOnSourceUpdated=True, 
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True}"
+                         AcceptsReturn="True"
+                         MaxHeight="100"
+                         MaxWidth="{Binding ActualWidth, ElementName=stkAddress}"></TextBox>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+
+    
+</UserControl>

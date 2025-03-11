@@ -1,0 +1,424 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Dson.DsonList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ucView="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl"
+             xmlns:ucDson="clr-namespace:SSYM.OrgDsn.UI.View.Dson"
+             xmlns:ucCtrl="clr-namespace:SSYM.OrgDsn.UI.View.Dson.UserCtl"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.Dson;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+             xmlns:Primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=System.Windows.Controls.Layout.Toolkit"
+             mc:Ignorable="d"
+             FlowDirection="RightToLeft"
+             d:DesignHeight="300"
+             d:DesignWidth="600">
+    <UserControl.Resources>
+
+
+        <Style x:Key="AccordionItemStyle1"
+               TargetType="{x:Type toolkit:AccordionItem}">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="#FFECECEC" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="Margin"
+                    Value="0" />
+            <Setter Property="Padding"
+                    Value="0" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Stretch" />
+            <Setter Property="VerticalAlignment"
+                    Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Top" />
+            <Setter Property="IsTabStop"
+                    Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type toolkit:AccordionItem}">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Border x:Name="Background"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="1"
+                                    Padding="{TemplateBinding Padding}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition x:Name="cd0"
+                                                          Width="Auto" />
+                                        <ColumnDefinition x:Name="cd1"
+                                                          Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition x:Name="rd0"
+                                                       Height="Auto" />
+                                        <RowDefinition x:Name="rd1"
+                                                       Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Primitives:AccordionButton x:Name="ExpanderButton"
+                                                                Background="{TemplateBinding Background}"
+                                                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                                                Content="{TemplateBinding Header}"
+                                                                Foreground="{TemplateBinding Foreground}"
+                                                                FontWeight="{TemplateBinding FontWeight}"
+                                                                FontStyle="{TemplateBinding FontStyle}"
+                                                                FontStretch="{TemplateBinding FontStretch}"
+                                                                FontSize="{TemplateBinding FontSize}"
+                                                                FontFamily="{TemplateBinding FontFamily}"
+                                                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                IsTabStop="True"
+                                                                IsChecked="{TemplateBinding IsSelected}"
+                                                                Margin="0"
+                                                                Padding="0"
+                                                                Grid.Row="0"
+                                                                Style="{TemplateBinding AccordionButtonStyle}"
+                                                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    <Primitives:ExpandableContentControl x:Name="ExpandSite"
+                                                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                         Content="{TemplateBinding Content}"
+                                                                         Foreground="{TemplateBinding Foreground}"
+                                                                         FontWeight="{TemplateBinding FontWeight}"
+                                                                         FontStyle="{TemplateBinding FontStyle}"
+                                                                         FontStretch="{TemplateBinding FontStretch}"
+                                                                         FontSize="{TemplateBinding FontSize}"
+                                                                         FontFamily="{TemplateBinding FontFamily}"
+                                                                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                         IsTabStop="False"
+                                                                         Margin="0"
+                                                                         Percentage="0"
+                                                                         RevealMode="{TemplateBinding ExpandDirection}"
+                                                                         Grid.Row="1"
+                                                                         Style="{TemplateBinding ExpandableContentControlStyle}"
+                                                                         VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <Primitives:ExpandableContentControl.Clip>
+                                            <RectangleGeometry />
+                                        </Primitives:ExpandableContentControl.Clip>
+                                    </Primitives:ExpandableContentControl>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate DataType="{x:Type vm:DsonDtlAssignedByMeViewModel}">
+            <ucDson:DsonDtlAssignedByMe />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:DsonDtlAssignedToMeViewModel}">
+            <ucDson:DsonDtlAssignedToMe />
+        </DataTemplate>
+
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush"
+                    Value="Silver" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+        </Style>
+        <!--<Style TargetType="TextBlock">
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontFamily"
+                    Value="{DynamicResource mainFontFamily}"></Setter>
+
+            <Setter Property="FontSize"
+                    Value="16"></Setter>
+
+        </Style>-->
+
+    </UserControl.Resources>
+
+
+
+    <Grid Margin="10">
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"  MinWidth="360"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0">
+
+                <ucView:OrgPos DataContext="{Binding OrgPosVM}"
+                               RadiosVisible="Collapsed"
+                               IsEnabled="{Binding Acs_ViewDson}"
+                               Grid.Column="2"></ucView:OrgPos>
+
+            </StackPanel>
+
+            <Grid Grid.Row="1"
+                  HorizontalAlignment="Center"
+                  Margin="0,40,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+
+                </Grid.ColumnDefinitions>
+
+                <Button Command="{Binding PrevCommand}"
+                        Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Width="48"
+                        Style="{StaticResource ImagebtnStyle}"
+                        ToolTip="قبلی"
+                        Margin="5,0">
+                    <custom:BackgroundedImage Source="{StaticResource prevArrow_EG}"
+                                              FlowDirection="LeftToRight" />
+                </Button>
+
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock TextAlignment="Center"
+                               Text="{Binding DsonDescNod}"
+                               FontSize="12"
+                               Foreground="{DynamicResource appClr1}"
+                               Style="{StaticResource CommonTextBlockStyle}" />
+
+                    <TextBlock TextAlignment="Center"
+                               Foreground="{DynamicResource appClr1}"
+                               Text="{Binding DsonDescObj}"
+                               FontSize="13"
+                               Style="{StaticResource CommonTextBlockStyle}" />
+
+                </StackPanel>
+
+
+
+                <Button Grid.Column="2"
+                        Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Width="48"
+                        Style="{StaticResource ImagebtnStyle}"
+                        ToolTip="بعدی"
+                        Margin="5,0"
+                        Command="{Binding NextCommand}">
+                    <custom:BackgroundedImage Source="{StaticResource nextArrow_EG}"
+                                              FlowDirection="LeftToRight" />
+                </Button>
+            </Grid>
+
+
+            <Expander Grid.Column="0"
+                      Foreground="{DynamicResource appClr1}"
+                      Style="{StaticResource ExpanderStyle1}"
+                      Visibility="{Binding OrgPosVM.NodSlcEed, Converter={StaticResource ObjectToVisibilityConverter}}"
+                      Margin="10"
+                      Header="فهرست"
+                      Grid.Row="2">
+
+                <Border BorderThickness="0,1,0,0"
+                        BorderBrush="{DynamicResource appClr1}">
+
+                    <ListBox MaxHeight="{Binding ActualHeight, ElementName=grdDson}"
+                             Background="Transparent"
+                             Width="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=ActualWidth, Converter={StaticResource SizeConverter}, ConverterParameter=-20}"
+                             BorderThickness="0"
+                             SelectedItem="{Binding SelectedDson, Mode=TwoWay}"
+                             HorizontalAlignment="Center"
+                             Margin="0,10,0,0"
+                             ItemsSource="{Binding DsonsCV}"
+                             VerticalAlignment="Top">
+
+                        <ListBox.ItemContainerStyle>
+
+                            <Style TargetType="ListBoxItem">
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected"
+                                             Value="True">
+                                        <Setter Property="Background"
+                                                Value="{DynamicResource appClr2}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                    <Grid Margin="10">
+                                                        <Expander HorizontalAlignment="Left"
+                                                                  Margin="10,5">
+                                                            <!--Header="{Binding Items[0].Item2.FldNamNod}"
+                                                        Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualWidth}"
+                                                        -->
+                                                            <Expander.HeaderTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Style="{StaticResource CommonTextBlockStyle}">
+                                                                        <TextBlock.Text>
+                                                                            <MultiBinding StringFormat="{} {0} {1} :">
+                                                                                <Binding Path="DataContext.Items[0].Item2.FldTtlNod"
+                                                                                         RelativeSource="{RelativeSource AncestorType=Expander}" />
+                                                                                <Binding Path="DataContext.Items[0].Item2.FldNamNod"
+                                                                                         RelativeSource="{RelativeSource AncestorType=Expander}" />
+                                                                            </MultiBinding>
+
+                                                                        </TextBlock.Text>
+                                                                    </TextBlock>
+                                                                </DataTemplate>
+                                                            </Expander.HeaderTemplate>
+                                                            <ItemsPresenter />
+                                                        </Expander>
+
+                                                    </Grid>
+
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ListBox.GroupStyle>
+
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel HorizontalAlignment="Center" />
+                                <!--Width="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualWidth}"-->
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="5,2.5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110" />
+                                        <ColumnDefinition />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid HorizontalAlignment="Right"
+                                          Margin="0,0,5,0"
+                                          VerticalAlignment="Center">
+                                        <Ellipse Width="20"
+                                                 Height="20"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 Fill="{DynamicResource appClr1}"
+                                                 Stroke="Transparent" />
+                                        <TextBlock Grid.Column="1"
+                                                   FontSize="10"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center">
+                                            <TextBlock.Text>
+                                                <MultiBinding  Converter="{StaticResource ListItemInGroupIndexConverter}">
+                                                    <Binding RelativeSource="{RelativeSource AncestorType=Expander}"
+                                                             Path="DataContext.ItemCount" />
+                                                    <Binding RelativeSource="{RelativeSource AncestorType=GroupItem}"
+                                                             Path="DataContext.Items" />
+                                                    <Binding />
+
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+
+                                    </Grid>
+                                    <TextBlock Grid.Column="1"
+                                               Style="{StaticResource CommonTextBlockStyle}"
+                                               Text="{Binding Item1, Converter={StaticResource DsonDescConverter}}" />
+
+                                    <!--<i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.ShowDsonCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                               CommandParameter="{Binding}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>-->
+                                    <!--<Button Command="{Binding DataContext.ShowDsonCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    Margin="3,2"
+                                    CommandParameter="{Binding}"
+                                    Content="نمایش ناهمسانی" />-->
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </Border>
+
+            </Expander>
+
+        </Grid>
+
+
+
+        <GridSplitter Width="10"
+                      Grid.Column="1"
+                      Grid.Row="0" />
+
+
+        <Grid Grid.Column="2">
+
+
+            <toolkit:Accordion Background="Transparent"
+                               Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                <toolkit:AccordionItem Header="تشریح ناهمسانی"
+                                       Background="Transparent"
+                                       Style="{StaticResource AccordionStyle1}">
+                    <Grid Background="{StaticResource appBG}"
+                          Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                        <ucCtrl:DsonOverview DataContext="{Binding DsonOverviewVM}"
+                                             Visibility="{Binding DataContext.DsonOverviewVM, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource ObjectToVisibilityConverter}}"
+                                             VerticalAlignment="Stretch" />
+                    </Grid>
+                </toolkit:AccordionItem>
+
+
+                <toolkit:AccordionItem Header="رفع ناهمسانی"
+                                       Background="Transparent"
+                                       Style="{StaticResource AccordionStyle1}">
+                    <Grid Background="{StaticResource appBG}"
+                          Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource SizeConverter}, ConverterParameter=-70}"
+                          Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+                        <ContentControl Content="{Binding SelectedDsonVM}"
+                                        VerticalAlignment="Stretch" />
+                    </Grid>
+                </toolkit:AccordionItem>
+
+                <toolkit:Accordion.Style>
+                    <Style TargetType="toolkit:Accordion">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DsonOverviewVM}"
+                                         Value="{x:Null}">
+                                <DataTrigger.Setters>
+                                    <Setter  Property="Visibility"
+                                             Value="Collapsed" />
+                                </DataTrigger.Setters>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </toolkit:Accordion.Style>
+
+            </toolkit:Accordion>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

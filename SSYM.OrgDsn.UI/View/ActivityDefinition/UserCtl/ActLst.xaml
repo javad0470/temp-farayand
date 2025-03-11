@@ -1,0 +1,101 @@
+﻿<UserControl x:Name="userControl"
+             x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl.ActLst"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <custom:DelayedBindingTextBox Margin="5"
+                                      Grid.Row="0"
+                                      Text="{Binding TxtSrch}" />
+        <Grid Grid.Row="1">
+            <!--<Button Style="{StaticResource ImagebtnStyle}"
+                    Width="32"
+                    Height="32"
+                    ToolTip="افزودن فعالیت"
+                    HorizontalAlignment="Left"
+                    Margin="5,0,0,0"
+                    Command="{Binding DataContext.AddNewActCommand,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
+                    VerticalAlignment="Bottom">
+
+                <custom:BackgroundedImage Source="{StaticResource Add}"
+                                          Stretch="Fill" />
+            </Button>-->
+            <Button Style="{StaticResource OrgButton}"
+                    ToolTip="افزودن فعالیت"
+                    HorizontalAlignment="Left"
+                    Margin="5,0,0,0"
+                    Background="{StaticResource Add1}"
+                    Command="{Binding DataContext.AddNewActCommand,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
+                    VerticalAlignment="Bottom" />
+            <Button Style="{StaticResource OrgButton}"
+                    ToolTip="حذف فعالیت"
+                    HorizontalAlignment="Left"
+                    Margin="52,0,0,0"
+                    Background="{StaticResource Delete}"
+                    Command="{Binding DataContext.DeleteActCommand,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
+                    VerticalAlignment="Bottom" />
+            <!--<Button Style="{StaticResource ImagebtnStyle}"
+                    Width="32"
+                    Height="32"
+                    ToolTip="حذف فعالیت"
+                    HorizontalAlignment="Left"
+                    Margin="45,0,0,0"
+                    Command="{Binding DataContext.DeleteActCommand,RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}"
+                    VerticalAlignment="Bottom">
+
+                <custom:BackgroundedImage Source="{StaticResource delete_EG}"
+                                          Stretch="Fill" />
+            </Button>-->
+        </Grid>
+        <DataGrid Name="dataGrid1"
+                  Margin="5"
+                  HeadersVisibility="Column"
+                  SelectedValuePath="FldCodAct"
+                  HorizontalAlignment="Stretch"
+                  MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}, Converter={StaticResource SizeConverter}, ConverterParameter=-10}"
+                  SelectionChanged="DataGrid_SelectionChanged"
+                  EnableRowVirtualization="False"
+                  EnableColumnVirtualization="False"
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  VerticalAlignment="Top"
+                  AlternationCount="2"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding ActListCV}"
+                  IsSynchronizedWithCurrentItem="True"
+                  MinRowHeight="26">
+
+            <!--<i:Interaction.Behaviors>
+                <ext:ScrollIntoViewBehavior />
+                <ext:SetSelectedAfterAddNewItemBehavior />
+            </i:Interaction.Behaviors>-->
+
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ردیف"
+                                    Width="55"
+                                    Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource DataGridRowToIndexConverter}}"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="فعالیت"
+                                    Width="*"
+                                    Binding="{Binding FldNamAct}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

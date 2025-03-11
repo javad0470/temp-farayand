@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefOrg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:tools="clr-namespace:Telerik.Windows.Diagrams.Core;assembly=Telerik.Windows.Diagrams.Core"
+             xmlns:primitives="clr-namespace:Telerik.Windows.Controls.Diagrams.Primitives;assembly=Telerik.Windows.Controls.Diagrams"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:view="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:view2="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="500"
+             d:DesignWidth="700"
+             x:Name="UsrCtl">
+
+    <!--xmlns:view2="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork"-->
+
+    <!--<UserControl.DataContext>
+        <vm:DefOrg></vm:DefOrg>
+    </UserControl.DataContext>-->
+
+    <Grid FlowDirection="RightToLeft"
+          Style="{StaticResource MainWindowsContentGridStyle}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TabControl Style="{StaticResource MetroTabControl}"
+                    SelectionChanged="tbCtrl_SelectionChanged"
+                    Name="tbCtrl"
+                    Tag="1">
+
+            <TabItem Header="معرفی سازمان های تابعه">
+
+                <Border Style="{StaticResource DetailBorderStyle}">
+
+                    <Grid>
+
+                        <view2:OrgChart DataContext="{Binding OrgChartVM}"
+                                        x:Name="ucOrgChart"
+                                        Margin="0,10" />
+                    </Grid>
+
+                </Border>
+
+            </TabItem>
+
+            <TabItem Header="سازمان‏های هم سود"
+                     IsEnabled="{Binding Acs_ViewOrgOut}"
+                     Background="Transparent">
+                <Grid Width="400"
+                      HorizontalAlignment="Left"
+                      Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <custom:DelayedBindingTextBox Text="{Binding TxtForSchOsdOrg, Mode=TwoWay}" />
+
+                    <DataGrid ItemsSource="{Binding OsdOrgLst}"
+                              Name="dg1"
+                              Grid.Row="1"
+                              HeadersVisibility="None"
+                              SelectedItem="{Binding SelectedSharedProfitOrg, Mode=TwoWay}"
+                              ScrollViewer.VerticalScrollBarVisibility="Visible"
+                              HorizontalAlignment="Left"
+                              BorderBrush="Transparent">
+                        <i:Interaction.Behaviors>
+                            <ext:ScrollIntoViewBehavior />
+                            <ext:SetSelectedAfterAddNewItemBehavior />
+                        </i:Interaction.Behaviors>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Binding="{Binding FldNamOrg}">
+
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="سازمان‏های بیرونی"
+                     IsEnabled="{Binding Acs_ViewOrgOut}">
+
+                <Grid Width="400"
+                      HorizontalAlignment="Left"
+                      Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <custom:DelayedBindingTextBox Text="{Binding TxtForSchNonDepOrg, Mode=TwoWay}" />
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Button Style="{StaticResource CommonBtnStyle}"
+                                IsEnabled="{Binding Acs_AddOrgOut}"
+                                Margin="5,0"
+                                Command="{Binding AddNonDepOrgCommand}"
+                                HorizontalAlignment="Left"
+                                ToolTip="سازمان جدید">
+
+                            <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                        </Button>
+
+                        <Button Style="{StaticResource CommonBtnStyle}"
+                                IsEnabled="{Binding Acs_DelOrgOut}"
+                                Command="{Binding DeleteNonDepOrgCommand}"
+                                CommandParameter="{Binding Path=SelectedItem, ElementName=dg2}">
+                            <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+                        </Button>
+
+                    </StackPanel>
+
+                    <DataGrid ItemsSource="{Binding NonDepOrgLst}"
+                              Name="dg2"
+                              Grid.Row="2"
+                              HeadersVisibility="None"
+                              VerticalAlignment="Stretch"
+                              ScrollViewer.VerticalScrollBarVisibility="Visible"
+                              SelectedItem="{Binding SelectedNonDepOrg, Mode=TwoWay}"
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Stretch"
+                              BorderBrush="Transparent">
+
+                        <i:Interaction.Behaviors>
+                            <ext:ScrollIntoViewBehavior />
+                            <ext:SetSelectedAfterAddNewItemBehavior />
+                        </i:Interaction.Behaviors>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Binding="{Binding FldNamOrg}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <GridSplitter Grid.Row="1"
+                      ResizeBehavior="PreviousAndNext"
+                      Height="5" />
+
+        <view:DtlOrg DataContext="{Binding SelectedDtl}"
+                     x:Name="dtlOrg"
+                     Margin="0,20"
+                     Grid.Row="2" />
+
+    </Grid>
+
+</UserControl>

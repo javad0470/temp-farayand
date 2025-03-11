@@ -1,0 +1,190 @@
+﻿<basePopup:BasePopup xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcNews"
+                     xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+                     mc:Ignorable="d"
+                     d:DesignHeight="300"
+                     d:DesignWidth="300">
+
+    <Grid FlowDirection="RightToLeft"
+          Style="{StaticResource PopupGrid}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource PopupFromBorderStyle}"
+                Grid.Row="0">
+
+            <TextBlock Text="فهرست خبر ها"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource TextBlockForPopupTitrStyle}"></TextBlock>
+
+        </Border>
+
+        <TabControl Grid.Row="1"
+                    Style="{StaticResource MetroTabControlForPopupForms}"
+                    Tag="1">
+
+            <TabItem Header="دریافت شده از این فعالیت من"
+                     IsSelected="{Binding IsFomActCntSlcEed, Mode=TwoWay}">
+
+                <Border Style="{StaticResource DetailBorderStyle}">
+
+                    <DataGrid ItemsSource="{Binding RecvFomActCnt.Groups, Mode=OneWay, IsAsync=True}"
+                              Style="{StaticResource PopupDataGridStyle}"
+                              MouseDoubleClick="dgr_OnMouseDoubleClick"
+                              SelectedItem="{Binding FomActCntSlcEedItm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ObjRstSelectedItem}}">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Header="عنوان خبر"
+                                                    Width="*">
+
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+
+                                        <Grid VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Stretch"
+                                              ToolTipService.ShowDuration="60000"
+                                              ToolTipService.HasDropShadow="False">
+
+                                            <TextBlock Text="{Binding Items[0].Item1.FldTtlNews}"></TextBlock>
+
+                                            <Grid.ToolTip>
+
+                                                <ToolTip Background="{DynamicResource ToolTipForSlcObjRstBackground}"
+                                                         BorderBrush="Transparent"
+                                                         ContentTemplate="{StaticResource ObjRstForSrtDataTemplate}">
+
+                                                </ToolTip>
+
+                                            </Grid.ToolTip>
+
+                                        </Grid>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Border>
+
+            </TabItem>
+
+            <TabItem Header="دریافت شده از من"
+                     IsSelected="{Binding IsFomMeeSlcEed, Mode=TwoWay}">
+
+                <Border Style="{StaticResource DetailBorderStyle}">
+
+                    <DataGrid ItemsSource="{Binding RecvFomMee.Groups, Mode=OneWay, IsAsync=True}"
+                              HeadersVisibility="None"
+                              MouseDoubleClick="dgr_OnMouseDoubleClick"
+                              Style="{StaticResource PopupDataGridStyle}"
+                              SelectedItem="{Binding FomMeeSlcEedItm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ObjRstSelectedItem}}">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Header="عنوان خبر"
+                                                    Width="*">
+
+                                <DataGridTemplateColumn.CellTemplate>
+
+                                    <DataTemplate>
+
+                                        <Grid VerticalAlignment="Stretch"
+                                              HorizontalAlignment="Stretch"
+                                              ToolTipService.ShowDuration="60000"
+                                              ToolTipService.HasDropShadow="False">
+
+                                            <TextBlock Text="{Binding Items[0].Item1.FldTtlNews}"></TextBlock>
+
+                                            <Grid.ToolTip>
+
+                                                <ToolTip Background="{DynamicResource ToolTipForSlcObjRstBackground}"
+                                                         BorderBrush="Transparent"
+                                                         ContentTemplate="{StaticResource ObjRstForSrtDataTemplate}">
+
+                                                </ToolTip>
+
+                                            </Grid.ToolTip>
+
+                                        </Grid>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Border>
+
+            </TabItem>
+
+        </TabControl>
+
+        <StackPanel Grid.Row="2"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+
+            <TextBlock Text="خبر مورد نظر را از فهرست بالا انتخاب نمایید"
+                       Style="{StaticResource TextBlockForPopupMessagesStyle}"></TextBlock>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+
+            <TextBlock Text="خبر مورد نظر در فهرست بالا مشاهده نشد؟"
+                       Style="{StaticResource TextBlockForPopupMessagesStyle2}"></TextBlock>
+
+            <Button Content="بلی"
+                    Margin="10,0"
+                    Style="{StaticResource YesBtnStyle}"
+                    x:Name="stkPnl">
+
+                <i:Interaction.Triggers>
+
+                    <i:EventTrigger EventName="Click">
+
+                        <i:InvokeCommandAction  Command="{Binding Path=DataContext.NewsDoesntExistCommand, ElementName=stkPnl}"></i:InvokeCommandAction>
+
+                    </i:EventTrigger>
+
+                    <!--<i:EventTrigger EventName="Click">
+
+                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                 TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Popup}}"
+                                                 Value="False"></ei:ChangePropertyAction>
+
+                    </i:EventTrigger>-->
+
+                </i:Interaction.Triggers>
+
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+
+</basePopup:BasePopup>

@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.BasePopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             d:DesignHeight="200"
+             d:DesignWidth="300">
+
+    <Grid Name="grdHeader">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ContentControl Name="cntCtrl"
+                        Content="{Binding PopupContent, RelativeSource={RelativeSource  Mode=FindAncestor, AncestorType={x:Type popup:BasePopup}}}">
+
+        </ContentControl>
+
+        <Grid Margin="10,0"
+              Grid.Row="1"
+              FlowDirection="LeftToRight"
+              Visibility="{Binding CommandBarVisible, Converter={StaticResource bool2VisConv}}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+
+                <!--<Button Margin="0,5"
+                        Visibility="{Binding Path=Content.DataContext.CancelVisible, ElementName=cntCtrl,Converter={StaticResource bool2VisConv}}"
+                        Style="{StaticResource CommonBtnStyle}">
+
+                    <custom:BackgroundedImage Source="{StaticResource CANCEL}" />-->
+
+                <Button Style="{StaticResource OrgButton}"
+                        Background="{StaticResource Ok}"
+                        Margin="0,5"
+                        IsEnabled="{Binding Path=Content.DataContext.OKEnabled, ElementName=cntCtrl}">
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction  Command="{Binding Path=Content.DataContext.OKCommand, ElementName=cntCtrl}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction  MethodName="CloseParentPopup"
+                                                  TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+                </Button>
+                <Button Style="{StaticResource OrgButton}"
+                        Background="{StaticResource Delete}"
+                        Margin="0,5"
+                        Visibility="{Binding Path=Content.DataContext.CancelVisible, ElementName=cntCtrl,Converter={StaticResource bool2VisConv}}">
+                    <!--Command="{Binding Path=Content.DataContext.CancelCommand, ElementName=cntCtrl}"-->
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction  Command="{Binding Path=Content.DataContext.CancelCommand, ElementName=cntCtrl}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction  MethodName="CloseParentPopup"
+                                                  TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" />
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+                </Button>
+
+                <!--<Button IsEnabled="{Binding Path=Content.DataContext.OKEnabled, ElementName=cntCtrl}"
+                        Margin="5,5"
+                        Style="{StaticResource CommonBtnStyle}">
+
+                    <custom:BackgroundedImage Source="{StaticResource OK}" />-->
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

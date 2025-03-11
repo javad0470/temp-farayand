@@ -1,0 +1,124 @@
+﻿<basePopup:BasePopup x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcEror"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                     xmlns:local="clr-namespace:SSYM.OrgDsn.UI.Behavior"
+                     mc:Ignorable="d"
+                     d:DesignHeight="300"
+                     d:DesignWidth="300">
+
+    <Grid FlowDirection="RightToLeft"
+          Style="{StaticResource PopupGrid}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource PopupFromBorderStyle}"
+                Grid.Row="0">
+
+            <TextBlock Text="فهرست خطاها"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource TextBlockForPopupTitrStyle}"></TextBlock>
+
+        </Border>
+
+
+        <DataGrid Grid.Row="1"
+                  x:Name="radGridView"
+                  MouseDoubleClick="dgr_OnMouseDoubleClick"
+                  ItemsSource="{Binding AllErors, IsAsync=True}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="عنوان خطا"
+                                    Binding="{Binding FldNamEror}" />
+
+                <DataGridTextColumn Header="نوع خطا"
+                                    Binding="{Binding FldTtlTypEror}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<telerik:RadGridView >
+
+            <i:Interaction.Behaviors>
+                <local:MyMultiSelectBehavior SelectedItems="{Binding DataContext.SelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+            </i:Interaction.Behaviors>
+
+            <i:Interaction.Triggers>
+                <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                Value="False">
+                    <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                             Value="Multiple" />
+                </ei:DataTrigger>
+                <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                Value="True">
+                    <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                             Value="Single" />
+                </ei:DataTrigger>
+            </i:Interaction.Triggers>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewSelectColumn></telerik:GridViewSelectColumn>
+                <telerik:GridViewDataColumn Header="عنوان خطا"
+                                            DataMemberBinding="{Binding FldNamEror}"></telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="نوع خطا"
+                                            DataMemberBinding="{Binding FldTtlTypEror}"></telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>-->
+
+        <StackPanel Grid.Row="2"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+
+            <TextBlock Style="{StaticResource TextBlockForPopupMessagesStyle2}" Text="خطای مورد نظر را از فهرست بالا انتخاب کنید" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    x:Name="stkPnl"
+                    Orientation="Horizontal">
+
+            <TextBlock Grid.Row="2"
+                       Style="{StaticResource TextBlockForPopupMessagesStyle2}"
+                       Text="خطای مورد نظر در فهرست بالا مشاهده نشد" />
+
+            <Button Content="بلی"
+                    Style="{StaticResource YesBtnStyle}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding DataContext.ErrorDoesntExistCommand, ElementName=stkPnl}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <!--<i:EventTrigger EventName="Click">
+                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                 TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Popup}}"
+                                                 Value="False">
+                        </ei:ChangePropertyAction>
+                    </i:EventTrigger>-->
+                </i:Interaction.Triggers>
+
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+
+</basePopup:BasePopup>

@@ -1,0 +1,311 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Dson.DsonDtlAssignedByMe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:DsonCtrls="clr-namespace:SSYM.OrgDsn.UI.View.Dson.UserCtl"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:DsonTypes="clr-namespace:SSYM.OrgDsn.ViewModel.Dson;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:dsonCtrl="clr-namespace:SSYM.OrgDsn.UI.View.Dson.UserCtl"
+             xmlns:UI="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             FlowDirection="RightToLeft"
+             d:DesignHeight="300"
+             d:DesignWidth="600">
+
+    <Grid>
+        <!--Style="{StaticResource MetroTabControl}"-->
+        <TabControl Style="{StaticResource MetroTabControl}"
+                    Tag="1">
+            <TabItem IsSelected="{Binding IsAccepted, Mode=TwoWay}"
+                     Header="{Binding AcceptRdbCnt}">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="0,20"
+                          MaxWidth="700"
+                          MinWidth="400"
+                          VerticalAlignment="Center"
+                          Name="grdDson">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid VerticalAlignment="Center"
+                              Grid.Row="0"
+                              HorizontalAlignment="Center">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <!--نمایش جایگاه سمت راست-->
+                                <TextBlock Text="{Binding ActSrc.TblNod.FldNamNod}"
+                                           Name="tbkRight"
+                                           Style="{StaticResource CommonTextBlockStyle}"
+                                           Margin="0,5"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+
+                                <Button ToolTip="انتخاب مبداء"
+                                        Style="{StaticResource ImagebtnStyle}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Grid.Column="1"
+                                        Command="{Binding SelectSrcCommand}"
+                                        Visibility="{Binding InputVisibility}">
+
+                                    <UI:BackgroundedImage Source="{StaticResource addItmImage}"
+                                                          Width="32" />
+                                </Button>
+
+                            </Grid>
+
+                            <Rectangle HorizontalAlignment="Stretch"
+                                       Margin="0,5"
+                                       Grid.Row="1"
+                                       Height="2"
+                                       Fill="{DynamicResource appClr1}" />
+
+                            <!--فعالیت راست-->
+                            <dsonCtrl:Act DataContext="{Binding ActSrc}"
+                                          Grid.Row="2" />
+                            <!--Visibility="{Binding WayAwrIfrm.ActSrc.FldActUspf, Converter={StaticResource NotBooleanToVisibilityConverter}}"-->
+                        </Grid>
+
+                        <Grid  Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,10"
+                               VerticalAlignment="Bottom">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button Grid.Column="0"
+                                                  Margin="20,0"
+                                                  DataContext="{Binding WayAwrIfrm.ObjRst.EvtRst}"
+                                                  HorizontalAlignment="Right"
+                                                  VerticalAlignment="Center">
+
+                                <Button.Style>
+                                    <Style TargetType="Button"
+                                           BasedOn="{StaticResource OrgButton}">
+
+                                        <Style.Triggers>
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="1">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource GeneralAfter}" />
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="2">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource SpecialAfter}" />
+
+                                            </DataTrigger>
+
+                                            <!--<DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="3">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource newAwrEvtRst}" />
+
+                                            </DataTrigger>-->
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="4">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource ErrorDuring}" />
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="5">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource CancelDuring}" />
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="6">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource SpecialDuring}" />
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                                         Value="7">
+                                                <Setter Property="Background"
+                                                        Value="{StaticResource newAwrEvtRst}" />
+
+                                            </DataTrigger>
+
+                                        </Style.Triggers>
+
+                                    </Style>
+
+                                </Button.Style>
+
+
+                            </Button>
+
+
+
+                            <ed:LineArrow  Fill="{DynamicResource appClr2}"
+                                           Grid.Column="1"
+                                           BendAmount="0"
+                                           HorizontalAlignment="Center"
+                                           Height="30"
+                                           Stroke="{DynamicResource appClr2}"
+                                           StrokeThickness="4"
+                                           Width="60">
+                                <ed:LineArrow.LayoutTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform Angle="-25" />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </ed:LineArrow.LayoutTransform>
+                            </ed:LineArrow>
+
+                            <dsonCtrl:InOutIcn Grid.Column="2"
+                                               DataContext="{Binding WayAwrIfrm}"
+                                               HorizontalAlignment="Left"
+                                               Margin="0,20,0,0"
+                                               VerticalAlignment="Center" />
+
+                        </Grid>
+
+                        <Grid VerticalAlignment="Center"
+                              Grid.Column="2"
+                              HorizontalAlignment="Center">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--نمایش جایگاه سمت چپ-->
+                                <TextBlock Text="{Binding ActDst.TblNod.FldNamNod}"
+                                           Grid.Column="0"
+                                           Name="tbkLeft"
+                                           Style="{StaticResource CommonTextBlockStyle}"
+                                           Margin="0,5"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+
+
+                                <Button Grid.Column="1"
+                                        ToolTip="انتخاب مقصد"
+                                        Style="{StaticResource ImagebtnStyle}"
+                                        Command="{Binding SelectDestCommand}"
+                                        Visibility="{Binding OutputVisibility}">
+
+                                    <UI:BackgroundedImage Source="{StaticResource addItmImage}"
+                                                          Width="32" />
+
+                                </Button>
+
+                            </Grid>
+
+
+
+                            <Rectangle HorizontalAlignment="Stretch"
+                                       Margin="0,5"
+                                       Grid.Row="1"
+                                       Height="2"
+                                       Fill="{DynamicResource appClr1}" />
+
+                            <!--فعالیت چپ-->
+                            <dsonCtrl:Act DataContext="{Binding ActDst}"
+                                          Grid.Row="2" />
+                            <!--Visibility="{Binding WayAwrIfrm.ActDst.FldActUspf, Converter={StaticResource NotBooleanToVisibilityConverter}}"-->
+
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1"
+                          Background="{DynamicResource PopupMessagesTextBlockBackground}">
+
+                        <TextBlock Text="{Binding FrstFtrRgnText}"
+                                   Style="{StaticResource TextBlockForPopupMessagesStyle2}" />
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+
+                            <!--<Button Style="{StaticResource ImagebtnStyle}"
+                                    Command="{Binding CancelCommand}"
+                                    Margin="5"
+                                    Height="32">
+                                <Image  Source="{StaticResource CANCEL}"></Image>
+                            </Button>-->
+
+                            <Button Style="{StaticResource ImagebtnStyle}"
+                                    IsEnabled="{Binding SaveEnabled}"
+                                    Command="{Binding SaveFormCommand}"
+                                    Width="32"
+                                    Height="32"
+                                    Margin="5">
+                                <Image Source="{StaticResource  OK}"></Image>
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="{Binding RejectRdbCnt}">
+                <Grid>
+                    
+                    <ScrollViewer MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}}">
+                        <DsonCtrls:Cvsn IsEnabled="{Binding DataContext.Acs_SttlDson, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                        DataContext="{Binding CvsnViewModel}" />
+
+                    </ScrollViewer>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</UserControl>

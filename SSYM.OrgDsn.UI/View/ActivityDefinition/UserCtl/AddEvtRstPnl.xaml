@@ -1,0 +1,168 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl.AddEvtRstPnl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             Width="125">
+    <UserControl.Resources>
+        <Storyboard x:Key="stbExpand">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Offset)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[0].(GradientStop.Offset)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                      Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0"
+                                        Value="{x:Static Visibility.Visible}" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="stbCollapse">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[1].(GradientStop.Offset)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                      Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.OpacityMask).(GradientBrush.GradientStops)[0].(GradientStop.Offset)"
+                                           Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2"
+                                      Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                           Storyboard.TargetName="grid">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2"
+                                        Value="{x:Static Visibility.Collapsed}" />
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ToggleButton.Checked"
+                      SourceName="image">
+            <BeginStoryboard Storyboard="{StaticResource stbExpand}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ToggleButton.Unchecked"
+                      SourceName="image">
+            <BeginStoryboard x:Name="stbCollapse_BeginStoryboard"
+                             Storyboard="{StaticResource stbCollapse}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="300"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <ToggleButton VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      x:Name="image"
+                      Width="50"
+                      Height="50"
+                      Grid.Row="0"
+                      Style="{StaticResource ToggleButton01}">
+
+            <custom:BackgroundedImage Source="{StaticResource evtRstAdd1}"
+                                      VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      RenderTransformOrigin="0.5,0.5">
+
+            </custom:BackgroundedImage>
+        </ToggleButton>
+        <Grid x:Name="grid"
+              Margin="50,0,0,0"
+              Width="75"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Left"
+              Visibility="Collapsed">
+            <Grid.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1"
+                                     StartPoint="0.5,0">
+                    <GradientStop Color="Black" />
+                    <GradientStop />
+                </LinearGradientBrush>
+            </Grid.OpacityMask>
+            <Border x:Name="border"
+                    Margin="15.5,0,0,0"
+                    Background="#FFFFFFFF"
+                    BorderBrush="#FF565656"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                <StackPanel>
+                    <Button Background="{StaticResource GeneralAfter}"
+                                              x:Name="evtRstAftrAnyCdnAftrAct"
+                                              Tag="anyCdnEvtRst"
+                                              ToolTip="وقوع هر شرایطی پس فعایت"
+                                              telerik:DragDropManager.AllowDrag="True"
+                            Style="{StaticResource OrgButton}"
+                                              Margin="3,2"
+                                              HorizontalAlignment="Center" />
+                    <Button Background="{StaticResource SpecialAfter}"
+                                              x:Name="evtRstSpcCdnAftrAct"
+                                              Tag="spcCdnEvtRstAftr"
+                                              ToolTip="وقوع شرایط خاص پس فعایت"
+                                              telerik:DragDropManager.AllowDrag="True"
+                            Style="{StaticResource OrgButton}"
+                                              Margin="3,2"
+                                              HorizontalAlignment="Center" />
+                    <Button Background="{StaticResource SpecialDuring}"
+                                              x:Name="evtRstSpcCdnInTimImpAct"
+                                              Tag="spcCdnEvtRstInnTim"
+                                              ToolTip="وقوع شرایط خاص هنگام فعایت"
+                                              telerik:DragDropManager.AllowDrag="True"
+                            Style="{StaticResource OrgButton}"
+                                              Margin="3,2"
+                                              HorizontalAlignment="Center" />
+                    <Button Background="{StaticResource ErrorDuring}"
+                                              x:Name="evtRstErorInTimImpAct"
+                                              Tag="errAccurEvtRst"
+                                              ToolTip="وقوع خطا هنگام فعایت"
+                                              telerik:DragDropManager.AllowDrag="True"
+                            Style="{StaticResource OrgButton}"
+                                              Margin="3,2"
+                                              HorizontalAlignment="Center" />
+                    <Button Background="{StaticResource CancelDuring}"
+                                              x:Name="evtRstCnlInTimImpAct"
+                                              Tag="cancelEvtRst"
+                                              ToolTip="لغو"
+                                              telerik:DragDropManager.AllowDrag="True"
+                                              Style="{StaticResource OrgButton}"
+                                              Margin="3,2"
+                                              HorizontalAlignment="Center" />
+                </StackPanel>
+            </Border>
+            <Image Source="/SSYM.OrgDsn.UI;component/Assets/img/Public/Triangle.png"
+                   HorizontalAlignment="Left"
+                   Width="16"
+                   Height="16"
+                   VerticalAlignment="Top"
+                   Margin="1,17,0,0"
+                   Stretch="Fill"
+                   IsHitTestVisible="False"
+                   RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"
+                                        ScaleX="-1" />
+                        <SkewTransform AngleY="0"
+                                       AngleX="0" />
+                        <RotateTransform Angle="0" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,415 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DtlPosPst"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:OrgChart="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork"
+             xmlns:OrgChartVM="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl.Ywork;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:popupAdmin="clr-namespace:SSYM.OrgDsn.UI.View.Admin"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:common="clr-namespace:SSYM.OrgDsn.UI.View.Common"
+             mc:Ignorable="d">
+    <Grid Margin="10,2.5"
+          FlowDirection="RightToLeft"
+          Visibility="{Binding SelectedPosPst, Converter={StaticResource ObjectToVisibilityConverter}}">
+
+        <TabControl Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Tag="1"
+                    Style="{StaticResource MetroTabControl}">
+
+            <TabItem Header="پایه"
+                     Background="Transparent"
+                     Width="80">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Margin="10"
+                          VerticalAlignment="Stretch"
+                          HorizontalAlignment="Stretch"
+                          IsEnabled="{Binding SelectedPosPst.Acs_EditPosPst}"
+                          Visibility="{Binding Path=Visibility, ElementName=treeView}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Grid.Row="0"
+                                   VerticalAlignment="Top"
+                                   Text="نام"
+                                   Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+
+                        <TextBox Grid.Column="1"
+                                 Grid.Row="0"
+                                 VerticalAlignment="Top"
+                                 Text="{Binding SelectedPosPst.FldNamPosPst, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+
+                    </Grid>
+
+                    <GroupBox Header="نمایندگان"
+                              Grid.Column="1">
+                        <Grid>
+                            <common:NoPermission VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center" />
+
+                            <Grid Background="{DynamicResource appBG}"
+                                  Visibility="{Binding SelectedPosPst.Acs_ViewAgntPosPstOrg2, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Button Style="{StaticResource CommonBtnStyle}"
+                                            Margin="5,0"
+                                            IsEnabled="{Binding SelectedPosPst.Acs_AddAgntPosPstOrg2}"
+                                            Command="{Binding OpenAddAgntNodCommand}">
+
+                                        <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                                    </Button>
+
+                                    <Button Style="{StaticResource CommonBtnStyle}"
+                                            Margin="5,0"
+                                            IsEnabled="{Binding SelectedPosPst.Acs_DelAgntPosPstOrg2}"
+                                            Command="{Binding DeleteAgntNodCommand}"
+                                            CommandParameter="{Binding SelectedItem, ElementName=lstAgnts}">
+
+                                        <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+
+                                    </Button>
+                                </StackPanel>
+
+                                <DataGrid Name="lstAgnts"
+                                          Grid.Row="1"
+                                          Background="Transparent"
+                                          HeadersVisibility="None"
+                                          SelectedItem="{Binding SelectedAgnt, Mode=TwoWay}"
+                                          ItemsSource="{Binding SelectedPosPst.Nod.TblAgntNods}">
+
+                                    <i:Interaction.Behaviors>
+                                        <ext:ScrollIntoViewBehavior />
+                                        <ext:SetSelectedAfterAddNewItemBehavior />
+                                    </i:Interaction.Behaviors>
+
+
+                                    <DataGrid.Columns>
+                                        <DataGridTemplateColumn Width="*">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                    <Run Text="{Binding TblPsn.FldNam1stPsn}" />
+                                                    <Run Text="{Binding TblPsn.FldNam2ndPsn}" />
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTemplateColumn Width="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <telerik:RadComboBox Grid.Column="2"
+                                                                         Width="190"
+                                                                         Style="{StaticResource MetroComboBox}"
+                                                                         ItemsSource="{Binding DataContext.LvlAcs, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                         SelectedValue="{Binding FldCodLvlAcs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                         SelectedValuePath="FldCod"
+                                                                         DisplayMemberPath="FldNam">
+                                                        <telerik:RadComboBox.IsEnabled>
+                                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}"
+                                                                          ConverterParameter="bool">
+
+                                                                <Binding Path="DataContext.SelectedPosPst.Acs_EditAgntPosPst2"
+                                                                         RelativeSource="{RelativeSource AncestorType=UserControl}" />
+
+                                                                <Binding Path="IsAdmin"
+                                                                         Converter="{StaticResource NotConverter}" />
+                                                            </MultiBinding>
+                                                        </telerik:RadComboBox.IsEnabled>
+
+                                                    </telerik:RadComboBox>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                        <DataGridTemplateColumn Width="200">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+
+                                                    <telerik:RadComboBox DisplayMemberPath="FldNamItm"
+                                                                         Width="190"
+                                                                         Grid.Column="3"
+                                                                         SelectedValue="{Binding FldDmnAgnt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                         ItemsSource="{Binding DataContext.DmnAcs, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                         SelectedValuePath="FldCodItm"
+                                                                         Style="{StaticResource MetroComboBox}">
+
+                                                        <telerik:RadComboBox.IsEnabled>
+                                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}"
+                                                                          ConverterParameter="bool">
+
+                                                                <Binding Path="DataContext.SelectedPosPst.Acs_EditAgntPosPst2"
+                                                                         RelativeSource="{RelativeSource AncestorType=UserControl}" />
+
+                                                                <Binding Path="IsAdmin"
+                                                                         Converter="{StaticResource NotConverter}" />
+                                                            </MultiBinding>
+                                                        </telerik:RadComboBox.IsEnabled>
+
+                                                    </telerik:RadComboBox>
+
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+
+                                </DataGrid>
+                            </Grid>
+
+                        </Grid>
+
+                    </GroupBox>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="بیشتر"
+                     Width="80">
+
+                <Border Style="{StaticResource DetailBorderStyle}"
+                        Margin="20">
+
+                    <Grid Visibility="{Binding Path=Visibility, ElementName=treeView}"
+                          IsEnabled="{Binding SelectedPosPst.Acs_EditPosPst}">
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Left">
+
+                            <TextBlock Text="لیست نقش هایی که"
+                                       Margin="5,0"
+                                       Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+
+                            <TextBlock Text="''"
+                                       Style="{StaticResource UserDefinedTextBlockStyle}"></TextBlock>
+
+                            <TextBlock Text="{Binding SelectedPosPst.FldNamPosPst}"
+                                       Style="{StaticResource UserDefinedTextBlockStyle}"></TextBlock>
+
+                            <TextBlock Text="''"
+                                       Style="{StaticResource UserDefinedTextBlockStyle}"></TextBlock>
+
+                            <TextBlock Text="در آن ها مشارکت دارد:"
+                                       Margin="5,0"
+                                       Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+
+                        </StackPanel>
+
+                        <ScrollViewer Grid.Row="1"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Auto"
+                                      MaxHeight="{Binding Path=ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                                      MaxWidth="{Binding Path=ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}">
+
+                            <Border Style="{StaticResource DetailBorderStyle}">
+
+                                <Grid>
+
+                                    <ItemsControl ItemsSource="{Binding SelectedPosPst.Nod.TblPlyrRols}">
+
+                                        <ItemsControl.ItemTemplate>
+
+                                            <DataTemplate>
+
+                                                <Expander Header="{Binding TblRol.FldTtlRol}">
+
+                                                    <Expander.Content>
+
+                                                        <ItemsControl ItemsSource="{Binding TblRol.TblPlyrRols}">
+
+                                                            <ItemsControl.ItemTemplate>
+
+                                                                <DataTemplate>
+
+                                                                    <StackPanel Orientation="Horizontal"
+                                                                                Margin="50,0">
+
+                                                                        <Border Background="Black"
+                                                                                Height="20"
+                                                                                Width="20"
+                                                                                Margin="5">
+
+                                                                            <Image>
+
+                                                                                <Image.Style>
+
+                                                                                    <Style TargetType="Image">
+
+                                                                                        <Style.Triggers>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                         Value="1">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource org2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                         Value="2">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource orgPos2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                         Value="3">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource Psn}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                         Value="4">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource orgRole2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                        </Style.Triggers>
+
+                                                                                    </Style>
+
+                                                                                </Image.Style>
+
+                                                                            </Image>
+
+                                                                        </Border>
+
+                                                                        <TextBlock Style="{StaticResource UserDefinedTextBlockStyle}"
+                                                                                   Text="{Binding TblNod.FldNamNod}"></TextBlock>
+
+                                                                    </StackPanel>
+
+                                                                </DataTemplate>
+
+                                                            </ItemsControl.ItemTemplate>
+
+                                                        </ItemsControl>
+
+                                                    </Expander.Content>
+
+                                                </Expander>
+
+                                            </DataTemplate>
+
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+
+                                </Grid>
+
+                            </Border>
+
+                        </ScrollViewer>
+
+                    </Grid>
+
+                </Border>
+
+            </TabItem>
+
+        </TabControl>
+
+        <!--<Popup   x:Name="DefLvlAcsPopup"
+                 Placement="Center"
+                 StaysOpen="False"
+                 PopupAnimation="Slide"
+                 AllowsTransparency="True"
+                 Width="800"
+                 Height="600">
+
+            <popup:BasePopup>
+                <popup:BasePopup.PopupContent>
+                    <popupAdmin:DefLvlAcs DataContext="{Binding DefLvlAcs}"></popupAdmin:DefLvlAcs>
+                </popup:BasePopup.PopupContent>
+            </popup:BasePopup>
+
+        </Popup>-->
+
+        <!--<Popup   x:Name="SlcPsnPopup"
+                 IsOpen="{Binding IsSlcPsnOpen}"
+                 Placement="Center"
+                 StaysOpen="True"
+                 PopupAnimation="Slide"
+                 AllowsTransparency="True">
+
+            <popup:BasePopup DataContext="{Binding PsnIsdOrgVM}">
+
+                <popup:BasePopup.PopupContent>
+
+                    <UserControl>
+
+                        <Border Style="{StaticResource DetailBorderStyle}">
+
+                            <Grid Style="{StaticResource PopupGrid}">
+
+                                <DataGrid ItemsSource="{Binding PsnIsdOrg}"
+                                          SelectedItem="{Binding SelectedPsnIsdOrg}">
+
+                                    <DataGrid.Columns>
+
+                                        <DataGridTextColumn Header="نام"
+                                                            Binding="{Binding FldNam1stPsn}"></DataGridTextColumn>
+
+                                        <DataGridTextColumn Header="نام خانوادگی"
+                                                            Binding="{Binding FldNam2ndPsn}"
+                                                            Width="*"></DataGridTextColumn>
+
+                                    </DataGrid.Columns>
+
+                                </DataGrid>
+
+                            </Grid>
+
+                        </Border>
+
+                    </UserControl>
+
+                </popup:BasePopup.PopupContent>
+
+            </popup:BasePopup>
+
+        </Popup>-->
+
+    </Grid>
+</UserControl>

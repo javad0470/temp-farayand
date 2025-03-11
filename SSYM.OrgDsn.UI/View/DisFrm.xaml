@@ -1,0 +1,77 @@
+﻿<Window x:Class="SSYM.OrgDsn.UI.View.DisFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DisFrm" Height="300" Width="300"
+        xmlns:ViewAct="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Main"
+        xmlns:ViewEntity="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+        xmlns:ViewPrs="clr-namespace:SSYM.OrgDsn.UI.View.Process.UserCtl"
+        xmlns:VMEntity="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMAct="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Main;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMDson="clr-namespace:SSYM.OrgDsn.ViewModel.Dson;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMPrs="clr-namespace:SSYM.OrgDsn.ViewModel.Process.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VM="clr-namespace:SSYM.OrgDsn.ViewModel;assembly=SSYM.OrgDsn.ViewModel">
+    
+    <Window.DataContext>
+
+        <VM:DisFrmViewModel></VM:DisFrmViewModel>
+        
+    </Window.DataContext>
+        
+    <Window.Resources>
+
+        <DataTemplate DataType="{x:Type VMAct:ActDefViewModel}">
+            
+            <ViewAct:DefAct></ViewAct:DefAct>
+            
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefOrg}">
+
+            <ViewEntity:DefOrg></ViewEntity:DefOrg>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefPosPstViewModel}">
+
+            <ViewEntity:DefPosPst></ViewEntity:DefPosPst>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefPsnInsideOrgViewModel}">
+
+            <ViewEntity:DefPsnInsideOrg></ViewEntity:DefPsnInsideOrg>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefPsnOutsideOrgViewModel}">
+
+            <ViewEntity:DefPsnOutsideOrg></ViewEntity:DefPsnOutsideOrg>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefRolIsdOrgViewModel}">
+
+            <ViewEntity:DefRolIsgOrg></ViewEntity:DefRolIsgOrg>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMEntity:DefRolViewModel}">
+
+            <ViewEntity:DefRolOsdOrg></ViewEntity:DefRolOsdOrg>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type VMPrs:DisPrsViewModel}">
+
+            <ViewPrs:DisPrs></ViewPrs:DisPrs>
+
+        </DataTemplate>
+
+    </Window.Resources>
+    
+    <Grid>
+
+        <ContentControl Content="{Binding SelectedObj}"></ContentControl>
+        
+    </Grid>
+</Window>

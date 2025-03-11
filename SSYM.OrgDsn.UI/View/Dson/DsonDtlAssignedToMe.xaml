@@ -1,0 +1,399 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Dson.DsonDtlAssignedToMe"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:DsonCtrls="clr-namespace:SSYM.OrgDsn.UI.View.Dson.UserCtl"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:DsonTypes="clr-namespace:SSYM.OrgDsn.ViewModel.Dson;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="700"
+             Name="uc1">
+
+    <TabControl Style="{StaticResource MetroTabControl}"
+                MaxHeight="{Binding Path=ActualHeight, ElementName=uc1}"
+                Tag="1">
+        <TabItem IsSelected="{Binding IsAccepted, Mode=TwoWay}"
+                 Header="{Binding AcceptRdbCnt}">
+            <Border Visibility="{Binding IsAccepted, Converter={StaticResource NullableBooleanToVisibilityConverter}}"
+                    Grid.Row="1">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Name="grdhdr"
+                          Visibility="{Binding IsActSpec, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Margin="10">
+                            <StackPanel Name="stkRadios"
+                                        Margin="5">
+                                <RadioButton Name="rdbFrst"
+                                             Content="{Binding FrstRdbCont}"
+                                             Command="{Binding AssignedCorrectlyCommand}" />
+                                <RadioButton Name="rdbScd"
+                                             Content="{Binding ScndRdbCont}"
+                                             Command="{Binding WrongEvtCommand}" />
+                                <RadioButton Name="rdbTrd"
+                                             Checked="rdbTrd_Checked"
+                                             Unchecked="rdbTrd_Unchecked"
+                                             Content="{Binding ThrdRdbCont}"
+                                             Command="{Binding WrongActCommand}" />
+
+                                <i:Interaction.Triggers>
+                                    <ei:DataTrigger Binding="{Binding AssignStatus}"
+                                                    Value="{x:Static DsonTypes:AssignStatusType.AssignedCorrectly}">
+                                        <ei:ChangePropertyAction PropertyName="IsChecked"
+                                                                 TargetName="rdbFrst"
+                                                                 Value="True" />
+
+                                        <ei:ChangePropertyAction PropertyName="IsChecked"
+                                                                 TargetName="rdbScd"
+                                                                 Value="False" />
+
+                                        <ei:ChangePropertyAction PropertyName="IsChecked"
+                                                                 TargetName="rdbTrd"
+                                                                 Value="False" />
+
+                                    </ei:DataTrigger>
+                                </i:Interaction.Triggers>
+                            </StackPanel>
+                        </Border>
+
+                    </Grid>
+
+                    <Grid Name="grdctnt"
+                          Grid.Row="1">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <!--Visibility="{Binding ActListVisibility, Converter={StaticResource BooleanToVisibilityConverter}}"-->
+
+                        <!--<DataGrid Name="cmbActs"
+                                  Loaded="cmbActs_Loaded_1"
+                                  Width="200"
+                                  VerticalAlignment="Top"
+                                  FlowDirection="RightToLeft"
+                                  MaxHeight="{Binding ActualHeight, ElementName=grdctnt}"
+                                  Margin="5"
+                                  SelectedItem="{Binding SelectedAct, Mode=TwoWay}"
+                                  SelectedValuePath="FldCodAct"
+                                  DisplayMemberPath="FldNamAct"
+                                  ItemsSource="{Binding LstActNod}"
+                                  Grid.Column="0">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header=""
+                                                    Width="40"
+                                                    Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource DataGridRowToIndexConverter}}"></DataGridTextColumn>
+
+                                <DataGridTextColumn Header="فعالیت ها"
+                                                    Width="*"
+                                                    Binding="{Binding FldNamAct}"></DataGridTextColumn>
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>-->
+
+
+                        <Grid Grid.Column="1"
+                              HorizontalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center">
+
+                                    <Grid.Visibility>
+                                        <MultiBinding Converter="{StaticResource AndVisibilityConverter}">
+                                            <Binding Path="InputVisibility" />
+                                            <Binding Path="UsrCtlEvtSrtVsbl" />
+                                        </MultiBinding>
+                                    </Grid.Visibility>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!--نمایش جایگاه سمت راست-->
+                                    <TextBlock Text="{Binding DsonAct.TblNod.FldNamNod}"
+                                               Style="{StaticResource CommonTextBlockStyle}"
+                                               Margin="0,5"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+
+                                    <Rectangle HorizontalAlignment="Stretch"
+                                               Margin="0,5"
+                                               Grid.Row="1"
+                                               Height="2"
+                                               Fill="{DynamicResource appClr1}" />
+
+                                    <!--فعالیت راست-->
+                                    <DsonCtrls:Act Margin="0,5"
+                                                   Grid.Row="2"
+                                                   DataContext="{Binding DsonAct}" />
+
+
+                                </Grid>
+
+                                <Grid Grid.Column="1"
+                                      Width="200"
+                                      Margin="5"
+                                      Visibility="{Binding UsrCtlEvtSrtVsbl}">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <!--نحوه های آگاهی-->
+                                    <DsonCtrls:WayAwr DataContext="{Binding WayAwrVM}"
+                                                      VerticalAlignment="Center"
+                                                      Grid.Row="1" />
+                                </Grid>
+
+                                <!--<Border >
+
+                                </Border>-->
+
+                            </Grid>
+
+
+                            <!--فعالیت وسط-->
+                            <Grid Grid.Column="1"
+                                  VerticalAlignment="Center">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+
+                                <!--نمایش جایگاه سمت راست-->
+                                <TextBlock Text="{Binding ElementName=cmbActs, Path=SelectedItem.TblNod.FldNamNod}"
+                                           Style="{StaticResource CommonTextBlockStyle}"
+                                           Margin="0,5"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+
+                                <Rectangle HorizontalAlignment="Stretch"
+                                           Margin="0,5"
+                                           Grid.Row="1"
+                                           Height="2"
+                                           Fill="{DynamicResource appClr1}" />
+
+                                <DsonCtrls:Act Grid.Row="2"
+                                               x:Name="actCenter"
+                                               DataContext="{Binding ElementName=cmbActs, Path=SelectedItem}" />
+                                <TextBlock Foreground="Red" Text="فعالیت مشخسی وجود ندارد"
+                                           Grid.Row="2"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Visibility="{Binding ActListFull,Converter={StaticResource NotBooleanToVisibilityConverter}}"/>
+                                <telerik:RadComboBox ItemsSource="{Binding LstActNod}"
+                                                     StaysOpenOnEdit="True"
+                                                     Width="180"
+                                                     BorderThickness="0"
+                                                     BorderBrush="Transparent"
+                                                     Name="cmbActs"
+                                                     HorizontalContentAlignment="Center"
+                                                     Foreground="White"
+                                                     VerticalAlignment="Center"
+                                                     Visibility="{Binding ActListFull,Converter={StaticResource bool2VisibilityConverter}}"
+                                                     Background="{DynamicResource appClr1}"
+                                                     Grid.Row="2"
+                                                     SelectedItem="{Binding SelectedAct, Mode=TwoWay}"
+                                                     SelectedValuePath="FldCodAct"
+                                                     DisplayMemberPath="FldNamAct">
+
+                                    <telerik:RadComboBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type telerik:RadComboBoxItem}">
+                                            <Setter Property="Background"
+                                                    Value="{DynamicResource appClr2}" />
+                                        </Style>
+                                    </telerik:RadComboBox.ItemContainerStyle>
+
+                                    <telerik:RadComboBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Background="{DynamicResource appClr2}"
+                                                        Orientation="Vertical">
+
+                                            </StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </telerik:RadComboBox.ItemsPanel>
+                                </telerik:RadComboBox>
+
+                            </Grid>
+
+
+
+                            <Grid Grid.Column="2">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Grid Grid.Column="0"
+                                      Width="200"
+                                      Visibility="{Binding UsrCtlEvtRstVsbl}">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+
+                                    <!--نحوه های آگاه سازی-->
+                                    <DsonCtrls:WayInfrm Grid.Row="1"
+                                                        VerticalAlignment="Center"
+                                                        DataContext="{Binding WayIfrmVM}" />
+
+                                </Grid>
+
+                                <!--<Border>
+                                </Border>-->
+
+
+                                <Grid Grid.Column="1"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center">
+
+                                    <Grid.Visibility>
+                                        <MultiBinding Converter="{StaticResource AndVisibilityConverter}">
+                                            <Binding Path="OutputVisibility" />
+                                            <Binding Path="UsrCtlEvtRstVsbl" />
+                                        </MultiBinding>
+                                    </Grid.Visibility>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!--نمایش جایگاه سمت چپ-->
+                                    <TextBlock Text="{Binding DsonAct.TblNod.FldNamNod}"
+                                               Style="{StaticResource CommonTextBlockStyle}"
+                                               Margin="0,5"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" />
+
+                                    <Rectangle HorizontalAlignment="Stretch"
+                                               Margin="0,5"
+                                               Grid.Row="1"
+                                               Height="2"
+                                               Fill="{DynamicResource appClr1}" />
+
+                                    <!--فعالیت چپ-->
+                                    <DsonCtrls:Act Margin="0,5"
+                                                   Grid.Row="2"
+                                                   DataContext="{Binding DsonAct}" />
+
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+
+                        <DsonCtrls:InOutIcn x:Name="inOutIcn"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top"
+                                            Margin="5"
+                                            Visibility="{Binding ImgIcnDrgVsbl}"
+                                            DataContext="{Binding WayAwrIfrm}" />
+
+                    </Grid>
+
+                    <Grid Name="grdftr"
+                          Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"
+                              Margin="0,0,0,5"
+                              Background="{DynamicResource appClr2}">
+                            <TextBlock Text="{Binding FrstFtrRgnText}"
+                                       Style="{StaticResource TextBlockForPopupMessagesStyle2}"
+                                       HorizontalAlignment="Left" />
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <!--<Button Style="{StaticResource ImagebtnStyle}"
+                                        Command="{Binding CancelCommand}"
+                                        Margin="5"
+                                        Height="32">
+                                    
+                                    <custom:BackgroundedImage  Source="{StaticResource cancel_EG}"></custom:BackgroundedImage>
+                                </Button>-->
+
+                                <Button Style="{StaticResource ImagebtnStyle}"
+                                        IsEnabled="{Binding SaveEnabled}"
+                                        Command="{Binding SaveFormCommand}"
+                                        Margin="5"
+                                        Height="32">
+                                    <custom:BackgroundedImage Source="{StaticResource  OK}"></custom:BackgroundedImage>
+                                </Button>
+
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+
+            </Border>
+
+        </TabItem>
+
+        <TabItem IsEnabled="False"
+                 Header="      " />
+
+        <TabItem Header="{Binding RejectRdbCnt}">
+
+            <Grid Visibility="{Binding DataContext.IsRejected, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                <ScrollViewer MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}}">
+                    <DsonCtrls:Cvsn DataContext="{Binding CvsnViewModel}"
+                                    IsEnabled="{Binding DataContext.Acs_SttlDson, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+                </ScrollViewer>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+</UserControl>

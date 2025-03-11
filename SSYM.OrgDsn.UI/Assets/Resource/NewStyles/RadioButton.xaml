@@ -1,0 +1,171 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:params="http://schemas.codeplex.com/elysium/params"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:metro="http://schemas.codeplex.com/elysium">
+    <!-- Resource dictionary entries should be defined here. 
+    radioButtoun
+    -->
+
+    <Style TargetType="telerik:RadRadioButton">
+        <Setter Property="FontFamily"
+                Value="B Roya"></Setter>
+        <Setter Property="FontSize"
+                Value="16"></Setter>
+        <Setter Property="telerik:StyleManager.Theme"
+                Value="Windows8"></Setter>
+        <Setter Property="IsThreeState"
+                Value="False"></Setter>
+    </Style>
+
+    <Style TargetType="{x:Type RadioButton}">
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderBrush"
+                Value="#FF777777" />
+        <Setter Property="BorderThickness"
+                Value="{Binding (params:General.DefaultThickness), Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource appClr1}" />
+        <Setter Property="FontSize"
+                Value="{Binding (params:General.ContentFontSize), Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="FontStretch"
+                Value="Normal" />
+        <Setter Property="FontStyle"
+                Value="Normal" />
+        <Setter Property="FontWeight"
+                Value="Normal" />
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle RenderOptions.EdgeMode="Aliased"
+                                           Margin="{TemplateBinding params:General.DefaultPadding}"
+                                           Stroke="Black"
+                                           StrokeThickness="{TemplateBinding params:General.DefaultThicknessValue}"
+                                           StrokeDashArray="2 1" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Top" />
+        <Setter Property="Padding">
+            <Setter.Value>
+                <Binding ConverterParameter="Left"
+                         Mode="OneWay"
+                         Path="(params:General.BoldPadding)"
+                         RelativeSource="{RelativeSource Self}">
+                    <Binding.Converter>
+                        <metro:DoubleToThicknessConverter />
+                    </Binding.Converter>
+                </Binding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="Transparent"
+                                     TextElement.Foreground="{TemplateBinding Foreground}"
+                                     TextElement.FontWeight="{TemplateBinding FontWeight}"
+                                     FlowDirection="{TemplateBinding FlowDirection}"
+                                     TextElement.FontSize="{TemplateBinding FontSize}"
+                                     TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <BulletDecorator.Bullet>
+                            <Grid Height="{TemplateBinding params:Bullet.DecoratorSize}"
+                                  Width="{TemplateBinding params:Bullet.DecoratorSize}">
+                                <Ellipse Fill="{TemplateBinding Background}"
+                                         Stroke="{TemplateBinding BorderBrush}">
+                                    <Ellipse.StrokeThickness>
+                                        <Binding Mode="OneWay"
+                                                 Path="BorderThickness"
+                                                 RelativeSource="{RelativeSource TemplatedParent}">
+                                            <Binding.Converter>
+                                                <metro:ThicknessToDoubleConverter />
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </Ellipse.StrokeThickness>
+                                </Ellipse>
+                                <Ellipse x:Name="CheckBullet"
+                                         Fill="{DynamicResource appClr2}"
+                                         HorizontalAlignment="Center"
+                                         Height="{TemplateBinding params:Bullet.Size}"
+                                         StrokeThickness="0"
+                                         Visibility="Collapsed"
+                                         VerticalAlignment="Center"
+                                         Width="{TemplateBinding params:Bullet.Size}" />
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <Border>
+                            <Border.Margin>
+                                <Binding ConverterParameter="Left"
+                                         Mode="OneWay"
+                                         Path="(params:General.BoldPaddingValue)"
+                                         RelativeSource="{RelativeSource TemplatedParent}">
+                                    <Binding.Converter>
+                                        <metro:DoubleToThicknessConverter />
+                                    </Binding.Converter>
+                                </Binding>
+                            </Border.Margin>
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="{TemplateBinding Padding}"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter Property="Visibility"
+                                    TargetName="CheckBullet"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter Property="Fill"
+                                    TargetName="CheckBullet"
+                                    Value="#FFB8B5B2" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#FFDEDEDE" />
+                <Setter Property="BorderBrush"
+                        Value="#FF777777" />
+            </Trigger>
+            <Trigger Property="IsPressed"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#FFDEDEDE" />
+                <Setter Property="BorderBrush"
+                        Value="#FF4D4D4D" />
+            </Trigger>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="BorderBrush"
+                        Value="#FFB8B5B2" />
+                <Setter Property="Foreground"
+                        Value="#FFB8B5B2" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

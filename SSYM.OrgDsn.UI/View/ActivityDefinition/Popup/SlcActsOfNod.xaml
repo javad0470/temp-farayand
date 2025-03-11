@@ -1,0 +1,76 @@
+﻿<basePopup:BasePopup x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcActsOfNod"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                     Loaded="BasePopup_Loaded"
+                     mc:Ignorable="d">
+
+    <Grid FlowDirection="RightToLeft"
+          Style="{StaticResource PopupGrid}">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <!--<RowDefinition Height="40"></RowDefinition>-->
+
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource PopupFromBorderStyle}"
+                Grid.Row="0">
+
+            <TextBlock Text="فهرست فعالیت ها"
+                       VerticalAlignment="Center"
+                       Style="{StaticResource TextBlockForPopupTitrStyle}"></TextBlock>
+
+        </Border>
+
+        <Border Style="{StaticResource DetailBorderStyle}"
+                Grid.Row="1">
+
+            <DataGrid ItemsSource="{Binding Acts, Mode=OneWay, IsAsync=True}"
+                      HeadersVisibility="None"
+                      MouseDoubleClick="Dgrd1_OnMouseDoubleClick"
+                      Name="dgrd1"
+                      Style="{StaticResource PopupDataGridStyle}"
+                      SelectedItem="{Binding SelectedAct, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <DataGrid.Columns>
+
+                    <DataGridTemplateColumn Header="عنوان فعالیت"
+                                            Width="*">
+
+                        <DataGridTemplateColumn.CellTemplate>
+
+                            <DataTemplate>
+
+                                <Grid VerticalAlignment="Stretch"
+                                      HorizontalAlignment="Stretch"
+                                      ToolTipService.ShowDuration="60000"
+                                      ToolTipService.HasDropShadow="False">
+
+                                    <TextBlock Text="{Binding FldNamAct}"></TextBlock>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+    </Grid>
+
+</basePopup:BasePopup>

@@ -1,0 +1,53 @@
+﻿<basePopup:BasePopup xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Popup;assembly=SSYM.OrgDsn.ViewModel"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:toolkit="http://schemas.microsoft.com/wpf/2008/toolkit"
+                     x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcSgmtTim"
+                     Height="60"
+                     Width="200">
+
+    <Grid Style="{StaticResource PopupGrid}"
+          FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <toolkit:DatePicker SelectedDate="{Binding SelectedDateTime.FldDteTim, Mode=TwoWay}"
+                            Grid.Row="0" />
+        <!--<telerik:RadDateTimePicker InputMode="DateTimePicker"
+                                   StartTime="01:00"
+                                   EndTime="00:00"
+                                   TimeInterval="0:30"
+                                   Grid.Row="0"
+                                   SelectedDate="{Binding SelectedRowTblSgmtTim.FldDteTim, Mode=TwoWay}" />-->
+
+        <!--<DatePicker Grid.Row="0"
+                    SelectedDate="{Binding SelectedRowTblSgmtTim.FldDteTim, Mode=TwoWay}"
+                    SelectedDateFormat="Long" />-->
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!--<TextBox Grid.Row="1"
+                     Text="{Binding SelectedRowTblSgmtTim.FldDteTim.TimeOfDay, Mode=OneWay}"
+                     Grid.Column="0" />-->
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        FlowDirection="LeftToRight">
+                <telerik:RadButton Content="Ok"
+                                   Command="{Binding OkAndCloseCommand, Mode=TwoWay}" />
+                <telerik:RadButton Content="Cancel"
+                                   Command="{Binding CancelAndCloseCommand, Mode=TwoWay}" />
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</basePopup:BasePopup>

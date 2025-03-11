@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefRol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:actDefUC="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             Background="Transparent"
+             mc:Ignorable="d">
+    <Grid Style="{StaticResource MainWindowsContentGridStyle}"
+          FlowDirection="RightToLeft">
+
+        <TabControl Style="{StaticResource MetroTabControl}">
+            <TabItem Header="نقش درون سازمانی"
+                     IsSelected="{Binding InsideSelected, Mode=TwoWay}">
+                <actDefUC:DefRolIsgOrg Background="Transparent"
+                                       DataContext="{Binding DefRolInsideOrgVM}" />
+            </TabItem>
+            <TabItem Header="نقش برون سازمانی">
+                <actDefUC:DefRolOsdOrg Background="Transparent"
+                                       DataContext="{Binding DefRolOutsideOrgVM}" />
+
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

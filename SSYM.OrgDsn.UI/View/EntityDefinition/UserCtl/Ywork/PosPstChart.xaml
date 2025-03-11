@@ -1,0 +1,564 @@
+﻿
+    <UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork.PosPstChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:y="http://www.yworks.com/xml/yfiles-wpf/2.0/xaml"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:OrgChart="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork"
+             xmlns:OrgChartVM="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl.Ywork;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:popupAdmin="clr-namespace:SSYM.OrgDsn.UI.View.Admin"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded_1"
+             
+             d:DesignHeight="300"
+             d:DesignWidth="500"
+             x:Name="UsrCtl">
+
+    <!--<UserControl.DataContext>
+p
+        <OrgChartVM:PosPstChartViewModel></OrgChartVM:PosPstChartViewModel>
+
+    </UserControl.DataContext>-->
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <!-- Merge in the templates used for displaying the entities in our chart -->
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="PosPstChartTemplates.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <OrgChart:NodeToEmployeeConverter x:Key="NodeConverter" />
+
+            <!-- The GraphSource creates the organization chart graph from the employee business data. -->
+
+            <!--<y:TreeSource x:Key="TreeSource"
+                          GraphRebuilt="TreeSource_GraphRebuilt"
+                          ChildBinding="{Binding TblPosPstOrg1}">
+
+                <y:TreeSource.NodeControlStyle>
+                    <Binding Source="{StaticResource PosPsteNodeControlStyle}" />
+                </y:TreeSource.NodeControlStyle>
+
+                <y:TreeSource.EdgeStyle>
+                    <y:PolylineEdgeStyle Smoothing="10"
+                                         TargetArrow="{x:Static y:DefaultArrow.Default}" />
+                </y:TreeSource.EdgeStyle>
+
+            </y:TreeSource>-->
+
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="grd"
+          FlowDirection="RightToLeft">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0"
+              Grid.Row="0">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Visibility="{Binding CanUsrEditPosPst, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                <telerik:RadDropDownButton x:Name="ddb"
+                                           Width="200"
+                                           Margin="5,0"
+                                           KeepOpen="False"
+                                           Content="{Binding SelectedOrg.FldNamOrg}">
+
+                    <telerik:RadDropDownButton.DropDownContentTemplate>
+
+                        <DataTemplate>
+
+                            <Grid>
+
+                                <telerik:RadTreeView  IsLineEnabled="True"
+                                                      IsExpandOnDblClickEnabled="False"
+                                                      IsExpandOnSingleClickEnabled="False"
+                                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                                      SelectedItem="{Binding DataContext.SelectedOrg, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}"
+                                                      ItemsSource="{Binding DataContext.Org, RelativeSource={RelativeSource AncestorType=UserControl}, IsAsync=True}">
+
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Background="Black"
+                                                        Grid.Column="0">
+
+                                                    <custom:BackgroundedImage Height="20"
+                                                                              Width="20"
+                                                                              Margin="5,0"
+                                                                              Source="{StaticResource org}">
+                                                    </custom:BackgroundedImage>
+
+                                                </Border>
+
+                                                <TextBlock Grid.Column="1"
+                                                           
+                                                           VerticalAlignment="Center"
+                                                           x:Name="txtBlockOrg"
+                                                           Text="{Binding FldNamOrg}"></TextBlock>
+
+                                                <i:Interaction.Triggers>
+
+                                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+
+                                                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                                                 TargetObject="{Binding ElementName=ddb}"
+                                                                                 Value="False"></ei:ChangePropertyAction>
+
+                                                        <ei:CallMethodAction MethodName="RebindChart"
+                                                                             TargetObject="{Binding ElementName=UsrCtl}"></ei:CallMethodAction>
+
+                                                    </i:EventTrigger>
+
+                                                </i:Interaction.Triggers>
+
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+
+                                </telerik:RadTreeView>
+
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </telerik:RadDropDownButton.DropDownContentTemplate>
+
+                </telerik:RadDropDownButton>
+
+                <Button Content="افزودن گره سرشاخه"
+                        Margin="5,0"
+                        IsEnabled="{Binding CanUsrAddFirstPosPst}">
+
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Click">
+
+                            <ei:CallMethodAction MethodName="RebindChartAfterAddFirstPosPst"
+                                                 TargetObject="{Binding ElementName=UsrCtl}"></ei:CallMethodAction>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <StackPanel Orientation="Horizontal"
+                            IsEnabled="{Binding Acs_AddPosPst}">
+
+                    <Button x:Name="btnAddPosPst"
+                            ToolTip="افزودن جایگاه جدید"
+                            Style="{StaticResource CommonBtnStyle}"
+                            Margin="5,0">
+
+                        <i:Interaction.Triggers>
+
+                            <i:EventTrigger EventName="Click">
+
+                                <ei:CallMethodAction MethodName="RebindChartAfterAddPos"
+                                                     TargetObject="{Binding ElementName=UsrCtl}"></ei:CallMethodAction>
+
+                            </i:EventTrigger>
+
+                        </i:Interaction.Triggers>
+
+                        <custom:BackgroundedImage Source="{StaticResource AddPos}" />
+                    </Button>
+
+                    <Button Style="{StaticResource CommonBtnStyle}"
+                            ToolTip="افزودن سمت جدید"
+                            Margin="5,0">
+
+                        <i:Interaction.Triggers>
+
+                            <i:EventTrigger EventName="Click">
+
+                                <ei:CallMethodAction MethodName="RebindChartAfterAddPst"
+                                                     TargetObject="{Binding ElementName=UsrCtl}"></ei:CallMethodAction>
+
+                            </i:EventTrigger>
+
+                        </i:Interaction.Triggers>
+
+                        <custom:BackgroundedImage Source="{StaticResource AddPst}" />
+
+                    </Button>
+
+                </StackPanel>
+
+                <Button Style="{StaticResource CommonBtnStyle}"
+                        ToolTip="حذف جایگاه/سمت انتخاب شده"
+                        Margin="5,0"
+                        IsEnabled="{Binding Acs_DelPosPst}">
+
+                    <i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="Click">
+
+                            <ei:CallMethodAction MethodName="RebindChartAfterDeletePosPst"
+                                                 TargetObject="{Binding ElementName=UsrCtl}"></ei:CallMethodAction>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>
+
+                    <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+
+                </Button>
+
+            </StackPanel>
+
+            <custom:DelayedBindingTextBox Text="{Binding TxtSch, Mode=TwoWay}"
+                     Margin="5"
+                     Grid.Row="1" />
+
+            <telerik:RadTreeView  Grid.Row="2"
+                                  Background="Transparent"
+                                  x:Name="treeView"
+                                  
+                                  IsLineEnabled="True"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                  SelectionChanged="treeView_SelectionChanged_1"
+                                  SelectedItem="{Binding SelectedPosPst, Mode=TwoWay}"
+                                  ItemsSource="{Binding PosPstCV, IsAsync=True}"
+                                  Visibility="{Binding Acs_ViewPosPst, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  DropExpandDelay="0">
+
+
+                <telerik:RadTreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type telerik:RadTreeViewItem}"
+                           BasedOn="{StaticResource {x:Type telerik:RadTreeViewItem}}">
+                        <Setter Property="IsExpanded"
+                                Value="{Binding IsExpanded, Mode=TwoWay}" />
+
+                        <Setter Property="IsSelected"
+                                Value="{Binding IsSelectedInTree, Mode=TwoWay}" />
+
+                    </Style>
+                </telerik:RadTreeView.ItemContainerStyle>
+
+                <telerik:RadTreeView.ItemTemplate>
+
+                    <!--, IsAsync=True-->
+                    <HierarchicalDataTemplate ItemsSource="{Binding ChildsCV}">
+
+                        <Grid telerik:DragDropManager.AllowDrag="True">
+
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+
+                            <Border Background="Black"
+                                    Height="30"
+                                    Width="30"
+                                    Margin="5,0">
+
+                                <custom:BackgroundedImage x:Name="imgPosPst"
+                                                          Background="{DynamicResource appClr1}">
+
+                                    <custom:BackgroundedImage.Style>
+
+                                        <Style TargetType="custom:BackgroundedImage">
+
+                                            <Style.Triggers>
+
+                                                <DataTrigger Binding="{Binding FldCodTyp}"
+                                                             Value="1">
+                                                    <Setter Property="Source"
+                                                            Value="{StaticResource orgPos2}"></Setter>
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding FldCodTyp}"
+                                                             Value="2">
+                                                    <Setter Property="Source"
+                                                            Value="{StaticResource orgPst2}"></Setter>
+                                                </DataTrigger>
+
+                                            </Style.Triggers>
+
+                                        </Style>
+
+                                    </custom:BackgroundedImage.Style>
+
+                                </custom:BackgroundedImage>
+
+                            </Border>
+
+                            <custom:HighlightTextBlock Grid.Column="1"
+                                                       HighlightPhrase="{Binding HighlightPhrase}"
+                                                       Text="{Binding FldNamPosPst}" />
+
+                        </Grid>
+
+                    </HierarchicalDataTemplate>
+
+                </telerik:RadTreeView.ItemTemplate>
+
+            </telerik:RadTreeView>
+
+        </Grid>
+
+        <GridSplitter Grid.Column="1"
+                      Grid.Row="0"
+                      Width="5"></GridSplitter>
+
+        <Grid Grid.Column="2"
+              Grid.Row="0">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+
+            <y:GraphControl Grid.Row="0"
+                            x:Name="graphControl"
+                            FontSize="1"
+                            HorizontalScrollBarPolicy="Hidden"
+                            VerticalScrollBarPolicy="Hidden"
+                            
+                            CurrentItemChanged="graphControl_CurrentItemChanged"
+                            Visibility="{Binding Path=Visibility, ElementName=treeView}"
+                            >
+
+                <y:GraphControl.Graph>
+
+                    <Binding Path="Graph">
+
+                        <Binding.Source>
+
+                            <y:TreeSource x:Name="tree"
+                                          GraphRebuilt="TreeSource_GraphRebuilt"
+                                          ChildBinding="{Binding SubPosPst}">
+
+                                <y:TreeSource.NodeControlStyle>
+                                    <Binding Source="{StaticResource PosPsteNodeControlStyle}" />
+                                </y:TreeSource.NodeControlStyle>
+
+                                <y:TreeSource.EdgeStyle>
+                                    <y:PolylineEdgeStyle Smoothing="10"
+                                                         TargetArrow="{x:Static y:DefaultArrow.None}">
+                                        <y:PolylineEdgeStyle.Pen>
+                                            <Pen Brush="{DynamicResource appClr2}"
+                                                 Thickness="5"
+                                                 EndLineCap="Square"
+                                                 LineJoin="Bevel"
+                                                 DashCap="Flat"
+                                                 MiterLimit="4" />
+                                        </y:PolylineEdgeStyle.Pen>
+                                    </y:PolylineEdgeStyle>
+                                </y:TreeSource.EdgeStyle>
+
+                            </y:TreeSource>
+
+                        </Binding.Source>
+
+                    </Binding>
+
+                </y:GraphControl.Graph>
+
+                <!--Graph="{Binding Source={StaticResource TreeSource}, Path=Graph}"-->
+                <!--Graph="{Binding ChartSource.Graph}"-->
+                <y:GraphControl.CommandBindings>
+                    <CommandBinding Command="{x:Static OrgChart:OrgChart.ShowChildrenCommand}"
+                                    CanExecute="CanExecuteShowChildren"
+                                    Executed="ShowChildrenExecuted" />
+                    <CommandBinding Command="{x:Static OrgChart:OrgChart.ShowParentCommand}"
+                                    CanExecute="CanExecuteShowParent"
+                                    Executed="ShowParentExecuted" />
+                    <CommandBinding Command="{x:Static OrgChart:OrgChart.HideChildrenCommand}"
+                                    CanExecute="CanExecuteHideChildren"
+                                    Executed="HideChildrenExecuted" />
+                    <CommandBinding Command="{x:Static OrgChart:OrgChart.HideParentCommand}"
+                                    CanExecute="CanExecuteHideParent"
+                                    Executed="HideParentExecuted" />
+                </y:GraphControl.CommandBindings>
+                <y:GraphControl.InputBindings>
+                    <KeyBinding Key="Add"
+                                Command="IncreaseZoom"
+                                CommandParameter="2.0" />
+                    <KeyBinding Key="Subtract"
+                                Command="DecreaseZoom"
+                                CommandParameter="2.0" />
+                    <KeyBinding Key="OemPlus"
+                                Command="IncreaseZoom"
+                                CommandParameter="2.0" />
+                    <KeyBinding Key="OemMinus"
+                                Command="DecreaseZoom"
+                                CommandParameter="2.0" />
+                    <KeyBinding Key="Enter"
+                                Command="y:GraphControl.ZoomToCurrentItemCommand" />
+
+                    <KeyBinding Key="Left"
+                                Modifiers="Control"
+                                Command="ScrollPageLeft"
+                                CommandParameter="0.85" />
+                    <KeyBinding Key="Right"
+                                Modifiers="Control"
+                                Command="ScrollPageRight"
+                                CommandParameter="0.85" />
+                    <KeyBinding Key="Up"
+                                Modifiers="Control"
+                                Command="ScrollPageUp"
+                                CommandParameter="0.85" />
+                    <KeyBinding Key="Down"
+                                Modifiers="Control"
+                                Command="ScrollPageDown"
+                                CommandParameter="0.85" />
+
+                    <KeyBinding Key="PageUp"
+                                Modifiers="Control"
+                                Command="OrgChart:OrgChart.ShowParentCommand" />
+                    <KeyBinding Key="PageDown"
+                                Modifiers="Control"
+                                Command="OrgChart:OrgChart.HideParentCommand" />
+                    <KeyBinding Key="Add"
+                                Modifiers="Control"
+                                Command="OrgChart:OrgChart.ShowChildrenCommand" />
+                    <KeyBinding Key="Subtract"
+                                Modifiers="Control"
+                                Command="OrgChart:OrgChart.HideChildrenCommand" />
+
+                </y:GraphControl.InputBindings>
+                <y:GraphControl.InputMode>
+                    <y:GraphViewerInputMode ClickableItems="Node"
+                                            ItemDoubleClicked="OnItemDoubleClicked"
+                                            SelectableItems="None"
+                                            MarqueeSelectableItems="None"
+                                            ToolTipItems="None"
+                                            ContextMenuItems="None"
+                                            FocusableItems="Node" />
+                </y:GraphControl.InputMode>
+            </y:GraphControl>
+
+            <StackPanel Grid.Row="1"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Orientation="Horizontal">
+
+                <StackPanel.Resources>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource CommonBtnStyle}">
+
+                        <Setter Property="Width"
+                                Value="24" />
+                        <Setter Property="Height"
+                                Value="32" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <Grid>
+                    <Button ToolTipService.ToolTip="نمایش گره های پدر گره جاری"
+                            Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Margin="5"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Top"
+                            Command="OrgChart:OrgChart.ShowParentCommand"
+                            CommandParameter="{Binding ElementName=graphControl, Path=CurrentItem}"
+                            CommandTarget="{Binding ElementName=graphControl}">
+
+                        <custom:BackgroundedImage Source="{StaticResource TreeShowUp}" />
+
+                    </Button>
+                    <Button ToolTipService.ToolTip="غیر قابل مشاهده کردن گره های پدر گره جاری"
+                            Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Margin="5"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Top"
+                            Command="OrgChart:OrgChart.HideParentCommand"
+                            CommandParameter="{Binding ElementName=graphControl, Path=CurrentItem}"
+                            CommandTarget="{Binding ElementName=graphControl}">
+                        <custom:BackgroundedImage Source="{StaticResource TreeCloseUp}" />
+
+                    </Button>
+
+                </Grid>
+
+                <Grid>
+                    <Button ToolTipService.ToolTip="نمایش گره های فرزند گره جاری"
+                            Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Margin="5"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Top"
+                            Command="OrgChart:OrgChart.ShowChildrenCommand"
+                            CommandParameter="{Binding ElementName=graphControl, Path=CurrentItem}"
+                            CommandTarget="{Binding ElementName=graphControl}">
+                        <custom:BackgroundedImage Source="{StaticResource TreeShowDown}" />
+
+                    </Button>
+                    <Button ToolTipService.ToolTip="غیر قابل مشاهده کردن گره های فرزند گره جاری"
+                            Visibility="{Binding IsEnabled, RelativeSource={RelativeSource Self}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Margin="5"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Top"
+                            Command="OrgChart:OrgChart.HideChildrenCommand"
+                            CommandParameter="{Binding ElementName=graphControl, Path=CurrentItem}"
+                            CommandTarget="{Binding ElementName=graphControl}">
+                        <custom:BackgroundedImage Source="{StaticResource TreeCloseDown}" />
+
+                    </Button>
+
+                </Grid>
+
+                <Button ToolTipService.ToolTip="نمایش کامل نمودار"
+                        Margin="5"
+                        VerticalAlignment="Center"
+                        Command="OrgChart:OrgChart.ShowAllCommand"
+                        CommandTarget="{Binding ElementName=graphControl}">
+                    <custom:BackgroundedImage Source="{StaticResource TreeShowAll}" />
+
+                </Button>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

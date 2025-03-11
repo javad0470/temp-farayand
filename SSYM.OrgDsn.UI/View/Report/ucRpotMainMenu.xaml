@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Report.ucRpotMainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:rpotVew="clr-namespace:SSYM.OrgDsn.UI.View.Report"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             mc:Ignorable="d"
+             d:DesignHeight="600"
+             d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+
+
+        <Grid Width="600" Height="600" HorizontalAlignment="Center"> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions >
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding ActReportCommand}"
+                    Grid.Row="0"
+                    Grid.Column="0">فعالیت ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Click="report_Clicked"
+                    Grid.Row="0"
+                    Grid.Column="1">فرایند ها</Button>
+
+            <!--Command="{Binding PrsReportCommand}"-->
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding DsonReportCommand}"
+                    Grid.Row="0"
+                    Grid.Column="2">ناهمسانی ها</Button>
+
+            <!-- Region ' Org Commands ' -->
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding PosPstReportCommand}"
+                    Grid.Row="0"
+                    Grid.Column="3">جایگاه / سمت</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding DepReportCommand}"
+                   Grid.Row="1"
+                    Grid.Column="0">سازمان ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding PsnInsideOrgReportCommand}"
+                   Grid.Row="1"
+                    Grid.Column="1">
+                <TextBlock TextWrapping="Wrap">
+                    اشخاص درون سازمانی
+                </TextBlock>
+            </Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding PsnOutsideOrgReportCommand}"
+                  Grid.Row="1"
+                    Grid.Column="2">اشخاص برون سازمانی</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding InsideRoleReportCommand}"
+                    Grid.Row="1"
+                    Grid.Column="3">نقش های درون سازمانی</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding OutsideRoleReportCommand}"
+                    Grid.Row="2"
+                    Grid.Column="0">نقش های برون سازمانی</Button>
+
+            <!-- EndRegion  -->
+
+            <!--Region ' Other Command '-->
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding IndexReportCommand}"
+                    Grid.Row="2"
+                    Grid.Column="1">شاخص ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding UnitOfMesureReportCommand}"
+                    Grid.Row="2"
+                    Grid.Column="2">واحد های سنجش</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding ErrorReportCommand}"
+                    Grid.Row="2"
+                    Grid.Column="3">خطا ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding SoftwareReportCommand}"
+                    Grid.Row="3"
+                    Grid.Column="0">نرم افزار ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding NewsReportCommand}"
+                    Grid.Row="3"
+                    Grid.Column="1">خبر ها</Button>
+
+            <Button Style="{StaticResource MainMenuButonStyle}"
+                    Command="{Binding InOutReportCommand}"
+                   Grid.Row="3"
+                    Grid.Column="2">ورودی / خروجی</Button>
+
+            <!--EndRegion-->
+        </Grid>
+
+
+        <!--<Popup Placement="Center"
+               IsOpen="{Binding IsSearchFilterPopupOpen}"
+               StaysOpen="True"
+               PopupAnimation="Fade"
+               AllowsTransparency="True">
+            <popup:BasePopup>
+                <popup:BasePopup.PopupContent>
+                    <rpotVew:ucRpotSrch DataContext="{Binding BaseReportSearchVM}"
+                                        Grid.Row="1" />
+                </popup:BasePopup.PopupContent>
+            </popup:BasePopup>
+
+        </Popup>-->
+
+
+    </Grid>
+</UserControl>

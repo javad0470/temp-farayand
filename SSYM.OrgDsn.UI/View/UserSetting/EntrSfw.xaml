@@ -1,0 +1,188 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:VM="clr-namespace:SSYM.OrgDsn.ViewModel.UserSetting;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:y="http://www.yworks.com/xml/yfiles-wpf/2.0/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:Custom="http://metro.mahapps.com/winfx/xaml/shared"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customCtrls="clr-namespace:SSYM.OrgDsn.UI"
+        mc:Ignorable="d"
+        x:Name="metroWindow"
+        x:Class="SSYM.OrgDsn.UI.View.UserSetting.EntrSfw"
+        Background="{DynamicResource loginBGImage}"
+        WindowState="Normal"
+        Width="550"
+        Height="370"
+        Title="ورود"
+        WindowStartupLocation="CenterScreen"
+        Icon="/SSYM.OrgDsn.UI;component/Icon.ico"
+        WindowStyle="None"
+        ResizeMode="CanMinimize"
+        BorderThickness="2"
+        BorderBrush="{DynamicResource appClr1}">
+    <Window.DataContext>
+
+        <VM:EntrSfwViewModel />
+
+    </Window.DataContext>
+
+    <Grid Margin="0">
+        <Grid x:Name="WindowBar"
+              MouseLeftButtonDown="WindowBar_MouseLeftButtonDown"
+              Height="45"
+              VerticalAlignment="Top">
+            <Rectangle Margin="200,0,0,0"
+                       Fill="{DynamicResource appClr1}"
+                       StrokeThickness="0" />
+            <customCtrls:BackgroundedImage HorizontalAlignment="Left"
+                                           Margin="110,0,0,0"
+                                           Width="90"
+                                           Height="45"
+                                           VerticalAlignment="Top"
+                                           HoverEnabled="False"
+                                           Background="{DynamicResource appClr1}"
+                                           Source="/SSYM.OrgDsn.UI;component/Assets/img/Public/windowbar_Corner.png" />
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       Text="ورود به نرم افزار"
+                       Margin="0,9,149,0"
+                       Foreground="White"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top" />
+        </Grid>
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0"
+                   Text="نام کاربری"
+                   Margin="0,116,136,0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Foreground="{DynamicResource appClr1}" />
+        <TextBox Grid.Row="0"
+                 x:Name="txtUsrNam"
+                 TextChanged="txtUsrNam_TextChanged_1"
+                 Text="{Binding NamUsr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Height="25"
+                 Margin="136,117,232,224"
+                 Foreground="{DynamicResource appClr1}"
+                 CaretBrush="{DynamicResource appClr1}"
+                 SelectionBrush="{DynamicResource appClr1}" />
+        <TextBlock Grid.Column="0"
+                   Text="رمز عبور"
+                   Margin="0,160,136,0"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Foreground="{DynamicResource appClr1}" />
+        <PasswordBox x:Name="pwr"
+                     Height="25"
+                     Margin="136,161,232,180"
+                     CaretBrush="{DynamicResource appClr1}"
+                     Foreground="{DynamicResource appClr1}"
+                     SelectionBrush="{DynamicResource appClr1}" />
+        <CheckBox x:Name="chkRemember"
+                  Grid.Column="0"
+                  FontFamily="{DynamicResource mainFontFamily}"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Bottom"
+                  Content="ذخیـره شـود"
+                  Margin="0,0,136,130"
+                  FlowDirection="RightToLeft"
+                  HorizontalContentAlignment="Center"
+                  RenderTransformOrigin="0.62,-1.174"
+                  BorderBrush="{DynamicResource appClr1}"
+                  Foreground="{DynamicResource appClr1}" />
+        <Button IsDefault="True"
+                Height="32"
+                Width="128"
+                Margin="136,0,0,126"
+                Click="EnterSfw"
+                VerticalAlignment="Bottom"
+                BorderThickness="0"
+                Background="{DynamicResource appClr1}"
+                Foreground="White"
+                HorizontalAlignment="Left"
+                Padding="0"
+                Content="ورود"
+                FontFamily="{DynamicResource mainFontFamily}"
+                FontSize="18"
+                Cursor="Hand"
+                Template="{DynamicResource ButtonBaseControlTemplate1}">
+            <Button.Resources>
+                <ControlTemplate x:Key="ButtonBaseControlTemplate1"
+                                 TargetType="{x:Type ButtonBase}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+                        <ContentPresenter x:Name="contentPresenter"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{DynamicResource appClr2}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Resources>
+        </Button>
+        <StackPanel Margin="0,0,0,72"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
+            <TextBlock Foreground="{DynamicResource appClr2}"
+                       x:Name="txtUsrActv"
+                       Text=""
+                       Height="32"
+                       TextAlignment="Right"
+                       Margin="0,0,5,0">
+            </TextBlock>
+            <customCtrls:BackgroundedImage x:Name="imgOrg"
+                                           Background="{DynamicResource appClr2}"
+                                           Source="{StaticResource org_E}"
+                                           HoverEnabled="False"
+                                           Stretch="Fill"
+                                           Width="32"
+                                           Height="32"
+                                           Visibility="Hidden"
+                                           Margin="0,0,5,0" />
+        </StackPanel>
+        <customCtrls:BackgroundedImage x:Name="bClose"
+                                       Grid.Column="0"
+                                       Background="{DynamicResource appClr1}"
+                                       Source="{StaticResource window_close_EG}"
+                                       Stretch="Fill"
+                                       Width="28"
+                                       Height="28"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Margin="5,5,0,0"
+                                       MouseLeftButtonUp="bClose_MouseLeftButtonUp" />
+        <customCtrls:BackgroundedImage x:Name="bMinimize"
+                                       Grid.Column="0"
+                                       Background="{DynamicResource appClr1}"
+                                       Source="{StaticResource window_minus_EG}"
+                                       Stretch="Fill"
+                                       Width="28"
+                                       Height="28"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Top"
+                                       Margin="38,5,0,0"
+                                       MouseLeftButtonUp="bMinimize_MouseLeftButtonUp" />
+
+    </Grid>
+
+</Window>

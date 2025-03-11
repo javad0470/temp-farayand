@@ -1,0 +1,661 @@
+﻿<Window x:Class="SSYM.OrgDsn.UI.View.Admin.InslCstmrVrsn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="نرم افزار مدیریت فرایند های سازمانی (نسخه کاربری)"
+        FlowDirection="RightToLeft"
+        MinHeight="500"
+        MaxHeight="650"
+        MinWidth="500"
+        MaxWidth="650"
+        Height="500"
+        Width="650">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter  Property="FontFamily"
+                     Value="B Nazanin" />
+            <Setter  Property="FontSize"
+                     Value="25" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter  Property="FontFamily"
+                     Value="B Nazanin" />
+            <Setter  Property="FontSize"
+                     Value="25" />
+
+            <Setter  Property="Height"
+                     Value="50" />
+            <Setter  Property="Width"
+                     Value="200" />
+        </Style>
+        <Style x:Key="btnDown">
+            <Setter Property="Button.Background"
+                    Value="{DynamicResource appClr2}"></Setter>
+            <Setter Property="Button.Foreground"
+                    Value="#FFFFFF"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="73" />
+            <RowDefinition />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                BorderBrush="{DynamicResource appClr2}"
+                BorderThickness="0,0,0,4"
+                Background="{DynamicResource appClr1}">
+            <Grid>
+                <TextBlock Text="نرم افزار معماری سازمان"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Bottom"
+                           Margin="10,0,0,15"
+                           FontFamily="#Far.Dinar Two Medium"
+                           Foreground="#FFFFFFFF"
+                           FontSize="30" />
+                <TextBlock HorizontalAlignment="Right"
+                           VerticalAlignment="Bottom"
+                           Margin="0,0,299,-6"
+                           FontFamily="#Far.Dinar Two Medium"
+                           Foreground="#FFFFFFFF"
+                           Text="گروه نرم افزاری SSYM"
+                           FontSize="22" />
+            </Grid>
+        </Border>
+        <!-- **************************grdWelcome************************* -->
+        <Grid Name="grdWelcome"
+              Visibility="Collapsed"
+              Grid.Row="1">
+
+            <!--<TextBlock Text="نرم افزار معماری سازمان"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />-->
+
+            <!--<Button Grid.Row="1"
+                    Name="btnStart"
+                    Content="نصب نسخه کاربری"
+                    Click="btnStart_Click_1" />-->
+
+            <Button Name="btnStart"
+                    Content="نصب نسخه کاربری"
+                    Click="btnStart_Click_1"
+                    Background="{DynamicResource appClr1}"
+                    Foreground="White"
+                    FontFamily="B Koodak" />
+
+        </Grid>
+
+        <!-- **************************grdSetConnection************************* -->
+        <Grid Name="grdSetConnection"
+              Visibility="Collapsed"
+              Grid.Column="0"
+              Grid.Row="1">
+
+
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Text="نام سرور:"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       Margin="97,42,0,0" />
+
+            <TextBox Name="txtServerName"
+                     FlowDirection="LeftToRight"
+                     Width="240"
+                     FontFamily="B Koodak"
+                     FontSize="22"
+                     Margin="292,42,0,0"
+                     HorizontalAlignment="Left"
+                     Height="38"
+                     VerticalAlignment="Top" />
+
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Text="نام پایگاه داده:"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       Margin="96,101,0,0" />
+
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Text="اعتبار سنجی:"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       Margin="96,161,0,0" />
+
+            <TextBox Name="txtDBName"
+                     FlowDirection="LeftToRight"
+                     Width="240"
+                     FontFamily="B Koodak"
+                     FontSize="22"
+                     Margin="292,101,0,0"
+                     HorizontalAlignment="Left"
+                     Height="38"
+                     VerticalAlignment="Top" />
+
+            <ComboBox Name="cmbMode"
+                      FlowDirection="LeftToRight"
+                      SelectionChanged="cmbMode_SelectionChanged_1"
+                      Width="240"
+                      FontFamily="B Koodak"
+                      FontSize="14"
+                      Margin="292,161,0,0"
+                      HorizontalAlignment="Left"
+                      Height="37"
+                      VerticalAlignment="Top">
+                <ComboBox.Items>
+                    <ComboBoxItem  Content="Windows Authentication"
+                                   IsSelected="True" />
+                    <ComboBoxItem  Content="SQL Server Authentication" />
+                </ComboBox.Items>
+            </ComboBox>
+
+            <Grid Name="sqlMode"
+                  Visibility="Collapsed"
+                  HorizontalAlignment="Left"
+                  Width="436"
+                  Height="96"
+                  VerticalAlignment="Top"
+                  Margin="96,222,0,0">
+
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="نام کاربری:"
+                           FontFamily="B Koodak"
+                           FontSize="22"
+                           Margin="0,0,353,58" />
+
+                <TextBox Name="txtUsername"
+                         FlowDirection="LeftToRight"
+                         Width="240"
+                         FontFamily="B Koodak"
+                         FontSize="22"
+                         Margin="196,0,0,58" />
+
+                <TextBlock Text="گذرواژه:"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="B Koodak"
+                           FontSize="22"
+                           Margin="0,59,371,-1" />
+
+                <PasswordBox Name="txtPassword"
+                             FlowDirection="LeftToRight"
+                             Width="240"
+                             FontFamily="B Koodak"
+                             FontSize="22"
+                             Margin="196,59,0,-1" />
+
+            </Grid>
+
+
+
+            <Button Name="btnStartInstall"
+                    Content="ادامه"
+                    Click="connectToDB_Click"
+                    Visibility="Collapsed"
+                    Margin="419,329,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+
+        </Grid>
+
+
+
+
+        <!--<Grid Name="grdSetConnection"
+              Visibility="Visible"
+              Background="White"
+              Grid.Row="0"
+              Grid.RowSpan="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           FlowDirection="LeftToRight"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           Text="نام سرور" />
+
+                <TextBlock Grid.Row="2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           Text="اعتبار سنجی" />
+
+                <TextBlock Grid.Row="1"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           Text="نام پایگاه داده" />
+
+                <TextBox FlowDirection="LeftToRight"
+                         Name="txtDBName"
+                         Width="200"
+                         Height="30"
+                         Grid.Row="1"
+                         Grid.Column="1" />
+
+                <TextBox FlowDirection="LeftToRight"
+                         Name="txtServerName"
+                         Width="200"
+                         Height="30"
+                         Grid.Row="0"
+                         Grid.Column="1" />
+
+                <ComboBox Name="cmbMode"
+                          FlowDirection="LeftToRight"
+                          SelectionChanged="cmbMode_SelectionChanged_1"
+                          Width="200"
+                          Height="30"
+                          Grid.Row="2"
+                          Grid.Column="1">
+                    <ComboBox.Items>
+                        <ComboBoxItem  Content="Windows Authentication"
+                                       IsSelected="True" />
+                        <ComboBoxItem  Content="SQL Server Authentication" />
+                    </ComboBox.Items>
+                </ComboBox>
+
+                <Grid Name="sqlMode"
+                      Visibility="Collapsed"
+                      Grid.Row="3"
+                      Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="نام کاربری"
+                               Grid.Row="0"
+                               Grid.Column="0" />
+
+                    <TextBox Name="txtUsername"
+                             FlowDirection="LeftToRight"
+                             Width="200"
+                             Height="30"
+                             Grid.Row="0"
+                             Grid.Column="1" />
+
+                    <TextBlock Text="گذرواژه"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.Row="1"
+                               Grid.Column="0" />
+
+                    <PasswordBox Name="txtPassword"
+                                 FlowDirection="LeftToRight"
+                                 Width="200"
+                                 Height="30"
+                                 Grid.Row="1"
+                                 Grid.Column="1" />
+
+                </Grid>
+
+            </Grid>
+
+            <Button Grid.Row="1"
+                    Name="btnStartInstall"
+                    Content="ادامه"
+                    Click="connectToDB_Click" />
+
+        </Grid>-->
+
+        <!-- **************************grdUserPass************************* -->
+        <Grid Name="grdUserPass"
+              Visibility="Collapsed"
+              Grid.Row="1">
+
+            <TextBlock Text="نام کاربری:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="106,108,0,0"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       Width="106" />
+            <TextBlock Text="کلمه عبور:"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       Margin="106,172,0,0"
+                       Width="106" />
+
+            <TextBox Name="txtUsr"
+                     FlowDirection="LeftToRight"
+                     FontFamily="B Koodak"
+                     FontSize="22"
+                     Margin="294,107,0,0"
+                     HorizontalAlignment="Left"
+                     Width="240"
+                     Height="38"
+                     VerticalAlignment="Top" />
+
+            <PasswordBox Name="txtPass"
+                         FlowDirection="LeftToRight"
+                         FontFamily="B Koodak"
+                         FontSize="22"
+                         Margin="294,171,0,0"
+                         Height="39"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Width="240" />
+
+            <Button Click="authenticate_Click"
+                    Content="ادامه"
+                    FontFamily="B Koodak"
+                    Visibility="Collapsed"
+                    FontSize="22"
+                    Margin="0,0,27,20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" />
+
+        </Grid>
+
+        <!-- **************************grdSerials************************* -->
+        <Grid Name="grdCheckSerials"
+              Visibility="Collapsed"
+              Grid.Row="1">
+
+            <TextBlock Text="در حال حاضر سریال و کد فعالسازی معتبری برای نصب نرم افزار وجود ندارد."
+                       FontSize="22"
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Name="tbkSerialNotFound"
+                       Visibility="Collapsed"
+                       Foreground="Red"
+                       FontFamily="#B Koodak" />
+
+            <Grid Name="grdCheckSerialsInner">
+
+
+                <TextBlock Text="در صورت تایید سریال و کد فعال سازی زیر برای نصب مورد استفاده قرار خواهد گرفت."
+                           FontSize="20"
+                           Margin="20,76,41,245"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak">
+                </TextBlock>
+
+                <TextBlock Text="سریال نصب"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak"
+                           FontSize="22"
+                           Margin="117,141,436,176" />
+
+                <TextBlock Text="کد فعال سازی"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak"
+                           FontSize="22"
+                           Margin="117,203,419,114" />
+
+                <TextBox Name="txtSerial"
+                         IsEnabled="False"
+                         FlowDirection="LeftToRight"
+                         Height="Auto"
+                         FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak"
+                         FontSize="22"
+                         Margin="251,141,151,176" />
+
+                <TextBox Name="txtActvnCod"
+                         IsEnabled="False"
+                         FlowDirection="LeftToRight"
+                         Height="Auto"
+                         FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak"
+                         FontSize="22"
+                         Margin="251,203,151,114" />
+
+                <Button Name="btncheckSerial"
+                        Click="checkSerials_Click"
+                        Content="ادامه"
+                        FontFamily="/SSYM.OrgDsn.UI;component/Fonts/#B Koodak"
+                        FontSize="22"
+                        Margin="391,263,51,43" />
+
+            </Grid>
+
+        </Grid>
+
+        <!-- **************************Select Folder************************* -->
+        <Grid Name="grdSlcDirectory"
+              Visibility="Collapsed"
+              Grid.Row="1">
+
+            <TextBlock Text="مسیر نصب را انتخاب نمایید:"
+                       FontFamily="B Koodak"
+                       FontSize="16"
+                       HorizontalAlignment="Left"
+                       Width="545"
+                       Margin="47,115,0,0"
+                       Height="27"
+                       VerticalAlignment="Top" />
+            <TextBlock Text="مسیر نصب"
+                       FontFamily="B Koodak"
+                       FontSize="22"
+                       HorizontalAlignment="Left"
+                       Width="140"
+                       Margin="47,164,0,0"
+                       Height="38"
+                       VerticalAlignment="Top" />
+
+            <TextBox Width="400"
+                     FlowDirection="LeftToRight"
+                     Name="txtInstallPath"
+                     Margin="137,164,0,0"
+                     FontFamily="B Koodak"
+                     FontSize="22"
+                     Height="38"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left" />
+            <Button Click="selectFolder_Click"
+                    Width="50"
+                    Height="38"
+                    Content="..."
+                    FontFamily="B Koodak"
+                    FontSize="22"
+                    Margin="542,164,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" />
+
+
+            <Button Click="goToInstall_Click"
+                    Content="ادامه"
+                    FontFamily="B Koodak"
+                    Visibility="Collapsed"
+                    FontSize="22"
+                    Margin="223,250,0,0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left" />
+            
+            
+         
+            <!--<StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        FlowDirection="LeftToRight">
+                <TextBox Width="400"
+                         Height="25"
+                         Name="txtInstallPath"
+                         Margin="10" />
+                <Button Click="selectFolder_Click"
+                        Width="50"
+                        Height="25"
+                        Content="..." />
+            </StackPanel>
+
+            <Button Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Click="goToInstall_Click"
+                    Content="ادامه" />-->
+
+        </Grid>
+
+        <!-- **************************Installing.....************************* -->
+        <Grid Name="grdInstalling"
+              Visibility="Visible"
+              Grid.Row="1">
+          
+            <Button Content="شروع نصب"
+                    Name="btnStartInstall2"
+                    Click="startInstall_Click"
+                    Background="{DynamicResource appClr1}"
+                    Foreground="White"
+                    Visibility="Visible"
+                    FontFamily="B Koodak" />
+
+            <StackPanel Visibility="Collapsed"
+                        Name="stkInstallProgress">
+
+                <TextBlock Name="lblInstallProgress"
+                           Text="در حال نصب نرم افزار:"
+                           Height="40"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Width="300"
+                           Margin="90,138,0,0"
+                           FontFamily="B Koodak"
+                           FontSize="22" />
+                <ProgressBar x:Name="prgsCopy"
+                             Height="25"
+                             IsIndeterminate="True"
+                             HorizontalAlignment="Left"
+                             Margin="90,0,0,0"
+                             Width="500"
+                             BorderBrush="{DynamicResource appClr2}"
+                             Foreground="{DynamicResource appClr1}"
+                             VerticalAlignment="Top" />
+
+            </StackPanel>
+
+            <Grid Visibility="Collapsed"
+                  Grid.ColumnSpan="2"
+                  Name="grdFinish"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Name="lblFinish"
+                           VerticalAlignment="Center"
+                           Foreground="{DynamicResource appClr1}"
+                           Text="نصب با موفقیت انجام شد."
+                           Margin="10"
+                           FontFamily="B Koodak"
+                           FontSize="22"
+                           Grid.Row="0" />
+
+                <Button Grid.Row="1"
+                        Click="finish_Click"
+                        Content="خروج"
+                        Background="{DynamicResource appClr1}"
+                        Foreground="White"
+                        FontFamily="B Koodak" />
+
+            </Grid>
+
+        </Grid>
+
+        <!--<TextBlock Grid.Row="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Text="گروه نرم افزاری SSYM" />-->
+
+        <!--<Button Grid.Row="0"
+                HorizontalAlignment="Left"
+                Width="50"
+                FontSize="14"
+                Height="25"
+                VerticalAlignment="Top"
+                Margin="10"
+                Content="بازگشت"
+                Name="btnBack"
+                Click="return_Click" />-->
+
+        <Border Grid.Row="2"
+                Background="{DynamicResource appClr1}"
+                BorderThickness="0,5,0,0"
+                BorderBrush="{DynamicResource appClr2}">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+
+
+                <Button VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Width="110"
+                        Height="30"
+                        Margin="5"
+                        Padding="0,-5,0,0"
+                        Content="خروج"
+                        Name="btn_Exit"
+                        Click="Btn_Exit_OnClick"
+                        FontFamily="B Koodak"
+                        Style="{StaticResource btnDown}"
+                        FontSize="22" />
+                <Button VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Width="110"
+                        Height="30"
+                        Margin="5"
+                        Padding="0,-5,0,0"
+                        Content="بعدی"
+                        Name="btn_forward"
+                        Visibility="Collapsed"
+                        Click="Btn_forward_OnClick"
+                        Style="{StaticResource btnDown}"
+                        FontFamily="B Koodak"
+                        FontSize="22" />
+                <Button VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Width="110"
+                        Height="30"
+                        Margin="5"
+                        Padding="0,-5,0,0"
+                        Visibility="Collapsed"
+                        Style="{StaticResource btnDown}"
+                        Content="بازگشت"
+                        Name="btnBack"
+                        Click="return_Click"
+                        FontFamily="B Koodak"
+                        FontSize="22" />
+
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>

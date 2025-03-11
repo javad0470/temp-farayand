@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by yFiles WPF 2.2-->
+<graphml xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:y="http://www.yworks.com/xml/yfiles-common/2.0" xmlns:ywpf="http://www.yworks.com/xml/yfiles-wpf/2.0/xaml" xmlns:demo="http://www.yworks.com/yfilesWPF/2.2/demos/BusinessProcessDiagram" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml.wpf/2.0/ygraphml.xsd " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="all" attr.name="UserTags" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/UserTags" />
+  <key id="d1" for="node" attr.name="NodeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeLabels" />
+  <key id="d2" for="node" attr.name="NodeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeGeometry" />
+  <key id="d3" for="node" attr.name="NodeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeStyle" />
+  <key id="d4" for="edge" attr.name="EdgeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeLabels" />
+  <key id="d5" for="edge" attr.name="EdgeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeGeometry" />
+  <key id="d6" for="edge" attr.name="EdgeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeStyle" />
+  <key id="d7" for="port" attr.name="PortLocationParameter" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLocationParameter">
+    <default>
+      <x:Static Member="ywpf:NodeScaledPortLocationModel.NodeCenterAnchored" />
+    </default>
+  </key>
+  <key id="d8" for="port" attr.name="PortStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortStyle">
+    <default>
+      <x:Static Member="y:VoidPortStyle.Instance" />
+    </default>
+  </key>
+  <key id="d9" attr.name="SharedData" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/SharedData" />
+  <data key="d9">
+    <y:SharedData>
+      <ywpf:Typeface x:Key="1" />
+      <ywpf:TypefaceFormat x:Key="2" TextAlignment="Center" />
+      <demo:EventNodeStyle x:Key="3">
+        <demo:EventNodeStyle.Event>
+          <demo:Event Type="PlainStart" />
+        </demo:EventNodeStyle.Event>
+      </demo:EventNodeStyle>
+      <demo:ActivityNodeStyle x:Key="4">
+        <demo:ActivityNodeStyle.Activity>
+          <demo:Activity Type="Task" />
+        </demo:ActivityNodeStyle.Activity>
+      </demo:ActivityNodeStyle>
+      <demo:RelationEdgeStyle x:Key="5">
+        <demo:RelationEdgeStyle.Relation>
+          <demo:Relation Type="SequenceFlow" />
+        </demo:RelationEdgeStyle.Relation>
+      </demo:RelationEdgeStyle>
+      <demo:EventNodeStyle x:Key="6">
+        <demo:EventNodeStyle.Event>
+          <demo:Event Type="PlainEnd" />
+        </demo:EventNodeStyle.Event>
+      </demo:EventNodeStyle>
+    </y:SharedData>
+  </data>
+  <graph id="G" edgedefault="directed">
+    <node id="n0">
+      <data key="d2">
+        <y:RectD X="0" Y="-67.5" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <y:GraphMLReference ResourceKey="3" />
+      </data>
+      <port name="p0">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="0.5,0" />
+        </data>
+      </port>
+    </node>
+    <node id="n1">
+      <data key="d2">
+        <y:RectD X="50" Y="-81.5" Width="73" Height="58" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="TaskLoop" />
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label LabelModelParameter="{x:Static ywpf:InteriorLabelModel.Center}" PreferredSize="46,28">
+            <y:Label.Text><![CDATA[Identify
+Demand]]></y:Label.Text>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+      <port name="p0">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="-0.5,0" />
+        </data>
+      </port>
+      <port name="p1">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="0.5,0" />
+        </data>
+      </port>
+    </node>
+    <node id="n2">
+      <data key="d2">
+        <y:RectD X="143" Y="-114.75" Width="485" Height="105" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="Subprocess" />
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="66,14">
+            <y:Label.Text><![CDATA[Obtain Offer]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:InteriorLabelModelParameter Position="NorthWest">
+                <ywpf:InteriorLabelModelParameter.Model>
+                  <ywpf:InteriorLabelModel Insets="10" />
+                </ywpf:InteriorLabelModelParameter.Model>
+              </ywpf:InteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+      <graph id="n2:" edgedefault="directed">
+        <node id="n2::n0">
+          <data key="d2">
+            <y:RectD X="153" Y="-78.75" Width="30" Height="30" />
+          </data>
+          <data key="d3">
+            <y:GraphMLReference ResourceKey="3" />
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="0.5,0" />
+            </data>
+          </port>
+        </node>
+        <node id="n2::n1">
+          <data key="d2">
+            <y:RectD X="412" Y="-78.75" Width="30" Height="30" />
+          </data>
+          <data key="d3">
+            <demo:EventNodeStyle>
+              <demo:EventNodeStyle.Event>
+                <demo:Event Type="MessageIntermediateCatching" />
+              </demo:EventNodeStyle.Event>
+            </demo:EventNodeStyle>
+          </data>
+          <data key="d1">
+            <x:List>
+              <y:Label LabelModelParameter="{x:Static ywpf:ExteriorLabelModel.South}" PreferredSize="46,28">
+                <y:Label.Text><![CDATA[Offer
+received]]></y:Label.Text>
+                <y:Label.Style>
+                  <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+                </y:Label.Style>
+              </y:Label>
+            </x:List>
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="-0.5,0" />
+            </data>
+          </port>
+          <port name="p1">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="0.5,0" />
+            </data>
+          </port>
+        </node>
+        <node id="n2::n2">
+          <data key="d2">
+            <y:RectD X="588" Y="-78.75" Width="30" Height="30" />
+          </data>
+          <data key="d3">
+            <y:GraphMLReference ResourceKey="6" />
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="-0.5,0" />
+            </data>
+          </port>
+        </node>
+        <node id="n2::n3">
+          <data key="d2">
+            <y:RectD X="203" Y="-88.75" Width="87" Height="50" />
+          </data>
+          <data key="d3">
+            <y:GraphMLReference ResourceKey="4" />
+          </data>
+          <data key="d1">
+            <x:List>
+              <y:Label LabelModelParameter="{x:Static ywpf:InteriorLabelModel.Center}" PreferredSize="45,28">
+                <y:Label.Text><![CDATA[Select
+Supplier]]></y:Label.Text>
+                <y:Label.Style>
+                  <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+                </y:Label.Style>
+              </y:Label>
+            </x:List>
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="-0.5,0" />
+            </data>
+          </port>
+          <port name="p1">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="0.5,0" />
+            </data>
+          </port>
+        </node>
+        <node id="n2::n4">
+          <data key="d2">
+            <y:RectD X="310" Y="-88.75" Width="74" Height="50" />
+          </data>
+          <data key="d3">
+            <y:GraphMLReference ResourceKey="4" />
+          </data>
+          <data key="d1">
+            <x:List>
+              <y:Label LabelModelParameter="{x:Static ywpf:InteriorLabelModel.Center}" PreferredSize="45,28">
+                <y:Label.Text><![CDATA[Request
+Offer]]></y:Label.Text>
+                <y:Label.Style>
+                  <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+                </y:Label.Style>
+              </y:Label>
+            </x:List>
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="-0.5,0" />
+            </data>
+          </port>
+          <port name="p1">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="0.5,0" />
+            </data>
+          </port>
+        </node>
+        <node id="n2::n5">
+          <data key="d2">
+            <y:RectD X="470" Y="-88.75" Width="98" Height="50" />
+          </data>
+          <data key="d3">
+            <y:GraphMLReference ResourceKey="4" />
+          </data>
+          <data key="d1">
+            <x:List>
+              <y:Label LabelModelParameter="{x:Static ywpf:InteriorLabelModel.Center}" PreferredSize="64,14">
+                <y:Label.Text><![CDATA[Check Offer]]></y:Label.Text>
+                <y:Label.Style>
+                  <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+                </y:Label.Style>
+              </y:Label>
+            </x:List>
+          </data>
+          <port name="p0">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="-0.5,0" />
+            </data>
+          </port>
+          <port name="p1">
+            <data key="d7">
+              <ywpf:NodeScaledParameter Offset="0.5,0" />
+            </data>
+          </port>
+        </node>
+        <edge id="n2::e0" source="n2::n0" target="n2::n3" sourceport="p0" targetport="p0">
+          <data key="d6">
+            <y:GraphMLReference ResourceKey="5" />
+          </data>
+        </edge>
+        <edge id="n2::e1" source="n2::n3" target="n2::n4" sourceport="p1" targetport="p0">
+          <data key="d6">
+            <y:GraphMLReference ResourceKey="5" />
+          </data>
+        </edge>
+        <edge id="n2::e2" source="n2::n4" target="n2::n1" sourceport="p1" targetport="p0">
+          <data key="d6">
+            <y:GraphMLReference ResourceKey="5" />
+          </data>
+        </edge>
+        <edge id="n2::e3" source="n2::n1" target="n2::n5" sourceport="p1" targetport="p0">
+          <data key="d6">
+            <y:GraphMLReference ResourceKey="5" />
+          </data>
+        </edge>
+        <edge id="n2::e4" source="n2::n5" target="n2::n2" sourceport="p1" targetport="p0">
+          <data key="d6">
+            <y:GraphMLReference ResourceKey="5" />
+          </data>
+        </edge>
+      </graph>
+      <port name="p0">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="-0.5,0.0928571428571429" />
+        </data>
+      </port>
+      <port name="p1">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="0.5,0.0928571428571429" />
+        </data>
+      </port>
+    </node>
+    <node id="n3">
+      <data key="d2">
+        <y:RectD X="648" Y="-77.5" Width="66" Height="50" />
+      </data>
+      <data key="d3">
+        <y:GraphMLReference ResourceKey="4" />
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label LabelModelParameter="{x:Static ywpf:InteriorLabelModel.Center}" PreferredSize="31,28">
+            <y:Label.Text><![CDATA[Place
+Order]]></y:Label.Text>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+      <port name="p0">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="-0.5,0" />
+        </data>
+      </port>
+      <port name="p1">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="0.5,0" />
+        </data>
+      </port>
+    </node>
+    <node id="n4">
+      <data key="d2">
+        <y:RectD X="734" Y="-67.5" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <y:GraphMLReference ResourceKey="6" />
+      </data>
+      <port name="p0">
+        <data key="d7">
+          <ywpf:NodeScaledParameter Offset="-0.5,0" />
+        </data>
+      </port>
+    </node>
+    <edge id="e0" source="n0" target="n1" sourceport="p0" targetport="p0">
+      <data key="d6">
+        <y:GraphMLReference ResourceKey="5" />
+      </data>
+    </edge>
+    <edge id="e1" source="n1" target="n2" sourceport="p1" targetport="p0">
+      <data key="d6">
+        <y:GraphMLReference ResourceKey="5" />
+      </data>
+    </edge>
+    <edge id="e2" source="n2" target="n3" sourceport="p1" targetport="p0">
+      <data key="d6">
+        <y:GraphMLReference ResourceKey="5" />
+      </data>
+    </edge>
+    <edge id="e3" source="n3" target="n4" sourceport="p1" targetport="p0">
+      <data key="d6">
+        <y:GraphMLReference ResourceKey="5" />
+      </data>
+    </edge>
+  </graph>
+</graphml>

@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:converter="clr-namespace:SSYM.OrgDsn.Converter;assembly=SSYM.OrgDsn.Converter">
+    <converter:NotConverter x:Key="NotConverter" />
+    <converter:ObjectTypeToStringConverter x:Key="ObjectTypeToStringConverter" />
+    <converter:SimpleMultiValueConverter x:Key="SimpleMultiValueConverter" />
+    <converter:ArrowHeightConverter x:Key="ArrowHeightConverter" />
+    <converter:ScaleYArrowHeightConverter x:Key="ScaleYArrowHeightConverter" />
+    <converter:TranslateYArrowConverter x:Key="TranslateYArrowConverter" />
+    <converter:SlcEvtSrtVisibilityConverter x:Key="SlcEvtSrtVisibilityConverter" />
+    <converter:SlcEvtRstVisibilityConverter x:Key="SlcEvtRstVisibilityConverter" />
+    <converter:BooleanOrConverter x:Key="BooleanOrConverter" />
+    <converter:IntToBoolConverter x:Key="IntToBoolConverter" />
+	
+    <converter:ItmFixSfwNameConverter x:Key="ItmFixSfwNameConverter" />
+    <converter:BrushToColorConverter x:Key="BrushToColorConverter" />
+
+    <converter:EvtRstWayAwrTypeNameConverter x:Key="EvtRstWayAwrTypeNameConverter" />
+    <converter:EvtSrtWayAwrTypeNameConverter x:Key="EvtSrtWayAwrTypeNameConverter" />
+
+    <converter:IntToErorConverter x:Key="IntToErorConverter" />
+    <converter:BooleanToVisibilityConverterWithParameter x:Key="BooleanToVisibilityConverterWithParameter" />
+    <converter:NullableDateConverter x:Key="NullableDateConverter" />
+ 
+    <converter:IntToNewsConverter x:Key="IntToNewsConverter" />
+
+    <converter:IntToSfwConverter x:Key="IntToSfwConverter" />
+    <converter:IntToPrsConverter x:Key="IntToPrsConverter" />
+
+    <converter:SizeConverter x:Key="SizeConverter"></converter:SizeConverter>
+
+    <converter:DsonDescConverter x:Key="DsonDescConverter" />
+
+    <telerik:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+    <converter:AndVisibilityConverter x:Key="AndVisibilityConverter" />
+    
+    <converter:ListToCountConverter x:Key="ListToCountConverter" /> 
+
+    <converter:ListCountToTrueFalseConverter x:Key="ListCountToTrueFalseConverter" />
+
+    <converter:AllEtyTypConverter x:Key="AllEtyTypConverter" />
+
+    <converter:NotBooleanToVisibilityConverter x:Key="NotBooleanToVisibilityConverter" />
+
+    <converter:NullableBooleanToVisibilityConverter x:Key="NullableBooleanToVisibilityConverter" />
+
+    <converter:ListItemInGroupIndexConverter x:Key="ListItemInGroupIndexConverter" />
+    <converter:ObjRstSelectedItem x:Key="ObjRstSelectedItem" /> 
+
+    <converter:StringCutterConverter x:Key="StringCutterConverter" />
+
+    <converter:DataGridRowToIndexConverter x:Key="DataGridRowToIndexConverter" />
+
+    <converter:SearchToColorConverter x:Key="SearchToColorConverter" />
+
+    <converter:EnumToTupleConverter x:Key="EnumToTupleConverter" />
+
+    <converter:EnumToListConverter x:Key="EnumToListConverter" />
+
+    <converter:PersianDateConverter x:Key="PersianDateConverter" />
+
+    <converter:BooleanAndConverter x:Key="BooleanAndConverter" />
+
+    <converter:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
+    <converter:NotObjectToVisibilityConverter x:Key="NotObjectToVisibilityConverter"/>
+
+</ResourceDictionary>

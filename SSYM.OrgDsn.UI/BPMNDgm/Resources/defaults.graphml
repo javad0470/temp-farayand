@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by yFiles WPF 2.2-->
+<graphml xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:y="http://www.yworks.com/xml/yfiles-common/2.0" xmlns:ywpf="http://www.yworks.com/xml/yfiles-wpf/2.0/xaml" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:demo="http://www.yworks.com/yfilesWPF/2.2/demos/BusinessProcessDiagram" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml.wpf/2.0/ygraphml.xsd " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" for="all" attr.name="UserTags" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/UserTags" />
+  <key id="d1" for="node" attr.name="NodeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeLabels" />
+  <key id="d2" for="node" attr.name="NodeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeGeometry" />
+  <key id="d3" for="node" attr.name="NodeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeStyle" />
+  <key id="d4" for="edge" attr.name="EdgeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeLabels" />
+  <key id="d5" for="edge" attr.name="EdgeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeGeometry" />
+  <key id="d6" for="edge" attr.name="EdgeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeStyle" />
+  <key id="d7" for="port" attr.name="PortLocationParameter" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLocationParameter">
+    <default>
+      <x:Static Member="ywpf:NodeScaledPortLocationModel.NodeCenterAnchored" />
+    </default>
+  </key>
+  <key id="d8" for="port" attr.name="PortStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortStyle">
+    <default>
+      <x:Static Member="y:VoidPortStyle.Instance" />
+    </default>
+  </key>
+  <key id="d9" attr.name="SharedData" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/SharedData" />
+  <data key="d9">
+    <y:SharedData>
+      <ywpf:Typeface x:Key="1" />
+      <ywpf:TypefaceFormat x:Key="2" TextAlignment="Center" />
+      <ywpf:ShapeNodeStyle x:Key="3" />
+    </y:SharedData>
+  </data>
+  <graph id="G" edgedefault="directed">
+    <node id="n0">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="Task"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="25,14">
+            <y:Label.Text>Task</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n1">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="TaskMultipleInstances"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="70,28">
+            <y:Label.Text><![CDATA[Task Multiple
+Instances]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n2">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="TaskLoop"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="27,28">
+            <y:Label.Text><![CDATA[Task
+Loop]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n3">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="TaskAdHoc"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="39,28">
+            <y:Label.Text><![CDATA[Task
+Ad-hoc]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n4">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="Subprocess"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="64,14">
+            <y:Label.Text>Subprocess</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n5">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="SubprocessMultipleInstances"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="97,28">
+            <y:Label.Text><![CDATA[Subprocess
+Multiple Instances]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n6">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="SubprocessLoop"/>
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="64,28">
+            <y:Label.Text><![CDATA[Subprocess
+Loop]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n7">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="75" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:ActivityNodeStyle>
+          <demo:ActivityNodeStyle.Activity>
+            <demo:Activity Type="SubprocessAdHoc" />
+          </demo:ActivityNodeStyle.Activity>
+        </demo:ActivityNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Activities</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="64,28">
+            <y:Label.Text><![CDATA[Subprocess
+Ad-hoc]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n8">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="50" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:GatewayNodeStyle>
+          <demo:GatewayNodeStyle.Gateway>
+            <demo:Gateway Type="DataBasedExclusive" />
+          </demo:GatewayNodeStyle.Gateway>
+        </demo:GatewayNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Gateways</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="62,28">
+            <y:Label.Text><![CDATA[Data based
+exclusive]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n9">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="50" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:GatewayNodeStyle>
+          <demo:GatewayNodeStyle.Gateway>
+            <demo:Gateway Type="EventBasedExclusive" />
+          </demo:GatewayNodeStyle.Gateway>
+        </demo:GatewayNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Gateways</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,28">
+            <y:Label.Text><![CDATA[Event based
+exclusive]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n10">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="50" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:GatewayNodeStyle>
+          <demo:GatewayNodeStyle.Gateway>
+            <demo:Gateway Type="Parallel" />
+          </demo:GatewayNodeStyle.Gateway>
+        </demo:GatewayNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Gateways</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="41,14">
+            <y:Label.Text>Parallel</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n11">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="50" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:GatewayNodeStyle>
+          <demo:GatewayNodeStyle.Gateway>
+            <demo:Gateway Type="Inclusive" />
+          </demo:GatewayNodeStyle.Gateway>
+        </demo:GatewayNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Gateways</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="47,14">
+            <y:Label.Text>Inclusive</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n12">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="50" Height="50" />
+      </data>
+      <data key="d3">
+        <demo:GatewayNodeStyle>
+          <demo:GatewayNodeStyle.Gateway>
+            <demo:Gateway Type="Complex" />
+          </demo:GatewayNodeStyle.Gateway>
+        </demo:GatewayNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Gateways</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="48,14">
+            <y:Label.Text>Complex</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n13">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="PlainStart" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="27,28">
+            <y:Label.Text><![CDATA[Plain
+Start]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n14">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="PlainIntermediateCatching" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Plain
+Intermediate
+Catching]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="PlainEnd" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="27,28">
+            <y:Label.Text><![CDATA[Plain
+End]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n16">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MessageStart" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="49,28">
+            <y:Label.Text><![CDATA[Message
+Start]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MessageIntermediateCatching" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Message
+Intermediate
+Catching]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n18">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MessageIntermediateThrowing" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Message
+Intermediate
+Throwing]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n19">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MessageEnd" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="49,28">
+            <y:Label.Text><![CDATA[Message
+End]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n20">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="TimerStart" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="31,28">
+            <y:Label.Text><![CDATA[Timer
+Start]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n21">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="TimerIntermediateCatching" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Timer
+Intermediate
+Catching]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n22">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="Terminate" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="53,14">
+            <y:Label.Text>Terminate</y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n23">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MultipleStart" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="42,28">
+            <y:Label.Text><![CDATA[Multiple
+Start]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n24">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MultipleIntermediateCatching" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Multiple
+Intermediate
+Catching]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n25">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MultipleIntermediateThrowing" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Multiple
+Intermediate
+Throwing]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n26">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="MultipleEnd" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="42,28">
+            <y:Label.Text><![CDATA[Multiple
+End]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n27">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="ErrorIntermediateCatching" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="67,42">
+            <y:Label.Text><![CDATA[Error
+Intermediate
+Catching]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n28">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:EventNodeStyle>
+          <demo:EventNodeStyle.Event>
+            <demo:Event Type="ErrorEnd" />
+          </demo:EventNodeStyle.Event>
+        </demo:EventNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Events</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="27,28">
+            <y:Label.Text><![CDATA[Error
+End]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n29">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="40" Height="60" />
+      </data>
+      <data key="d3">
+        <demo:ArtifactNodeStyle>
+          <demo:ArtifactNodeStyle.Artifact>
+            <demo:Artifact Type="DataObject" />
+          </demo:ArtifactNodeStyle.Artifact>
+        </demo:ArtifactNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Artifacts</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="64,14">
+            <y:Label.Text><![CDATA[Data Object]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n30">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="70" Height="30" />
+      </data>
+      <data key="d3">
+        <demo:ArtifactNodeStyle>
+          <demo:ArtifactNodeStyle.Artifact>
+            <demo:Artifact Type="TextAnnotation" />
+          </demo:ArtifactNodeStyle.Artifact>
+        </demo:ArtifactNodeStyle>
+      </data>
+      <data key="d0">
+        <sys:String>Artifacts</sys:String>
+      </data>
+      <data key="d1">
+        <x:List>
+          <y:Label PreferredSize="83,14">
+            <y:Label.Text><![CDATA[Text Annotation]]></y:Label.Text>
+            <y:Label.LabelModelParameter>
+              <ywpf:ExteriorLabelModelParameter Position="South">
+                <ywpf:ExteriorLabelModelParameter.Model>
+                  <ywpf:ExteriorLabelModel Insets="10" />
+                </ywpf:ExteriorLabelModelParameter.Model>
+              </ywpf:ExteriorLabelModelParameter>
+            </y:Label.LabelModelParameter>
+            <y:Label.Style>
+              <ywpf:SimpleLabelStyle TypefaceFormat="{y:GraphMLReference 2}" Typeface="{y:GraphMLReference 1}" />
+            </y:Label.Style>
+          </y:Label>
+        </x:List>
+      </data>
+    </node>
+    <node id="n31">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <y:GraphMLReference ResourceKey="3" />
+      </data>
+      <data key="d0">
+        <sys:String>Dummy</sys:String>
+      </data>
+      <port name="p0" />
+      <port name="p1" />
+      <port name="p2" />
+      <port name="p3" />
+      <port name="p4" />
+      <port name="p5" />
+      <port name="p6" />
+    </node>
+    <node id="n32">
+      <data key="d2">
+        <y:RectD X="0" Y="0" Width="30" Height="30" />
+      </data>
+      <data key="d3">
+        <y:GraphMLReference ResourceKey="3" />
+      </data>
+      <data key="d0">
+        <sys:String>Dummy</sys:String>
+      </data>
+      <port name="p0" />
+      <port name="p1" />
+      <port name="p2" />
+      <port name="p3" />
+      <port name="p4" />
+      <port name="p5" />
+      <port name="p6" />
+    </node>
+    <edge id="e0" source="n31" target="n32" sourceport="p0" targetport="p0">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="SequenceFlow" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e1" source="n31" target="n32" sourceport="p1" targetport="p1">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="DefaultFlow" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e2" source="n31" target="n32" sourceport="p2" targetport="p2">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="ConditionalFlow" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e3" source="n31" target="n32" sourceport="p3" targetport="p3">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="Association" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e4" source="n31" target="n32" sourceport="p4" targetport="p4">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="DirectedAssociation" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e5" source="n31" target="n32" sourceport="p5" targetport="p5">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="BiDirectedAssociation" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+    <edge id="e6" source="n31" target="n32" sourceport="p6" targetport="p6">
+      <data key="d6">
+        <demo:RelationEdgeStyle>
+          <demo:RelationEdgeStyle.Relation>
+            <demo:Relation Type="MessageFlow" />
+          </demo:RelationEdgeStyle.Relation>
+        </demo:RelationEdgeStyle>
+      </data>
+    </edge>
+  </graph>
+</graphml>

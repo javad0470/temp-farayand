@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{928C7805-AC75-41FB-87A7-CF4F89721395}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSYM.OrgDsn.Converter</RootNamespace>
+    <AssemblyName>SSYM.OrgDsn.Converter</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>srcSig.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PersianLibrary">
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\PersianLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrowHeightConverter.cs" />
+    <Compile Include="BooleanOrConverter.cs" />
+    <Compile Include="AndVisibilityConverter.cs" />
+    <Compile Include="AllEtyTypConverter.cs" />
+    <Compile Include="BooleanAndConverter.cs" />
+    <Compile Include="BooleanToVisibilityConverterWithParameter.cs" />
+    <Compile Include="BrushToColorConverter.cs" />
+    <Compile Include="NotObjectToVisibilityConverter.cs" />
+    <Compile Include="ObjectToVisibilityConverter.cs" />
+    <Compile Include="PersianDateConverter.cs" />
+    <Compile Include="EnumToListConverter.cs" />
+    <Compile Include="EnumToTupleConverter.cs" />
+    <Compile Include="DataGridRowToIndexConverter.cs" />
+    <Compile Include="SearchToColorConverter.cs" />
+    <Compile Include="StringCutterConverter.cs" />
+    <Compile Include="ObjRstSelectedItem.cs" />
+    <Compile Include="ListItemInGroupIndexConverter.cs" />
+    <Compile Include="NullableBooleanToVisibilityConverter.cs" />
+    <Compile Include="ListCountToTrueFalseConverter.cs" />
+    <Compile Include="ListToCountConverter.cs" />
+    <Compile Include="NotBooleanToVisibilityConverter.cs" />
+    <Compile Include="DsonDescConverter.cs" />
+    <Compile Include="SizeConverter.cs" />
+    <Compile Include="IntToPrsConverter.cs" />
+    <Compile Include="IntToSfwConverter.cs" />
+    <Compile Include="IntToNewsConverter.cs" />
+    <Compile Include="IntToErorConverter.cs" />
+    <Compile Include="NullableDateConverter.cs" />
+    <Compile Include="EvtRstWayAwrTypeNameConverter.cs" />
+    <Compile Include="EvtSrtWayAwrTypeNameConverter.cs" />
+    <Compile Include="ItmFixSfwNameConverter.cs" />
+    <Compile Include="IntToBoolConverter.cs" />
+    <Compile Include="SlcEvtRstVisibilityConverter.cs" />
+    <Compile Include="SlcEvtSrtVisibilityConverter.cs" />
+    <Compile Include="TranslateYArrowConverter.cs" />
+    <Compile Include="ScaleYArrowHeightConverter.cs" />
+    <Compile Include="SimpleMultiValueConverter.cs" />
+    <Compile Include="NotConverter.cs" />
+    <Compile Include="ObjectTypeToStringConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSYM.OrgDsn.Base\SSYM.OrgDsn.Base.csproj">
+      <Project>{724c3bc5-03e1-4289-a77b-1b08c74b7aa1}</Project>
+      <Name>SSYM.OrgDsn.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Common\SSYM.OrgDsn.Common.csproj">
+      <Project>{588a2a20-6aae-4c6b-a5cc-f20268135b46}</Project>
+      <Name>SSYM.OrgDsn.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Model\SSYM.OrgDsn.Model.csproj">
+      <Project>{92e62ac0-7c62-4ce4-b8a3-eec53f3c9905}</Project>
+      <Name>SSYM.OrgDsn.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.ViewModel\SSYM.OrgDsn.ViewModel.csproj">
+      <Project>{4be6bfab-3aa9-4989-8ebf-b8ac41b5cf97}</Project>
+      <Name>SSYM.OrgDsn.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="srcSig.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

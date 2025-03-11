@@ -1,0 +1,685 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl.DtlOut"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <!--<UserControl.DataContext>
+        <vm:DtlOutViewModel></vm:DtlOutViewModel>
+    </UserControl.DataContext>-->
+
+    <UserControl.Resources>
+
+
+        <Style TargetType="{x:Type TextBlock}"
+               BasedOn="{StaticResource CommonTextBlockStyle}">
+        </Style>
+
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource Border04}">
+
+        <Grid>
+
+            <Grid FlowDirection="RightToLeft">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="عنوان:"
+                           Grid.Row="0"
+                           Grid.Column="0"></TextBlock>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Stretch"
+                            Background="Transparent"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2">
+
+                    <!--<i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="MouseEnter">
+
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                <ei:ControlStoryboardAction.Storyboard>
+
+                                    <Storyboard>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="btnSlcOut">
+                                            
+                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                  Value="0.5" />
+                                            
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                  Value="1" />
+                                            
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+
+                                </ei:ControlStoryboardAction.Storyboard>
+
+                            </ei:ControlStoryboardAction>
+
+                        </i:EventTrigger>
+
+                        <i:EventTrigger EventName="MouseLeave">
+
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                <ei:ControlStoryboardAction.Storyboard>
+
+                                    <Storyboard>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="btnSlcOut">
+                                            
+                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                  Value="1" />
+                                            
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                  Value="0" />
+                                            
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+
+                                </ei:ControlStoryboardAction.Storyboard>
+
+                            </ei:ControlStoryboardAction>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>-->
+
+                    <TextBlock Text="{Binding TblObj.FldNamObj}"
+                               Style="{StaticResource UserDefinedTextBlockStyle}"
+                               Margin="5"
+                               MinWidth="200"></TextBlock>
+
+                    <Button x:Name="btnSlcOut"
+                            Style="{StaticResource CommonBtnStyle}"
+                            IsEnabled="{Binding}"
+                            Command="{Binding SelectOutputCommand}">
+
+                        <custom:BackgroundedImage Source="{StaticResource addItmImage}" />
+
+                    </Button>
+
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3">
+
+                    <!--<i:Interaction.Triggers>
+
+                        <i:EventTrigger EventName="MouseEnter">
+
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                <ei:ControlStoryboardAction.Storyboard>
+
+                                    <Storyboard>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="btnAddDst">
+
+                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                  Value="0.5" />
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                  Value="1" />
+
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+
+                                </ei:ControlStoryboardAction.Storyboard>
+
+                            </ei:ControlStoryboardAction>
+
+                        </i:EventTrigger>
+
+                        <i:EventTrigger EventName="MouseLeave">
+
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                <ei:ControlStoryboardAction.Storyboard>
+
+                                    <Storyboard>
+
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                       Storyboard.TargetName="btnAddDst">
+
+                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                  Value="1" />
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                  Value="0" />
+
+                                        </DoubleAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+
+                                </ei:ControlStoryboardAction.Storyboard>
+
+                            </ei:ControlStoryboardAction>
+
+                        </i:EventTrigger>
+
+                    </i:Interaction.Triggers>-->
+
+                    <ItemsControl ItemsSource="{Binding TblWayIfrm_SndOut}">
+
+                        <ItemsControl.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <Grid HorizontalAlignment="Left">
+
+                                    <!--<i:Interaction.Triggers>
+
+                                        <i:EventTrigger EventName="MouseEnter">
+
+                                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                                <ei:ControlStoryboardAction.Storyboard>
+
+                                                    <Storyboard>
+
+                                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                                       Storyboard.TargetName="btnDelDst">
+
+                                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                                  Value="0.5" />
+
+                                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                                  Value="1" />
+
+                                                        </DoubleAnimationUsingKeyFrames>
+
+                                                    </Storyboard>
+
+                                                </ei:ControlStoryboardAction.Storyboard>
+
+                                            </ei:ControlStoryboardAction>
+
+                                        </i:EventTrigger>
+
+                                        <i:EventTrigger EventName="MouseLeave">
+
+                                            <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                                <ei:ControlStoryboardAction.Storyboard>
+
+                                                    <Storyboard>
+
+                                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                                       Storyboard.TargetName="btnDelDst">
+
+                                                            <EasingDoubleKeyFrame KeyTime="0"
+                                                                                  Value="1" />
+
+                                                            <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                                  Value="0" />
+
+                                                        </DoubleAnimationUsingKeyFrames>
+
+                                                    </Storyboard>
+
+                                                </ei:ControlStoryboardAction.Storyboard>
+
+                                            </ei:ControlStoryboardAction>
+
+                                        </i:EventTrigger>
+
+                                    </i:Interaction.Triggers>-->
+
+                                    <Grid.ColumnDefinitions>
+
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button Style="{StaticResource CommonBtnStyle}"
+                                            Width="25"
+                                            Height="25"
+                                            x:Name="btnDelDst"
+                                            Grid.Column="0"
+                                            Command="{Binding DataContext.DeleteDestinationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+
+                                        <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+
+                                    </Button>
+
+                                    <TextBlock Grid.Column="1"
+                                               Style="{StaticResource CommonTextBlockStyle}"
+                                               Text="به"
+                                               Margin="5"></TextBlock>
+
+                                    <TextBlock Grid.Column="2"
+                                               Style="{StaticResource UserDefinedTextBlockStyle}"
+                                               Margin="5"
+                                               Text="{Binding FldNamActDst, Mode=OneWay}"></TextBlock>
+
+                                    <TextBlock Grid.Column="3"
+                                               Style="{StaticResource CommonTextBlockStyle}"
+                                               Text="از"
+                                               Margin="5"></TextBlock>
+
+                                    <TextBlock Grid.Column="4"
+                                               Text="{Binding FldNamNodDst, Mode=OneWay}"
+                                               Margin="5"
+                                               Style="{StaticResource UserDefinedTextBlockStyle}"></TextBlock>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ItemsControl.ItemTemplate>
+
+                    </ItemsControl>
+
+                    <Button Command="{Binding AddDestinationCommand}"
+                            Style="{StaticResource CommonBtnStyle}"
+                            x:Name="btnAddDst"
+                            Width="25"
+                            Height="25"
+                            HorizontalAlignment="Left">
+
+                        <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                    </Button>
+
+                </StackPanel>
+
+                <GroupBox HorizontalAlignment="Stretch"
+                          VerticalAlignment="Top"
+                          Grid.Row="2"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="3"
+                          Header="نوع خروجی">
+
+                    <StackPanel Orientation="Horizontal">
+
+                        <RadioButton Content="نامه"
+                                     IsChecked="{Binding IsMail, Mode=TwoWay}"></RadioButton>
+
+                        <RadioButton Content="فرم"
+                                     IsChecked="{Binding IsForm, Mode=TwoWay}"></RadioButton>
+
+                        <RadioButton Content="فایل"
+                                     IsChecked="{Binding IsFile, Mode=TwoWay}"></RadioButton>
+
+                        <RadioButton Content="کالا"
+                                     IsChecked="{Binding IsGoods, Mode=TwoWay}"></RadioButton>
+
+                        <RadioButton Content="نیروی انسانی"
+                                     IsChecked="{Binding IsHuman, Mode=TwoWay}"></RadioButton>
+
+                        <RadioButton Content="ساختمان و تأسیسات"
+                                     IsChecked="{Binding IsBuilding, Mode=TwoWay}"></RadioButton>
+
+                    </StackPanel>
+
+                </GroupBox>
+
+                <GroupBox Grid.Row="3"
+                          Grid.Column="0"
+                          Visibility="{Binding DtlVisible,Converter={StaticResource bool2VisConv}}"
+                          Grid.ColumnSpan="3"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Top"
+                          Header="جزئیات ارسال">
+
+                    <Grid VerticalAlignment="Top">
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Stretch"
+                                    Background="Transparent">
+
+                            <!--<i:Interaction.Triggers>
+
+                                <i:EventTrigger EventName="MouseEnter">
+
+                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                               Storyboard.TargetName="btnSlcSfw">
+
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="0.5" />
+
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                          Value="1" />
+
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </i:EventTrigger>
+
+                                <i:EventTrigger EventName="MouseLeave">
+
+                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                               Storyboard.TargetName="btnSlcSfw">
+
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="1" />
+
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                          Value="0" />
+
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </i:EventTrigger>
+
+                            </i:Interaction.Triggers>-->
+
+                            <TextBlock Text="از طریق:"></TextBlock>
+
+                            <telerik:RadComboBox Name="cboManualSoftware"
+                                                 ItemsSource="{Binding ManualOrSoftware}"
+                                                 Style="{StaticResource MetroComboBox}"
+                                                 Width="80"
+                                                 DisplayMemberPath="FldNamItm"
+                                                 SelectedValuePath="FldCodItm"
+                                                 SelectedItem="{Binding ManualOrSoftwareSelectedValue, Mode=TwoWay}"
+                                                 >
+
+                            </telerik:RadComboBox>
+
+                            <TextBlock MinWidth="100"
+                                       Style="{StaticResource UserDefinedTextBlockStyle}"
+                                       Margin="5"
+                                       Text="{Binding SoftwareName, Mode=OneWay}"></TextBlock>
+
+                            <Button x:Name="btnSlcSfw"
+                                    Style="{StaticResource CommonBtnStyle}"
+                                    Command="{Binding SelectSfwPopupIsOpenCommand}"
+                                    IsEnabled="{Binding ManualOrSoftwareSelectedValue.FldCodItm, Mode=OneWay, Converter={StaticResource IntToBoolConverter}}">
+
+                                <custom:BackgroundedImage Source="{StaticResource addItmImage}" />
+
+                            </Button>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal">
+
+                            <!--<i:Interaction.Triggers>
+
+                                <i:EventTrigger EventName="MouseEnter">
+
+                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                               Storyboard.TargetName="btnSlcUnt">
+
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="0.5" />
+
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                          Value="1" />
+
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </i:EventTrigger>
+
+                                <i:EventTrigger EventName="MouseLeave">
+
+                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play">
+
+                                        <ei:ControlStoryboardAction.Storyboard>
+
+                                            <Storyboard>
+
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                                               Storyboard.TargetName="btnSlcUnt">
+
+                                                    <EasingDoubleKeyFrame KeyTime="0"
+                                                                          Value="1" />
+
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.5"
+                                                                          Value="0" />
+
+                                                </DoubleAnimationUsingKeyFrames>
+
+                                            </Storyboard>
+
+                                        </ei:ControlStoryboardAction.Storyboard>
+
+                                    </ei:ControlStoryboardAction>
+
+                                </i:EventTrigger>
+
+                            </i:Interaction.Triggers>-->
+
+                            <TextBlock Text="میزان ارسالی در هر بار ارسال:"></TextBlock>
+
+                            <telerik:RadComboBox ItemsSource="{Binding CompareTools, Mode=OneWay}"
+                                                 Style="{StaticResource MetroComboBox}"
+                                                 Width="100"
+                                                 DisplayMemberPath="FldNamItm"
+                                                 SelectedValuePath="FldCodItm"
+                                                 SelectedItem="{Binding CompareToolsSelectedValue}"></telerik:RadComboBox>
+
+                            <TextBox Text="{Binding TnoOutPerSnd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     MinWidth="40"></TextBox>
+
+                            <TextBlock Style="{StaticResource UserDefinedTextBlockStyle}"
+                                       Margin="5"
+                                       Text="{Binding NamUntMsrt, Mode=OneWay}"></TextBlock>
+
+                            <Button  x:Name="btnSlcUnt"
+                                     Style="{StaticResource CommonBtnStyle}"
+                                     Command="{Binding SelectUntPopupIsOpenCommand}">
+
+                                <custom:BackgroundedImage Source="{StaticResource addItmImage}" />
+
+                            </Button>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="2"
+                                    x:Name="stk"
+                                    Background="Transparent"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Stretch">
+
+                            <TextBlock Text="توضیحات:"></TextBlock>
+
+                            <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     Width="{Binding Path=ActualWidth, ElementName=stk, Converter={StaticResource SizeConverter}, ConverterParameter=-80}"
+                                     Margin="5"
+                                     TextWrapping="Wrap"
+                                     AcceptsReturn="True"></TextBox>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </GroupBox>
+
+            </Grid>
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcOut}"
+                   IsOpen="{Binding OutputDoesntExist}"
+                   PopupAnimation="Slide"
+                   Grid.RowSpan="4">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:DefOut DataContext="{Binding DefOut}" />
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcOut}"
+                   IsOpen="{Binding IsConfirmDestinationOpen, Mode=TwoWay}"
+                   PopupAnimation="Slide">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:SlcDstForOut DataContext="{Binding SlcDstForOut}" />
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcOut}"
+                   IsOpen="{Binding IsSelectOutputOpen}"
+                   PopupAnimation="Slide">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:SlcOut DataContext="{Binding SlcOut}"></popup:SlcOut>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+            </Popup>-->
+
+            <!--<Popup Placement="MousePoint"
+                   IsOpen="{Binding IsAddDestinationOpen}"
+                   PopupAnimation="Scroll">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:SlcSrcAndDst DataContext="{Binding SlcSrcAndDst}"></popup:SlcSrcAndDst>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcSfw}"
+                   IsOpen="{Binding IsSelectSfwPopupOpen, Mode=TwoWay}"
+                   StaysOpen="True"
+                   PopupAnimation="Slide"
+                   AllowsTransparency="True">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:SlcSfw DataContext="{Binding SlcSfw}"></popup:SlcSfw>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcSfw}"
+                   IsOpen="{Binding SoftwareDoesntExist, Mode=TwoWay}"
+                   StaysOpen="True"
+                   PopupAnimation="Slide"
+                   AllowsTransparency="True">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:DefSfw DataContext="{Binding DefSfw}"></popup:DefSfw>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+            <!--<Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcUnt}"
+                   IsOpen="{Binding IsSelectUntPopupOpen, Mode=TwoWay}"
+                   StaysOpen="True"
+                   PopupAnimation="Slide"
+                   AllowsTransparency="True">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:SlcUnt DataContext="{Binding SlcUnt}"></popup:SlcUnt>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>
+
+            <Popup Placement="Right"
+                   PlacementTarget="{Binding ElementName=btnSlcUnt}"
+                   IsOpen="{Binding UnitDoesntExist, Mode=TwoWay}"
+                   StaysOpen="True"
+                   PopupAnimation="Slide"
+                   AllowsTransparency="True">
+                <popup:BasePopup>
+                    <popup:BasePopup.PopupContent>
+                        <popup:DefUnt DataContext="{Binding DefUnt}"></popup:DefUnt>
+                    </popup:BasePopup.PopupContent>
+                </popup:BasePopup>
+
+            </Popup>-->
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

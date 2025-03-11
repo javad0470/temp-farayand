@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.UserSetting.UsrSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:validation="clr-namespace:SSYM.OrgDsn.ViewModel.UserSetting;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:util="clr-namespace:SSYM.OrgDsn.UI.Utility"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <Grid FlowDirection="RightToLeft"
+          Margin="10"
+          Style="{StaticResource MainWindowsGridStyle}">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <!--<Grid.ColumnDefinitions>
+
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>-->
+
+        <TabControl VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Tag="1"
+                    Style="{StaticResource MetroTabControl}">
+
+            <TabItem Header="تغییر نام کاربری"
+                     VerticalAlignment="Top"
+                     IsSelected="{Binding IsChgNamUsrSelected, Mode=TwoWay}">
+
+                <Border Style="{StaticResource DetailBorderStyle}"
+                        IsEnabled="{Binding IsAdmin, Converter={StaticResource NotConverter}}">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                   Style="{StaticResource CommonTextBlockStyle}"
+                                   Grid.Column="0"
+                                   Text="نام کاربری جدید"></TextBlock>
+
+                        <TextBox Grid.Row="0"
+                                 Name="txtUsername"
+                                 Grid.Column="2"
+                                 MaxLength="50">
+                            <TextBox.Text>
+                                <Binding Path="NamUsrNew"
+                                         Mode="TwoWay"
+                                         ValidatesOnExceptions="True"
+                                         ValidatesOnDataErrors="True"
+                                         UpdateSourceTrigger="PropertyChanged">
+                                    <!--<Binding.ValidationRules>
+                                        <validation:UsernameValidationRule />
+                                    </Binding.ValidationRules>-->
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+
+                    </Grid>
+
+                </Border>
+
+            </TabItem>
+
+            <TabItem Header="تغییر رمز عبور">
+                     <!--IsSelected="{Binding ChgPassEnabled,Mode=TwoWay}">-->
+
+                <Border Style="{StaticResource DetailBorderStyle}"
+                        IsEnabled="{Binding IsAdmin, Converter={StaticResource NotConverter}}">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="10,5"
+                                   Style="{StaticResource CommonTextBlockStyle}"
+                                   Text="رمز عبور قبلی"></TextBlock>
+
+                        <PasswordBox Grid.Row="0"
+                                     Grid.Column="2"
+                                     util:PasswordBoxAssistant.BindPassword="True"
+                                     util:PasswordBoxAssistant.BoundPassword="{Binding PassOld,
+                                    Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged, 
+                                     ValidatesOnDataErrors=True, 
+                                     ValidatesOnExceptions=True}"
+                                     Margin="0,5"
+                                     Name="passOld"
+                                     MaxLength="50"
+                                     PasswordChanged="PasswordBox_PasswordChanged_1" />
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="10,5"
+                                   Style="{StaticResource CommonTextBlockStyle}"
+                                   Text="رمز عبور جدید"></TextBlock>
+
+                        <PasswordBox Grid.Row="1"
+                                     Margin="0,5"
+                                     Grid.Column="2"
+                                     Name="passNew"
+                                     util:PasswordBoxAssistant.BindPassword="True"
+                                     util:PasswordBoxAssistant.BoundPassword="{Binding PassNew,
+                            Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged, 
+                                     ValidatesOnDataErrors=True, 
+                                     ValidatesOnExceptions=True}"
+                                     PasswordChanged="PasswordBox_PasswordChanged_2"
+                                     MaxLength="50" />
+
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Margin="10,5"
+                                   Style="{StaticResource CommonTextBlockStyle}"
+                                   Text="تکرار رمز عبور"></TextBlock>
+
+                        <PasswordBox Grid.Row="2"
+                                     Grid.Column="2"
+                                     Margin="0,5"
+                                     util:PasswordBoxAssistant.BindPassword="True"
+                                     util:PasswordBoxAssistant.BoundPassword="{Binding RepeatPass,
+                            Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged, 
+                                     ValidatesOnDataErrors=True, 
+                                     ValidatesOnExceptions=True}"
+                                     MaxLength="50"
+                                     PasswordChanged="PasswordBox_PasswordChanged_3" />
+
+                    </Grid>
+
+                </Border>
+
+            </TabItem>
+
+        </TabControl>
+
+        <Button Margin="0,40"
+                Click="Button_Click_1"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Style="{StaticResource CommonBtnStyle}"
+                Command="{Binding OkCommand}">
+
+            <custom:BackgroundedImage Source="{StaticResource oK_EG}" />
+
+            <!--IsEnabled="{Binding ElementName=txtUsername, Path=Validation.HasError, Converter={StaticResource NotConverter}}"-->
+
+        </Button>
+
+    </Grid>
+
+</UserControl>

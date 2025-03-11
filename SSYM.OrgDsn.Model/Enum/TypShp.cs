@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SSYM.OrgDsn.Model.Enum
+{
+    public enum TypShp
+    {
+        G1 = 1,
+        G2 = 2,
+        G3 = 3,
+        G4 = 4,
+        G5 = 5,
+        G6 = 6,
+        G7 = 7,
+        G8 = 8,
+        E1 = 9,
+        E2 = 10,
+        E3 = 11,
+        E4 = 12,
+        E5 = 13,
+        E6 = 14,
+        E7 = 15,
+        E8 = 16,
+        E9 = 17,
+        E10 = 19,
+        E11 = 20,
+        E12 = 21,
+        E13 = 22,
+        E14 = 23,
+        E15 = 24,
+        E16 = 25,
+        E17 = 26,
+        E18 = 27,
+        E19 = 28,
+        E20 = 29,
+        E21 = 30,
+        E22 = 31,
+        E23 = 32,
+        E24 = 33,
+        E25 = 34,
+        E26 = 35,
+        E27 = 36,
+        E28 = 37,
+        E29 = 38,
+        E30 = 39,
+        E31 = 40,
+        E32 = 41,
+        E33 = 42,
+        A1 = 43,
+        A2 = 44,
+        A3 = 45,
+        A4 = 46,
+        A5 = 47,
+        A6 = 48,
+        A7 = 49,
+        A8 = 50,
+        A9 = 51,
+        CA1 = 52,
+        CA2 = 53,
+        CA3 = 54,
+        CA4 = 55,
+        CA5 = 56,
+        CA6 = 57,
+        DO1 = 58,
+        DO2 = 59,
+        LNE = 60,
+        TextAnnotation = 61,
+        E34 = 62,
+        E35=63,
+        E36 = 64
+        
+    }
+}

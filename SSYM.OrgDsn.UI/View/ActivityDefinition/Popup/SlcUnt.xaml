@@ -1,0 +1,94 @@
+﻿<basePopup:BasePopup x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcUnt"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                     xmlns:ui="clr-namespace:SSYM.OrgDsn.UI"
+                     mc:Ignorable="d"
+                     d:DesignHeight="300"
+                     d:DesignWidth="300">
+
+    <Grid Style="{StaticResource PopupGrid}"
+          FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ui:DelayedBindingTextBox Margin="5"
+                                      Grid.Row="0"
+                                      Text="{Binding TxtSrch}" />
+        <Border Style="{StaticResource DetailBorderStyle}"
+                Grid.Row="1">
+            <DataGrid ItemsSource="{Binding UntMsrtCv}"
+                      Grid.Row="0"
+                      MouseDoubleClick="dgr_OnMouseDoubleClick"
+                      SelectedItem="{Binding SelectedItem}"
+                      Style="{StaticResource PopupDataGridStyle}">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="واحد سنجش"
+                                        Binding="{Binding FldNamUntMsrt}"></DataGridTextColumn>
+
+                    <DataGridTextColumn Header="موضوع سنجش"
+                                        Width="*"
+                                        Binding="{Binding TblSbjMsrt.FldNamSbjMsrt}"></DataGridTextColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </Border>
+
+        <StackPanel Grid.Row="2"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+
+            <TextBlock Grid.Row="1"
+                       Style="{StaticResource TextBlockForPopupMessagesStyle}"
+                       Text="واحد مورد نظر را از فهرست بالا انتخاب کنید" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="3"
+                    x:Name="stkPnl"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Orientation="Horizontal">
+
+            <TextBlock Text="واحد مورد نظر در فهرست بالا مشاهده نشد"
+                       Style="{StaticResource TextBlockForPopupMessagesStyle2}"></TextBlock>
+
+            <Button Content="بلی"
+                    Style="{StaticResource CommonBtnStyle}">
+
+                <i:Interaction.Triggers>
+
+                    <i:EventTrigger EventName="Click">
+
+                        <i:InvokeCommandAction  Command="{Binding Path=DataContext.UnitDoesntExistCommand, ElementName=stkPnl}"></i:InvokeCommandAction>
+
+                    </i:EventTrigger>
+
+                    <!--<i:EventTrigger EventName="Click">
+
+                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                 TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Popup}}"
+                                                 Value="False"></ei:ChangePropertyAction>
+
+                    </i:EventTrigger>-->
+
+                </i:Interaction.Triggers>
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+
+</basePopup:BasePopup>

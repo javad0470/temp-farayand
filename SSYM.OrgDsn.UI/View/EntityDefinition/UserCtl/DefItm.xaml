@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefItm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:local="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <UserControl.Resources>
+    </UserControl.Resources>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding NamEty}"
+                   HorizontalAlignment="Left"
+                   Foreground="{DynamicResource appClr2}" />
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="txtB1"
+                       Text="{Binding Lbl1}"
+                       Foreground="{DynamicResource appClr1}"
+                       Grid.Row="1"
+                       Grid.Column="0" />
+
+            <TextBlock x:Name="txtB2"
+                       Text="{Binding Lbl2}"
+                       Visibility="{Binding ItmAdding2Visible}"
+                       Foreground="{DynamicResource appClr1}"
+                       Grid.Row="2"
+                       Grid.Column="0" />
+
+            <TextBox Text="{Binding NamItmAdding, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     x:Name="help"
+                     Margin="0,5"
+                     Grid.Column="1"
+                     Grid.Row="1" />
+
+            <telerik:RadAutoCompleteBox ItemsSource="{Binding Items2CV}"
+                                        Visibility="{Binding ItmAdding2Visible}"
+                                        Margin="0,5"
+                                        Grid.Column="1"
+                                        x:Name="AutoCompleteBox"
+                                        Grid.Row="2"
+                                        telerik:StyleManager.Theme="Windows8"
+                                        TextSearchMode="Contains"
+                                        SearchText="{Binding NamItmAdding2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        SelectionMode="Single"
+                                        SelectedItem="{Binding SelectedItmAdding2, Mode=TwoWay}"
+                                        DisplayMemberPath="Name"
+                                        AutoCompleteMode="SuggestAppend" />
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="0"
+                        Grid.Column="0">
+
+                <Button Style="{StaticResource ImagebtnStyle}"
+                        Command="{Binding AddItmCommand}"
+                        Click="AddButton_OnClick"
+                        Margin="5,5"
+                        Width="32"
+                        Height="32">
+                    <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                </Button>
+
+                <Button Style="{StaticResource ImagebtnStyle}"
+                        HorizontalAlignment="Left"
+                        Margin="2"
+                        Width="32"
+                        Height="32"
+                        CommandParameter="{Binding ElementName=grdItms, Path=SelectedItem}"
+                        Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=UserControl}}">
+
+                    <custom:BackgroundedImage Source="{StaticResource cancel_EG}" />
+
+                </Button>
+            </StackPanel>
+
+        </Grid>
+
+        <custom:DelayedBindingTextBox Text="{Binding TxtSrch, Mode=TwoWay}"
+                                      Margin="0,5"
+                                      Grid.Row="2" />
+
+        <DataGrid ItemsSource="{Binding ItemsCV}"
+                  SelectedItem="{Binding SelectedItm}"
+                  Name="grdItms"
+                  Grid.Row="3">
+            <DataGrid.Resources>
+                <local:BindingHeader Data="{Binding ElementName=txtB1,Path=Text}"
+                                     x:Key="Header1" />
+                <local:BindingHeader Data="{Binding ElementName=txtB2,Path=Text}"
+                                     x:Key="Header2" />
+            </DataGrid.Resources>
+            <i:Interaction.Behaviors>
+                <ext:ScrollIntoViewBehavior />
+                <ext:SetSelectedAfterAddNewItemBehavior />
+            </i:Interaction.Behaviors>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{Binding Data,Source={StaticResource Header1}}"
+                                    Binding="{Binding Name}"
+                                    Width="2*">
+                  
+                </DataGridTextColumn>
+
+                <DataGridTextColumn  Header="{Binding Data,Source={StaticResource Header2}}"
+                                     Binding="{Binding Type}"
+                                     Width="*" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

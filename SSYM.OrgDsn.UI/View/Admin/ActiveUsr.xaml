@@ -1,0 +1,242 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.Admin.ActiveUsr"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace=SSYM.OrgDsn.ViewModel.Admin;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:util="clr-namespace:SSYM.OrgDsn.UI.Utility"
+             Name="UsrCtl"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <!--<UserControl.DataContext>
+
+        <vm:ActiveUsrViewModel></vm:ActiveUsrViewModel>
+        
+    </UserControl.DataContext>-->
+    
+    <!--test git-->
+
+    <Grid Style="{StaticResource MainWindowsGridStyle}" FlowDirection="RightToLeft">
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <custom:DelayedBindingTextBox Margin="5"
+                                      Grid.Row="0"
+                                      Text="{Binding TxtSrch}" />
+        <DataGrid Grid.Row="1"
+                  IsEnabled="{Binding EditingUser, Converter={StaticResource NotConverter}}"
+                      ItemsSource="{Binding PsnCV}"
+                  HorizontalContentAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  SelectedItem="{Binding SelectedPsn}">
+
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="ردیف"
+                                    Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource DataGridRowToIndexConverter}}"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="نام"
+                                    Binding="{Binding FldNam1stPsn}"></DataGridTextColumn>
+
+                <DataGridTextColumn Header="نام خانوادگی"
+                                    Binding="{Binding FldNam2ndPsn}"
+                                    Width="*"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        </Grid>
+        
+        <GridSplitter  Grid.Column="1"
+                       Width="5"
+                       VerticalAlignment="Stretch" />
+
+        <Grid Name="grdDtl"
+              Margin="0,7"
+              Visibility="{Binding DtlVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+              Grid.Column="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Button ToolTip="ویرایش"
+                    Name="btnEdit"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ImagebtnStyle}"
+                    Width="32"
+                    IsEnabled="{Binding EditingUser, Converter={StaticResource NotConverter}}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:CallMethodAction MethodName="StartEditing"
+                                             TargetObject="{Binding DataContext, ElementName=UsrCtl}"></ei:CallMethodAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <custom:BackgroundedImage Source="{StaticResource edit_EG}" />
+
+            </Button>
+
+            <telerik:RadComboBox ItemsSource="{Binding SelectedPsnOrgs}"
+                                 IsEnabled="{Binding EditingUser, Converter={StaticResource NotConverter}}"
+                                 SelectedItem="{Binding SelectedOrg, Mode=TwoWay}"
+                                 DisplayMemberPath="FldNamOrg"
+                                 Grid.ColumnSpan="3"
+                                 HorizontalAlignment="Center" />
+
+            <Grid Height="Auto"
+                  Margin="10,5"
+                  IsEnabled="{Binding EditingUser}"
+                  Grid.Row="1">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+
+                    <RadioButton Content="غیر فعال"
+                                 IsEnabled="{Binding CanDisableUser}"
+                                 IsChecked="{Binding Path=IsChecked, ElementName=rbtnActv, Converter={StaticResource NotConverter}}"></RadioButton>
+
+                    <RadioButton x:Name="rbtnActv"
+                                 Content="فعال"
+                                 IsChecked="{Binding SelectedUsr.FldNamUsrActv, Mode=TwoWay}"
+                                 IsEnabled="{Binding CanEnableUser}"></RadioButton>
+
+                </StackPanel>
+
+                <TextBlock Grid.Row="2"
+                           Grid.Column="0"
+                           Style="{DynamicResource CommonTextBlockStyle}"
+                           Text="نام کاربری"></TextBlock>
+
+                <TextBox Grid.Row="2"
+                         Grid.Column="1"
+                         Margin="0,2.5"
+                         Text="{Binding SelectedUsr.Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged
+                    ,ValidatesOnExceptions=True}"></TextBox>
+
+                <TextBlock Grid.Row="3"
+                           Grid.Column="0"
+                           Style="{DynamicResource CommonTextBlockStyle}"
+                           Text="رمز عبور"></TextBlock>
+
+                <!--<TextBlock Grid.Row="3"
+                               Grid.Column="1"
+                               Margin="5,0,0,0"
+                               Style="{DynamicResource CommonTextBlockStyle}"
+                               Text="رمز عبور ثبت شده است"></TextBlock>-->
+
+                <PasswordBox Grid.Row="3"
+                             PasswordChanged="pswrd_PasswordChanged_1"
+                             Name="pswrd"
+                             Grid.Column="1"
+                             Background="White"
+                             Margin="0,2.5"
+                             util:PasswordBoxAssistant.BindPassword="True"
+                             util:PasswordBoxAssistant.BoundPassword="{Binding OriginalPass,
+                            Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged, 
+                                     ValidatesOnDataErrors=True, 
+                                     ValidatesOnExceptions=True}"
+                             Visibility="{Binding CanUsrChgPass, Converter={StaticResource BooleanToVisibilityConverter}}"></PasswordBox>
+
+                <ToggleButton Grid.Row="3"
+                              Grid.Column="1"
+                              Margin="0,2.5"
+                              Visibility="{Binding IsChecked, RelativeSource={RelativeSource Self}, Converter={StaticResource NotBool2VisConv}}"
+                              IsChecked="{Binding CanUsrChgPass, Mode=TwoWay}"
+                              Content="تغییر رمز"></ToggleButton>
+
+                <TextBlock Grid.Row="4"
+                           Grid.Column="0"
+                           Text="تکرار رمز عبور"
+                           Style="{DynamicResource CommonTextBlockStyle}"
+                           Visibility="{Binding CanUsrChgPass, Converter={StaticResource BooleanToVisibilityConverter}}"></TextBlock>
+
+                <PasswordBox Grid.Row="4"
+                             PasswordChanged="pswrd2_PasswordChanged_1"
+                             Name="pswrd2"
+                             Grid.Column="1"
+                             Margin="0,2.5"
+                             util:PasswordBoxAssistant.BindPassword="True"
+                             util:PasswordBoxAssistant.BoundPassword="{Binding RepeatPassUsr,
+                            Mode=TwoWay,
+                                     UpdateSourceTrigger=PropertyChanged, 
+                                     ValidatesOnDataErrors=True, 
+                                     ValidatesOnExceptions=True}"
+                             Visibility="{Binding CanUsrChgPass, Converter={StaticResource BooleanToVisibilityConverter}}"></PasswordBox>
+
+                <Button Margin="40,40"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource CommonBtnStyle}">
+
+                    <custom:BackgroundedImage Source="{StaticResource cancel_EG}" />
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction MethodName="CancelEdit"
+                                                 TargetObject="{Binding DataContext, ElementName=UsrCtl}"></ei:CallMethodAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                </Button>
+
+                <Button Margin="5,40"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource CommonBtnStyle}"
+                        Command="{Binding OkCommand}">
+
+                    <custom:BackgroundedImage Source="{StaticResource oK_EG}" />
+
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

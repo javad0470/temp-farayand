@@ -1,0 +1,328 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DtlOrg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+             xmlns:popupAdmin="clr-namespace:SSYM.OrgDsn.UI.View.Admin"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:common="clr-namespace:SSYM.OrgDsn.UI.View.Common"
+             mc:Ignorable="d">
+
+    <Grid>
+        <TabControl Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    Tag="1"
+                    Style="{StaticResource MetroTabControl}">
+
+            <TabItem Header="پایه"
+                     Width="80">
+                <Border Style="{StaticResource DetailBorderStyle}"
+                        IsEnabled="{Binding Acs_EditOrg}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid VerticalAlignment="Stretch"
+                              HorizontalAlignment="Stretch"
+                              Margin="10"
+                              IsEnabled="{Binding Acs_EditOrgSub}">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition ></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Grid.Row="0"
+                                       Text="نام سازمان:"
+                                       Margin="5"
+                                       Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="0"
+                                     Margin="5"
+                                     Text="{Binding SelectedOrg.FldNamOrg,   
+                                    ValidatesOnDataErrors=True, 
+                                    Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+                            <!--NotifyOnSourceUpdated=True, 
+                                    ValidatesOnNotifyDataErrors=True,
+                        
+                                    NotifyOnValidationError=True, 
+                                    NotifyOnTargetUpdated=True, 
+                                    ValidatesOnExceptions=True,-->
+
+                            <TextBlock Grid.Column="0"
+                                       VerticalAlignment="Top"
+                                       Grid.Row="1"
+                                       Margin="5"
+                                       Text="مأموریت سازمان:"
+                                       Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+
+                            <TextBox Grid.Column="1"
+                                     Grid.Row="1"
+                                     Margin="5"
+                                     
+                                     Text="{Binding SelectedOrg.FldMssnOrg, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.Style>
+                                    <Style >
+                                        <Setter Property="TextBox.TextWrapping"
+                                                Value="Wrap" />
+
+                                        <Setter Property="TextBox.AcceptsReturn"
+                                                Value="True" />
+
+                                        <Setter Property="TextBox.VerticalScrollBarVisibility"
+                                                Value="Auto" />
+
+                                    </Style>
+                                </TextBox.Style>
+                                
+                            </TextBox>
+
+
+                        </Grid>
+
+                        <Grid ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              Name="grdAgnts"
+                              Margin="5"
+                              Grid.Column="1">
+                            <GroupBox>
+                                <GroupBox.Header>
+                                    <TextBlock Text="نمایندگان"
+                                               Style="{StaticResource CommonTextBlockStyle}"></TextBlock>
+                                </GroupBox.Header>
+
+                                <Grid>
+                                    <common:NoPermission VerticalAlignment="Center"
+                                                         HorizontalAlignment="Center" />
+
+                                    <Grid Background="{DynamicResource appBG}"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
+                                          Visibility="{Binding SelectedOrg.Acs_ViewAgntOrg2, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Button Style="{StaticResource CommonBtnStyle}"
+                                                Grid.Row="0"
+                                                IsEnabled="{Binding SelectedOrg.Acs_AddAgntOrg2}"
+                                                HorizontalAlignment="Left"
+                                                Command="{Binding OpenAddAgntNodCommand}">
+
+                                            <custom:BackgroundedImage Source="{StaticResource Add}" />
+
+                                        </Button>
+
+                                        <Button Style="{StaticResource CommonBtnStyle}"
+                                                Margin="35,0"
+                                                HorizontalAlignment="Left"
+                                                IsEnabled="{Binding SelectedOrg.Acs_DelAgntOrg2}"
+                                                Command="{Binding DeleteAgntNodCommand}"
+                                                CommandParameter="{Binding SelectedItem, ElementName=dgrdAgnts}">
+
+                                            <custom:BackgroundedImage Source="{StaticResource delete_EG}" />
+
+                                        </Button>
+
+                                        <Grid Grid.Row="1">
+                                            <DataGrid ItemsSource="{Binding AgntsOfOrg}"
+                                                      Name="dgrdAgnts"
+                                                      MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Grid}}"
+                                                      HeadersVisibility="None"
+                                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                                      SelectedItem="{Binding SelectedAgnt, Mode=TwoWay}">
+
+                                                <i:Interaction.Behaviors>
+                                                    <ext:ScrollIntoViewBehavior />
+                                                    <ext:SetSelectedAfterAddNewItemBehavior />
+                                                </i:Interaction.Behaviors>
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Binding="{Binding TblPsn.FldNam1stPsn}"
+                                                                        Width="Auto">
+
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTextColumn Binding="{Binding TblPsn.FldNam2ndPsn}"
+                                                                        Width="Auto">
+
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTemplateColumn>
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <telerik:RadComboBox Grid.Column="2"
+                                                                                     Style="{StaticResource MetroComboBox}"
+                                                                                     ItemsSource="{Binding DataContext.LvlAcs, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                     SelectedValue="{Binding FldCodLvlAcs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                                                     SelectedValuePath="FldCod"
+                                                                                     DisplayMemberPath="FldNam">
+
+                                                                    <telerik:RadComboBox.IsEnabled>
+                                                                        <MultiBinding Converter="{StaticResource BooleanAndConverter}"
+                                                                                      ConverterParameter="bool">
+
+                                                                            <Binding Path="DataContext.SelectedOrg.Acs_EditAgntOrg2"
+                                                                                     RelativeSource="{RelativeSource AncestorType=UserControl}" />
+
+                                                                            <Binding Path="IsAdmin"
+                                                                                     Converter="{StaticResource NotConverter}" />
+                                                                        </MultiBinding>
+                                                                    </telerik:RadComboBox.IsEnabled>
+                                                                </telerik:RadComboBox>
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+
+                                        </Grid>
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </GroupBox>
+
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+
+            </TabItem>
+
+            <TabItem Header="بیشتر"
+                     Width="80">
+
+                <!---->
+                    <Grid IsEnabled="{Binding Acs_EditOrg}">
+
+                            <Border Style="{StaticResource DetailBorderStyle}">
+
+                                <Grid>
+
+                                    <ItemsControl ItemsSource="{Binding SelectedOrg.Nod.TblPlyrRols}">
+
+                                        <ItemsControl.ItemTemplate>
+
+                                            <DataTemplate>
+
+                                                <Expander Header="{Binding TblRol.FldTtlRol}">
+
+                                                    <Expander.Content>
+
+                                                        <ItemsControl ItemsSource="{Binding TblRol.TblPlyrRols}">
+
+                                                            <ItemsControl.ItemTemplate>
+
+                                                                <DataTemplate>
+
+                                                                    <StackPanel Orientation="Horizontal"
+                                                                                Margin="50,0">
+
+                                                                        <Border Background="Black"
+                                                                                Height="20"
+                                                                                Width="20"
+                                                                                Margin="5">
+
+                                                                            <Image>
+
+                                                                                <Image.Style>
+
+                                                                                    <Style TargetType="Image">
+
+                                                                                        <Style.Triggers>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                            Value="1">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource org2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                            Value="2">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource orgPos2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                            Value="3">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource Psn}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                            <DataTrigger Binding="{Binding TblNod.FldCodTypEty}"
+                                                                                                            Value="4">
+
+                                                                                                <Setter Property="Source"
+                                                                                                        Value="{StaticResource orgRole2}"></Setter>
+
+                                                                                            </DataTrigger>
+
+                                                                                        </Style.Triggers>
+
+                                                                                    </Style>
+
+                                                                                </Image.Style>
+
+                                                                            </Image>
+
+                                                                        </Border>
+
+                                                                        <TextBlock Style="{StaticResource UserDefinedTextBlockStyle}"
+                                                                                    Text="{Binding TblNod.FldNamNod}"></TextBlock>
+
+                                                                    </StackPanel>
+
+                                                                </DataTemplate>
+
+                                                            </ItemsControl.ItemTemplate>
+
+                                                        </ItemsControl>
+
+                                                    </Expander.Content>
+
+                                                </Expander>
+
+                                            </DataTemplate>
+
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+
+                                </Grid>
+
+                            </Border>
+
+                    </Grid>
+
+                </TabItem>
+
+        </TabControl>
+    </Grid>
+</UserControl>

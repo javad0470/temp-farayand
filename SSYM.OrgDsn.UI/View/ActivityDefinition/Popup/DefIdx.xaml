@@ -1,0 +1,63 @@
+﻿<basePopup:BasePopup x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.DefIdx"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     xmlns:popup="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Popup"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     mc:Ignorable="d"
+                     d:DesignHeight="200"
+                     d:DesignWidth="500">
+
+    <Grid Style="{StaticResource PopupGrid}"
+          Height="130"
+          Margin="10"
+          FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="نام شاخص"
+                   Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Grid.Row="0"
+                   Grid.Column="0"></TextBlock>
+
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Margin="10,5"
+                 Text="{Binding NamIdx, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+        <TextBlock Style="{DynamicResource TextBlockForPopupBodyStyle}"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Text="موضوع سنجش شاخص"></TextBlock>
+
+        <telerik:RadComboBox Grid.Row="1"
+                             Grid.Column="1"
+                             ItemsSource="{Binding SbjMsrt}"
+                             SelectedItem="{Binding SelectedSbjMsrt, Mode=TwoWay}"
+                             DisplayMemberPath="FldNamSbjMsrt"></telerik:RadComboBox>
+
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}">
+
+            <TextBlock Style="{StaticResource TextBlockForPopupMessagesStyle}"
+                       Text="نام شاخص جدید را ثبت نمایید"></TextBlock>
+
+        </StackPanel>
+
+    </Grid>
+
+</basePopup:BasePopup>

@@ -1,0 +1,222 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefRolIsgOrg"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:wrapPnl="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:view="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:orgview="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.Ywork"
+             xmlns:common="clr-namespace:SSYM.OrgDsn.UI.View.Common"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             mc:Ignorable="d">
+
+    <!--<UserControl.DataContext>
+        <vm:DefRolIsdOrgViewModel></vm:DefRolIsdOrgViewModel>
+    </UserControl.DataContext>-->
+
+    <UserControl.Resources>
+
+        <Style x:Key="ItemContainerStyle">
+            <Setter Property="telerik:DragDropManager.AllowCapturedDrag"
+                    Value="True"></Setter>
+        </Style>
+
+        <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+            <WrapPanel x:Name="TargetWrapPanel"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch">
+            </WrapPanel>
+        </ItemsPanelTemplate>
+
+        <Style x:Key="containerStyle"
+               TargetType="telerik:RadPanelBarItem">
+            <Setter Property="ItemsPanel"
+                    Value="{StaticResource ItemsPanelTemplate1}" />
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+
+        <common:NoPermission Visibility="{Binding Acs_EnterRolIsdOrg, Converter={StaticResource  NotBool2VisConv}}" />
+
+        <Grid FlowDirection="RightToLeft"
+              Visibility="{Binding Acs_EnterRolIsdOrg, Converter={StaticResource  bool2VisConv}}"
+              Style="{StaticResource MainWindowsContentGridStyle}"
+              x:Name="LayoutRoot">
+
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>-->
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid Grid.Column="2">
+
+                <TabControl Style="{StaticResource MetroTabControl}"
+                            Tag="1">
+
+                    <TabItem Header="جایگاه ها و سمت های سازمانی">
+
+                        <Border Style="{StaticResource DetailBorderStyle}">
+
+                            <GroupBox Header="جایگاه ها و سمت های سازمانی"
+                                      Foreground="Black">
+
+                                <Grid>
+                                    <orgview:PosPstChart DataContext="{Binding PosPstChartVM}"
+                                                         MaxHeight="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight}"></orgview:PosPstChart>
+                                </Grid>
+
+                            </GroupBox>
+
+                        </Border>
+
+                    </TabItem>
+
+                    <TabItem Header="سازمان های تابعه">
+
+                        <Border Style="{StaticResource DetailBorderStyle}">
+
+                            <GroupBox Header="سازمان های تابعه"
+                                      Foreground="Black">
+
+                                <Grid>
+
+                                    <orgview:OrgChart DataContext="{Binding OrgChartVM}"
+                                                      MaxHeight="{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight}" />
+
+                                </Grid>
+
+                            </GroupBox>
+
+                        </Border>
+
+                    </TabItem>
+
+                </TabControl>
+
+            </Grid>-->
+
+
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <custom:DelayedBindingTextBox Text="{Binding SearchRolText, Mode=TwoWay}"
+                         Grid.Row="0"
+                         Margin="5" />
+
+                <StackPanel Grid.Row="1"
+                            Margin="5"
+                            Orientation="Horizontal">
+
+                    <Button HorizontalAlignment="Right"
+                            Margin="5,0"
+                            Style="{StaticResource CommonBtnStyle}"
+                            IsEnabled="{Binding Acs_AddRol}"
+                            Command="{Binding AddRol}">
+                        <custom:BackgroundedImage Source="{StaticResource Add}"></custom:BackgroundedImage>
+                    </Button>
+
+                    <Button HorizontalAlignment="Right"
+                            Focusable="False"
+                            Margin="5,0"
+                            Grid.Column="1"
+                            Style="{StaticResource CommonBtnStyle}"
+                            Command="{Binding DeleteRoleCommand}"
+                            CommandParameter="{Binding  ElementName=lstRols, Path=SelectedItem}"
+                            IsEnabled="{Binding Acs_DelRol}">
+                        <custom:BackgroundedImage Source="{StaticResource delete_EG}"></custom:BackgroundedImage>
+                    </Button>
+
+                    <Button Grid.Column="1"
+                            Width="32"
+                            Style="{StaticResource ImagebtnStyle}"
+                            HorizontalAlignment="Right"
+                            Margin="5"
+                            Command="{Binding SlcPosOrgCommand}"
+                            CommandParameter="{Binding SelectedItem, ElementName=lstRols}">
+                        <custom:BackgroundedImage Source="{StaticResource hand_EW}" />
+                    </Button>
+
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding RolInsideCV}"
+                         HorizontalAlignment="Left"
+                         MaxWidth="400"
+                         Margin="5"
+                         Name="lstRols"
+                         Grid.Row="2"
+                         Background="Transparent"
+                         SelectionMode="Single"
+                         SelectedItem="{Binding SelectedRol, Mode=TwoWay}">
+
+                    <i:Interaction.Behaviors>
+                        <ext:ScrollIntoViewBehavior />
+                        <ext:SetSelectedAfterAddNewItemBehavior />
+                    </i:Interaction.Behaviors>
+
+
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <!--<Setter Property="IsSelected"
+                                    Value="{Binding Mode=TwoWay, Path=IsSelected}" />-->
+                        </Style>
+
+                    </ListBox.ItemContainerStyle>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+
+                                <!--<Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>-->
+                                <wrapPnl:DropableWrapPnl HorizontalAlignment="Stretch"
+                                                         Width="330" />
+
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+
+            <GridSplitter HorizontalAlignment="Right"
+                          VerticalAlignment="Stretch"
+                          Grid.Column="1"
+                          ResizeBehavior="PreviousAndNext"
+                          Width="5" />
+
+            <!--<GridSplitter Grid.Row="1"
+                          Grid.ColumnSpan="3"
+                          Height="5" />-->
+
+            <view:DtlRol Grid.Column="2"
+                         AgntVisibility="Visible"
+                         DataContext="{Binding DtlRolVM}" />
+
+        </Grid>
+
+    </Grid>
+
+
+</UserControl>

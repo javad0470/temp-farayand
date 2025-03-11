@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.OrgRols"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:ext="clr-namespace:SSYM.OrgDsn.UI.Extentions"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    
+    <Grid Style="{StaticResource MainWindowsContentGridStyle}">
+        
+        <Grid.Resources>
+            
+            <Style x:Key="ItemContainerStyle">
+                <Setter Property="telerik:DragDropManager.AllowCapturedDrag"
+                        Value="True"></Setter>
+            </Style>
+
+        </Grid.Resources>
+        
+        <ScrollViewer>
+            
+            <ListBox ItemsSource="{Binding Rols}"
+                          Name="itmCtrlRols"
+                          ItemContainerStyle="{StaticResource ItemContainerStyle}">
+
+                <i:Interaction.Behaviors>
+                    <ext:ScrollIntoViewBehavior />
+                    <ext:SetSelectedAfterAddNewItemBehavior />
+                </i:Interaction.Behaviors>
+
+                <ListBox.ItemTemplate>
+                    
+                    <DataTemplate>
+                        
+                        <Grid>
+                            
+                            <Rectangle x:Name="rectangle"
+                                       Width="100"
+                                       Cursor="Hand"
+                                       Height="50"
+                                       Fill="Green"
+                                       Stroke="Green"
+                                       Margin="5"
+                                       StrokeThickness="0">
+                                
+                                <Rectangle.Resources>
+                                    
+                                    <Storyboard x:Key="OnMouseEnter">
+
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="rectangle">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Black" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="NamOrg">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="White" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                    <Storyboard x:Key="OnMouseLeave">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="rectangle">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Green" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="NamOrg">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Black" />
+                                        </ColorAnimationUsingKeyFrames>
+
+                                    </Storyboard>
+
+                                </Rectangle.Resources>
+                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                                    Storyboard="{StaticResource OnMouseEnter}">
+
+                                        </ei:ControlStoryboardAction>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                                    Storyboard="{StaticResource OnMouseLeave}">
+
+                                        </ei:ControlStoryboardAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                
+                            </Rectangle>
+                            
+                            <TextBlock x:Name="NamOrg"
+                                       Text="{Binding FldTtlRol}"
+                                       Cursor="Hand"
+                                       FontFamily="{DynamicResource mainFontFamily}"
+                                       FontSize="14"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center">
+                                
+                                <TextBlock.Resources>
+                                    <Storyboard x:Key="OnMouseEnter">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="rectangle">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Black" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="NamOrg">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="White" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                    <Storyboard x:Key="OnMouseLeave">
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="rectangle">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Green" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                                      Storyboard.TargetName="NamOrg">
+                                            <EasingColorKeyFrame KeyTime="0:0:0.2"
+                                                                 Value="Black" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </TextBlock.Resources>
+                                
+                                <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="MouseEnter">
+                                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                                                Storyboard="{StaticResource OnMouseEnter}">
+
+                                                    </ei:ControlStoryboardAction>
+                                                </i:EventTrigger>
+                                                <i:EventTrigger EventName="MouseLeave">
+                                                    <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                                                Storyboard="{StaticResource OnMouseLeave}">
+
+                                                    </ei:ControlStoryboardAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                
+                            </TextBlock>
+                            
+                        </Grid>
+                        
+                    </DataTemplate>
+                    
+                </ListBox.ItemTemplate>
+                
+                <ItemsControl.ItemsPanel>
+                    
+                    <ItemsPanelTemplate>
+                        
+                        <WrapPanel>
+                        </WrapPanel>
+                        
+                    </ItemsPanelTemplate>
+                    
+                </ItemsControl.ItemsPanel>
+                
+            </ListBox>
+
+        </ScrollViewer>
+
+    </Grid>
+    
+</UserControl>

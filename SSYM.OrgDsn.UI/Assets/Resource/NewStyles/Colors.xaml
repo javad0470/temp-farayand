@@ -1,0 +1,349 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="appClr1_c">#FF1F2737</Color>
+
+    <Color x:Key="appClr1Opac_c">#AA1F2737</Color>
+
+    <Color x:Key="appClr2Opac_c">#AAC8C800</Color>
+
+    <Color x:Key="appClr2_c">#FFC8C800</Color>
+
+    <Color x:Key="fontClr_c">White</Color>
+
+    <!--#FFEFEFEF-->
+    <Color x:Key="alternateRow_c">Silver</Color>
+
+    <Color x:Key="appBG_c">#FFFFFFFF</Color>
+
+    <SolidColorBrush  x:Key="appClr1Opac"
+                      Color="{DynamicResource appClr1Opac_c}" />
+
+    <SolidColorBrush  x:Key="appClr2Opac"
+                      Color="{DynamicResource appClr2Opac_c}" />
+
+    <SolidColorBrush  x:Key="appClr1"
+                      Color="{DynamicResource appClr1_c}" />
+
+    <SolidColorBrush  x:Key="appClr2"
+                      Color="{DynamicResource appClr2_c}" />
+
+    <SolidColorBrush  x:Key="fontClr"
+                      Color="{DynamicResource fontClr_c}" />
+
+    <SolidColorBrush  x:Key="appBG"
+                      Color="{DynamicResource appBG_c}" />
+
+    <SolidColorBrush  x:Key="alternateRow"
+                      Color="{DynamicResource alternateRow_c}" />
+
+    <SolidColorBrush  x:Key="ctrlBorder"
+                      Color="Silver" />
+
+    <!--پیش فرض های سیستم را در سطح کل نرم افزار تغییر میدهیم-->
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
+                     Color="{DynamicResource appClr2Opac_c}" />
+
+    <!--***************************************************-->
+
+    <SolidColorBrush  x:Key="color01">Purple</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color02">Orange</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color03">Gray</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color04">White</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color05">White</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color06">Blue</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color07">LightGreen</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color08">#FF3B9652</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color09">#FF0C7502</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color10">#FF0487B8</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color11">#FF07ACEA</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color12">#FF61D1FB</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="color13">#FF742894</SolidColorBrush >
+
+    <!--Menu-->
+
+    <SolidColorBrush  x:Key="MenuHover">#FF6FBE46</SolidColorBrush >
+
+    <SolidColorBrush  x:Key="MenuStatusBar">#FFFFFF99</SolidColorBrush >
+    <SolidColorBrush  x:Key="MenuStatusBar_Help">#FF0DBFEF</SolidColorBrush >
+    <SolidColorBrush  x:Key="MenuStatusBar_Notification">#FF268738</SolidColorBrush >
+    <SolidColorBrush  x:Key="MenuStatusBar_Warning">#FFDF9116</SolidColorBrush >
+    <SolidColorBrush  x:Key="MenuStatusBar_Error">#FFCD382D</SolidColorBrush >
+
+
+    <LinearGradientBrush x:Key="MenuBackground"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#FF41B1E1" />
+        <GradientStop Color="#FFBDBDBD"
+                      Offset="0.685" />
+        <GradientStop Color="#FF8DB8CB"
+                      Offset="0.341" />
+    </LinearGradientBrush>
+
+    <!--ToolTip-->
+    <SolidColorBrush x:Key="ToolTipForSlcObjRstBackground"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <!--Border-->
+    <SolidColorBrush x:Key="PopupBorderBackground"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <SolidColorBrush x:Key="PopupBorderBrush"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <!--TextBlock-->
+    <SolidColorBrush x:Key="PopupMessagesTextBlockBackground"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <SolidColorBrush x:Key="PopupMessagesTextBlockForeground"
+                     Color="White" />
+
+    <!--Grid-->
+    <SolidColorBrush x:Key="PopupGridBackground"
+                     Color="Transparent" />
+
+    <SolidColorBrush x:Key="MainWindowsGridBackground"
+                     Color="Transparent" />
+
+    <!--<LinearGradientBrush x:Key="MainWindowsGridBackground"
+                         EndPoint="0.5,1"
+                         StartPoint="0.5,0">
+        <GradientStop Color="#FF41B1E1" />
+        <GradientStop Color="White"
+                      Offset="0.086" />
+        <GradientStop Color="White"
+                      Offset="0.991" />
+    </LinearGradientBrush>-->
+
+    <!--TabItem-->
+    <SolidColorBrush x:Key="TabItemForeground"
+                     Color="Black" />
+
+    <!--TabItem-->
+    <SolidColorBrush x:Key="TabItemForPopupSelectedBackground"
+                     Color="LightSkyBlue" />
+
+    <SolidColorBrush x:Key="TabItemForPopupMouseOverBackground"
+                     Color="#FF0487B8" />
+
+    <SolidColorBrush x:Key="TabItemForPopupBackground"
+                     Color="#FF07ACEA" />
+
+    <SolidColorBrush x:Key="TabItemForPopupForeground"
+                     Color="#FFAB987B" />
+
+    <SolidColorBrush x:Key="TabItemForPopupForegroundMouseOver"
+                     Color="#FF666666" />
+
+    <SolidColorBrush x:Key="TabItemForPopupForegroundSelected"
+                     Color="#FF222222" />
+
+    <!--DataGrid-->
+    <SolidColorBrush x:Key="DataGridBackground"
+                     Color="#FFF6F6F6" />
+    <SolidColorBrush x:Key="DataGridForeground"
+                     Color="Black" />
+    <SolidColorBrush x:Key="HorizontalGridLinesBrush"
+                     Color="#FF0487B8" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderBackGround"
+                     Color="{DynamicResource appClr1_c}" />
+
+    <SolidColorBrush x:Key="PopupDataGridBackground"
+                     Color="#FFF6F6F6" />
+    <SolidColorBrush x:Key="PopupDataGridForeground"
+                     Color="Black" />
+
+    <SolidColorBrush x:Key="PopupHorizontalGridLinesBrush"
+                     Color="LightGray" />
+
+    <!--Scrollbar-->
+    <SolidColorBrush x:Key="ScrollBarBtn"
+                     Color="White" />
+
+    <SolidColorBrush x:Key="ScrollBarArrow"
+                     Color="#FF07ACEA" />
+
+    <!--Button-->
+    <SolidColorBrush x:Key="ButtonBackground"
+                     Color="#FF07ACEA" />
+    <SolidColorBrush x:Key="ButtonBackgroundSelected"
+                     Color="#FF0487B8" />
+
+    <SolidColorBrush x:Key="MenuButtonBackground"
+                     Color="#FF3399FF" />
+
+    <!--Background-->
+    <SolidColorBrush x:Key="Background"
+                     Color="#1C1C1C" />
+    <SolidColorBrush x:Key="LightBackground"
+                     Color="#2D2D30" />
+    <SolidColorBrush x:Key="TransparentBackground"
+                     Color="Transparent" />
+
+    <!--Foreground-->
+    <SolidColorBrush x:Key="Foreground"
+                     Color="#FFFFFF" />
+
+    <SolidColorBrush x:Key="Foreground1"
+                     Color="#FF0C7502" />
+
+    <!--General-->
+    <SolidColorBrush x:Key="BorderColorForSlcPnls"
+                     Color="#FFCF4C0E" />
+
+    <SolidColorBrush x:Key="BackgroundHighlighted"
+                     Color="#FF0487B8" />
+    <SolidColorBrush x:Key="BorderBrushHighlighted"
+                     Color="#FF0487B8" />
+    <SolidColorBrush x:Key="BackgroundSelected"
+                     Color="#FF07ACEA" />
+    <SolidColorBrush x:Key="BorderBrushSelected"
+                     Color="#FF07ACEA" />
+    <SolidColorBrush x:Key="BackgroundNormal"
+                     Color="#FF76CDED" />
+    <SolidColorBrush x:Key="BorderBrushNormal"
+                     Color="#FF76CDED" />
+
+    <SolidColorBrush x:Key="publicGreenColor"
+                     Color="#FF3F9154" />
+
+    <!--Text Box-->
+
+    <SolidColorBrush x:Key="TextBoxForeground"
+                     Color="{DynamicResource appClr2_c}" />
+
+    <SolidColorBrush x:Key="TextBoxBackground"
+                     Color="White" />
+
+    <SolidColorBrush x:Key="TextBoxBackgroundMouseOver"
+                     Color="White" />
+
+    <SolidColorBrush x:Key="TextBoxBackgroundSelected"
+                     Color="#FFFFFF99" />
+
+    <SolidColorBrush x:Key="TextBoxBorderMouseOver"
+                     Color="Silver" />
+
+    <SolidColorBrush x:Key="TextBoxBorderSelected"
+                     Color="Silver" />
+
+    <!--Search Text Box-->
+    <SolidColorBrush x:Key="SearchTextForeground"
+                     Color="#999999" />
+
+    <!--Link Button-->
+    <SolidColorBrush x:Key="LinkButtonForeground"
+                     Color="#1297FB" />
+    <SolidColorBrush x:Key="LinkButtonForegroundHighlighted"
+                     Color="#55AAFF" />
+
+    <!--Close Button-->
+    <SolidColorBrush x:Key="CloseButtonBackgroundHighlighted"
+                     Color="#39ADFB" />
+    <SolidColorBrush x:Key="CloseButtonBackgroundPressed"
+                     Color="#084E7D" />
+    <SolidColorBrush x:Key="CloseButtonStroke"
+                     Color="#AAFFFFFF" />
+    <SolidColorBrush x:Key="CloseButtonStrokeHighlighted"
+                     Color="#FFFFFF" />
+
+    <!--Menu-->
+    <SolidColorBrush x:Key="MenuSeparatorBorderBrush"
+                     Color="#333337" />
+    <SolidColorBrush x:Key="MenuItemHighlightedBackground"
+                     Color="#3E3E40" />
+    <SolidColorBrush x:Key="SubmenuItemBackground"
+                     Color="#1B1B1C" />
+    <SolidColorBrush x:Key="SubmenuItemBackgroundHighlighted"
+                     Color="#333334" />
+    <SolidColorBrush x:Key="MenuDisabledForeground"
+                     Color="#656565" />
+    <SolidColorBrush x:Key="MenuTitleBarBackground"
+                     Color="#FFEFEFF2" />
+
+    <!--Scroll Bar-->
+    <SolidColorBrush x:Key="ScrollBarPageButtonBackgroundHighlighted"
+                     Color="#05FFFFFF" />
+
+    <!--Proccess Chart  Colors-->
+    <SolidColorBrush x:Key="GraphControlBackgroundColor"
+                     Color="White" />
+
+    <!--gateway colors-->
+    <SolidColorBrush x:Key="GateWayBorderBrush"
+                     Color="#FFB7B748" />
+
+    <SolidColorBrush x:Key="GateWayBackgroundBrush"
+                     Color="#FFFFFFE6" />
+
+    <SolidColorBrush x:Key="GateWayContentBrush"
+                     Color="#FFBDBD4E" />
+
+    <!--call activity colors-->
+    <SolidColorBrush x:Key="CallActivityBorderBrush"
+                     Color="#FF2A7FAA" />
+
+    <SolidColorBrush x:Key="CallActivityBackgroundBrush"
+                     Color="#FFF8F9FF" />
+
+    <SolidColorBrush x:Key="CallActivityContentBrush"
+                     Color="Silver" />
+
+    <!--act colors-->
+    <SolidColorBrush x:Key="ActBorderBrush"
+                     Color="#FF2A7FAA" />
+
+    <SolidColorBrush x:Key="ActBackgroundBrush"
+                     Color="#FFF8F9FF" />
+
+    <SolidColorBrush x:Key="ActContentBrush"
+                     Color="Silver" />
+
+    <!--event colors-->
+    <SolidColorBrush x:Key="EventBorderBrush"
+                     Color="#FF62A716" />
+
+    <SolidColorBrush x:Key="EventBackgroundBrush"
+                     Color="#FFEEFFBC" />
+
+    <SolidColorBrush x:Key="EventContentBrush"
+                     Color="#FFA8D36A" />
+
+    <SolidColorBrush x:Key="EventContentBackgroundBrush"
+                     Color="#FFA8D36A" />
+
+    <!--object colors-->
+    <SolidColorBrush x:Key="ObjBorderBrush"
+                     Color="Black" />
+
+    <SolidColorBrush x:Key="ObjBackgroundBrush"
+                     Color="#FFFAFAFA" />
+
+    <SolidColorBrush x:Key="ObjContentBrush"
+                     Color="Black" />
+
+    <!--swimlane colors-->
+    <SolidColorBrush x:Key="SwimlaneBorderBrush"
+                     Color="Gray" />
+
+    <SolidColorBrush x:Key="blueMetro"
+                     Color="#FF3399FF" />
+
+</ResourceDictionary>

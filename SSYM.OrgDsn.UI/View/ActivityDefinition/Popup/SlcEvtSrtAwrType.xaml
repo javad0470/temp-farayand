@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl.SlcEvtSrtAwrType"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Popup;assembly=SSYM.OrgDsn.ViewModel"
+             Background="White"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+
+    <UserControl.DataContext>
+        <vm:SlcEvtSrtAwrTypeViewModel></vm:SlcEvtSrtAwrTypeViewModel>
+    </UserControl.DataContext>
+
+    <Border Style="{StaticResource Border03}">
+
+        <Grid VerticalAlignment="Stretch">
+
+            <ItemsControl ItemsSource="{Binding Items}">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center"
+                                    Background="Transparent" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <telerik:RadButton Style="{StaticResource ImagebtnStyle}"
+                                           Click="Button_Click_1"
+                                           Margin="5"
+                                           Grid.Row="0">
+
+                            <Button  Name="imgIcon"
+                                     Width="40"
+                                     Height="40"
+                                     HorizontalAlignment="Stretch"
+                                     VerticalAlignment="Stretch">
+                                <Button.Style>
+                                    <Style TargetType="Button"
+                                           BasedOn="{StaticResource OrgButton}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding FldCodItm}"
+                                                         Value="1">
+                                                <Setter  Property="Background"
+                                                         Value="{StaticResource Document}"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding FldCodItm}"
+                                                         Value="2">
+                                                <Setter  Property="Background"
+                                                         Value="{StaticResource Phone}"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding FldCodItm}"
+                                                         Value="3">
+                                                <Setter  Property="Background"
+                                                         Value="{StaticResource Signal}"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <telerik:RadButton.ToolTip>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding FldNamItm}"></TextBlock>
+                                </StackPanel>
+                            </telerik:RadButton.ToolTip>
+
+                        </telerik:RadButton>
+
+                    </DataTemplate>
+
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>

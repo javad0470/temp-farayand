@@ -1,0 +1,142 @@
+﻿<UserControl x:Name="userControl"
+             x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.UserCtl.UIEntity"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="80"
+             d:DesignWidth="80"
+             AllowDrop="True">
+    <!--<UserControl.InputBindings>
+             GotFocus="UserControl_GotFocus_1"
+    
+        <KeyBinding Key="Delete"
+                    Command="{Binding DeleteCommand}" />
+    </UserControl.InputBindings>-->
+
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <ContextMenu.Items>
+                <MenuItem Header="حذف (Del)"
+                          Click="MenuItem_Click_1"></MenuItem>
+            </ContextMenu.Items>
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
+    <Grid Name="grdMain"
+          telerik:DragDropManager.AllowCapturedDrag="True"
+          AllowDrop="True">
+        <!--PreviewMouseDown="Image_PreviewMouseLeftButtonDown"
+          Drop="grdMain_Drop_1"
+        
+          PreviewMouseMove="Image_PreviewMouseMove"-->
+
+        <Grid.Triggers>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="txtOpacitySW"
+                                Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation To="0"
+                                         BeginTime="0:0:0.4"
+                                         Duration="0:0:0.25">
+
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+
+            </EventTrigger>
+
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard Storyboard.TargetName="txtOpacitySW"
+                                Storyboard.TargetProperty="Opacity">
+                        <DoubleAnimation To="1"
+                                         Duration="0:0:0.25">
+
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+
+        </Grid.Triggers>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Name="txtOpacitySW"
+                   Visibility="Collapsed"
+                   Opacity="0"
+                   Grid.Column="1"
+                   Grid.Row="1"></TextBlock>
+
+        <Button Name="top"
+                Opacity="{Binding ElementName=txtOpacitySW, Path=Opacity}"
+                Height="32"
+                Width="32"
+                Grid.Row="0"
+                Grid.Column="1"
+                Style="{StaticResource ImagebtnStyle}"
+                Visibility="Collapsed">
+            <custom:BackgroundedImage IsCircle="True" />
+        </Button>
+
+        <Button Name="bottom"
+                Opacity="{Binding ElementName=txtOpacitySW, Path=Opacity}"
+                Height="32"
+                Width="32"
+                Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource ImagebtnStyle}"
+                Visibility="Collapsed">
+            <custom:BackgroundedImage IsCircle="True" />
+        </Button>
+
+        <Button Name="left"
+                Opacity="{Binding ElementName=txtOpacitySW, Path=Opacity}"
+                Height="22"
+                Width="22"
+                Margin="0,0,-10,0"
+                Grid.Row="1"
+                Grid.Column="0"
+                Style="{StaticResource ImagebtnStyle}">
+            <custom:BackgroundedImage IsCircle="False"
+                                      Background="{DynamicResource appClr1}"
+                                      HoverEnabled="False" />
+
+        </Button>
+
+        <Button Name="right"
+                Opacity="{Binding ElementName=txtOpacitySW, Path=Opacity}"
+                Height="32"
+                Width="32"
+                Grid.Row="1"
+                Grid.Column="2"
+                Style="{StaticResource ImagebtnStyle}"
+                Visibility="Collapsed">
+            <custom:BackgroundedImage IsCircle="True" />
+        </Button>
+        <Button Name="main"
+                telerik:DragDropManager.AllowDrag="True"
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{StaticResource OrgButton}"
+                Background="{Binding BorderBrush, ElementName=userControl}"
+                VerticalAlignment="Center"
+                Margin="10,0"
+                Width="Auto"
+                Height="{Binding ActualWidth, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+    </Grid>
+
+</UserControl>

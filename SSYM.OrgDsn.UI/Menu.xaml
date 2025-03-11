@@ -1,0 +1,2612 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:ViewAct="clr-namespace:SSYM.OrgDsn.UI.View.ActivityDefinition.Main"
+        xmlns:ViewEntity="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+        xmlns:ViewPrs="clr-namespace:SSYM.OrgDsn.UI.View.Process.UserCtl"
+        xmlns:VMEntity="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMAct="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Main;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMPrs="clr-namespace:SSYM.OrgDsn.ViewModel.Process.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:ViewDson="clr-namespace:SSYM.OrgDsn.UI.View.Dson"
+        xmlns:VMDson="clr-namespace:SSYM.OrgDsn.ViewModel.Dson;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:ViewRpot="clr-namespace:SSYM.OrgDsn.UI.View.Report"
+        xmlns:VMRpot="clr-namespace:SSYM.OrgDsn.ViewModel.Report;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:VMUsrSetting="clr-namespace:SSYM.OrgDsn.ViewModel.UserSetting;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:ViewUsrSetting="clr-namespace:SSYM.OrgDsn.UI.View.UserSetting"
+        xmlns:VMAdmin="clr-namespace:SSYM.OrgDsn.ViewModel.Admin;assembly=SSYM.OrgDsn.ViewModel"
+        xmlns:ViewAdmin="clr-namespace:SSYM.OrgDsn.UI.View.Admin"
+        xmlns:customCtrls="clr-namespace:SSYM.OrgDsn.UI"
+        xmlns:ee="http://schemas.microsoft.com/expression/2010/effects"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+        mc:Ignorable="d"
+        x:Class="SSYM.OrgDsn.UI.Menu"
+        WindowState="Maximized"
+        Title="طراحی و مستندسازی OrgArc"
+        Background="White"
+        BorderBrush="#FF383838"
+        x:Name="mainWindow"
+        Icon="Icon.ico"
+        BorderThickness="2"
+        Style="{DynamicResource WindowStyle}"
+        WindowStyle="None"
+        d:DesignHeight="768"
+        d:DesignWidth="1366">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <!--<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+
+            <DataTemplate DataType="{x:Type VMRpot:MainReportMenuViewModel}">
+                <ViewRpot:ucRpotMainMenu MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+            </DataTemplate>
+
+            <!--<DataTemplate DataType="{x:Type VMRpot:RpotPfrViewModel}">
+                <ViewRpot:RpotPfr />
+            </DataTemplate>-->
+
+            <DataTemplate DataType="{x:Type VMAct:ActDefViewModel}">
+
+                <ViewAct:DefAct MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMEntity:DefOrg}">
+
+                <ViewEntity:DefOrg MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMEntity:DefPosPstViewModel}">
+
+                <ViewEntity:DefPosPst MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMEntity:DefPsnViewModel}">
+
+                <ViewEntity:DefPsn MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <!--<DataTemplate DataType="{x:Type VMEntity:DefPsnInsideOrgViewModel}">
+
+                <ViewEntity:DefPsnInsideOrg MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMEntity:DefPsnOutsideOrgViewModel}">
+
+                <ViewEntity:DefPsnOutsideOrg MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+
+            </DataTemplate>-->
+
+            <!--<DataTemplate DataType="{x:Type VMEntity:DefRolIsdOrgViewModel}">
+
+                <ViewEntity:DefRolIsgOrg MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ContentControl}}" />
+
+            </DataTemplate>-->
+
+            <DataTemplate DataType="{x:Type VMEntity:DefRolViewModel}">
+
+                <ViewEntity:DefRol MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMPrs:DisPrsViewModel}">
+
+                <ViewPrs:DisPrs MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMDson:DsonListViewModel}">
+
+                <ViewDson:DsonList MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMUsrSetting:UsrSettingViewModel}">
+
+                <ViewUsrSetting:UsrSetting MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMAdmin:ActiveUsrViewModel}">
+
+                <ViewAdmin:ActiveUsr MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMAdmin:DefLvlAcsViewModel}">
+
+                <ViewAdmin:DefLvlAcs MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type VMEntity:DefItmsViewModel}">
+
+                <ViewEntity:DefItms MaxHeight="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType={x:Type ContentControl}}}" />
+
+            </DataTemplate>
+
+            <Storyboard x:Key="HideMnuStoryBoard">
+
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="brdrMnu"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                            Value="{x:Static Visibility.Collapsed}" />
+
+                </ObjectAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+            <Storyboard x:Key="ShowMnuStoryBoard">
+
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="brdrMnu"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                            Value="{x:Static Visibility.Visible}" />
+
+                </ObjectAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+            <Storyboard x:Key="ShowDtlStoryBoard">
+
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="brdrDtl"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00"
+                                            Value="{x:Static Visibility.Visible}" />
+
+
+                </ObjectAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+            <Storyboard x:Key="HideDtlStoryBoard">
+
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00"
+                                               Storyboard.TargetName="brdrDtl"
+                                               Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00.8000000"
+                                            Value="{x:Static Visibility.Collapsed}" />
+
+                </ObjectAnimationUsingKeyFrames>
+
+            </Storyboard>
+
+            <Storyboard x:Key="orgAnim">
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                  Storyboard.TargetName="toggleButton">
+                    <EasingThicknessKeyFrame KeyTime="0:0:1"
+                                             Value="-330,10,10,10">
+                        <EasingThicknessKeyFrame.EasingFunction>
+                            <ExponentialEase EasingMode="EaseOut"
+                                             Exponent="9" />
+                        </EasingThicknessKeyFrame.EasingFunction>
+                    </EasingThicknessKeyFrame>
+                </ThicknessAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="stackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                          Value="360">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ExponentialEase Exponent="9"
+                                             EasingMode="EaseInOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="collapseOrgAnim">
+
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="stackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ExponentialEase Exponent="9"
+                                             EasingMode="EaseInOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+
+                <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)"
+                                                  Storyboard.TargetName="toggleButton">
+                    <EasingThicknessKeyFrame KeyTime="0:0:1"
+                                             Value="10,10,10,10">
+                        <EasingThicknessKeyFrame.EasingFunction>
+                            <ExponentialEase EasingMode="EaseOut"
+                                             Exponent="9" />
+                        </EasingThicknessKeyFrame.EasingFunction>
+                    </EasingThicknessKeyFrame>
+                </ThicknessAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="rotateSetting"
+                        RepeatBehavior="Forever" />
+
+            <Storyboard x:Key="showStatusBar">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="border2">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="30">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ExponentialEase Exponent="9" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="hideStatusBar">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="border2">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <ExponentialEase Exponent="9" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="showSupportMenu">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="supportStackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="180" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="hideSupportMenu">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)"
+                                               Storyboard.TargetName="supportStackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Style TargetType="{x:Type Image}">
+
+                <Setter Property="FlowDirection"
+                        Value="LeftToRight" />
+
+            </Style>
+
+
+
+
+
+            <Storyboard x:Key="SettingPages_Enter">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="stackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.1"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="stackPanel">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                               Storyboard.TargetName="grid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="grid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="grid">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="SettingPages_Leave">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="stackPanel">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="stackPanel">
+                    <DiscreteObjectKeyFrame KeyTime="0">
+                        <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                        </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                               Storyboard.TargetName="grid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="-35" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="grid">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="grid">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Structure_Expand">
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gStructure">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gStructure">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="Structure_Collapse">
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gStructure" />
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gStructure" />
+            </Storyboard>
+            <Storyboard x:Key="OfficeStructure_Expand">
+                <DoubleAnimation Duration="0:0:0.4"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gOfficeStructure">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Duration="0:0:0.4"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gOfficeStructure">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="OfficeStructure_Collapse">
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gOfficeStructure" />
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gOfficeStructure" />
+            </Storyboard>
+            <Storyboard x:Key="Process_Expand">
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gProcess">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="1"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gProcess">
+                    <DoubleAnimation.EasingFunction>
+                        <CircleEase EasingMode="EaseOut" />
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="Process_Collapse">
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                 Storyboard.TargetName="gProcess" />
+                <DoubleAnimation Duration="0:0:0.2"
+                                 To="0"
+                                 Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)"
+                                 Storyboard.TargetName="gProcess" />
+            </Storyboard>
+            <Storyboard x:Key="Home_Enter">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Home">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Report">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Setting">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Home">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="0" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Report">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Setting">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                               Storyboard.TargetName="Home">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="-700" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CircleEase EasingMode="EaseOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Home">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.8"
+                                             Value="True" />
+                </BooleanAnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Report">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Setting">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Home">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="0" />
+                    <EasingInt32KeyFrame KeyTime="0:0:0.4"
+                                         Value="0" />
+                </Int32AnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Report_Enter">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Report">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Home">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Setting">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Report">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="0" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Home">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Setting">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                               Storyboard.TargetName="Report">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="-700" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CircleEase EasingMode="EaseOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Report">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.8"
+                                             Value="True" />
+                </BooleanAnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Home">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Setting">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Report">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="0" />
+                    <EasingInt32KeyFrame KeyTime="0:0:0.4"
+                                         Value="0" />
+                </Int32AnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Home">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                </BooleanAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Setting">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                </BooleanAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Setting_Enter">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Setting">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Report">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Home">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.4"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Setting">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="0" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Report">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Home">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                               Storyboard.TargetName="Setting">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="-700" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.8"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CircleEase EasingMode="EaseOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Setting">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                    <DiscreteBooleanKeyFrame KeyTime="0:0:0.8"
+                                             Value="True" />
+                </BooleanAnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Home">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Report">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="-1" />
+                </Int32AnimationUsingKeyFrames>
+                <Int32AnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.ZIndex)"
+                                              Storyboard.TargetName="Setting">
+                    <EasingInt32KeyFrame KeyTime="0"
+                                         Value="0" />
+                    <EasingInt32KeyFrame KeyTime="0:0:0.4"
+                                         Value="0" />
+                </Int32AnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Home">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                </BooleanAnimationUsingKeyFrames>
+                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.IsEnabled)"
+                                                Storyboard.TargetName="Report">
+                    <DiscreteBooleanKeyFrame KeyTime="0"
+                                             Value="False" />
+                </BooleanAnimationUsingKeyFrames>
+            </Storyboard>
+            <Style x:Key="WindowStyle"
+                   TargetType="{x:Type Window}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+                <Setter Property="Background"
+                        Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Window}">
+                            <Grid>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        Background="{TemplateBinding Background}">
+                                    <AdornerDecorator>
+                                        <Grid>
+                                            <Grid Margin="0"
+                                                  VerticalAlignment="Top"
+                                                  Height="48">
+                                                <Border BorderBrush="Black"
+                                                        HorizontalAlignment="Stretch"
+                                                        Height="48"
+                                                        VerticalAlignment="Top"
+                                                        Width="Auto"
+                                                        Margin="160,0,0,0"
+                                                        Background="{DynamicResource appClr1}"
+                                                        MouseLeftButtonDown="WindowBar_MouseLeftButtonDown" />
+                                                <ContentControl Margin="60,0,0,0"
+                                                                Width="100"
+                                                                Height="48"
+                                                                Style="{StaticResource OrgImage}"
+                                                                Background="{StaticResource WindowBorder}"
+                                                                HorizontalAlignment="Left"
+                                                                MouseLeftButtonDown="WindowBar_MouseLeftButtonDown" />
+                                                <Image HorizontalAlignment="Center"
+                                                       Margin="95,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Source="Icon.ico"
+                                                       Width="24"
+                                                       Height="24" />
+                                                <TextBlock Text="طراحی و مستندسازی OrgArc"
+                                                           Margin="0,0,95,0"
+                                                           Foreground="White"
+                                                           HorizontalAlignment="Center"
+                                                           VerticalAlignment="Center"
+                                                           FlowDirection="RightToLeft"
+                                                           FontFamily="{DynamicResource mainFontFamily}"
+                                                           FontSize="14" />
+                                                <Button x:Name="bClose"
+                                                        Style="{StaticResource OrgButton}"
+                                                        Background="{StaticResource SmallDelete}"
+                                                        Foreground="{DynamicResource appClr1}"
+                                                        Click="bClose_Click"
+                                                        ToolTip="خروج"
+                                                        HorizontalAlignment="Left"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Margin="0,0,0,0" />
+                                                <Button x:Name="bNormal"
+                                                        Style="{StaticResource OrgButton}"
+                                                        Background="{StaticResource Normal}"
+                                                        Foreground="{DynamicResource appClr1}"
+                                                        Click="bNormal_Click"
+                                                        ToolTip="معمولی"
+                                                        HorizontalAlignment="Left"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Margin="32,0,0,0">
+                                                    <Button.Triggers>
+                                                        <EventTrigger RoutedEvent="Button.Click">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bMaximize"
+                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                                Value="{x:Static Visibility.Visible}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bNormal"
+                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                                Value="{x:Static Visibility.Collapsed}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </Button.Triggers>
+                                                </Button>
+                                                <Button x:Name="bMaximize"
+                                                        Style="{StaticResource OrgButton}"
+                                                        Background="{StaticResource Maximize}"
+                                                        Foreground="{DynamicResource appClr1}"
+                                                        Click="bMaximize_Click"
+                                                        ToolTip="بیشینه"
+                                                        HorizontalAlignment="Left"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Margin="32,0,0,0"
+                                                        Visibility="Collapsed">
+                                                    <Button.Triggers>
+                                                        <EventTrigger RoutedEvent="Button.Click">
+                                                            <BeginStoryboard>
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bMaximize"
+                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                                Value="{x:Static Visibility.Collapsed}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="bNormal"
+                                                                                                   Storyboard.TargetProperty="(UIElement.Visibility)">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                                Value="{x:Static Visibility.Visible}" />
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                    </Button.Triggers>
+                                                </Button>
+                                                <Button x:Name="bMinimize"
+                                                        Style="{StaticResource OrgButton}"
+                                                        Background="{StaticResource Minimize}"
+                                                        Foreground="{DynamicResource appClr1}"
+                                                        Click="bMinimize_Click"
+                                                        ToolTip="کمینه"
+                                                        HorizontalAlignment="Left"
+                                                        Width="32"
+                                                        Height="32"
+                                                        Margin="64,0,0,0" />
+                                            </Grid>
+                                            <ContentPresenter Margin="0,48,0,0" />
+                                        </Grid>
+                                    </AdornerDecorator>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <!--<Style.Triggers>
+                    <Trigger Property="ResizeMode"
+                             Value="CanResizeWithGrip">
+                        <Setter Property="Template"
+                                Value="{StaticResource WindowTemplateKey}" />
+                    </Trigger>
+                </Style.Triggers>-->
+            </Style>
+            <Storyboard x:Key="Main_Leave">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                               Storyboard.TargetName="Tabs">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <BackEase EasingMode="EaseIn" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Main">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Main">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Main_Enter">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="Main">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="Main">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="1" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)"
+                                               Storyboard.TargetName="Tabs">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="48">
+                        <EasingDoubleKeyFrame.EasingFunction>
+                            <CircleEase EasingMode="EaseOut" />
+                        </EasingDoubleKeyFrame.EasingFunction>
+                    </EasingDoubleKeyFrame>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Pages_Enter">
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="brdrDtl">
+                    <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="brdrDtl">
+                    <EasingDoubleKeyFrame KeyTime="0"
+                                          Value="1" />
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="1" />
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Pages_Leave">
+                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
+                                               Storyboard.TargetName="brdrDtl">
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.3"
+                                          Value="0" />
+                </DoubleAnimationUsingKeyFrames>
+                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                               Storyboard.TargetName="brdrDtl">
+                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3"
+                                            Value="{x:Static Visibility.Collapsed}" />
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+        </ResourceDictionary>
+
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Home_Enter}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="backSetting">
+            <BeginStoryboard x:Name="SettingPages_Leave_BeginStoryboard"
+                             Storyboard="{StaticResource SettingPages_Leave}" />
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <!--<Grid  HorizontalAlignment="Stretch"
+               Background="{x:Null}"
+               x:Name="brdrMnu"
+               Grid.Row="1" />-->
+        <Grid Margin="0"
+              Grid.Row="1"
+              Visibility="Collapsed">
+            <ScrollViewer HorizontalAlignment="Left"
+                          VerticalScrollBarVisibility="Auto"
+                          Width="255"
+                          VerticalContentAlignment="Stretch">
+                <StackPanel Background="{DynamicResource appClr1}"
+                            Width="255">
+                    <Grid Width="245"
+                          Height="82"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Left"
+                          Visibility="Collapsed">
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0"
+                                    VerticalAlignment="Top"
+                                    Height="32">
+                            <customCtrls:BackgroundedImage Source="{StaticResource usrLogin}"
+                                                           HoverEnabled="False"
+                                                           VerticalAlignment="Top"
+                                                           Height="32"
+                                                           Stretch="Fill"
+                                                           Width="32"
+                                                           HorizontalAlignment="Left" />
+                            <TextBlock Text="{Binding DataContext.Usr.TblPsn.FldNam1stPsn, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                       Height="32"
+                                       Foreground="White"
+                                       Margin="0"
+                                       FontFamily="{DynamicResource mainFontFamily}"
+                                       FontSize="20"
+                                       TextAlignment="Center" />
+                            <TextBlock Text="{Binding DataContext.Usr.TblPsn.FldNam2ndPsn, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                       Foreground="White"
+                                       Height="32"
+                                       Margin="0"
+                                       FontFamily="{DynamicResource mainFontFamily}"
+                                       FontSize="20"
+                                       TextAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Top"
+                                    Height="32"
+                                    Margin="0,48,0,0">
+                            <customCtrls:BackgroundedImage Source="{StaticResource orgGreen}"
+                                                           Background="#FF383838"
+                                                           HoverEnabled="False"
+                                                           Stretch="Fill"
+                                                           Margin="0"
+                                                           HorizontalAlignment="Left"
+                                                           VerticalAlignment="Top"
+                                                           Width="32"
+                                                           Height="32" />
+                            <TextBlock Text="{Binding DataContext.Usr.TblOrg.FldNamOrg, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                                       Foreground="White"
+                                       Height="32"
+                                       FontFamily="{DynamicResource mainFontFamily}"
+                                       FontSize="20"
+                                       TextAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                    <Rectangle Height="2"
+                               Fill="{DynamicResource appClr2}"
+                               Margin="0,10"
+                               Visibility="Collapsed">
+                        <Rectangle.OpacityMask>
+                            <LinearGradientBrush EndPoint="0,0.5"
+                                                 StartPoint="1,0.5">
+                                <GradientStop Color="#00000000"
+                                              Offset="0" />
+                                <GradientStop Color="Black"
+                                              Offset="0.5" />
+                                <GradientStop Color="#00000000"
+                                              Offset="1" />
+                            </LinearGradientBrush>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <ToggleButton x:Name="tbnOrg"
+                                  Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Tag="1"
+                                  MouseEnter="showHelp"
+                                  MouseLeave="hideHelp"
+                                  Style="{StaticResource MenuToggleBtnBorderStyle}"
+                                  BorderThickness="0"
+                                  Margin="0,0,0,5"
+                                  Height="70"
+                                  Background="{DynamicResource appClr1}"
+                                  BorderBrush="{x:Null}"
+                                  Foreground="{x:Null}"
+                                  FontFamily="{DynamicResource mainFontFamily}">
+                        <i:Interaction.Triggers>
+                            <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                            Value="True">
+                                <ei:ChangePropertyAction TargetName="tbnPrc"
+                                                         PropertyName="IsChecked"
+                                                         Value="False" />
+                                <ei:ChangePropertyAction TargetName="tbnStg"
+                                                         PropertyName="IsChecked"
+                                                         Value="False" />
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                        <StackPanel Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Image Source="{StaticResource org2}"
+                                   Style="{StaticResource MenuImageStyle}"
+                                   Width="48"
+                                   Height="48"
+                                   Margin="0" />
+                            <TextBlock Text="ساختار"
+                                       Style="{StaticResource TextBlockForMenuItemsStyle}"
+                                       Margin="20,0,3,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="30"
+                                       Width="100"
+                                       TextAlignment="Center" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <StackPanel Orientation="Vertical">
+                        <Button Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}"
+                                Tag="8"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Height="45"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefOrg"
+                                IsEnabled="{Binding Acs_EnterOrg}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="سازمان ها"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}"
+                                Tag="9"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Height="45"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefPosPst"
+                                IsEnabled="{Binding Acs_EnterPosPst}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="جایگاه و سمت"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Height="45"
+                                Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}"
+                                Tag="11"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefRol"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="نقش"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Height="45"
+                                Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}"
+                                Tag="12"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefPsn"
+                                IsEnabled="{Binding Acs_EnterPsnIsdOrg}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="شخص"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Height="45"
+                                Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefItms"
+                                IsEnabled="{Binding Acs_EnterPsnOsdOrg}"
+                                Width="Auto"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="اطلاعات پایه"
+                                FontSize="20"
+                                BorderThickness="0"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Rectangle Height="5"
+                                   Fill="{DynamicResource appClr2}"
+                                   Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnOrg}" />
+                    </StackPanel>
+                    <ToggleButton x:Name="tbnPrc"
+                                  Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                  Tag="1"
+                                  MouseEnter="showHelp"
+                                  MouseLeave="hideHelp"
+                                  Style="{StaticResource MenuToggleBtnBorderStyle}"
+                                  BorderThickness="0"
+                                  Margin="0,0,0,5"
+                                  Height="70"
+                                  Background="{DynamicResource appClr1}"
+                                  BorderBrush="{x:Null}"
+                                  Foreground="{x:Null}"
+                                  FontFamily="{DynamicResource mainFontFamily}">
+                        <i:Interaction.Triggers>
+                            <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                            Value="True">
+                                <ei:ChangePropertyAction TargetName="tbnOrg"
+                                                         PropertyName="IsChecked"
+                                                         Value="False" />
+                                <ei:ChangePropertyAction TargetName="tbnStg"
+                                                         PropertyName="IsChecked"
+                                                         Value="False" />
+                            </ei:DataTrigger>
+                        </i:Interaction.Triggers>
+                        <StackPanel Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    Height="70"
+                                    Width="200"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                            <Image Source="{StaticResource process}"
+                                   Style="{StaticResource MenuImageStyle}"
+                                   Width="48"
+                                   Height="48"
+                                   Margin="0" />
+                            <TextBlock Text="فرآیند"
+                                       Style="{StaticResource TextBlockForMenuItemsStyle}"
+                                       Margin="20,0,3,0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="30"
+                                       Width="100"
+                                       TextAlignment="Center" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <StackPanel Orientation="Vertical">
+                        <Button Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DefAct"
+                                IsEnabled="{Binding Acs_EnterAct}"
+                                Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnPrc}"
+                                Tag="2"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Height="45"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="فعالیت"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnPrc}"
+                                Tag="3"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Height="45"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DisPrs"
+                                IsEnabled="{Binding Acs_EnterPrs}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="فرآیند"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Button Height="45"
+                                Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnPrc}"
+                                Tag="4"
+                                MouseEnter="showHelp"
+                                MouseLeave="hideHelp"
+                                Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                                Command="{Binding ChangeSelectedObj}"
+                                CommandParameter="DisDson"
+                                IsEnabled="{Binding Acs_EnterDson}"
+                                Width="Auto"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource appClr1}"
+                                Content="ناهمسانی"
+                                FontSize="20"
+                                FontFamily="{DynamicResource mainFontFamily}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                    <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                                ControlStoryboardOption="Play" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Rectangle Height="5"
+                                   Fill="{DynamicResource appClr2}"
+                                   Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnPrc}" />
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+            <StackPanel Orientation="Vertical"
+                        Margin="0"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Width="255">
+                <Rectangle Height="2"
+                           Fill="{DynamicResource appClr2}">
+                    <Rectangle.OpacityMask>
+                        <LinearGradientBrush EndPoint="0,0.5"
+                                             StartPoint="1,0.5">
+                            <GradientStop Color="#00000000"
+                                          Offset="0" />
+                            <GradientStop Color="Black"
+                                          Offset="0.5" />
+                            <GradientStop Color="#00000000"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Button Style="{StaticResource MenuBtnBorderStyle}"
+                        Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Tag="5"
+                        Height="70"
+                        Command="{Binding ChangeSelectedObj}"
+                        CommandParameter="Report"
+                        IsEnabled="{Binding Acs_EnterRpot}"
+                        MouseEnter="showHelp"
+                        MouseLeave="hideHelp"
+                        Margin="0"
+                        Width="Auto"
+                        BorderThickness="0"
+                        Background="{DynamicResource appClr1}"
+                        BorderBrush="{x:Null}"
+                        Foreground="{x:Null}"
+                        FontFamily="{DynamicResource mainFontFamily}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                        ControlStoryboardOption="Play" />
+                            <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                        ControlStoryboardOption="Play" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Height="70"
+                                Width="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource report}"
+                               Style="{StaticResource MenuImageStyle}"
+                               Width="48"
+                               Height="48" />
+                        <TextBlock Text="گزارش"
+                                   Style="{StaticResource TextBlockForMenuItemsStyle}"
+                                   Margin="20,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Width="100"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Rectangle Height="2"
+                           Fill="{DynamicResource appClr2}">
+                    <Rectangle.OpacityMask>
+                        <LinearGradientBrush EndPoint="0,0.5"
+                                             StartPoint="1,0.5">
+                            <GradientStop Color="#00000000"
+                                          Offset="0" />
+                            <GradientStop Color="Black"
+                                          Offset="0.5" />
+                            <GradientStop Color="#00000000"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <ToggleButton x:Name="tbnStg"
+                              Tag="1"
+                              MouseEnter="showHelp"
+                              MouseLeave="hideHelp"
+                              Style="{StaticResource MenuToggleBtnBorderStyle}"
+                              BorderThickness="0"
+                              Margin="0"
+                              Height="70"
+                              Background="{DynamicResource appClr1}"
+                              IsChecked="{Binding Sett,Mode=TwoWay}"
+                              BorderBrush="{x:Null}"
+                              Foreground="{x:Null}">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                        Value="True">
+                            <ei:CallMethodAction MethodName="AdminInformation"
+                                                 TargetObject="{Binding}" />
+
+                            <ei:ChangePropertyAction TargetName="tbnOrg"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                            <ei:ChangePropertyAction TargetName="tbnPrc"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <StackPanel Orientation="Horizontal"
+                                FlowDirection="RightToLeft"
+                                Height="70"
+                                Width="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <Image Source="{StaticResource setting}"
+                               Style="{StaticResource MenuImageStyle}"
+                               Width="48"
+                               Height="48"
+                               Margin="0" />
+                        <TextBlock Text="تنظیمات"
+                                   Style="{StaticResource TextBlockForMenuItemsStyle}"
+                                   Margin="20,0,3,0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Width="100"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </ToggleButton>
+                <StackPanel Orientation="Vertical">
+                    <Button Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}"
+                            Tag="14"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Command="{Binding ChangeSelectedObj}"
+                            CommandParameter="UserSetting"
+                            Width="Auto"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="اطلاعات کاربری"
+                            FontSize="20"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}"
+                            Tag="21"
+                            Click="showSettingForm_Click"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Width="Auto"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="ویژگی های نمایش"
+                            FontSize="20"
+                            FontFamily="{DynamicResource mainFontFamily}" />
+                    <Button Height="45"
+                            Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}"
+                            Tag="27"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="update_Click"
+                            Width="Auto"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="به روز رسانی"
+                            FontSize="20"
+                            FontFamily="{DynamicResource mainFontFamily}" />
+
+
+                    <Button Height="45"
+                            Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}"
+                            Tag="16"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Command="{Binding ChangeSelectedObj}"
+                            CommandParameter="ActiveUsr"
+                            IsEnabled="{Binding Acs_EnterEblUsr}"
+                            Width="Auto"
+                            BorderThickness="0"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="فعال کردن کاربران"
+                            FontSize="20"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Height="45"
+                            Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Command="{Binding ChangeSelectedObj}"
+                            CommandParameter="DefLvlAcs"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="سطح دسترسی"
+                            FontSize="20"
+                            Tag="17"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource HideMnuStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                                <ei:ControlStoryboardAction Storyboard="{StaticResource ShowDtlStoryBoard}"
+                                                            ControlStoryboardOption="Play" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                    <Button Height="45"
+                            Click="upgrade_Click"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="ارتقاء به نسخه کامل"
+                            FontSize="20"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                                <Binding Path="IsLocalPathExeVrsnSrv" />
+                                <Binding Path="IsNotCompeleteVrsn" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="downGradeToSrvVrsn_Click"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="برگشت به نسخه راهبری"
+                            FontSize="20"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                                <Binding Path="IsLocalPathExeVrsnSrv" />
+                                <Binding Path="IsCompeleteVrsn" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="showInstallWizard_Click"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="نصب نسخه کاربری"
+                            FontSize="20"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                                <Binding Path="IsLocalPathExeVrsnSrv"
+                                         Converter="{StaticResource NotConverter}" />
+                                <Binding Path="IsInslVrsnClntOnnSysCnt"
+                                         Converter="{StaticResource NotConverter}" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="uninstall_Click"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="حذف نسخه کاربری"
+                            FontSize="20"
+                            Tag="22"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                                <Binding Path="IsLocalPathExeVrsnSrv"
+                                         Converter="{StaticResource NotConverter}" />
+                                <Binding Path="IsInslVrsnClntOnnSysCnt"
+                                         Converter="{StaticResource NotConverter}" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="loadUpdatedVer_Click"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="بارگزاری نسخه جدید"
+                            FontSize="20"
+                            Tag="23"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Button Height="45"
+                            Style="{StaticResource MenuBtnInToggleBorderStyle}"
+                            Click="dataMgr_Click"
+                            IsEnabled="{Binding Acs_EnterlvlAcs}"
+                            Width="Auto"
+                            Foreground="{DynamicResource appClr1}"
+                            Content="مدیریت داده"
+                            FontSize="20"
+                            Tag="29"
+                            BorderThickness="0"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <Button.Visibility>
+                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                <Binding Path="IsChecked"
+                                         ElementName="tbnStg" />
+                                <Binding Path="IsServerVrsn" />
+                            </MultiBinding>
+                        </Button.Visibility>
+                    </Button>
+                    <Rectangle Height="5"
+                               Fill="{DynamicResource appClr2}"
+                               Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=tbnStg}" />
+                </StackPanel>
+            </StackPanel>
+            <Grid VerticalAlignment="Bottom"
+                  Margin="0,0,40,0"
+                  HorizontalAlignment="Right">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="tgbSupport"
+                              Grid.Row="0"
+                              Style="{StaticResource MenuToggleBtnBorderTransParentStyle}"
+                              Margin="20"
+                              Tag="24"
+                              MouseEnter="showHelp"
+                              MouseLeave="hideHelp">
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                        Value="True">
+                            <ei:ChangePropertyAction TargetName="toggleButton"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                            <ei:ChangePropertyAction TargetName="tbnUsr"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                            <ei:ChangePropertyAction TargetName="tbnAdmin"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                        Storyboard="{StaticResource showSupportMenu}" />
+                        </ei:DataTrigger>
+                        <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                        Value="False">
+                            <ei:ControlStoryboardAction ControlStoryboardOption="Play"
+                                                        Storyboard="{StaticResource hideSupportMenu}" />
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                    <customCtrls:BackgroundedImage x:Name="imgSupport"
+                                                   Source="{StaticResource menuHelp}"
+                                                   Stretch="Fill"
+                                                   Width="60" />
+                </ToggleButton>
+                <StackPanel x:Name="supportStackPanel"
+                            Width="{Binding ActualWidth, ConverterParameter=/12, Converter={StaticResource SizeConverter}, ElementName=brdrMnu, Mode=OneWay}"
+                            Grid.Row="1"
+                            Height="0">
+                    <Button Style="{StaticResource MenuBtnBorderStyle}"
+                            Visibility="{Binding IsServerVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Width="{Binding ActualWidth, ConverterParameter=/12, Converter={StaticResource SizeConverter}, ElementName=brdrMnu, Mode=OneWay}"
+                            Height="40"
+                            Tag="25"
+                            Background="{DynamicResource appClr1}"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Click="hlpSrv_Click"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <TextBlock Text="راهنمای راهبری"
+                                   Style="{StaticResource TextBlockForSubMenuItemsStyle}" />
+                    </Button>
+                    <Button Style="{StaticResource MenuBtnBorderStyle}"
+                            Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Width="{Binding ActualWidth, ConverterParameter=/12, Converter={StaticResource SizeConverter}, ElementName=brdrMnu, Mode=OneWay}"
+                            Height="40"
+                            Tag="25"
+                            Background="{DynamicResource appClr1}"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            Click="hlpClnt_Click"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <TextBlock Text="راهنمای کاربری"
+                                   Style="{StaticResource TextBlockForSubMenuItemsStyle}" />
+                    </Button>
+                    <Button Style="{StaticResource MenuBtnBorderStyle}"
+                            Click="support_Click"
+                            Width="{Binding ActualWidth, ConverterParameter=/12, Converter={StaticResource SizeConverter}, ElementName=brdrMnu, Mode=OneWay}"
+                            Height="40"
+                            Tag="26"
+                            Background="{DynamicResource appClr1}"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <TextBlock Text="شبکه پشتیانی"
+                                   Style="{StaticResource TextBlockForSubMenuItemsStyle}" />
+                    </Button>
+                    <Button Style="{StaticResource MenuBtnBorderStyle}"
+                            Click="about_Click"
+                            Width="{Binding ActualWidth, ConverterParameter=/12, Converter={StaticResource SizeConverter}, ElementName=brdrMnu, Mode=OneWay}"
+                            Height="40"
+                            Tag="28"
+                            Background="{DynamicResource appClr1}"
+                            MouseEnter="showHelp"
+                            MouseLeave="hideHelp"
+                            FontFamily="{DynamicResource mainFontFamily}">
+                        <TextBlock Text="درباره نرم افزار"
+                                   Style="{StaticResource TextBlockForSubMenuItemsStyle}" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Border Grid.Row="1"
+                    VerticalAlignment="Bottom"
+                    Width="30"
+                    Height="100"
+                    HorizontalAlignment="Right"
+                    Background="{DynamicResource appClr1}"
+                    Margin="0,0,0,4" />
+            <TextBlock Grid.Row="1"
+                       x:Name="tbkVersion"
+                       VerticalAlignment="Bottom"
+                       Text="نسخه کاربر"
+                       Foreground="White"
+                       HorizontalAlignment="Right"
+                       RenderTransformOrigin="0.5,0.5"
+                       Width="70"
+                       Margin="0,0,2,19"
+                       FontFamily="{DynamicResource mainFontFamily}"
+                       FontSize="14"
+                       TextAlignment="Center">
+                <TextBlock.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="90" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </TextBlock.LayoutTransform>
+            </TextBlock>
+        </Grid>
+        <Grid x:Name="ColumnsGrid"
+              Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="bdrSide"
+                    Grid.Row="0"
+                    FlowDirection="LeftToRight"
+                    Margin="0"
+                    Grid.Column="2"
+                    Width="0"
+                    Background="{DynamicResource appClr1}"
+                    RenderTransformOrigin="1,0.5">
+                <Grid x:Name="Side"
+                      HorizontalAlignment="Left"
+                      Height="100"
+                      VerticalAlignment="Top"
+                      Width="100"
+                      Visibility="Collapsed" />
+            </Border>
+            <Grid x:Name="Tabs"
+                  Grid.Row="0"
+                  FlowDirection="LeftToRight"
+                  Margin="0"
+                  Grid.Column="2"
+                  Width="48"
+                  Background="{DynamicResource appClr1}"
+                  HorizontalAlignment="Right">
+                <ContentControl Background="{StaticResource TabBack}"
+                                Foreground="White"
+                                Style="{StaticResource OrgImage}"
+                                Height="230"
+                                Width="48"
+                                HorizontalAlignment="Left"
+                                Margin="-1,0,0,0" />
+                <ToggleButton x:Name="tbnHome"
+                              Width="48"
+                              Height="48"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="0,0,0,100"
+                              Style="{StaticResource OrgToggleButton}"
+                              Foreground="{DynamicResource appClr1}"
+                              Background="{StaticResource TabHome}"
+                              IsChecked="True"
+                              IsEnabled="False"
+                              Checked="TbnHome_Checked" />
+                <ToggleButton x:Name="tbnReport"
+                              Width="48"
+                              Height="48"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="0"
+                              Style="{StaticResource OrgToggleButton}"
+                              Foreground="{DynamicResource appClr1}"
+                              Background="{StaticResource TabReport}"
+                              Checked="TbnReport_Checked"
+                              Command="{Binding ChangeSelectedObj}"
+                              CommandParameter="Report"
+                              IsEnabled="{Binding Acs_EnterRpot}"
+                              Tag="5"
+                              MouseEnter="showHelp"
+                              MouseLeave="hideHelp" />
+                <ToggleButton x:Name="tbnSetting"
+                              Width="48"
+                              Height="48"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="0,100,0,0"
+                              Style="{StaticResource OrgToggleButton}"
+                              Foreground="{DynamicResource appClr1}"
+                              Background="{StaticResource TabSettings}"
+                              Checked="TbnSetting_Checked"
+                              Tag="1"
+                              MouseEnter="showHelp"
+                              MouseLeave="hideHelp">
+
+                    <i:Interaction.Triggers>
+                        <ei:DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}}"
+                                        Value="True">
+                            <ei:CallMethodAction MethodName="AdminInformation"
+                                                 TargetObject="{Binding}" />
+
+                            <ei:ChangePropertyAction TargetName="tbnOrg"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                            <ei:ChangePropertyAction TargetName="tbnPrc"
+                                                     PropertyName="IsChecked"
+                                                     Value="False" />
+                        </ei:DataTrigger>
+                    </i:Interaction.Triggers>
+                </ToggleButton>
+            </Grid>
+            <GridSplitter x:Name="VSplitter"
+                          Margin="0"
+                          Grid.Column="1"
+                          Background="{DynamicResource appClr1}"
+                          BorderThickness="0"
+                          HorizontalAlignment="Stretch"
+                          Width="0"
+                          MouseMove="VSplitter_MouseMove"
+                          MouseLeftButtonDown="VSplitter_MouseLeftButtonDown"
+                          MouseLeftButtonUp="VSplitter_MouseLeftButtonUp" />
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="Main"
+                      Grid.Row="0"
+                      FlowDirection="LeftToRight"
+                      Margin="0">
+                    <ScrollViewer x:Name="Home"
+                                  HorizontalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </ScrollViewer.RenderTransform>
+                        <Grid x:Name="LayoutRoot"
+                              UseLayoutRounding="False"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Grid x:Name="gProcess"
+                                  RenderTransformOrigin="0.826,0.513"
+                                  HorizontalAlignment="Right"
+                                  Width="408"
+                                  VerticalAlignment="Center"
+                                  Margin="0,7,613,0"
+                                  Height="Auto">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0"
+                                                        ScaleY="0" />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <ed:LineArrow Margin="0,107,127,0"
+                                              Style="{StaticResource HiveLine}">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="0" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="0,206,127,0"
+                                              Style="{StaticResource HiveLine}">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="-90" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="0,157,146,0"
+                                              Style="{StaticResource HiveLine}">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="-45" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <Button Margin="0,0,195,0"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Background="{StaticResource Activity}"
+                                        Style="{StaticResource HiveButton}"
+                                        Command="{Binding ChangeSelectedObj}"
+                                        CommandParameter="DefAct"
+                                        IsEnabled="{Binding Acs_EnterAct}"
+                                        Tag="2"
+                                        MouseEnter="showHelp"
+                                        MouseLeave="hideHelp"
+                                        Click="Buttons_Click" />
+                                <Button Margin="0,197,285,0"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Background="{StaticResource Process2}"
+                                        Style="{StaticResource HiveButton}"
+                                        Command="{Binding ChangeSelectedObj}"
+                                        CommandParameter="DisPrs"
+                                        IsEnabled="{Binding Acs_EnterPrs}"
+                                        Tag="3"
+                                        MouseEnter="showHelp"
+                                        MouseLeave="hideHelp"
+                                        Click="Buttons_Click" />
+                                <Button Margin="0,393,195,0"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Right"
+                                        Background="{StaticResource Dson}"
+                                        Style="{StaticResource HiveButton}"
+                                        Command="{Binding ChangeSelectedObj}"
+                                        CommandParameter="DisDson"
+                                        IsEnabled="{Binding Acs_EnterDson}"
+                                        Tag="4"
+                                        MouseEnter="showHelp"
+                                        MouseLeave="hideHelp"
+                                        Click="Buttons_Click" />
+                            </Grid>
+                            <ToggleButton x:Name="tbnProcess"
+                                          Margin="0,7,609,0"
+                                          Checked="tbnProcess_Checked"
+                                          Unchecked="tbnProcess_Unchecked"
+                                          Background="{StaticResource Process}"
+                                          Style="{StaticResource RoundToggleButton}"
+                                          Tag="1"
+                                          MouseEnter="showHelp"
+                                          MouseLeave="hideHelp"
+                                          HorizontalAlignment="Right"
+                                          VerticalAlignment="Center" />
+                            <Grid x:Name="gStructure"
+                                  RenderTransformOrigin="0.419,0.513"
+                                  HorizontalAlignment="Right"
+                                  Width="580"
+                                  VerticalAlignment="Center"
+                                  Margin="0">
+                                <Grid.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0"
+                                                        ScaleY="0" />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Grid.RenderTransform>
+                                <ed:LineArrow Margin="87,175,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="0" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="143,148,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="45" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="201,174,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="90" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="87,272,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="-90" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="143,299,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="225" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="201,272,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="180" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ed:LineArrow Margin="219,224,0,0"
+                                              Style="{StaticResource HiveLine}"
+                                              HorizontalAlignment="Left">
+                                    <ed:LineArrow.RenderTransform>
+                                        <RotateTransform Angle="135" />
+                                    </ed:LineArrow.RenderTransform>
+                                </ed:LineArrow>
+                                <ToggleButton x:Name="tbnOfficeStructure"
+                                              Margin="0,67,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Checked="tbnOfficeStructure_Checked"
+                                              Unchecked="tbnOfficeStructure_Unchecked"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="183,0,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="370,67,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="458,264,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="370,460,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="183,529,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <ToggleButton Margin="0,460,0,0"
+                                              VerticalAlignment="Top"
+                                              HorizontalAlignment="Left"
+                                              Background="{StaticResource Base}"
+                                              Style="{StaticResource HiveToggleButton}"
+                                              Tag="1"
+                                              MouseEnter="showHelp"
+                                              MouseLeave="hideHelp" />
+                                <Grid x:Name="gOfficeStructure"
+                                      Margin="-93,-35,0,0"
+                                      RenderTransformOrigin="0.476,0.474"
+                                      HorizontalAlignment="Left"
+                                      Width="319"
+                                      Height="342"
+                                      VerticalAlignment="Top">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="0"
+                                                            ScaleY="0" />
+                                            <SkewTransform />
+                                            <RotateTransform />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                    <Grid.Effect>
+                                        <DropShadowEffect ShadowDepth="0"
+                                                          BlurRadius="15"
+                                                          Opacity="1"
+                                                          Color="White" />
+                                    </Grid.Effect>
+                                    <Button Margin="93,205,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Background="{StaticResource Office}"
+                                            Style="{StaticResource HiveButton}"
+                                            Command="{Binding ChangeSelectedObj}"
+                                            CommandParameter="DefOrg"
+                                            IsEnabled="{Binding Acs_EnterOrg}"
+                                            Tag="8"
+                                            MouseEnter="showHelp"
+                                            MouseLeave="hideHelp"
+                                            Click="Buttons_Click" />
+                                    <Button Margin="0,154,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Background="{StaticResource Position}"
+                                            Style="{StaticResource HiveButton}"
+                                            Command="{Binding ChangeSelectedObj}"
+                                            CommandParameter="DefPosPst"
+                                            IsEnabled="{Binding Acs_EnterPosPst}"
+                                            Tag="9"
+                                            MouseEnter="showHelp"
+                                            MouseLeave="hideHelp"
+                                            Click="Buttons_Click" />
+                                    <Button Margin="0,50,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Background="{StaticResource Role}"
+                                            Style="{StaticResource HiveButton}"
+                                            Command="{Binding ChangeSelectedObj}"
+                                            CommandParameter="DefRol"
+                                            Tag="11"
+                                            MouseEnter="showHelp"
+                                            MouseLeave="hideHelp"
+                                            Click="Buttons_Click" />
+                                    <Button Margin="185,50,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Background="{StaticResource Person}"
+                                            Style="{StaticResource HiveButton}"
+                                            Command="{Binding ChangeSelectedObj}"
+                                            CommandParameter="DefPsn"
+                                            IsEnabled="{Binding Acs_EnterPsnIsdOrg}"
+                                            Tag="12"
+                                            MouseEnter="showHelp"
+                                            MouseLeave="hideHelp"
+                                            Click="Buttons_Click" />
+                                    <Button Margin="93,0,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Background="{StaticResource Base}"
+                                            Style="{StaticResource HiveButton}"
+                                            Command="{Binding ChangeSelectedObj}"
+                                            CommandParameter="DefItms"
+                                            IsEnabled="{Binding Acs_EnterPsnOsdOrg}"
+                                            Click="Buttons_Click" />
+                                </Grid>
+                            </Grid>
+                            <ToggleButton x:Name="tbnStructure"
+                                          Margin="0,7,260,0"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right"
+                                          Checked="tbnStructure_Checked"
+                                          Unchecked="tbnStructure_Unchecked"
+                                          Background="{StaticResource Structure}"
+                                          Style="{StaticResource RoundToggleButton}" />
+                        </Grid>
+                    </ScrollViewer>
+                    <Grid x:Name="Report"
+                          Background="#FF0096B8"
+                          IsEnabled="False"
+                          Visibility="Collapsed"
+                          Opacity="0"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform X="-700" />
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Grid Visibility="{Binding IsClientVrsn, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                        </Grid>
+                    </Grid>
+                    <Grid x:Name="Setting"
+                          IsEnabled="False"
+                          Visibility="Collapsed"
+                          Opacity="0"
+                          RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform />
+                                <TranslateTransform X="-700" />
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <ContentControl x:Name="SettingContent" Margin="0,90,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                        <Border BorderBrush="#7F898989"
+                                BorderThickness="6"
+                                Height="70"
+                                Margin="0,20,0,0"
+                                VerticalAlignment="Top"
+                                Background="{DynamicResource appClr1}"
+                                CornerRadius="35"
+                                HorizontalAlignment="Center">
+                            <Grid Margin="20,0">
+                                <Grid x:Name="grid"
+                                      RenderTransformOrigin="0.5,0.5"
+                                      Opacity="0"
+                                      Visibility="Collapsed">
+                                    <Grid.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform />
+                                            <TranslateTransform X="-35" />
+                                        </TransformGroup>
+                                    </Grid.RenderTransform>
+                                    <TextBlock x:Name="SettingTitle"
+                                               HorizontalAlignment="Right"
+                                               Margin="0,0,53,0"
+                                               FontFamily="{DynamicResource mainFontFamily}"
+                                               Foreground="White"
+                                               FontSize="24"
+                                               VerticalAlignment="Center" />
+                                    <Button x:Name="backSetting"
+                                            Style="{StaticResource OrgButton}"
+                                            Background="{StaticResource Back}"
+                                            Foreground="White"
+                                            HorizontalAlignment="Right"
+                                            Click="backSetting_Click" />
+                                </Grid>
+                                <StackPanel x:Name="stackPanel"
+                                            Orientation="Horizontal">
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingUserInfo}"
+                                                  Foreground="White"
+                                                  ToolTip="اطلاعات کاربری"
+                                                  Margin="9,0"
+                                                  Tag="14"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  Checked="ToggleButton_Checked"
+                                                  Command="{Binding ChangeSelectedObj}"
+                                                  CommandParameter="UserSetting"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingMonitor}"
+                                                  Foreground="White"
+                                                  ToolTip="ویژگی های نمایش"
+                                                  Margin="9,0"
+                                                  Tag="21"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingUpdate}"
+                                                  Foreground="White"
+                                                  ToolTip="بروز رسانی"
+                                                  Margin="9,0"
+                                                  Tag="27"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingBusinessRestrict}"
+                                                  Foreground="White"
+                                                  ToolTip="نمایش محدودیت های تجاری"
+                                                  Margin="9,0"
+                                                  Tag="16"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  IsEnabled="{Binding Acs_EnterEblUsr}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingCertificate}"
+                                                  Foreground="White"
+                                                  ToolTip="فعال کردن کاربران"
+                                                  Margin="9,0"
+                                                  Tag="16"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  Command="{Binding ChangeSelectedObj}"
+                                                  CommandParameter="ActiveUsr"
+                                                  IsEnabled="{Binding Acs_EnterEblUsr}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingAccess}"
+                                                  Foreground="White"
+                                                  ToolTip="سطح دسترسی"
+                                                  Margin="9,0"
+                                                  Tag="17"
+                                                  MouseEnter="showHelp"
+                                                  MouseLeave="hideHelp"
+                                                  Command="{Binding ChangeSelectedObj}"
+                                                  CommandParameter="DefLvlAcs"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingCompleteVersion}"
+                                                  Foreground="White"
+                                                  ToolTip="ارتقاء به نسخه کامل"
+                                                  Margin="9,0"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36">
+                                        <ToggleButton.Visibility>
+                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                                <Binding Path="IsServerVrsn" />
+                                                <Binding Path="IsLocalPathExeVrsnSrv" />
+                                                <Binding Path="IsNotCompeleteVrsn" />
+                                            </MultiBinding>
+                                        </ToggleButton.Visibility>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingBeginVersion}"
+                                                  Foreground="White"
+                                                  ToolTip="برگشت به نسخه راهبری"
+                                                  Margin="9,0"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36">
+                                        <ToggleButton.Visibility>
+                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                                <Binding Path="IsServerVrsn" />
+                                                <Binding Path="IsLocalPathExeVrsnSrv" />
+                                                <Binding Path="IsCompeleteVrsn" />
+                                            </MultiBinding>
+                                        </ToggleButton.Visibility>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingInstall}"
+                                                  Foreground="White"
+                                                  ToolTip="نصب نسخه کاربری"
+                                                  Margin="9,0"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36">
+                                        <ToggleButton.Visibility>
+                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                                <Binding Path="IsServerVrsn" />
+                                                <Binding Path="IsLocalPathExeVrsnSrv"
+                                                         Converter="{StaticResource NotConverter}" />
+                                                <Binding Path="IsInslVrsnClntOnnSysCnt"
+                                                         Converter="{StaticResource NotConverter}" />
+                                            </MultiBinding>
+                                        </ToggleButton.Visibility>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingDeleteInstall}"
+                                                  Foreground="White"
+                                                  ToolTip="حذف نسخه کاربری"
+                                                  Margin="9,0"
+                                                  Tag="22"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36">
+                                        <ToggleButton.Visibility>
+                                            <MultiBinding Converter="{StaticResource BooleanAndConverter}">
+                                                <Binding Path="IsServerVrsn" />
+                                                <Binding Path="IsLocalPathExeVrsnSrv"
+                                                         Converter="{StaticResource NotConverter}" />
+                                                <Binding Path="IsInslVrsnClntOnnSysCnt"
+                                                         Converter="{StaticResource NotConverter}" />
+                                            </MultiBinding>
+                                        </ToggleButton.Visibility>
+                                    </ToggleButton>
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingVersionDownload}"
+                                                  Foreground="White"
+                                                  ToolTip="بارگزاری نسخه جدید"
+                                                  Margin="9,0"
+                                                  Tag="23"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Visibility="{Binding IsServerVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                    <ToggleButton Style="{DynamicResource SettingToggleButton}"
+                                                  Background="{StaticResource SettingDataManage}"
+                                                  Foreground="White"
+                                                  ToolTip="مدیریت داده"
+                                                  Margin="9,0"
+                                                  Tag="29"
+                                                  IsEnabled="{Binding Acs_EnterlvlAcs}"
+                                                  Visibility="{Binding IsServerVrsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                                  Checked="ToggleButton_Checked"
+                                                  Width="36"
+                                                  Height="36" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Grid>
+                <GridSplitter x:Name="HSplitter"
+                              Margin="0"
+                              Grid.Row="1"
+                              Background="{DynamicResource appClr1}"
+                              BorderThickness="0"
+                              HorizontalAlignment="Stretch"
+                              Height="0" />
+                <Grid x:Name="Bottom"
+                      Grid.Row="2"
+                      FlowDirection="LeftToRight"
+                      Margin="0"
+                      Height="0"
+                      VerticalAlignment="Bottom" />
+            </Grid>
+        </Grid>
+        <Grid  x:Name="brdrDtl"
+               Grid.Row="1"
+               Background="White"
+               Visibility="Collapsed">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid FlowDirection="RightToLeft"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Background="{DynamicResource MenuTitleBarBackground}"
+                      Margin="10,5,10,0" />
+            </Grid>-->
+            <ContentControl Content="{Binding SelectedObj, IsAsync=True}"
+                            x:Name="cntCtrl"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" />
+            <Grid x:Name="Top"
+                  Grid.Row="0"
+                  Height="48"
+                  FlowDirection="LeftToRight"
+                  Margin="0,-48,0,0"
+                  VerticalAlignment="Top">
+                <ToggleButton Content="0"
+                              HorizontalAlignment="Right"
+                              Width="48"
+                              Height="48"
+                              Style="{StaticResource OrgToggleButton}"
+                              Background="{DynamicResource Expand}"
+                              Foreground="White" />
+                <Rectangle Fill="White"
+                           Margin="0,1,52,1"
+                           HorizontalAlignment="Right"
+                           Width="2">
+                    <Rectangle.OpacityMask>
+                        <LinearGradientBrush EndPoint="0.5,1"
+                                             StartPoint="0.5,0">
+                            <GradientStop Color="#00000000"
+                                          Offset="0" />
+                            <GradientStop Color="Black"
+                                          Offset="0.5" />
+                            <GradientStop Color="#00000000"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Button Margin="0,3,66,3"
+                        HorizontalAlignment="Right"
+                        Width="42"
+                        Height="42"
+                        Style="{StaticResource OrgButton}"
+                        Background="{DynamicResource Back}"
+                        Foreground="White"
+                        Command="{Binding CloseCurrentViewCommand}"
+                        Click="Back_Click" />
+                <Button Margin="0,3,113,3"
+                        HorizontalAlignment="Right"
+                        Width="42"
+                        Height="42"
+                        Style="{StaticResource OrgButton}"
+                        Background="{DynamicResource Save}"
+                        Foreground="White">
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <ei:CallMethodAction TargetObject="{Binding}"
+                                                 MethodName="SaveChanges" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <!--<Button Command="{Binding CloseCurrentViewCommand}"
+        		Click="clearContent"
+        		Grid.Row="0"
+        		Grid.Column="0"
+        		Width="30"
+        		Height="30"
+        		Margin="5,-40,0,0"
+        		VerticalAlignment="Top"
+        		HorizontalAlignment="Left"
+        		IsHitTestVisible="True" Visibility="Collapsed">
+        		<Button.Style>
+        			<Style TargetType="{x:Type Button}">
+        				<Setter Property="OverridesDefaultStyle"
+        					Value="False" />
+        				<Setter Property="Cursor"
+        					Value="Hand" />
+        				<Setter Property="Template">
+        					<Setter.Value>
+        						<ControlTemplate TargetType="{x:Type Button}">
+        							<Grid>
+        								<Rectangle Fill="{DynamicResource appClr1}"
+        									Margin="0" />
+        								<Path x:Name="stroke"
+        									Data="M50.5,4.7500001C25.232973,4.75 4.75,25.232973 4.7500001,50.5 4.75,75.767029 25.232973,96.25 50.5,96.25 75.767029,96.25 96.25,75.767029 96.25,50.5 96.25,25.232973 75.767029,4.75 50.5,4.7500001z M50.5,0C78.390381,0 101,22.609621 101,50.5 101,78.390381 78.390381,101 50.5,101 22.609621,101 0,78.390381 0,50.5 0,22.609621 22.609621,0 50.5,0z"
+        									Stretch="Fill"
+        									Fill="#FFFFFFFF"
+        									Visibility="Visible" />
+        								<Path x:Name="path1"
+        									Data="F1M1928.8,1024.07L1920.05,1024.07 1905.62,1009.64 1901.24,1005.26 1920.1,986.403 1928.78,986.403 1928.82,986.439 1913.09,1002.17 1954.58,1002.17 1954.58,1008.35 1913.09,1008.35 1928.8,1024.07z"
+        									Stretch="Uniform"
+        									Fill="#FFFFFFFF"
+        									Width="20"
+        									Height="20"
+        									Margin="0" />
+        							</Grid>
+        							<ControlTemplate.Triggers>
+        								<Trigger Property="IsMouseOver"
+        									Value="True">
+        									<Setter TargetName="stroke"
+        										Property="Fill"
+        										Value="{DynamicResource appClr2}" />
+        									<Setter TargetName="path1"
+        										Property="Fill"
+        										Value="{DynamicResource appClr2}" />
+        								</Trigger>
+        							</ControlTemplate.Triggers>
+        						</ControlTemplate>
+        					</Setter.Value>
+        				</Setter>
+        			</Style>
+        		</Button.Style>
+        	</Button>
+        	<Button Width="30"
+        		Height="30"
+        		VerticalAlignment="Top"
+        		HorizontalAlignment="Left"
+        		Grid.Row="0"
+        		Margin="45,-40,0,0" Visibility="Collapsed">
+        		<Button.Style>
+        			<Style TargetType="{x:Type Button}">
+        				<Setter Property="OverridesDefaultStyle"
+        					Value="False" />
+
+        				<Setter Property="Cursor"
+        					Value="Hand" />
+
+        				<Setter Property="Template">
+        					<Setter.Value>
+        						<ControlTemplate TargetType="{x:Type Button}">
+        							<Grid>
+        								<Rectangle Fill="{DynamicResource appClr1}"
+        									Margin="0" />
+        								<Path x:Name="path"
+        									Data="M8.1099597,36.94997L8.1099597,41.793968 39.213959,41.793968 39.213959,36.94997z M12.42,0.049999889L18.4,0.049999889 18.4,12.252 12.42,12.252z M0,0L7.9001866,0 7.9001866,14.64218 39.210766,14.64218 39.210766,0 47.401001,0 47.401001,47.917 0,47.917z"
+        									Stretch="Uniform"
+        									Fill="#FFFFFFFF"
+        									Width="26"
+        									Height="26"
+        									Margin="0" />
+        							</Grid>
+        							<ControlTemplate.Triggers>
+        								<Trigger Property="IsMouseOver"
+        									Value="True">
+        									<Setter TargetName="path"
+        										Property="Fill"
+        										Value="{DynamicResource appClr2}" />
+        								</Trigger>
+        							</ControlTemplate.Triggers>
+        						</ControlTemplate>
+        					</Setter.Value>
+        				</Setter>
+        			</Style>
+        		</Button.Style>
+        		<i:Interaction.Triggers>
+        			<i:EventTrigger EventName="Click">
+        				<ei:CallMethodAction TargetObject="{Binding}"
+        					MethodName="SaveChanges" />
+        			</i:EventTrigger>
+        		</i:Interaction.Triggers>
+
+        	</Button>-->
+
+        </Grid>
+        <Grid x:Name="StatusBar"
+              Grid.Row="2"
+              Height="30"
+              Visibility="Visible"
+              Background="{DynamicResource appClr1}"
+              VerticalAlignment="Bottom">
+            <customCtrls:Notification x:Name="ucNotification"
+                                      Height="30"
+                                      MaxHeight="30"
+                                      VerticalAlignment="Bottom"
+                                      Margin="0" />
+        </Grid>
+    </Grid>
+</Window>

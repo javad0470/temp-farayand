@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl.DefPsn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:actDefUC="clr-namespace:SSYM.OrgDsn.UI.View.EntityDefinition.UserCtl"
+             xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.EntityDefinition.UserCtl;assembly=SSYM.OrgDsn.ViewModel"
+             xmlns:cmn="clr-namespace:SSYM.OrgDsn.UI.View.Common"
+             Background="Transparent"
+             Name="ucDefPsn"
+             mc:Ignorable="d">
+    <Grid Style="{StaticResource MainWindowsContentGridStyle}">
+
+        <TabControl Style="{StaticResource MetroTabControl}">
+            <TabItem Header="اشخاص درون سازمانی"
+                     IsSelected="{Binding InsideSelected, Mode=TwoWay}">
+                <Grid>
+                    <cmn:NoPermission VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Visibility="{Binding DataContext.Acs_EnterPsnOsdOrg,ElementName=ucDefPsn, Converter={StaticResource NotBooleanToVisibilityConverter}}" />
+
+                    <actDefUC:DefPsnInsideOrg Background="Transparent"
+                                              Visibility="{Binding DataContext.Acs_EnterPsnIsdOrg, ElementName=ucDefPsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                              DataContext="{Binding DefPsnInsideOrgVM}" />
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="اشخاص برون سازمانی">
+                <Grid>
+
+                    <cmn:NoPermission VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      Visibility="{Binding DataContext.Acs_EnterPsnOsdOrg,ElementName=ucDefPsn, Converter={StaticResource NotBooleanToVisibilityConverter}}" />
+                    <actDefUC:DefPsnOutsideOrg Background="Transparent"
+                                               Visibility="{Binding DataContext.Acs_EnterPsnOsdOrg,ElementName=ucDefPsn, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                               DataContext="{Binding DefPsnOutsideOrgVM}" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

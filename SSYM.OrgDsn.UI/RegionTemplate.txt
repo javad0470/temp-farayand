@@ -1,0 +1,23 @@
+﻿        #region ' Fields '
+
+        #endregion
+        
+        #region ' Initialaizer '
+
+        #endregion
+
+        #region ' Properties / Commands '
+
+        #endregion
+
+        #region ' Public Methods '
+
+        #endregion
+
+        #region ' Private Methods '
+
+        #endregion
+
+		#region ' Events '
+
+		#endregion

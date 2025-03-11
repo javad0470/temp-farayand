@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Ellipse}">
+        
+        
+        
+    </Style>
+
+    <Style TargetType="{x:Type Ellipse}"
+           x:Key="Ellipse01"
+           BasedOn="{StaticResource {x:Type Ellipse}}">
+        
+        <Setter Property="Stroke"
+                Value="Transparent"></Setter>
+        
+        <Setter Property="StrokeThickness"
+                Value="2"></Setter>
+        
+        <Setter Property="Fill"
+                Value="Transparent"></Setter>      
+
+    </Style>
+
+</ResourceDictionary>

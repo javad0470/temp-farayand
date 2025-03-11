@@ -1,0 +1,4 @@
+yWorks.yFiles.UI.GraphControl, yWorks.yFilesWPF.Viewer
+yWorks.Canvas.CanvasControl, yWorks.yFilesWPF.Viewer
+yWorks.yFiles.Algorithms.Graph, yWorks.yFilesWPF.Algorithms
+

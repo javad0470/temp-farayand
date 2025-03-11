@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4BE6BFAB-3AA9-4989-8EBF-B8AC41B5CF97}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSYM.OrgDsn.ViewModel</RootNamespace>
+    <AssemblyName>SSYM.OrgDsn.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>srcSig.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Prism 4.1\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Prism 4.1\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Sql\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Sql\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Sql\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="MindFusion.Diagramming.Wpf">
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\MindFusion\MindFusion.Diagramming.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Windows.Controls, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\Telerik\Telerik.Windows.Diagrams.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="yWorks.yFilesWPF.Adapter, Version=2.4.0.0, Culture=neutral, PublicKeyToken=73817f81eb49e104, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Adapter.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Algorithms, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Viewer, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SSYM.OrgDsn.UI\Lib\yFiles\yWorks.yFilesWPF.Viewer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityDefinition\Main\ActDgrmViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcPsnAndOrgOsdViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcNodAndActViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefOralViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcPosPstOrgViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcPosPstRolViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcActOfNodViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefIdxViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcDstForOutViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcNewsRecvViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\PopupDataObject.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcEvtRstAwrTypeViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcEvtRstType.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefErorViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefIntViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefNewsViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefOutViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefSfwViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\DefUntViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcActDstViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcActSrcViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcErorViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcIdxViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcIntViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcNewsViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcOutViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcOrgDepViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcOrgOsdViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcRolViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcSfwViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcSgmtTimViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcSrcAndDstViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcPsnOsdOrgViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcUntViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\ActLstViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtCdn.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EmptyViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtRstGainAwrNewInnTimImpViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlEvtSrtViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlActViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlAwrOralViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcEvtSrtType.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlIfrmOralViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlIntViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlOutViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlRecvNewsViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\DtlSndNewsViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtRstCdn.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtRstErorViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtSrtAftrCdn.cs" />
+    <Compile Include="ActivityDefinition\Main\ActDefViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\EvtSrtInnSgmtTimViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcEvtSrtAwrTypeViewModel.cs" />
+    <Compile Include="ActivityDefinition\UserCtl\OrgPosViewModel.cs" />
+    <Compile Include="ActivityDefinition\Popup\SlcPstPosViewModel.cs" />
+    <Compile Include="Admin\ActiveUsrViewModel.cs" />
+    <Compile Include="Admin\AdminInfViewModel.cs" />
+    <Compile Include="Admin\DefLvlAcsViewModel.cs" />
+    <Compile Include="Base\AsyncObservableCollection.cs" />
+    <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="Base\IViewModel.cs" />
+    <Compile Include="Base\IViewModelBase.cs" />
+    <Compile Include="Base\IView.cs" />
+    <Compile Include="Base\ListViewModel.cs" />
+    <Compile Include="Base\PopupViewModel.cs" />
+    <Compile Include="Base\UserControlViewModel.cs" />
+    <Compile Include="Base\UserManager.cs" />
+    <Compile Include="DisFrmViewModel.cs" />
+    <Compile Include="Dson\DsonOverviewViewModel.cs" />
+    <Compile Include="Dson\SingleWayIfrmViewModel.cs" />
+    <Compile Include="Dson\SingleWayAwrViewModel.cs" />
+    <Compile Include="Dson\CvsnViewModel.cs" />
+    <Compile Include="Dson\DsonDtlAssignedByMeViewModel.cs" />
+    <Compile Include="Dson\DsonDtlAssignedToMeViewModel.cs" />
+    <Compile Include="Dson\DsonDtlViewModel.cs" />
+    <Compile Include="Dson\DsonListViewModel.cs" />
+    <Compile Include="Dson\WayAwrViewModel.cs" />
+    <Compile Include="Dson\WayIfrmViewModel.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\BackgroundSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntityDefinition\ChartViewModel\Branch.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Converter\ItemDisplayModeToFluidStateConverter.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Converter\LayoutTypeToRotateAngleConverter.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Converter\LayoutTypeToVisibilityConverter.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Converter\ShapeBackgroundSelector.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\GraphSource.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\ItemDisplayMode.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Link.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\Node.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\BaseOrgChartViewModel.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\OrgRouterViewModel.cs" />
+    <Compile Include="EntityDefinition\ChartViewModel\TreeLayoutViewModel.cs" />
+    <Compile Include="EntityDefinition\Popup\SlcNodViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\BaseDefItemViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefRolViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefPsnViewModel1.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefSfwViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefUntMsrtViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefIdxViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefErrViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefItmsViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\PsnIsdOrg.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DtlRolViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DtlOrgViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DtlPosPstViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefOrg.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefPsnOutsideOrgViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefPosPstViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefPsnInsideOrgViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefRolIsdOrgViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\DefRolOsdViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\ItmAsnToPsnViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\OrgRolsViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\PsnInfoViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\Ywork\PosPstChartViewModel.cs" />
+    <Compile Include="EntityDefinition\UserCtl\Ywork\OrgChartViewModel.cs" />
+    <Compile Include="General\PblcVar.cs" />
+    <Compile Include="MenuViewModel.cs" />
+    <Compile Include="ObfuscationSettings.cs" />
+    <Compile Include="Process\Popup\PrpsOwrForPrsViewModel.cs" />
+    <Compile Include="Process\Popup\PrpsNamForPrsViewModel.cs" />
+    <Compile Include="Process\Popup\SttPrsViewModel.cs" />
+    <Compile Include="Process\Popup\VotForOwrPrpsPrsViewModel.cs" />
+    <Compile Include="Process\Popup\DtlVotOwrPrpsPrsViewModel.cs" />
+    <Compile Include="Process\Popup\DtlVotNamPrpsPrsViewModel.cs" />
+    <Compile Include="Process\Popup\FndPrsViewModel.cs" />
+    <Compile Include="Process\Popup\VotForNamPrpsPrsViewModel.cs" />
+    <Compile Include="Process\UserCtl\DisPrsViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\BaseReportSearchViewModel.cs" />
+    <Compile Include="Report\IReport.cs" />
+    <Compile Include="Report\RpotDgrmPrsViewModel.cs" />
+    <Compile Include="Report\RpotPsnOutViewModel.cs" />
+    <Compile Include="Report\RpotInOutViewModel.cs" />
+    <Compile Include="Report\Enum\InOutSrchTyp.cs" />
+    <Compile Include="Report\RpotNewsViewModel.cs" />
+    <Compile Include="Report\Enum\NewsSrchTyp.cs" />
+    <Compile Include="Report\RpotSoftViewModel.cs" />
+    <Compile Include="Report\Enum\SoftSrchTyp.cs" />
+    <Compile Include="Report\RpotErrViewModel.cs" />
+    <Compile Include="Report\Enum\ErrSrchTyp.cs" />
+    <Compile Include="Report\RpotMsrtUnitViewModel.cs" />
+    <Compile Include="Report\Enum\MsrtUnitSrchTyp.cs" />
+    <Compile Include="Report\RpotIdxViewModel.cs" />
+    <Compile Include="Report\Enum\IdxSrchTyp.cs" />
+    <Compile Include="Report\RpotRolInViewModel.cs" />
+    <Compile Include="Report\RpotRolOutViewModel.cs" />
+    <Compile Include="Report\Enum\RolInSrchTyp.cs" />
+    <Compile Include="Report\Enum\RolOutSrchTyp.cs" />
+    <Compile Include="Report\Enum\PsnOutSrchTyp.cs" />
+    <Compile Include="Report\RpotOutOrgViewModel.cs" />
+    <Compile Include="Report\RpotDepOrgViewModel.cs" />
+    <Compile Include="Report\Enum\DepOrgSrchTyp.cs" />
+    <Compile Include="Report\RpotPsnInViewModel.cs" />
+    <Compile Include="Report\Enum\PsnInSrchTyp.cs" />
+    <Compile Include="Report\RpotPosPstViewModel.cs" />
+    <Compile Include="Report\Enum\PosPstSrchTyp.cs" />
+    <Compile Include="Report\RpotDsonViewModel.cs" />
+    <Compile Include="Report\Enum\DsonSrchTyp.cs" />
+    <Compile Include="Report\Enum\PrsSrchTyp.cs" />
+    <Compile Include="Report\Enum\ActSrchTyp.cs" />
+    <Compile Include="Report\MainReportMenuViewModel.cs" />
+    <Compile Include="Report\RpotPrsViewModel.cs" />
+    <Compile Include="UserSetting\EntrSfwViewModel.cs" />
+    <Compile Include="Report\RpotActViewModel.cs" />
+    <Compile Include="Report\SrchCdn.cs" />
+    <Compile Include="UserSetting\UsrSettingViewModel.cs" />
+    <Compile Include="Utility\CipherUtility.cs" />
+    <Compile Include="Utility\License.cs" />
+    <Compile Include="Utility\LicenseGenerator.cs" />
+    <Compile Include="Utility\SearchAgnt.cs" />
+    <Compile Include="Utility\ServerInfo.cs" />
+    <Compile Include="Utility\Util.cs" />
+    <Compile Include="Utility\Validation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\XPDLGenerator.Methodes.cs" />
+    <Compile Include="Utility\XPDLGenerator.Templates.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSYM.OrgDsn.Base\SSYM.OrgDsn.Base.csproj">
+      <Project>{724c3bc5-03e1-4289-a77b-1b08c74b7aa1}</Project>
+      <Name>SSYM.OrgDsn.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Common\SSYM.OrgDsn.Common.csproj">
+      <Project>{588a2a20-6aae-4c6b-a5cc-f20268135b46}</Project>
+      <Name>SSYM.OrgDsn.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Model\SSYM.OrgDsn.Model.csproj">
+      <Project>{92e62ac0-7c62-4ce4-b8a3-eec53f3c9905}</Project>
+      <Name>SSYM.OrgDsn.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="srcSig.pfx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

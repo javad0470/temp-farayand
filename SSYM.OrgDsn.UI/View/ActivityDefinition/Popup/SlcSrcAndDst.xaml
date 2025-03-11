@@ -1,0 +1,483 @@
+﻿<basePopup:BasePopup xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:basePopup="clr-namespace:SSYM.OrgDsn.UI.View.Base"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                     x:Class="SSYM.OrgDsn.UI.View.ActivityDefinition.Popup.SlcSrcAndDst"
+                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                     xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                     xmlns:local="clr-namespace:SSYM.OrgDsn.UI.Behavior"
+                     xmlns:vm="clr-namespace:SSYM.OrgDsn.ViewModel.ActivityDefinition.Popup;assembly=SSYM.OrgDsn.ViewModel"
+                     xmlns:custom="clr-namespace:SSYM.OrgDsn.UI"
+                     mc:Ignorable="d"
+                     d:DesignHeight="300"
+                     d:DesignWidth="300">
+
+    <Grid Style="{StaticResource PopupGrid}"
+          FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="7*" />
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+
+        <TabControl Grid.Row="0"
+                    Tag="1"
+                    Style="{StaticResource MetroTabControlForPopupForms}">
+
+            <TabItem Header="درون سازمانی"
+                     IsSelected="{Binding IsInsideOrganization, Mode=TwoWay}">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="6*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal">
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabPosPstOrg}"
+                                     VerticalAlignment="Center"
+                                     Content="جایگاه ها و سمت ها" />
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabRol}"
+                                     VerticalAlignment="Center"
+                                     Content="نقش ها" />
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabOrgSub}"
+                                     VerticalAlignment="Center"
+                                     Visibility="{Binding IsDepOrgVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                     Content="سازمان های تابعه" />
+                    </StackPanel>
+
+                    <TabControl Grid.Row="1"
+                                SelectionChanged="tabIsdSelectionChanged">
+
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabPosPstOrg"
+                                 IsSelected="{Binding IsPosPstOrg, Mode=TwoWay}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <!--<RowDefinition />-->
+                                </Grid.RowDefinitions>
+
+                                <custom:DelayedBindingTextBox Margin="5"
+                                                              Text="{Binding TxtSrchPosPst}" />
+
+                                <telerik:RadTreeView Grid.Row="1"
+                                                     Margin="5"
+                                                     Name="isd1"
+                                                     ItemsSource="{Binding PosPstOrgCV}"
+                                                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type telerik:RadTreeViewItem}"
+                                               BasedOn="{StaticResource {x:Type telerik:RadTreeViewItem}}">
+                                            <Setter Property="IsExpanded"
+                                                    Value="{Binding IsExpanded, Mode=TwoWay}" />
+
+                                            <Setter Property="IsSelected"
+                                                    Value="{Binding IsSelectedInTree, Mode=TwoWay}" />
+
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+
+                                    <telerik:RadTreeView.ItemTemplate>
+
+                                        <HierarchicalDataTemplate ItemsSource="{Binding ChildsCV}">
+
+                                            <StackPanel Orientation="Horizontal"
+                                                        MouseDown="MouseDoubleClick1">
+
+                                                <custom:BackgroundedImage Height="20"
+                                                                          Width="20"
+                                                                          Margin="5,0"
+                                                                          Background="{DynamicResource appClr1}">
+
+                                                    <custom:BackgroundedImage.Style>
+
+                                                        <Style TargetType="custom:BackgroundedImage">
+
+                                                            <Style.Triggers>
+
+                                                                <DataTrigger Binding="{Binding FldCodTyp}"
+                                                                             Value="1">
+
+                                                                    <Setter Property="Source"
+                                                                            Value="{StaticResource orgPos}"></Setter>
+
+                                                                </DataTrigger>
+
+                                                                <DataTrigger Binding="{Binding FldCodTyp}"
+                                                                             Value="2">
+
+                                                                    <Setter Property="Source"
+                                                                            Value="{StaticResource orgPst}"></Setter>
+
+                                                                </DataTrigger>
+
+                                                            </Style.Triggers>
+
+                                                        </Style>
+
+                                                    </custom:BackgroundedImage.Style>
+
+                                                </custom:BackgroundedImage>
+
+                                                <custom:HighlightTextBlock Text="{Binding FldNamPosPst}"
+                                                                           HighlightPhrase="{Binding HighlightPhrase}" />
+
+                                            </StackPanel>
+
+                                        </HierarchicalDataTemplate>
+
+                                    </telerik:RadTreeView.ItemTemplate>
+
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehaviorForTree SelectedItems="{Binding DataContext.TblPosPstOrgSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Multiple" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </telerik:RadTreeView>
+
+                            </Grid>
+
+                        </TabItem>
+
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabRol"
+                                 IsSelected="{Binding IsRolInsideOrganization, Mode=TwoWay}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <!--<RowDefinition />-->
+                                </Grid.RowDefinitions>
+                                <custom:DelayedBindingTextBox Margin="5"
+                                                              Text="{Binding TxtSrchRols}" />
+                                <DataGrid Grid.Row="1"
+                                          Margin="5"
+                                          Name="isd2"
+                                          ItemsSource="{Binding TblRolCV}"
+                                          MouseDoubleClick="Isd2_OnMouseDoubleClick"
+                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding FldTtlRol}"
+                                                            Header="عنوان نقش" />
+
+                                    </DataGrid.Columns>
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehavior SelectedItems="{Binding DataContext.TblRolSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Extended" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                </DataGrid>
+                            </Grid>
+
+                        </TabItem>
+
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabOrgSub"
+                                 IsSelected="{Binding IsOrgSub, Mode=TwoWay}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+
+                                <custom:DelayedBindingTextBox Margin="0,5"
+                                                              Text="{Binding TxtSrchOrg, Mode=TwoWay}" />
+
+                                <telerik:RadTreeView Grid.Row="1"
+                                                     ItemsSource="{Binding OrgSubCV}"
+                                                     Name="isd3"
+                                                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+                                    <telerik:RadTreeView.ItemContainerStyle>
+                                        <Style TargetType="{x:Type telerik:RadTreeViewItem}"
+                                               BasedOn="{StaticResource {x:Type telerik:RadTreeViewItem}}">
+                                            <Setter Property="IsExpanded"
+                                                    Value="{Binding IsExpanded, Mode=TwoWay}" />
+
+                                            <Setter Property="IsSelected"
+                                                    Value="{Binding IsSelectedInTree, Mode=TwoWay}" />
+
+                                        </Style>
+                                    </telerik:RadTreeView.ItemContainerStyle>
+
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding ChildsCV}">
+                                            <StackPanel Orientation="Horizontal"
+                                                        MouseDown="MouseDoubleClick1">
+                                                <custom:BackgroundedImage Source="{StaticResource org_E}"
+                                                                          Background="{DynamicResource appClr1}"
+                                                                          Width="20"
+                                                                          Height="20"
+                                                                          Margin="5,0"></custom:BackgroundedImage>
+
+                                                <custom:HighlightTextBlock Text="{Binding FldNamOrg}"
+                                                                           HighlightPhrase="{Binding HighlightPhrase}" />
+
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehaviorForTree SelectedItems="{Binding DataContext.TblOrgSubSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Multiple" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                </telerik:RadTreeView>
+
+                            </Grid>
+                        </TabItem>
+
+                    </TabControl>
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="برون سازمانی"
+                     Visibility="{Binding IsOutOrgVisible, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0"
+                                Orientation="Horizontal">
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabOrg}"
+                                     Content="شرکت ها و سازمان ها" />
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabRolOut}"
+                                     Content="نقش ها" />
+                        <RadioButton IsChecked="{Binding Path=IsSelected, ElementName=tabPsn}"
+                                     Content="اشخاص" />
+                    </StackPanel>
+                    <TabControl Grid.Row="1"
+                                SelectionChanged="tabOsdSelectionChanged">
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabOrg"
+                                 IsSelected="{Binding IsOrg, Mode=TwoWay}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <!--<RowDefinition />-->
+                                </Grid.RowDefinitions>
+
+                                <custom:DelayedBindingTextBox Text="{Binding SrchOutOrgs, Mode=TwoWay}"
+                                                              Margin="0,5" />
+
+                                <telerik:RadTreeView Grid.Row="1"
+                                                     Name="osd1"
+                                                     ItemsSource="{Binding TblOrg}"
+                                                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                    <!--SelectedItem="{Binding TblOrgSelectedItem, Mode=TwoWay}"-->
+                                    <telerik:RadTreeView.ItemTemplate>
+                                        <HierarchicalDataTemplate ItemsSource="{Binding ChildsCV}">
+                                            <StackPanel Orientation="Horizontal"
+                                                        MouseDown="MouseDoubleClick1">
+                                                <custom:BackgroundedImage Source="{StaticResource org}"
+                                                                          Width="20"
+                                                                          Height="20"></custom:BackgroundedImage>
+
+                                                <custom:HighlightTextBlock Margin="5,0"
+                                                                           Foreground="{DynamicResource appClr1}"
+                                                                           HighlightBrush="{DynamicResource appClr2}"
+                                                                           HighlightPhrase="{Binding HighlightPhrase}"
+                                                                           Text="{Binding FldNamOrg}"></custom:HighlightTextBlock>
+                                            </StackPanel>
+                                        </HierarchicalDataTemplate>
+                                    </telerik:RadTreeView.ItemTemplate>
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehaviorForTree SelectedItems="{Binding DataContext.TblOrgSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Multiple" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                </telerik:RadTreeView>
+                                <!--<StackPanel Grid.Row="2"
+                                            Style="{StaticResource PopupMessagesStackPanelStyle}"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="شرکت یا سازمان مورد نظر یافت نشد"
+                                               Style="{StaticResource TextBlockForPopupMessagesStyle}"></TextBlock>
+                                    <Button Content="بلی"
+                                            Foreground="White"
+                                            Style="{StaticResource CommonBtnStyle}" />
+                                </StackPanel>-->
+                            </Grid>
+                        </TabItem>
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabRolOut"
+                                 IsSelected="{Binding IsRolOutsideOrganization, Mode=TwoWay}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="6*" />
+                                </Grid.RowDefinitions>
+                                <DataGrid Grid.Row="1"
+                                          Name="osd2"
+                                          MouseDoubleClick="Isd2_OnMouseDoubleClick"
+                                          ItemsSource="{Binding TblRolOut}"
+                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding FldTtlRol}"
+                                                            Header="عنوان نقش" />
+                                    </DataGrid.Columns>
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehavior SelectedItems="{Binding DataContext.TblRolOutSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Extended" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Visibility="Hidden"
+                                 x:Name="tabPsn"
+                                 IsSelected="{Binding IsPerson, Mode=TwoWay}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition  Height="Auto" />
+                                    <RowDefinition Height="6*" />
+                                    <!--<RowDefinition />-->
+                                </Grid.RowDefinitions>
+                                <DataGrid Grid.Row="1"
+                                          Name="osd3"
+                                          MouseDoubleClick="Isd2_OnMouseDoubleClick"
+                                          ItemsSource="{Binding TblPsn}"
+                                          SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+                                    <!--SelectedItem="{Binding TblPsnSelectedItem, Mode=TwoWay}"-->
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding FldNam1stPsn}"
+                                                            Header="نام" />
+                                        <DataGridTextColumn Binding="{Binding FldNam2ndPsn}"
+                                                            Header="نام خانوادگی" />
+
+                                    </DataGrid.Columns>
+                                    <!--<i:Interaction.Behaviors>
+                                        <local:MyMultiSelectBehavior SelectedItems="{Binding DataContext.TblPsnSelectedItems, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay}" />
+                                    </i:Interaction.Behaviors>-->
+                                    <i:Interaction.Triggers>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="False">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Multiple" />
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{Binding IsSelectionModeSingle}"
+                                                        Value="True">
+                                            <ei:ChangePropertyAction PropertyName="SelectionMode"
+                                                                     Value="Single" />
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                </DataGrid>
+                                <!--<StackPanel Grid.Row="2"
+                                            Style="{StaticResource PopupMessagesStackPanelStyle}"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="سازمان تابعه مورد نظر یافت نشد"
+                                               Style="{StaticResource TextBlockForPopupMessagesStyle}"></TextBlock>
+                                    <Button Content="بلی"
+                                            Style="{StaticResource CommonBtnStyle}" />
+                                </StackPanel>-->
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+        <StackPanel Orientation="Horizontal"
+                    Style="{StaticResource PopupMessagesStackPanelStyle}"
+                    Grid.Row="1">
+            <TextBlock Style="{StaticResource TextBlockForPopupMessagesStyle}"
+                       Text="مبدأ یا مقصد مورد نظر را از فهرست بالا انتخاب نمایید" />
+            <!--<Button Content="Cancel"
+                    Command="{Binding DataContext.CancelCommand,  ElementName=tabRol}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                 TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Popup}}">
+                        </ei:ChangePropertyAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>-->
+            <!--<Button Content="Ok">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+
+                        <i:InvokeCommandAction  Command="{Binding DataContext.OkCommand, ElementName=tabRol}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="Click">
+                        <ei:ChangePropertyAction PropertyName="IsOpen"
+                                                 Value="False"
+                                                 TargetObject="{Binding RelativeSource={RelativeSource AncestorType=Popup}}">
+                        </ei:ChangePropertyAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>-->
+        </StackPanel>
+
+    </Grid>
+
+</basePopup:BasePopup>

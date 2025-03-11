@@ -1,0 +1,228 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dsonCtrl="clr-namespace:SSYM.OrgDsn.UI.View.Dson.UserCtl"
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:ywpf="http://www.yworks.com/xml/yfiles-wpf/2.0/xaml"
+             xmlns:UI="clr-namespace:SSYM.OrgDsn.UI"
+             x:Class="SSYM.OrgDsn.UI.View.Dson.UserCtl.DsonOverview"
+             FlowDirection="RightToLeft"
+             MinHeight="250"
+             MaxWidth="700"
+             MinWidth="400"
+             mc:Ignorable="d"
+             d:DesignHeight="200"
+             d:DesignWidth="800">
+
+    <Grid Margin="0,20"
+          VerticalAlignment="Bottom"
+          Name="grdDson">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid Visibility="{Binding InputVisibility}"
+              VerticalAlignment="Center"
+              Grid.Row="0"
+              HorizontalAlignment="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--نمایش جایگاه سمت راست-->
+            <TextBlock Text="{Binding CurrAwrIfrm.ActSrc.TblNod.FldNamNod}"
+                       Name="tbkRight"
+                       Style="{StaticResource CommonTextBlockStyle}"
+                       Margin="0,5"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+
+            <Rectangle HorizontalAlignment="Stretch"
+                       Margin="0,5"
+                       Grid.Row="1"
+                       Height="2"
+                       Fill="{DynamicResource appClr1}" />
+
+            <!--فعالیت راست-->
+            <dsonCtrl:Act DataContext="{Binding CurrAwrIfrm.ActSrc}"
+                          Grid.Row="2" />
+
+        </Grid>
+
+        <Grid Visibility="{Binding InputVisibility}"
+              VerticalAlignment="Center"
+              Grid.Column="2"
+              HorizontalAlignment="Center">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--نمایش جایگاه سمت چپ-->
+            <TextBlock Text="{Binding CurrAwrIfrm.ActDst.TblNod.FldNamNod}"
+                       Name="tbkLeft"
+                       Style="{StaticResource CommonTextBlockStyle}"
+                       Margin="0,5"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+
+            <Rectangle HorizontalAlignment="Stretch"
+                       Margin="0,5"
+                       Grid.Row="1"
+                       Height="2"
+                       Fill="{DynamicResource appClr1}" />
+
+            <!--فعالیت چپ-->
+            <dsonCtrl:Act DataContext="{Binding CurrAwrIfrm.ActDst}"
+                          Grid.Row="2" />
+
+        </Grid>
+
+        <Grid  Grid.Column="1"
+               Margin="0,50,0,0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                                  Margin="20,0"
+                                  DataContext="{Binding CurrAwrIfrm.ObjRst.EvtRst}"
+                                  HorizontalAlignment="Right"
+                                  VerticalAlignment="Center">
+
+                <Button.Style>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource OrgButton}">
+
+                        <Style.Triggers>
+
+                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="1">
+                                <Setter Property="Background"
+                                        Value="{StaticResource GeneralAfter}" />
+
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="2">
+                                <Setter Property="Background"
+                                        Value="{StaticResource SpecialAfter}" />
+
+                            </DataTrigger>
+
+                            <!--<DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="3">
+                                <Setter Property="Source"
+                                        Value="{StaticResource newAwrEvtRst}" />
+
+                            </DataTrigger>-->
+
+                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="4">
+                                <Setter Property="Background"
+                                        Value="{StaticResource ErrorDuring}" />
+
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="5">
+                                <Setter Property="Background"
+                                        Value="{StaticResource CancelDuring}" />
+
+                            </DataTrigger>
+
+                            <DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="6">
+                                <Setter Property="Background"
+                                        Value="{StaticResource SpecialDuring}" />
+
+                            </DataTrigger>
+
+                            <!--<DataTrigger Binding="{Binding FldTypEvtRst}"
+                                         Value="7">
+                                <Setter Property="Source"
+                                        Value="{StaticResource newAwrEvtRst}" />
+
+                            </DataTrigger>-->
+
+                        </Style.Triggers>
+
+                    </Style>
+
+                </Button.Style>
+
+
+            </Button>
+
+
+
+            <ed:LineArrow  Fill="{DynamicResource appClr2}"
+                           Grid.Column="1"
+                           BendAmount="0"
+                           HorizontalAlignment="Center"
+                           Height="30"
+                           Stroke="{DynamicResource appClr2}"
+                           StrokeThickness="4"
+                           Width="60">
+                <ed:LineArrow.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="-25" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </ed:LineArrow.LayoutTransform>
+            </ed:LineArrow>
+            <!--<ed:BlockArrow Fill="{DynamicResource appClr2}"
+                           Grid.Column="1"
+                           HorizontalAlignment="Center"
+                           Height="30"
+                           Stroke="{DynamicResource appClr2}"
+                           StrokeThickness="4"
+                           Width="60" />-->
+
+            <dsonCtrl:InOutIcn Grid.Column="2"
+                               DataContext="{Binding CurrAwrIfrm}"
+                               HorizontalAlignment="Left"
+                               Margin="0,20,0,0"
+                               VerticalAlignment="Center" />
+
+        </Grid>
+
+        <ed:Callout Name="callOutDson"
+                    MaxWidth="200"
+                    Height="60"
+                    Margin="150,-60,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Content="{Binding Desc}"
+                    Foreground="{StaticResource MenuHover}"
+                    AnchorPoint="0,3"
+                    BorderBrush="Aqua"
+                    BorderThickness="1"
+                    Fill="{StaticResource MenuStatusBar}"
+                    FontSize="10"
+                    Stroke="Black"
+                    StrokeThickness="0"
+                    CalloutStyle="RoundedRectangle"
+                    Grid.ColumnSpan="3"
+                    StrokeStartLineCap="Triangle"
+                    StrokeLineJoin="Round"
+                    StrokeEndLineCap="Triangle" />
+
+    </Grid>
+</UserControl>

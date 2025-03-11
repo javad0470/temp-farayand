@@ -1,0 +1,1927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C33BBDF6-8A20-402F-9398-C99744AE6497}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSYM.OrgDsn.UI</RootNamespace>
+    <AssemblyName>SSYM.OrgDsn.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\group2\Desktop\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>Organization Design</ProductName>
+    <PublisherName>SSYM</PublisherName>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>srcSig.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Demo.yFiles.Option, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\yFiles\Demo.yFiles.Option.dll</HintPath>
+    </Reference>
+    <Reference Include="Demo.yFiles.Toolkit, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\yFiles\Demo.yFiles.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Elysium, Version=2.0.976.4, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Elysium.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.IWshRuntimeLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Lib\Interop.IWshRuntimeLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.2.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=0.9.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Prism 4.1\Microsoft.Expression.Drawing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Effects, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Home\Downloads\Microsoft.Expression.Effects.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Prism 4.1\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Prism 4.1\Microsoft.Practices.Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Prism 4.1\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Sql\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Sql\Microsoft.SqlServer.Smo.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Sql\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Sql\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="PersianWPFToolkit">
+      <HintPath>Lib\Toolkit\PersianWPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\ExtendedWPFToolkit\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.0.9.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Telerik.Reporting, Version=7.1.13.612, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Report\Telerik.Reporting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.ReportViewer.Wpf, Version=7.1.13.612, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Report\Telerik.ReportViewer.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.Diagrams.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Diagrams.Extensions, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.Diagrams.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2013.1.403.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Telerik\Telerik.Windows.Diagrams.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Toolkit\PersianWPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=1.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=1.9.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Adapter, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\yFiles\yWorks.yFilesWPF.Adapter.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Algorithms, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\yFiles\yWorks.yFilesWPF.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="yWorks.yFilesWPF.Viewer, Version=2.5.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\yFiles\yWorks.yFilesWPF.Viewer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Assets\Resource\NewStyles\Actions\CloseTabItemAction.cs" />
+    <Compile Include="Assets\Resource\NewStyles\ComboStyle.cs" />
+    <Compile Include="Extentions\MyAttached.cs" />
+    <Compile Include="Extentions\ScrollIntoViewBehavior.cs" />
+    <Compile Include="Menu.xaml.cs" />
+    <Compile Include="Utility\SqlUtil\BackupHelper.cs" />
+    <Compile Include="Utility\SqlUtil\DataCopyHelper.cs" />
+    <Compile Include="Utility\SqlUtil\RestoreHelper.cs" />
+    <Compile Include="Utility\UIUtil.cs" />
+    <Compile Include="Utility\Validation.cs" />
+    <Compile Include="View\ActivityDefinition\Popup\SlcNodAndAct.xaml.cs">
+      <DependentUpon>SlcNodAndAct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefOral.xaml.cs">
+      <DependentUpon>DefOral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcOrgDep.xaml.cs">
+      <DependentUpon>SlcOrgDep.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcPosPstOrg.xaml.cs">
+      <DependentUpon>SlcPosPstOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcPsnAndOrgOsd.xaml.cs">
+      <DependentUpon>SlcPsnAndOrgOsd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\AdminInf.xaml.cs">
+      <DependentUpon>AdminInf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\DataMgr.xaml.cs">
+      <DependentUpon>DataMgr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ShowRemnLcs.xaml.cs">
+      <DependentUpon>ShowRemnLcs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Base\BasePopup.xaml.cs">
+      <DependentUpon>BasePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Common\NoPermission.xaml.cs">
+      <DependentUpon>NoPermission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControl\BackgroundedImage.cs" />
+    <Compile Include="Behavior\DataGridBehavior.cs" />
+    <Compile Include="Behavior\MyMultiSelectBehaviorForTree.cs" />
+    <Compile Include="Behavior\MyMultiSelectBehavior.cs" />
+    <Compile Include="Extentions\Extentions.cs" />
+    <Compile Include="Extentions\SelectorAttachedProperties.cs" />
+    <Compile Include="ObfuscationSettings.cs" />
+    <Compile Include="View\ActivityDefinition\Main\ActDgrm.xaml.cs">
+      <DependentUpon>ActDgrm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Main\DefAct.xaml.cs">
+      <DependentUpon>DefAct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\InslCstmrVrsn.xaml.cs">
+      <DependentUpon>InslCstmrVrsn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\Update.xaml.cs">
+      <DependentUpon>Update.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\UpgrdToVrsnCmplt.xaml.cs">
+      <DependentUpon>UpgrdToVrsnCmplt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcActsOfNod.xaml.cs">
+      <DependentUpon>SlcActsOfNod.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefIdx.xaml.cs">
+      <DependentUpon>DefIdx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcDstForOut.xaml.cs">
+      <DependentUpon>SlcDstForOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcNewsRecv.xaml.cs">
+      <DependentUpon>SlcNewsRecv.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcIdx.xaml.cs">
+      <DependentUpon>SlcIdx.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefEror.xaml.cs">
+      <DependentUpon>DefEror.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefInt.xaml.cs">
+      <DependentUpon>DefInt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefNews.xaml.cs">
+      <DependentUpon>DefNews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefOut.xaml.cs">
+      <DependentUpon>DefOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefSfw.xaml.cs">
+      <DependentUpon>DefSfw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\DefUnt.xaml.cs">
+      <DependentUpon>DefUnt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcActDst.xaml.cs">
+      <DependentUpon>SlcActDst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcActSrc.xaml.cs">
+      <DependentUpon>SlcActSrc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcEror.xaml.cs">
+      <DependentUpon>SlcEror.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcInt.xaml.cs">
+      <DependentUpon>SlcInt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcNews.xaml.cs">
+      <DependentUpon>SlcNews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcOut.xaml.cs">
+      <DependentUpon>SlcOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcPosPstRol.xaml.cs">
+      <DependentUpon>SlcPosPstRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcPstPos.xaml.cs">
+      <DependentUpon>SlcPstPos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcRol.xaml.cs">
+      <DependentUpon>SlcRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcSfw.xaml.cs">
+      <DependentUpon>SlcSfw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcSgmtTim.xaml.cs">
+      <DependentUpon>SlcSgmtTim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcUnt.xaml.cs">
+      <DependentUpon>SlcUnt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\ActLst.xaml.cs">
+      <DependentUpon>ActLst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\AddEtyPnl.xaml.cs">
+      <DependentUpon>AddEtyPnl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\AddEvtRstPnl.xaml.cs">
+      <DependentUpon>AddEvtRstPnl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\AftrCdn.xaml.cs">
+      <DependentUpon>AftrCdn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\AddEvtSrtPnl.xaml.cs">
+      <DependentUpon>AddEvtSrtPnl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlEvtSrt.xaml.cs">
+      <DependentUpon>DtlEvtSrt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlEvtSrtInnTimImp.xaml.cs">
+      <DependentUpon>DtlEvtSrtInnTimImp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcEvtRstAwrType.xaml.cs">
+      <DependentUpon>SlcEvtRstAwrType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlctEvtRstType.xaml.cs">
+      <DependentUpon>SlctEvtRstType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlAct.xaml.cs">
+      <DependentUpon>DtlAct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlAwrOral.xaml.cs">
+      <DependentUpon>DtlAwrOral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlIfrmOral.xaml.cs">
+      <DependentUpon>DtlIfrmOral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlInt.xaml.cs">
+      <DependentUpon>DtlInt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcSrcAndDst.xaml.cs">
+      <DependentUpon>SlcSrcAndDst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlOut.xaml.cs">
+      <DependentUpon>DtlOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlRecvNews.xaml.cs">
+      <DependentUpon>DtlRecvNews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\DtlSndNews.xaml.cs">
+      <DependentUpon>DtlSndNews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\Empty.xaml.cs">
+      <DependentUpon>Empty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\EvtRstEror.xaml.cs">
+      <DependentUpon>EvtRstEror.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\EvtRstGainAwrNew.xaml.cs">
+      <DependentUpon>EvtRstGainAwrNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcEvtSrtAwrType.xaml.cs">
+      <DependentUpon>SlcEvtSrtAwrType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlctEvtSrtType.xaml.cs">
+      <DependentUpon>SlctEvtSrtType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\OrgPos.xaml.cs">
+      <DependentUpon>OrgPos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\UIEntity.xaml.cs">
+      <DependentUpon>UIEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\UserCtl\EvtSrtInnSgmtTim.xaml.cs">
+      <DependentUpon>EvtSrtInnSgmtTim.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\ActiveUsr.xaml.cs">
+      <DependentUpon>ActiveUsr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\DefLvlAcs.xaml.cs">
+      <DependentUpon>DefLvlAcs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Base\BasePopup.cs" />
+    <Compile Include="View\Base\PopupWindow.xaml.cs">
+      <DependentUpon>PopupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomControl\DelayedBindingTextBox.cs" />
+    <Compile Include="View\CustomControl\HighlightTextBlock.cs" />
+    <Compile Include="View\CustomControl\MyDataGrid.cs" />
+    <Compile Include="View\CustomControl\Notification.cs" />
+    <Compile Include="View\DisFrm.xaml.cs">
+      <DependentUpon>DisFrm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\DsonDtlAssignedByMe.xaml.cs">
+      <DependentUpon>DsonDtlAssignedByMe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\DsonList.xaml.cs">
+      <DependentUpon>DsonList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\DsonDtlAssignedToMe.xaml.cs">
+      <DependentUpon>DsonDtlAssignedToMe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\Act.xaml.cs">
+      <DependentUpon>Act.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\ActList.xaml.cs">
+      <DependentUpon>ActList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\Cvsn.xaml.cs">
+      <DependentUpon>Cvsn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\DsonOverview.xaml.cs">
+      <DependentUpon>DsonOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\InOutIcn.xaml.cs">
+      <DependentUpon>InOutIcn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\WayAwr.xaml.cs">
+      <DependentUpon>WayAwr.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Dson\UserCtl\WayInfrm.xaml.cs">
+      <DependentUpon>WayInfrm.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\EntityDefinition\Popup\SlcNod.xaml.cs">
+      <DependentUpon>SlcNod.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcOrgOsd.xaml.cs">
+      <DependentUpon>SlcOrgOsd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActivityDefinition\Popup\SlcPsnOsdOrg.xaml.cs">
+      <DependentUpon>SlcPsnOsdOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\Popup\SlcPsnIsdOrg.xaml.cs">
+      <DependentUpon>SlcPsnIsdOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefItm.xaml.cs">
+      <DependentUpon>DefItm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefItms.xaml.cs">
+      <DependentUpon>DefItms.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefOrg.xaml.cs">
+      <DependentUpon>DefOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefOrgOut.xaml.cs">
+      <DependentUpon>DefOrgOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefOrgShrdBnft.xaml.cs">
+      <DependentUpon>DefOrgShrdBnft.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefPosPst.xaml.cs">
+      <DependentUpon>DefPosPst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefRol.xaml.cs">
+      <DependentUpon>DefRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefPsn.xaml.cs">
+      <DependentUpon>DefPsn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefPsnInsideOrg.xaml.cs">
+      <DependentUpon>DefPsnInsideOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefPsnOutsideOrg.xaml.cs">
+      <DependentUpon>DefPsnOutsideOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefRolOsdOrg.xaml.cs">
+      <DependentUpon>DefRolOsdOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DefRolIsgOrg.xaml.cs">
+      <DependentUpon>DefRolIsgOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DropableWrapPnl.xaml.cs">
+      <DependentUpon>DropableWrapPnl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DtlOrg.xaml.cs">
+      <DependentUpon>DtlOrg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DtlPosPst.xaml.cs">
+      <DependentUpon>DtlPosPst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\DtlRol.xaml.cs">
+      <DependentUpon>DtlRol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\OrgRols.xaml.cs">
+      <DependentUpon>OrgRols.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\PsnInfo.xaml.cs">
+      <DependentUpon>PsnInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\Ywork\PosPstChart.xaml.cs">
+      <DependentUpon>PosPstChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\Ywork\OrgChart.xaml.cs">
+      <DependentUpon>OrgChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntityDefinition\UserCtl\Ywork\ZoomToTemplateConverter.cs" />
+    <Compile Include="View\Process\Popup\PrpsNamForPrs.xaml.cs">
+      <DependentUpon>PrpsNamForPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\PrpsOwrForPrs.xaml.cs">
+      <DependentUpon>PrpsOwrForPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\SttPrs.xaml.cs">
+      <DependentUpon>SttPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\VotForOwrPrpsPrs.xaml.cs">
+      <DependentUpon>VotForOwrPrpsPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\DtlVotOwrPrpsPrs.xaml.cs">
+      <DependentUpon>DtlVotOwrPrpsPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\DtlVotNamPrpsPrs.xaml.cs">
+      <DependentUpon>DtlVotNamPrpsPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\FndPrs.xaml.cs">
+      <DependentUpon>FndPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Popup\VotForNamPrpsPrs.xaml.cs">
+      <DependentUpon>VotForNamPrpsPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\UserCtl\DisPrs.xaml.cs">
+      <DependentUpon>DisPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\UserCtl\Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Process\Windows\PrvwPrs.xaml.cs">
+      <DependentUpon>PrvwPrs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\PrsReport.xaml.cs">
+      <DependentUpon>PrsReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotAct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotAct.Designer.cs">
+      <DependentUpon>RpotAct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotDson.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotDson.Designer.cs">
+      <DependentUpon>RpotDson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotErr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotErr.Designer.cs">
+      <DependentUpon>RpotErr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotIdx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotIdx.Designer.cs">
+      <DependentUpon>RpotIdx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotInOut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotInOut.Designer.cs">
+      <DependentUpon>RpotInOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotNews.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotNews.Designer.cs">
+      <DependentUpon>RpotNews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotOrg.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotOrg.Designer.cs">
+      <DependentUpon>RpotOrg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotPosPst.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotPosPst.Designer.cs">
+      <DependentUpon>RpotPosPst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotPrs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotPrs.Designer.cs">
+      <DependentUpon>RpotPrs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotPsnIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotPsnIn.Designer.cs">
+      <DependentUpon>RpotPsnIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotPsnOut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotPsnOut.Designer.cs">
+      <DependentUpon>RpotPsnOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotRolIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotRolIn.Designer.cs">
+      <DependentUpon>RpotRolIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotRolOut.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotRolOut.Designer.cs">
+      <DependentUpon>RpotRolOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotSfw.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotSfw.Designer.cs">
+      <DependentUpon>RpotSfw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\RpotUntMsrt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Report\RpotUntMsrt.Designer.cs">
+      <DependentUpon>RpotUntMsrt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\ucRpotMainMenu.xaml.cs">
+      <DependentUpon>ucRpotMainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Report\ucRpotSrch.xaml.cs">
+      <DependentUpon>ucRpotSrch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Support\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserSetting\EntrSfw.xaml.cs">
+      <DependentUpon>EntrSfw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserSetting\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserSetting\UISettings.xaml.cs">
+      <DependentUpon>UISettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserSetting\UsrSetting.xaml.cs">
+      <DependentUpon>UsrSetting.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assets\Images\Images.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\img\Images.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\AllShapes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Border.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Button.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Accordion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\RadTreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Ellipse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Grid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\GridSplitter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\GroupBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Popup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\StackPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\TabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Font.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\TextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\ToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\Template.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BPMNDgm\Resources\Overlays.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Main\ActDgrm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcNodAndAct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefOral.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcOrgDep.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcPosPstOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcPsnAndOrgOsd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\AdminInf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\DataMgr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\InslCstmrVrsn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\ShowRemnLcs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\Update.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\UpgrdToVrsnCmplt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcActsOfNod.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefIdx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcDstForOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcNewsRecv.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcIdx.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefEror.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefInt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefSfw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\DefUnt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcActDst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcActSrc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcEror.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcInt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcPosPstRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcPstPos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcSfw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcSgmtTim.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcUnt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\ActLst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\AddEtyPnl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\AddEvtRstPnl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\AftrCdn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Main\DefAct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\AddEvtSrtPnl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlEvtSrt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlEvtSrtInnTimImp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcEvtRstAwrType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlctEvtRstType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlAct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlAwrOral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlIfrmOral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlInt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlRecvNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\DtlSndNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\Empty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\EvtRstEror.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\EvtRstGainAwrNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcEvtSrtAwrType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcSrcAndDst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlctEvtSrtType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\OrgPos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Resource\NewStyles\RadioButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\UIEntity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\UserCtl\EvtSrtInnSgmtTim.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Admin\ActiveUsr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Admin\DefLvlAcs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Base\BasePopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Base\PopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Common\NoPermission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DisFrm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\DsonDtlAssignedByMe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\DsonList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\DsonDtlAssignedToMe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\Act.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\ActList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\Cvsn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\DsonOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\InOutIcn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\WayAwr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dson\UserCtl\WayInfrm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\Popup\SlcNod.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcOrgOsd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActivityDefinition\Popup\SlcPsnOsdOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\Popup\SlcPsnIsdOrg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefItm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefItms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefOrgOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefOrgShrdBnft.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefPosPst.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefRol.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefPsn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefPsnInsideOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefPsnOutsideOrg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefRolOsdOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DefRolIsgOrg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DropableWrapPnl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DtlOrg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DtlPosPst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\DtlRol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\OrgRols.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\PsnInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\Ywork\PosPstChart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\Ywork\PosPstChartTemplates.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\Ywork\OrgChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntityDefinition\UserCtl\Ywork\OrgChartTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\PrpsNamForPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\PrpsOwrForPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\SttPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\VotForOwrPrpsPrs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Process\Popup\DtlVotOwrPrpsPrs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Process\Popup\DtlVotNamPrpsPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\FndPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Popup\VotForNamPrpsPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\UserCtl\DisPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\UserCtl\Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Process\Windows\PrvwPrs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report\PrsReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Report\ucRpotMainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Report\ucRpotSrch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Support\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserSetting\EntrSfw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserSetting\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserSetting\UISettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserSetting\UsrSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Lib\Telerik\Report\Telerik.ReportViewer.Wpf.TextResources.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotAct.resx">
+      <DependentUpon>RpotAct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotDson.resx">
+      <DependentUpon>RpotDson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotErr.resx">
+      <DependentUpon>RpotErr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotIdx.resx">
+      <DependentUpon>RpotIdx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotInOut.resx">
+      <DependentUpon>RpotInOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotNews.resx">
+      <DependentUpon>RpotNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotOrg.resx">
+      <DependentUpon>RpotOrg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotPosPst.resx">
+      <DependentUpon>RpotPosPst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotPrs.resx">
+      <DependentUpon>RpotPrs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotPsnIn.resx">
+      <DependentUpon>RpotPsnIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotPsnOut.resx">
+      <DependentUpon>RpotPsnOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotRolIn.resx">
+      <DependentUpon>RpotRolIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotRolOut.resx">
+      <DependentUpon>RpotRolOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotSfw.resx">
+      <DependentUpon>RpotSfw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Report\RpotUntMsrt.resx">
+      <DependentUpon>RpotUntMsrt.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.manifest" />
+    <None Include="BPMNDgm\Resources\business.graphml" />
+    <None Include="BPMNDgm\Resources\collaboration.graphml" />
+    <None Include="BPMNDgm\Resources\defaults.graphml" />
+    <None Include="BPMNDgm\Resources\expanded_subprocess.graphml" />
+    <None Include="BPMNDgm\Resources\lanes_segment.graphml" />
+    <None Include="BPMNDgm\Resources\lanes_with_information_systems.graphml" />
+    <None Include="BPMNDgm\Resources\matrix_lanes.graphml" />
+    <None Include="BPMNDgm\Resources\order_fulfillment.graphml" />
+    <None Include="BPMNDgm\Resources\process_normal_flow.graphml" />
+    <None Include="BPMNDgm\Resources\simple_bpmn_model.graphml" />
+    <None Include="hlpClnt.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="hlpSrv.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Lib\packages\MahApps.Metro.0.9.0.0\MahApps.Metro.0.9.0.0.nupkg" />
+    <None Include="Lib\packages\MahApps.Metro.0.9.0.0\tools\install.ps1" />
+    <None Include="Lib\packages\Microsoft.Windows.Shell.3.0.1.0\Microsoft.Windows.Shell.3.0.1.0.nupkg" />
+    <None Include="Lib\packages\repositories.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="srcSig.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\img\Guidance\" />
+    <Folder Include="ClientResources\" />
+    <Folder Include="Lib\Prism 4.5\" />
+    <Folder Include="View\Debug\" />
+    <Folder Include="View\General\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BlendEmbeddedFont Include="Fonts\BKoodkBd.ttf">
+      <IsSystemFont>True</IsSystemFont>
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
+    <Resource Include="Assets\img\Public\Triangle.png" />
+    <Resource Include="setting.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="myConfig.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\img\Public\AddPos.png" />
+    <Resource Include="Assets\img\Public\AddPst.png" />
+    <Resource Include="Assets\img\Public\TreeShowUp.png" />
+    <Resource Include="Assets\img\Public\TreeCloseUp.png" />
+    <Resource Include="Assets\img\Public\TreeShowAll.png" />
+    <Resource Include="Assets\img\Public\TreeShowDown.png" />
+    <Resource Include="Assets\img\Public\delete_EW.png" />
+    <Resource Include="Assets\img\Public\TreeCloseDown.png" />
+    <Resource Include="Assets\img\Public\delete_EG.png" />
+    <Resource Include="Assets\img\Public\AboutSoft.png" />
+    <Resource Include="Assets\img\Public\AddHeadNode.png" />
+    <Resource Include="Assets\img\Public\hand_EW.png" />
+    <Resource Include="Assets\img\Public\cancel_EG.png" />
+    <Resource Include="Assets\img\Public\window_close_EG.png" />
+    <Resource Include="Assets\img\Public\window_minus_EG.png" />
+    <Resource Include="Assets\img\Public\window_restore_EG.png" />
+    <Resource Include="Assets\img\Public\orgPos_EG.png" />
+    <Resource Include="Assets\img\Public\plusSignW.png" />
+    <Resource Include="Assets\img\Public\nextArrow_EG.png" />
+    <Resource Include="Assets\img\Public\prevArrow_EG.png" />
+    <Resource Include="Assets\img\Public\error_WE.png" />
+    <Resource Include="Assets\img\Public\info_WE.png" />
+    <Resource Include="Assets\img\Public\warning_WE.png" />
+    <Resource Include="Assets\img\Public\help_WE.png" />
+    <Resource Include="Assets\img\Public\oK_EG.png" />
+    <Resource Include="Assets\img\Public\edit_EG.png" />
+    <Resource Include="Assets\img\Public\details_EG.png" />
+    <Resource Include="Assets\img\Public\vote_EG.png" />
+    <Resource Include="Assets\img\Public\filter_EG.png" />
+    <Resource Include="Assets\img\Public\window_Max_WE.png" />
+    <Resource Include="Assets\img\Public\addItm2.png" />
+    <Resource Include="Assets\img\Public\Close.png" />
+    <Resource Include="Assets\img\Public\addItm3.png" />
+    <Resource Include="Icon.ico" />
+    <Resource Include="Assets\img\Public\windowbar_Corner.png" />
+    <Resource Include="Assets\img\Public\OrgArc Bakground.png" />
+    <Resource Include="Assets\img\Public\theme1.png" />
+    <Resource Include="Assets\img\Public\theme2.png" />
+    <Resource Include="Assets\img\Public\theme3.png" />
+    <Resource Include="Assets\Images\Main\Activity.png" />
+    <Resource Include="Assets\Images\Main\Base.png" />
+    <Resource Include="Assets\Images\Main\Dson.png" />
+    <Resource Include="Assets\Images\Main\Expand.png" />
+    <Resource Include="Assets\Images\Main\Login.png" />
+    <Resource Include="Assets\Images\Main\Office.png" />
+    <Resource Include="Assets\Images\Main\Person.png" />
+    <Resource Include="Assets\Images\Main\Process.png" />
+    <Resource Include="Assets\Images\Main\Process2.png" />
+    <Resource Include="Assets\Images\Main\Role.png" />
+    <Resource Include="Assets\Images\Main\Structure.png" />
+    <Resource Include="Assets\Images\Main\tabBack.png" />
+    <Resource Include="Assets\Images\Main\tabHome.png" />
+    <Resource Include="Assets\Images\Main\tabReport.png" />
+    <Resource Include="Assets\Images\Main\tabSettings.png" />
+    <Resource Include="Assets\Images\Event\CancelDuring.png" />
+    <Resource Include="Assets\Images\Event\Document.png" />
+    <Resource Include="Assets\Images\Event\ErrorDuring.png" />
+    <Resource Include="Assets\Images\Event\GeneralAfter.png" />
+    <Resource Include="Assets\Images\Event\Phone.png" />
+    <Resource Include="Assets\Images\Event\Signal.png" />
+    <Resource Include="Assets\Images\Event\Special.png" />
+    <Resource Include="Assets\Images\Event\SpecialAfter.png" />
+    <Resource Include="Assets\Images\Event\SpecialDuring.png" />
+    <Resource Include="Assets\Images\Event\Time.png" />
+    <Resource Include="Assets\Images\Event\Understand.png" />
+    <Resource Include="Assets\Images\Round\Add.png" />
+    <Resource Include="Assets\Images\Round\Back.png" />
+    <Resource Include="Assets\Images\Round\Delete.png" />
+    <Resource Include="Assets\Images\Round\Edit.png" />
+    <Resource Include="Assets\Images\Round\Export.png" />
+    <Resource Include="Assets\Images\Round\Filter.png" />
+    <Resource Include="Assets\Images\Round\Fit.png" />
+    <Resource Include="Assets\Images\Round\Hand.png" />
+    <Resource Include="Assets\Images\Round\Ok.png" />
+    <Resource Include="Assets\Images\Round\Preview.png" />
+    <Resource Include="Assets\Images\Round\Print.png" />
+    <Resource Include="Assets\Images\Round\Save.png" />
+    <Resource Include="Assets\Images\Round\Sort.png" />
+    <Resource Include="Assets\Images\Round\Zoom-In.png" />
+    <Resource Include="Assets\Images\Round\Zoom-Normal.png" />
+    <Resource Include="Assets\Images\Round\Zoom-Out.png" />
+    <Resource Include="Assets\Images\Small\Error.png" />
+    <Resource Include="Assets\Images\Small\Information.png" />
+    <Resource Include="Assets\Images\Small\Search.png" />
+    <Resource Include="Assets\Images\Small\SmallAdd.png" />
+    <Resource Include="Assets\Images\Small\SmallDelete.png" />
+    <Resource Include="Assets\Images\Small\SmallExpand.png" />
+    <Resource Include="Assets\Images\Small\Warning.png" />
+    <Resource Include="Assets\Images\Small\SmallOffice.png" />
+    <Resource Include="Assets\Images\Small\SmallRole.png" />
+    <Resource Include="Assets\Images\Small\User.png" />
+    <Resource Include="Assets\Images\Round\AddPost.png" />
+    <Resource Include="Assets\Images\Round\AddPosition.png" />
+    <Resource Include="Assets\Images\Main\WindowBorder.png" />
+    <Resource Include="Assets\Images\Small\Maximize.png" />
+    <Resource Include="Assets\Images\Small\Minimize.png" />
+    <Resource Include="Assets\Images\Small\Normal.png" />
+    <Resource Include="Assets\Images\Main\Position.png" />
+    <Resource Include="Assets\Images\Small\Post.png" />
+    <Resource Include="Assets\Images\Small\SmallPosition.png" />
+    <Resource Include="Assets\Images\Small\SmallHelp.png" />
+    <Resource Include="Assets\Images\Main\SettingAccess.png" />
+    <Resource Include="Assets\Images\Main\SettingBeginVersion.png" />
+    <Resource Include="Assets\Images\Main\SettingBusinessRestrict.png" />
+    <Resource Include="Assets\Images\Main\SettingCertificate.png" />
+    <Resource Include="Assets\Images\Main\SettingCompleteVersion.png" />
+    <Resource Include="Assets\Images\Main\SettingDataManage.png" />
+    <Resource Include="Assets\Images\Main\SettingInstall.png" />
+    <Resource Include="Assets\Images\Main\SettingMonitor.png" />
+    <Resource Include="Assets\Images\Main\SettingUpdate.png" />
+    <Resource Include="Assets\Images\Main\SettingUserInfo.png" />
+    <Resource Include="Assets\Images\Main\SettingVersionDownload.png" />
+    <Resource Include="Assets\Images\Main\SettingDeleteInstall.png" />
+    <Content Include="Lib\Demo.yFiles.Option.dll" />
+    <Content Include="Lib\Demo.yFiles.Toolkit.dll" />
+    <Content Include="Lib\Elysium - Copy.dll" />
+    <Content Include="Lib\ExtendedWPFToolkit\System.Windows.Controls.Layout.Toolkit.dll" />
+    <Content Include="Lib\ExtendedWPFToolkit\WPFToolkit.dll" />
+    <Content Include="Lib\itextsharp.dll" />
+    <Content Include="Lib\PersianWPFToolkit.dll" />
+    <Content Include="Lib\Sql\Microsoft.SqlServer.SmoExtended.dll" />
+    <Content Include="Lib\Sql\SqlServerBackupRestore.dll" />
+    <Content Include="Lib\Xceed.Wpf.AvalonDock.dll" />
+    <Content Include="Lib\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="Lib\yWorks.yFilesWPF.Adapter.dll" />
+    <Content Include="Lib\yWorks.yFilesWPF.Algorithms.dll" />
+    <Content Include="Lib\yWorks.yFilesWPF.Viewer.dll" />
+    <Content Include="SSYM.OrgDsn.Updater.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\img\Process\spcCdnEvtSrt.png" />
+    <Resource Include="Assets\img\Public\CircleArrowLeft.png" />
+    <Resource Include="Assets\img\Public\orgPos2.png" />
+    <Resource Include="Assets\img\Public\orgPst2.png" />
+    <Resource Include="Assets\img\Public\Left.png" />
+    <Resource Include="Assets\img\Public\Line.png" />
+    <Resource Include="Assets\img\Public\File.png" />
+    <Resource Include="Assets\img\Public\org.png" />
+    <Resource Include="Assets\img\Public\orgRole2.png" />
+    <Resource Include="Assets\img\Public\Psn.png" />
+    <Resource Include="Assets\img\Public\org2.png" />
+    <Resource Include="Assets\img\Process\Process.png" />
+    <Resource Include="Assets\img\Process\act.png" />
+    <Resource Include="Assets\img\Public\Dson.png" />
+    <Resource Include="Assets\img\Public\NamIntoSoft.png" />
+    <SplashScreen Include="Assets\img\Splash Page.png" />
+    <Resource Include="Assets\img\Public\HeaderIcon.png" />
+    <Resource Include="Assets\img\Public\Left2.png" />
+    <Resource Include="Assets\img\Public\pwrHover.png" />
+    <Resource Include="Assets\img\Public\usrLogin.png" />
+    <Resource Include="Assets\img\Public\setting.png" />
+    <Resource Include="Assets\img\Public\report.png" />
+    <Resource Include="Assets\img\Public\usrLoginWhait.png" />
+    <Resource Include="Assets\img\Public\monitor.png" />
+    <Resource Include="Assets\img\Public\logo1.png" />
+    <Resource Include="Assets\img\Public\logo2.png" />
+    <Resource Include="Assets\img\Public\pwr.png" />
+    <Resource Include="Assets\img\Public\menuHelp.png" />
+    <Resource Include="Assets\img\Public\loginBG.png" />
+    <Resource Include="Assets\img\Public\orgGreen.png" />
+    <Resource Include="Assets\img\Public\errorLogin.png" />
+    <Resource Include="Assets\img\Public\LeftHover.png" />
+    <Resource Include="Assets\img\Public\SaveIcon.png" />
+    <Resource Include="Assets\img\Public\org_E.png" />
+    <Resource Include="Assets\img\Public\orgPos3.png" />
+    <Resource Include="Assets\img\Public\orgPst.png" />
+    <Resource Include="Assets\img\Public\orgRol.png" />
+    <Resource Include="Assets\img\Process\signal1.png" />
+    <Resource Include="Assets\img\Process\obj2.png" />
+    <Resource Include="Assets\img\Process\oral2.png" />
+    <Resource Include="Assets\img\Process\signal2.png" />
+    <Resource Include="Assets\img\Process\Close.png" />
+    <Resource Include="Assets\img\Process\Cloud-Thunder.png" />
+    <Content Include="Lib\Elysium.dll" />
+    <Content Include="Lib\Interop.IWshRuntimeLibrary.dll" />
+    <Content Include="Lib\MahApps.Metro.dll" />
+    <Content Include="Lib\Microsoft.Windows.Shell.dll" />
+    <Content Include="Lib\packages\MahApps.Metro.0.9.0.0\lib\net40\MahApps.Metro.dll" />
+    <Content Include="Lib\packages\MahApps.Metro.0.9.0.0\lib\net40\System.Windows.Interactivity.dll" />
+    <Content Include="Lib\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll" />
+    <Content Include="Lib\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.pdb" />
+    <Content Include="Lib\PersianLibrary.dll" />
+    <Content Include="Lib\Sql\Microsoft.SqlServer.ConnectionInfo.dll" />
+    <Content Include="Lib\Sql\Microsoft.SqlServer.Management.Sdk.Sfc.dll" />
+    <Content Include="Lib\Sql\Microsoft.SqlServer.Smo.dll" />
+    <Content Include="Lib\Sql\Microsoft.SqlServer.SqlEnum.dll" />
+    <Content Include="Lib\Telerik\Report\Telerik.Reporting.dll" />
+    <Content Include="Lib\Telerik\Report\Telerik.Reporting.pdb" />
+    <Resource Include="Lib\Telerik\Report\Telerik.Reporting.xml" />
+    <Content Include="Lib\Telerik\Report\Telerik.ReportViewer.Wpf.dll" />
+    <Content Include="Lib\Telerik\Report\Telerik.ReportViewer.Wpf.pdb" />
+    <Resource Include="Lib\Telerik\Report\Telerik.ReportViewer.Wpf.xml" />
+    <Content Include="Lib\Telerik\Telerik.Pivot.Core.dll" />
+    <Content Include="Lib\Telerik\Telerik.Pivot.DataProviders.Adomd.dll" />
+    <Content Include="Lib\Telerik\Telerik.Pivot.DataProviders.Xmla.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Chart.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Charting.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.DataServices.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.DataVisualization.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Docking.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.EntityFramework.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Expressions.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.FixedDocumentViewers.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.GanttView.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Gauge.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.ImageEditor.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Pivot.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.PivotFieldList.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.RibbonView.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.RichTextBoxUI.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.ScheduleView.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Spreadsheet.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Core.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Fixed.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.Html.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.OpenXml.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.Pdf.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.Rtf.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.FormatProviders.Xaml.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Proofing.DataGrid.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Proofing.Dictionaries.En-US.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Proofing.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Proofing.RadGridView.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Spreadsheet.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Maths.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.PersistenceFramework.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Scheduling.Core.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Zip.dll" />
+    <Content Include="Lib\Toolkit\PersianWPFToolkit.dll" />
+    <Content Include="Lib\Toolkit\Xceed.Wpf.AvalonDock.dll" />
+    <Content Include="Lib\Toolkit\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="Lib\WPFCustomMessageBox_dotNET40.dll" />
+    <Content Include="Lib\yFiles\Demo.yFiles.Option.dll" />
+    <Content Include="Lib\yFiles\Demo.yFiles.Toolkit.dll" />
+    <Content Include="Lib\yFiles\yWorks.yFilesWPF.Adapter.dll" />
+    <Content Include="Lib\yFiles\yWorks.yFilesWPF.Algorithms.dll" />
+    <Resource Include="Assets\img\BPMN\A1.png" />
+    <Resource Include="Assets\img\BPMN\CA1.png" />
+    <Resource Include="Assets\img\BPMN\DO1.png" />
+    <Resource Include="Assets\img\BPMN\DO2.png" />
+    <Resource Include="Assets\img\BPMN\DO3.png" />
+    <Resource Include="Assets\img\BPMN\E1.png" />
+    <Resource Include="Assets\img\BPMN\E10.png" />
+    <Resource Include="Assets\img\BPMN\E11.png" />
+    <Resource Include="Assets\img\BPMN\E12.png" />
+    <Resource Include="Assets\img\BPMN\E13.png" />
+    <Resource Include="Assets\img\BPMN\E14.png" />
+    <Resource Include="Assets\img\BPMN\E15.png" />
+    <Resource Include="Assets\img\BPMN\E16.png" />
+    <Resource Include="Assets\img\BPMN\E17.png" />
+    <Resource Include="Assets\img\BPMN\E18.png" />
+    <Resource Include="Assets\img\BPMN\E19.png" />
+    <Resource Include="Assets\img\BPMN\E2.png" />
+    <Resource Include="Assets\img\BPMN\E20.png" />
+    <Resource Include="Assets\img\BPMN\E21.png" />
+    <Resource Include="Assets\img\BPMN\E22.png" />
+    <Resource Include="Assets\img\BPMN\E23.png" />
+    <Resource Include="Assets\img\BPMN\E24.png" />
+    <Resource Include="Assets\img\BPMN\E25.png" />
+    <Resource Include="Assets\img\BPMN\E26.png" />
+    <Resource Include="Assets\img\BPMN\E27.png" />
+    <Resource Include="Assets\img\BPMN\E28.png" />
+    <Resource Include="Assets\img\BPMN\E29.png" />
+    <Resource Include="Assets\img\BPMN\E3.png" />
+    <Resource Include="Assets\img\BPMN\E30.png" />
+    <Resource Include="Assets\img\BPMN\E31.png" />
+    <Resource Include="Assets\img\BPMN\E32.png" />
+    <Resource Include="Assets\img\BPMN\E33.png" />
+    <Resource Include="Assets\img\BPMN\E4.png" />
+    <Resource Include="Assets\img\BPMN\E5.png" />
+    <Resource Include="Assets\img\BPMN\E6.png" />
+    <Resource Include="Assets\img\BPMN\E7.png" />
+    <Resource Include="Assets\img\BPMN\E8.png" />
+    <Resource Include="Assets\img\BPMN\E9.png" />
+    <Resource Include="Assets\img\BPMN\G1.png" />
+    <Resource Include="Assets\img\BPMN\G2.png" />
+    <Resource Include="Assets\img\BPMN\G3.png" />
+    <Resource Include="Assets\img\BPMN\G4.png" />
+    <Resource Include="Assets\img\BPMN\G5.png" />
+    <Resource Include="Assets\img\BPMN\G6.png" />
+    <Resource Include="Assets\img\BPMN\G7.png" />
+    <Resource Include="Assets\img\BPMN\G8.png" />
+    <Resource Include="Assets\img\Nothing\SaveIcon.png" />
+    <Resource Include="Assets\img\Process\actAdd.png" />
+    <Resource Include="Assets\img\Process\actCustom.png" />
+    <Resource Include="Assets\img\Process\actHasSubAct.png" />
+    <Resource Include="Assets\img\Process\actOutsideOrg.png" />
+    <Resource Include="Assets\img\Process\actSoft.png" />
+    <Resource Include="Assets\img\Process\aftrAnyCdnEvtSrt1.png" />
+    <Resource Include="Assets\img\Process\aftrAwareEvtSrt.png" />
+    <Resource Include="Assets\img\Process\aftrAwareEvtSrt1.png" />
+    <Resource Include="Assets\img\Process\aftrCdnEvtSrt.png" />
+    <Resource Include="Assets\img\Process\aftrCdnEvtSrt1.png" />
+    <Resource Include="Assets\img\Process\aftrCnlActPvs1.png" />
+    <Resource Include="Assets\img\Process\aftrErorInPvsAct1.png" />
+    <Resource Include="Assets\img\Process\aftrSpcCdnEvtSrt.png" />
+    <Resource Include="Assets\img\Process\aftrSpcCdnEvtSrt1.png" />
+    <Resource Include="Assets\img\Process\cancelEvtSrt.png" />
+    <Resource Include="Assets\img\Process\errAccurEvtSrt.png" />
+    <Resource Include="Assets\img\Process\evtRstAdd.png" />
+    <Resource Include="Assets\img\Process\evtRstAdd1.png" />
+    <Resource Include="Assets\img\Process\evtSrtAdd.png" />
+    <Resource Include="Assets\img\Process\evtSrtAdd1.png" />
+    <Resource Include="Assets\img\Process\extraOrg.png" />
+    <Resource Include="Assets\img\Process\flag_green.png" />
+    <Resource Include="Assets\img\Process\flag_red.png" />
+    <Resource Include="Assets\img\Process\flag_yellow.png" />
+    <Resource Include="Assets\img\Process\getInputAwr.png" />
+    <Resource Include="Assets\img\Process\hasNotSubAct.png" />
+    <Resource Include="Assets\img\Process\hasSubAct.png" />
+    <Resource Include="Assets\img\Process\human-custom.png" />
+    <Resource Include="Assets\img\Process\humanSoft.png" />
+    <Resource Include="Assets\img\Process\inSgmtTimeEvtSrt.png" />
+    <Resource Include="Assets\img\Process\inSgmtTimeEvtSrt1.png" />
+    <Resource Include="Assets\img\Process\newAwrEvtRst.png" />
+    <Resource Include="Assets\img\Process\newsAwr.png" />
+    <Resource Include="Assets\img\Process\obj1.png" />
+    <Resource Include="Assets\img\Process\oral1.png" />
+    <Resource Include="Assets\img\Process\oralAwr.png" />
+    <Resource Include="Assets\img\Process\spcCdnInnTimEvtSrt.png" />
+    <Resource Include="Assets\img\Process\spcCdnInnTimEvtSrt1.png" />
+    <Resource Include="Assets\img\Public\Add.png" />
+    <Resource Include="Assets\img\Public\addItm1.png" />
+    <Resource Include="Assets\img\Public\backward.png" />
+    <Resource Include="Assets\img\Public\Cancel.png" />
+    <Resource Include="Assets\img\Public\downArrow.png" />
+    <Resource Include="Assets\img\Public\export.png" />
+    <Resource Include="Assets\img\Public\fit.png" />
+    <Resource Include="Assets\img\Public\layout.png" />
+    <Resource Include="Assets\img\Public\no_zoom.png" />
+    <Resource Include="Assets\img\Public\OK.png" />
+    <Resource Include="Assets\img\Public\plusSign.png" />
+    <Resource Include="Assets\img\Public\preview.png" />
+    <Resource Include="Assets\img\Public\printer.png" />
+    <Resource Include="Assets\img\Public\sch.png" />
+    <Resource Include="Assets\img\Public\upArrow.png" />
+    <Resource Include="Assets\img\Public\zoom_in.png" />
+    <Resource Include="Assets\img\Public\zoom_out.png" />
+    <Content Include="Lib\yFiles\yWorks.yFilesWPF.Viewer.dll" />
+    <Content Include="Lib\Markup.Programming.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Common.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.DataBinding.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.PdfExport.dll" />
+    <Resource Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.PdfExport.XML" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.SvgExport.dll" />
+    <Resource Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.SvgExport.XML" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.VisioExport.dll" />
+    <Resource Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.VisioExport.XML" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.VisioImport.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.WmfExport.dll" />
+    <Resource Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.WmfExport.XML" />
+    <Resource Include="Lib\MindFusion\MindFusion.Diagramming.Wpf.XML" />
+    <Content Include="Lib\MindFusion\MindFusion.Graphs.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Pdf.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Scripting.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.Svg.dll" />
+    <Content Include="Lib\MindFusion\MindFusion.UI.Wpf.dll" />
+    <Resource Include="Lib\MindFusion\MindFusion.UI.Wpf.xml" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Data.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Diagrams.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Diagrams.Extensions.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.GridView.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Input.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Controls.Navigation.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Data.dll" />
+    <Content Include="Lib\Telerik\Telerik.Windows.Diagrams.Core.dll" />
+    <Content Include="Lib\ExtendedWPFToolkit\Xceed.Wpf.DataGrid.dll" />
+    <Content Include="Lib\ExtendedWPFToolkit\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Expression.Drawing.dll" />
+    <Resource Include="RegionTemplate.txt" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Expression.Interactions.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.Prism.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.Prism.Interactivity.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.Prism.MefExtensions.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.Prism.UnityExtensions.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.ServiceLocation.dll" />
+    <Content Include="Lib\Prism 4.1\Microsoft.Practices.Unity.dll" />
+    <Content Include="Lib\Prism 4.1\System.Windows.Interactivity.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SSYM.OrgDsn.Base\SSYM.OrgDsn.Base.csproj">
+      <Project>{724c3bc5-03e1-4289-a77b-1b08c74b7aa1}</Project>
+      <Name>SSYM.OrgDsn.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Common\SSYM.OrgDsn.Common.csproj">
+      <Project>{588a2a20-6aae-4c6b-a5cc-f20268135b46}</Project>
+      <Name>SSYM.OrgDsn.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Converter\SSYM.OrgDsn.Converter.csproj">
+      <Project>{928c7805-ac75-41fb-87a7-cf4f89721395}</Project>
+      <Name>SSYM.OrgDsn.Converter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.Model\SSYM.OrgDsn.Model.csproj">
+      <Project>{92e62ac0-7c62-4ce4-b8a3-eec53f3c9905}</Project>
+      <Name>SSYM.OrgDsn.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SSYM.OrgDsn.ViewModel\SSYM.OrgDsn.ViewModel.csproj">
+      <Project>{4be6bfab-3aa9-4989-8ebf-b8ac41b5cf97}</Project>
+      <Name>SSYM.OrgDsn.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

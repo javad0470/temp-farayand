@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SSYM.OrgDsn.UI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="userName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="remember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="fontClr_c" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FFF09609</Value>
+    </Setting>
+    <Setting Name="alternateRow_c" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FFEFEFEF</Value>
+    </Setting>
+    <Setting Name="appBG_c" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LstLocUpdt" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UndrDvlp" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="appClr1_c" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FF383838</Value>
+    </Setting>
+    <Setting Name="appClr1Opac_c" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#AA383838</Value>
+    </Setting>
+    <Setting Name="appClr2_c" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#FFff5a00</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
